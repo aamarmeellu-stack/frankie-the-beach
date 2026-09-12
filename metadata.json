@@ -1,0 +1,6 @@
+{
+  "name": "Frankie's @ The Beach",
+  "description": "Beachfront burger and drink spot featuring coastal sea views, gourmet smash burgers, loaded fries, and sweet seaside treats in Ramsgate, Kent.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

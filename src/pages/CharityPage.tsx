@@ -14,7 +14,7 @@ import {
   Mail,
   Phone,
   ShieldCheck,
-  Palmtree,
+  Waves,
   Smile,
 } from 'lucide-react';
 import { CHARITY_MESSAGE } from '../data/charityData';

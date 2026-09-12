@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Palmtree, Award, Heart, Sunset } from 'lucide-react';
+import { X, Waves, Award, Heart, Sunset } from 'lucide-react';
 import { ASSETS } from '../data/restaurantData';
 import { ClientImage } from './ClientImage';
 
@@ -45,7 +45,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({
 
           <div className="absolute bottom-6 left-6 text-white">
             <div className="flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-widest font-heading mb-1">
-              <Palmtree className="w-4 h-4 text-[#D1A03F]" />
+              <Waves className="w-4 h-4 text-[#D1A03F]" />
               ESTABLISHED ON RAMSGATE BEACH, KENT
             </div>
             <h2 className="text-2xl sm:text-3xl font-heading font-extrabold uppercase">
@@ -61,7 +61,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({
               Our Story: Eat. Beach. Repeat.
             </h3>
             <p>
-              Born from a love for salty sea air, golden hour sunsets, and unapologetically juicy burgers, Frankie’s @ The Beach started as a small timber beach shack at Marina Esplanade on Ramsgate Main Sands. Today, it’s the go-to coastal hangout for locals, surfers, and sunset chasers looking for serious smash burgers, loaded fries, and sweet seaside treats.
+              Born from a love for salty sea air, golden hour sunsets, and unapologetically juicy burgers, Frankie’s @ The Beach started as a beloved beachfront food kiosk and bar at Marina Esplanade on Ramsgate Main Sands. Today, it’s the go-to coastal food kiosk and bar for locals, day-trippers, and beach lovers looking for signature smash burgers, proper seaside chips, cold drinks, and traditional 99 whippy cones.
             </p>
           </div>
 
@@ -69,7 +69,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({
             <div className="p-4 bg-[#EEEFE9] rounded-2xl border border-[#dde0d5] space-y-2">
               <Award className="w-6 h-6 text-[#0580FF]" />
               <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
-                100% British Angus
+                100% Prime Angus
               </h4>
               <p className="text-xs text-[#5a717a]">
                 Locally sourced beef patties seared on an ultra-hot chrome flat-top for that crispy caramelised crust.
@@ -99,7 +99,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({
 
           <div className="pt-4 flex flex-wrap items-center gap-4 justify-between border-t border-[#edf0e6]">
             <p className="font-hand text-2xl text-[#0580FF] font-bold">
-              We look forward to seeing you down by the water!
+              We look forward to seeing you down by the sea!
             </p>
 
             <div className="flex gap-3">

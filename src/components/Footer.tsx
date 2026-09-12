@@ -4,7 +4,7 @@ import {
   Clock,
   MapPin,
   Phone,
-  Palmtree,
+  Waves,
   Facebook,
 } from 'lucide-react';
 import { TRIPADVISOR_LINKS, FRANKIES_FACEBOOK_URL } from '../data/restaurantData';
@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
                 <span className="font-script text-3xl sm:text-4xl text-white tracking-wide font-bold group-hover:text-[#ECD87A] transition-colors">
                   Frankie's
                 </span>
-                <Palmtree className="w-6 h-6 text-[#ECD87A] stroke-[2.2] -rotate-12 -ml-1 transition-transform group-hover:rotate-0" />
+                <Waves className="w-6 h-6 text-[#ECD87A] stroke-[2.2] -rotate-6 -ml-1 transition-transform group-hover:rotate-0" />
               </div>
               <span className="text-[10px] font-extrabold tracking-[0.28em] text-[#ECD87A] uppercase -mt-1 font-heading">
                 @ THE BEACH
@@ -32,7 +32,7 @@ export const Footer: React.FC = () => {
             </Link>
 
             <p className="text-xs text-white/70 leading-relaxed max-w-xs">
-              Ramsgate's seafront hotspot for authentic smash burgers, loaded fries, hot dogs, and sunset seaside vibes.
+              Ramsgate's seafront food kiosk and bar for authentic smash burgers, proper seaside chips, jumbo dogs, cold drinks, and traditional 99 whippy cones.
             </p>
 
             {/* Social Link - Facebook Only */}
@@ -64,12 +64,12 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/menu" className="hover:text-[#D1A03F] transition-colors">
-                  Full Menu (Burgers, Dogs & Fries)
+                  Full Seaside Menu (Burgers, Dogs &amp; Chips)
                 </Link>
               </li>
               <li>
                 <Link to="/about" className="hover:text-[#D1A03F] transition-colors">
-                  About Us & Our Shack
+                  About Us &amp; Our Food Kiosk &amp; Bar
                 </Link>
               </li>
               <li>

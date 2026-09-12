@@ -8,7 +8,7 @@ import { CateringShowcase } from '../components/CateringShowcase';
 import {
   Utensils,
   Calendar,
-  Palmtree,
+  Waves,
   ArrowRight,
   Flame,
   Clock,
@@ -33,7 +33,7 @@ export const HomePage: React.FC = () => {
   const handleWhatsAppContact = () => {
     const phoneNumber = '447554663569';
     const message = encodeURIComponent(
-      "Hello Frankie's @ The Beach! 🌴🍔 I'd like to ask about your opening times and visiting today."
+      "Hello Frankie's @ The Beach! 🌊🍔 I'd like to ask about your opening times and seaside menu today."
     );
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
   };
@@ -54,7 +54,7 @@ export const HomePage: React.FC = () => {
         onViewFullMenu={() => navigate('/menu')}
       />
 
-      {/* 4. Feature Showcase / Seaside Shack Teaser */}
+      {/* 4. Feature Showcase / Food Kiosk & Bar Teaser */}
       <section className="py-16 sm:py-20 bg-white border-t border-b border-[#dde0d5] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -66,7 +66,7 @@ export const HomePage: React.FC = () => {
                   src={clientImages.kiosk}
                   slotKey="site:kiosk"
                   fallbackSrc={ASSETS.beachPatio}
-                  alt="Frankie's Beachfront Kiosk in Ramsgate"
+                  alt="Frankie's Beachfront Food Kiosk and Bar in Ramsgate"
                   className="w-full h-80 sm:h-96 object-cover"
                   priority
                 />
@@ -95,7 +95,7 @@ export const HomePage: React.FC = () => {
                   <div className="flex items-center gap-1 text-[#D1A03F]">
                     <Sparkles className="w-3.5 h-3.5 fill-current" />
                     <span className="text-[10px] font-black uppercase tracking-wider text-[#0580FF]">
-                      100% British Angus
+                      100% Prime Angus
                     </span>
                   </div>
                   <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
@@ -109,16 +109,16 @@ export const HomePage: React.FC = () => {
             {/* Right Story & Highlights */}
             <div className="lg:col-span-6 space-y-6">
               <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#0580FF] font-heading">
-                <Palmtree className="w-4 h-4 text-[#D1A03F]" />
+                <Waves className="w-4 h-4 text-[#D1A03F]" />
                 <span>RAMSGATE SEAFRONT VIBES</span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-[#000000] font-heading leading-tight">
-                CRISPY SMASH BURGERS, SEA BREEZES & GOOD TIMES.
+                CRISPY SMASH BURGERS, PROPER CHIPS &amp; SEA BREEZES.
               </h2>
 
               <p className="text-sm sm:text-base text-[#496068] leading-relaxed">
-                Frankie's @ the Beach is your go-to spot in Ramsgate for great food, sweet treats and laid-back beachside vibes. Whether you're here for a quick bite, a family day out or sunset by the sea — we've got you covered.
+                Frankie's @ the Beach is your quintessential seaside food kiosk and bar in Ramsgate for proper food, cold beers, 99 whippy ice creams, and laid-back beachside vibes. Whether you're popping in for a quick bite, a refreshing drink by the waves, a family day on the sand, or a sunset stroll along the promenade — we've got you sorted.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -128,24 +128,24 @@ export const HomePage: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
-                      Chrome Smashed Beef
+                      Freshly Smashed Beef
                     </h4>
                     <p className="text-[11px] text-[#556d75] mt-0.5">
-                      Premium British beef seared hard with caramelised crispy borders.
+                      Prime beef seared hard on the flat-top with caramelised lacy crispy borders.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#f8f9f5] border border-[#e4e8dd]">
                   <div className="w-9 h-9 rounded-lg bg-[#0580FF] text-white flex items-center justify-center shrink-0">
-                    <Palmtree className="w-5 h-5 text-[#D1A03F]" />
+                    <Waves className="w-5 h-5 text-[#D1A03F]" />
                   </div>
                   <div>
                     <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
-                      Open-Air Beach Deck
+                      Promenade &amp; Beach Terrace
                     </h4>
                     <p className="text-[11px] text-[#556d75] mt-0.5">
-                      Panoramic views of the channel, dog-friendly terrace, laid-back beats.
+                      Panoramic views of Ramsgate Royal Harbour and the English Channel.
                     </p>
                   </div>
                 </div>
@@ -190,7 +190,7 @@ export const HomePage: React.FC = () => {
               </svg>
             </div>
             <p className="text-sm text-[#496068]">
-              From jumbo seaside hot dogs to sweet soft-serve cones, discover what makes Frankie's Ramsgate's favourite beach spot.
+              From jumbo promenade dogs to traditional 99 whippy cones with Flakes, discover what makes Frankie's Ramsgate's favourite food kiosk and bar.
             </p>
           </div>
 
@@ -205,7 +205,7 @@ export const HomePage: React.FC = () => {
                   src={clientImages.food1Burger}
                   slotKey="menu:the-classic-smash"
                   fallbackSrc={ASSETS.fallbacks.heroBurger}
-                  alt="Smash Burgers"
+                  alt="Signature Smash Burgers"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <span className="absolute top-3 left-3 bg-[#0580FF] text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded">
@@ -215,10 +215,10 @@ export const HomePage: React.FC = () => {
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
-                    Double Smash Burgers
+                    Classic Smash Burgers
                   </h3>
                   <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
-                    Classic Smash, BBQ Bacon Stack, and gourmet sides seared with crispy lacy edges on our flat-top.
+                    Prime beef patties, melted mature cheddar, and toasted brioche seared with caramelised lacy edges.
                   </p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0580FF]">
@@ -230,7 +230,7 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            {/* Category Card 2: Pepperoni & Loaded Fries */}
+            {/* Category Card 2: Pepperoni & Loaded Chips */}
             <div
               onClick={() => navigate('/menu')}
               className="bg-white rounded-2xl overflow-hidden border border-[#dde0d5] shadow-sm hover:shadow-lg transition-all cursor-pointer group flex flex-col justify-between"
@@ -240,20 +240,20 @@ export const HomePage: React.FC = () => {
                   src={clientImages.pepperoniFries}
                   slotKey="menu:pepperoni-melted-cheddar-fries"
                   fallbackSrc={ASSETS.loadedFries}
-                  alt="Pepperoni & Melted Cheddar Dirty Fries"
+                  alt="Pepperoni & Mature Cheddar Loaded Chips"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <span className="absolute top-3 left-3 bg-[#0580FF] text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded">
-                  LOADED FRIES &amp; CHIPS
+                  LOADED SEASIDE CHIPS
                 </span>
               </div>
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
-                    Pepperoni &amp; Dirty Fries
+                    Pepperoni &amp; Loaded Chips
                   </h3>
                   <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
-                    Golden seaside chips drenched in melted cheddar cheese, crispy pepperoni slices, and loaded chicken bites.
+                    Triple-cooked seaside chips loaded with melted mature English cheddar, grilled pepperoni slices, and wooden forks.
                   </p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0580FF]">
@@ -275,7 +275,7 @@ export const HomePage: React.FC = () => {
                   src={clientImages.hotWings}
                   slotKey="site:hotWings"
                   fallbackSrc={ASSETS.hotWings}
-                  alt="Crispy BBQ Wings & Coastal Sides"
+                  alt="Crispy BBQ Wings & Coastal Chips"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <span className="absolute top-3 left-3 bg-[#0580FF] text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded">
@@ -300,7 +300,7 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            {/* Category Card 4: Drinks & Treats */}
+            {/* Category Card 4: Drinks & 99 Treats */}
             <div
               onClick={() => navigate('/menu')}
               className="bg-white rounded-2xl overflow-hidden border border-[#dde0d5] shadow-sm hover:shadow-lg transition-all cursor-pointer group flex flex-col justify-between"
@@ -310,20 +310,20 @@ export const HomePage: React.FC = () => {
                   src={clientImages.drinksMenu}
                   slotKey="site:drinksMenu"
                   fallbackSrc={ASSETS.drinksMenu}
-                  alt="Frankie's Beach Drinks, Coffees & Slushies"
+                  alt="Frankie's Beach Drinks, Tea, Coffees & 99 Cones"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <span className="absolute top-3 left-3 bg-[#0580FF] text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded">
-                  BEACH DRINKS &amp; TREATS
+                  SEASIDE DRINKS &amp; 99s
                 </span>
               </div>
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
-                    Coffees, Slushies &amp; Drinks
+                    Tea, Coffee, Slushes &amp; 99s
                   </h3>
                   <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
-                    Freshly brewed coastal coffee, iced lattes, cold beers, and fruit slushies from our chalkboard beach bar.
+                    Freshly brewed builder's tea, coastal espresso, traditional 99 whippy cones with Cadbury Flakes, and fruity slushes.
                   </p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0580FF]">
@@ -433,8 +433,8 @@ export const HomePage: React.FC = () => {
       <section className="bg-[#004fb3] py-16 text-white text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 space-y-5">
           <div className="inline-flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-widest font-heading">
-            <Palmtree className="w-4 h-4 text-[#D1A03F]" />
-            <span>JOIN US BY THE WATER</span>
+            <Waves className="w-4 h-4 text-[#D1A03F]" />
+            <span>JOIN US BY THE SEA</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase font-heading">
@@ -442,7 +442,7 @@ export const HomePage: React.FC = () => {
           </h2>
 
           <p className="text-sm sm:text-base text-sky-100 max-w-2xl mx-auto leading-relaxed">
-            Drop by our beach kiosk at Kiosk 1, Marina Esplanade for gourmet burgers, loaded dirty fries, seaside treats, and kids' beach rides right on the sand. Walk-ins are always welcomed by the waves!
+            Drop by our food kiosk and bar at Kiosk 1, Marina Esplanade for signature smash burgers, loaded chips, cold drinks, 99 whippy cones, and kids' beach rides right on the sand. Walk-ins are always welcomed by the waves!
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-3">

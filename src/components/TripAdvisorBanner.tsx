@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { MessageSquare, ExternalLink, BarChart3, ChevronRight } from 'lucide-react';
 import { TRIPADVISOR_LINKS } from '../data/restaurantData';
 import { TripAdvisorDetailModal } from './TripAdvisorDetailModal';
+import { ClientImage } from './ClientImage';
 
 interface TripAdvisorItemProps {
   title: string;
-  badgeText: string;
+  badgeText?: string;
   category: string;
   reviewCount: string;
   rating?: string;
@@ -14,6 +15,9 @@ interface TripAdvisorItemProps {
   url: string;
   dedicatedRoute: string;
   bannerId: string;
+  image?: string;
+  imageAlt?: string;
+  slotKey?: string;
   onViewDetails: () => void;
 }
 
@@ -74,31 +78,56 @@ const TripAdvisorSingleBanner: React.FC<TripAdvisorItemProps> = ({
   url,
   dedicatedRoute,
   bannerId,
+  image,
+  imageAlt,
+  slotKey,
   onViewDetails,
 }) => {
   return (
     <div
       id={bannerId}
-      className="w-full bg-[#fdfdfc] border-y border-gray-200/90 py-4 sm:py-5 px-4 sm:px-8 shadow-xs"
+      className="w-full bg-[#fdfdfc] border-y border-gray-200/90 py-3.5 sm:py-4 px-4 sm:px-8 shadow-xs"
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
-        {/* Left Side: TripAdvisor Logo & Profile Label */}
+        {/* Left Side: TripAdvisor Logo, Photo Thumbnail & Profile Label */}
         <div className="flex flex-col sm:flex-row items-center sm:items-start md:items-center gap-2.5 sm:gap-4 text-center sm:text-left">
           <TripAdvisorLogo />
-          <div className="flex flex-col items-center sm:items-start border-t sm:border-t-0 sm:border-l border-gray-200 pt-1.5 sm:pt-0 sm:pl-3">
-            <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-50 border border-emerald-200/70 px-2 py-0.5 rounded-full font-heading">
-              {badgeText}
-            </span>
-            <span className="text-xs font-bold text-gray-800 font-heading mt-0.5">
-              {title}
-            </span>
-            <span className="text-[10px] text-gray-400 font-medium">
-              {category}
-            </span>
+          
+          <div className="flex items-center gap-3 border-t sm:border-t-0 sm:border-l border-gray-200 pt-2 sm:pt-0 sm:pl-3.5">
+            {image && (
+              <Link
+                to={dedicatedRoute}
+                className="relative shrink-0 overflow-hidden rounded-full w-14 h-14 sm:w-16 sm:h-16 border-2 border-emerald-500 shadow-sm bg-gray-100 group block hover:ring-2 hover:ring-emerald-500 transition-all cursor-pointer"
+                title={`View ${title} profile`}
+              >
+                <ClientImage
+                  src={image}
+                  slotKey={slotKey}
+                  fallbackSrc={image}
+                  alt={imageAlt || title}
+                  className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+              </Link>
+            )}
+
+            <div className="flex flex-col items-center sm:items-start">
+              {badgeText && (
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-50 border border-emerald-200/70 px-2 py-0.5 rounded-full font-heading mb-0.5">
+                  {badgeText}
+                </span>
+              )}
+              <span className="text-xs sm:text-sm font-extrabold text-gray-900 font-heading mt-0.5">
+                {title}
+              </span>
+              <span className="text-[10px] sm:text-[11px] text-gray-500 font-medium">
+                {category}
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* Center: "Pure Excellence" Calligraphy */}
+        {/* Center: "Pure Seaside Joy" Calligraphy */}
         <div className="text-center my-1 md:my-0 px-2">
           <p
             className="text-3xl sm:text-4xl lg:text-5xl text-[#1e293b] select-none tracking-wide"
@@ -181,8 +210,8 @@ export const TripAdvisorMainBanner: React.FC<{ className?: string }> = ({ classN
       <TripAdvisorSingleBanner
         bannerId="tripadvisor-banner-restaurant"
         title={TRIPADVISOR_LINKS.restaurant.shortTitle}
-        badgeText="The Main • Food & Treats"
-        category="Ramsgate Beach Restaurant & Kiosk"
+        badgeText="The Main • Food &amp; Bar"
+        category="Ramsgate Beach Food Kiosk &amp; Bar"
         reviewCount="751 Reviews"
         rating="4.9"
         tagline="Pure Excellence"
@@ -213,13 +242,15 @@ export const TripAdvisorAttractionsBanner: React.FC<{ className?: string }> = ({
       <TripAdvisorSingleBanner
         bannerId="tripadvisor-banner-attractions"
         title={TRIPADVISOR_LINKS.attractions.shortTitle}
-        badgeText="The Children • Rides & Fun"
         category="Beach Rides, Inflatable Slide & Carousel"
         reviewCount="270 Reviews"
         rating="4.9"
         tagline="Pure Seaside Joy"
         url={TRIPADVISOR_LINKS.attractions.url}
         dedicatedRoute="/tripadvisor/attractions"
+        image="/childern_3.webp"
+        imageAlt="Children playing on Ramsgate beach rides"
+        slotKey="site:childrenTrampolines"
         onViewDetails={() => setModalOpen(true)}
       />
 

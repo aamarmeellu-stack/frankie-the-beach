@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Utensils, MapPin, Palmtree, Volume2, VolumeX, Play, Pause, Video } from 'lucide-react';
+import { Utensils, MapPin, Waves, Volume2, VolumeX, Play, Pause, Video } from 'lucide-react';
 import { ASSETS } from '../data/restaurantData';
 import { ClientImage } from './ClientImage';
 import { useImages } from '../context/ImageContext';
@@ -131,29 +131,29 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
         </div>
       )}
 
-      {/* 2. Realistic Tropical Palm Tree Silhouettes & Sun Flares */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0 opacity-40">
-        {/* Left palm frond shadow */}
+      {/* 2. Coastal Ambient Wave Patterns & Sun Flares */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0 opacity-30">
+        {/* Coastal rolling wave silhouette */}
         <svg
-          className="absolute -top-10 -left-16 w-[420px] h-[420px] text-[#001226] transform -rotate-12 filter blur-[0.5px]"
+          className="absolute -top-10 -left-16 w-[500px] h-[500px] text-[#001226] transform -rotate-6 filter blur-[1px]"
           viewBox="0 0 200 200"
           fill="currentColor"
         >
-          <path d="M10,180 Q80,120 160,20 Q110,60 60,110 Q140,40 180,60 Q120,80 80,130 Q160,90 190,120 Q130,120 90,150 Z" />
-          <path d="M0,190 Q60,150 130,50 Q90,90 40,140 Q110,80 150,90 Q90,110 60,160 Z" />
+          <path d="M0 100 C 40 70, 70 130, 110 90 C 150 50, 180 120, 200 80 L 200 0 L 0 0 Z" />
+          <path d="M0 140 C 50 110, 90 160, 140 120 C 170 100, 190 140, 200 130 L 200 0 L 0 0 Z" opacity="0.6" />
         </svg>
 
-        {/* Top-Right palm frond canopy */}
+        {/* Coastal sea spray light effect */}
         <svg
-          className="absolute -top-16 -right-16 w-[460px] h-[460px] text-[#001226] transform rotate-45 filter blur-[0.5px]"
+          className="absolute -top-16 -right-16 w-[480px] h-[480px] text-[#001833] transform rotate-12 filter blur-[1px]"
           viewBox="0 0 200 200"
           fill="currentColor"
         >
-          <path d="M190,10 Q120,80 20,160 Q60,110 110,60 Q40,140 60,180 Q80,120 130,80 Q90,160 120,190 Q120,130 150,90 Z" />
+          <path d="M0 80 C 60 40, 100 120, 160 70 C 180 55, 190 90, 200 80 L 200 0 L 0 0 Z" />
         </svg>
 
-        {/* Sunny ocean caustics & glimmers */}
-        <div className="absolute top-1/4 right-10 w-[500px] h-[500px] bg-cyan-300/20 rounded-full blur-3xl mix-blend-overlay"></div>
+        {/* Sunny English Channel caustics & glimmers */}
+        <div className="absolute top-1/4 right-10 w-[500px] h-[500px] bg-cyan-300/15 rounded-full blur-3xl mix-blend-overlay"></div>
         <div className="absolute top-12 left-1/4 w-96 h-96 bg-amber-200/15 rounded-full blur-3xl mix-blend-screen"></div>
       </div>
 
@@ -162,6 +162,14 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
           
           {/* Left Column: Bold Typography & Call to Actions */}
           <div className="lg:col-span-6 xl:col-span-5 text-left pt-2 lg:pt-0">
+            {/* Seaside Food Kiosk & Bar Badge */}
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/25 text-xs font-bold text-white mb-4 shadow-sm">
+              <Waves className="w-4 h-4 text-amber-300" />
+              <span className="uppercase tracking-widest text-[11px] font-heading text-amber-200 font-extrabold">
+                FOOD KIOSK &amp; BAR • RAMSGATE MAIN SANDS
+              </span>
+            </div>
+
             {/* Massive Display Heading with crisp shadow */}
             <div className="space-y-0 tracking-tight font-impact text-7xl sm:text-8xl xl:text-9xl leading-[0.88] select-none">
               <h1 className="text-white block drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] font-black">EAT.</h1>
@@ -186,8 +194,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
 
             {/* Subtext */}
             <div className="space-y-1 text-white text-lg sm:text-xl font-medium tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">
-              <p>Burgers. Fries. Sea Views.</p>
-              <p>What more do you need?</p>
+              <p>Fresh Smash Burgers. Hand-Cut Seaside Chips. Sea Views.</p>
+              <p className="text-sky-100 text-base font-normal">Freshly seared by the waves on Ramsgate Main Sands.</p>
             </div>
 
             {/* Action Buttons */}
@@ -267,28 +275,28 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                 </div>
               </div>
 
-              {/* Polaroid 3 (Bottom-Right): Pepperoni & Melted Cheddar Dirty Fries */}
+              {/* Polaroid 3 (Bottom-Right): Pepperoni & Mature Cheddar Loaded Chips */}
               <div
                 className="absolute right-2 sm:right-6 bottom-4 sm:bottom-6 w-48 sm:w-60 bg-white p-2.5 pb-6 shadow-[0_22px_50px_rgba(0,0,0,0.48)] rounded-[2px] transform -rotate-[6deg] hover:rotate-0 transition-transform duration-300 z-30 group cursor-pointer"
                 onClick={onExploreMenu}
-                title="Pepperoni & Melted Cheddar Dirty Fries"
+                title="Pepperoni & Mature Cheddar Loaded Chips"
               >
                 <div className="overflow-hidden aspect-square bg-[#003680]">
                   <ClientImage
                     src={clientImages.pepperoniFries || ASSETS.loadedFries}
                     slotKey="site:pepperoniFries"
                     fallbackSrc={ASSETS.loadedFries}
-                    alt="Pepperoni & Melted Cheddar Dirty Fries in beach carton"
+                    alt="Pepperoni & Mature Cheddar Loaded Chips in beach carton"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     priority
                   />
                 </div>
               </div>
 
-              {/* Circular Stamp Badge: GOOD FOOD ★ GOOD MOOD */}
+              {/* Circular Stamp Badge: FOOD KIOSK & BAR ★ RAMSGATE */}
               <div
                 className="absolute left-1 sm:left-6 top-[250px] sm:top-[280px] z-40 stamp-badge pointer-events-auto"
-                title="Good Food Good Mood"
+                title="Food Kiosk & Bar Ramsgate"
               >
                 <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-white border-2 border-dashed border-[#0580FF] p-1.5 flex items-center justify-center relative shadow-[0_12px_28px_rgba(0,0,0,0.35)]">
                   {/* Outer circular text simulated with SVG */}
@@ -299,16 +307,16 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                         d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
                       />
                     </defs>
-                    <text className="text-[9.5px] font-extrabold uppercase tracking-[0.2em] fill-[#0580FF]">
+                    <text className="text-[8.5px] font-extrabold uppercase tracking-[0.16em] fill-[#0580FF]">
                       <textPath href="#circlePathTop" startOffset="0%">
-                        GOOD FOOD  ★  GOOD MOOD  ★ 
+                        FOOD KIOSK &amp; BAR ★ RAMSGATE ★
                       </textPath>
                     </text>
                   </svg>
 
-                  {/* Center Teal Palm Tree Icon */}
+                  {/* Center Coastal Waves Icon */}
                   <div className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-[#f0f9fa] flex items-center justify-center border border-[#0580FF]/20">
-                    <Palmtree className="w-7 h-7 text-[#0580FF] stroke-[2.3]" />
+                    <Waves className="w-6 h-6 text-[#0580FF] stroke-[2.4]" />
                   </div>
                 </div>
               </div>

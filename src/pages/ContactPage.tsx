@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Palmtree,
+  Waves,
   MapPin,
   Clock,
   Phone,
@@ -27,7 +27,7 @@ export const ContactPage: React.FC = () => {
   const buildWhatsAppUrl = () => {
     const phoneNumber = '447554663569';
     const text =
-      `🌴 *MESSAGE / ENQUIRY - Frankie's @ The Beach* 🌴\n\n` +
+      `🌊 *MESSAGE / ENQUIRY - Frankie's @ The Beach Ramsgate* 🌊\n\n` +
       `👤 *Name:* ${name.trim() || 'Beach Visitor'}\n` +
       `📞 *Phone:* ${phone.trim()}\n` +
       (email.trim() ? `✉️ *Email:* ${email.trim()}\n` : '') +
@@ -52,7 +52,7 @@ export const ContactPage: React.FC = () => {
   const handleWhatsAppDirect = () => {
     const phoneNumber = '447554663569';
     const msg = encodeURIComponent(
-      "Hi Frankie's @ The Beach! 🌴 I have a question regarding visiting Ramsgate Main Sands."
+      "Hi Frankie's @ The Beach! 🌊 I have a question regarding visiting Ramsgate Main Sands."
     );
     window.open(`https://wa.me/${phoneNumber}?text=${msg}`, '_blank', 'noopener,noreferrer');
   };
@@ -73,9 +73,9 @@ export const ContactPage: React.FC = () => {
             </nav>
 
             <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-amber-300 font-heading mb-2">
-              <Palmtree className="w-4 h-4 text-[#D1A03F]" />
+              <Waves className="w-4 h-4 text-[#D1A03F]" />
               <span>KIOSK 1, MARINA ESPLANADE • RAMSGATE CT11 8LS</span>
-              <Palmtree className="w-4 h-4 text-[#D1A03F]" />
+              <Waves className="w-4 h-4 text-[#D1A03F]" />
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white font-heading">
@@ -89,7 +89,7 @@ export const ContactPage: React.FC = () => {
             </div>
 
             <p className="text-base sm:text-lg text-sky-100 max-w-xl mx-auto font-medium">
-              Drop by our beachfront kiosk on Ramsgate Main Sands or reach out directly for enquiries, groups, and beach updates. Walk-ins are always welcomed by the waves!
+              Drop by our beachfront food kiosk and bar on Ramsgate Main Sands or reach out directly for enquiries, groups, and beach updates. Walk-ins are always welcomed by the waves!
             </p>
           </div>
         </div>

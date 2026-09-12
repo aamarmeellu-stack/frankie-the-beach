@@ -96,12 +96,12 @@ export const ChefsFavorites: React.FC<ChefsFavoritesProps> = ({
 
                   {/* Card Bottom Tag & Menu Link */}
                   <div className="mt-4 pt-2.5 border-t border-[#edf0e6] flex justify-between items-center text-xs">
-                    <span className="text-[11px] font-bold text-[#718c96] uppercase tracking-wider">
-                      Seaside Special
+                    <span className="text-sm font-black text-[#000000] tracking-tight">
+                      £{item.price.toFixed(2)}
                     </span>
                     <button
                       onClick={onViewFullMenu}
-                      className="text-[#0580FF] hover:text-[#004fb3] font-bold inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform cursor-pointer"
+                      className="text-[#0580FF] hover:text-[#004fb3] font-bold inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform cursor-pointer text-xs"
                     >
                       <span>Menu</span>
                       <ArrowRight className="w-3.5 h-3.5" />

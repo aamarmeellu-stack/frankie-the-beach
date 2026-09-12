@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import {
   Menu as MenuIcon,
   X,
-  Palmtree,
+  Waves,
   ChevronDown,
   ExternalLink,
   Utensils,
@@ -92,11 +92,16 @@ export const Header: React.FC<HeaderProps> = () => {
                 <span className="font-script text-2xl sm:text-4xl text-white tracking-wide font-bold group-hover:text-[#ECD87A] transition-colors drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
                   Frankie's
                 </span>
-                <Palmtree className="w-5 h-5 sm:w-7 sm:h-7 text-[#ECD87A] stroke-[2.2] -rotate-12 -ml-0.5 sm:-ml-1 transition-transform group-hover:rotate-0 shrink-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]" />
+                <Waves className="w-5 h-5 sm:w-6 sm:h-6 text-[#ECD87A] stroke-[2.4] -rotate-6 -ml-0.5 sm:-ml-1 transition-transform group-hover:rotate-0 shrink-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]" />
               </div>
-              <span className="text-[9px] sm:text-[11px] font-extrabold tracking-[0.24em] sm:tracking-[0.28em] text-[#ECD87A] uppercase -mt-1 font-heading drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
-                @ THE BEACH
-              </span>
+              <div className="flex items-center gap-1.5 -mt-1">
+                <span className="text-[9px] sm:text-[11px] font-extrabold tracking-[0.24em] sm:tracking-[0.28em] text-[#ECD87A] uppercase font-heading drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                  @ THE BEACH
+                </span>
+                <span className="hidden lg:inline-flex items-center text-[9px] font-black text-white/90 bg-white/15 px-1.5 py-0.2 rounded border border-white/20 tracking-wider">
+                  🇬🇧 RAMSGATE
+                </span>
+              </div>
             </div>
           </Link>
 

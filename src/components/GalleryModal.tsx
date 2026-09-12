@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, ChevronLeft, ChevronRight, Palmtree } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Waves } from 'lucide-react';
 import { ASSETS } from '../data/restaurantData';
 import { ClientImage } from './ClientImage';
 
@@ -37,8 +37,8 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({ isOpen, onClose }) =
     {
       src: ASSETS.loadedFries,
       slotKey: 'menu:pepperoni-melted-cheddar-fries',
-      title: 'Golden Cheesy Loaded Fries',
-      desc: 'Hand-cut crispy fries smothered in melted cheddar sauce, bacon bits, and chopped scallions.',
+      title: 'Golden Cheesy Loaded Chips',
+      desc: 'Hand-cut golden seaside chips smothered in melted cheddar sauce, crispy bacon bits, and fresh chives.',
     },
   ];
 
@@ -58,9 +58,9 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({ isOpen, onClose }) =
         {/* Header */}
         <div className="p-4 sm:p-5 flex items-center justify-between border-b border-white/10 bg-[#051a20]">
           <div className="flex items-center gap-2">
-            <Palmtree className="w-5 h-5 text-[#D1A03F]" />
+            <Waves className="w-5 h-5 text-[#D1A03F]" />
             <h3 className="font-heading font-extrabold text-sm sm:text-base uppercase tracking-wider">
-              FRANKIE'S BEACH GALLERY
+              FRANKIE'S SEASIDE GALLERY
             </h3>
           </div>
           <button

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, ExternalLink, Utensils, Sparkles, MapPin, CheckCircle2, ThumbsUp, ShieldCheck, Heart } from 'lucide-react';
 import { TRIPADVISOR_PROFILES_DATA } from '../data/restaurantData';
 import { TripAdvisorProfileData } from '../types';
+import { ClientImage } from './ClientImage';
 
 interface TripAdvisorDetailModalProps {
   isOpen: boolean;
@@ -156,6 +157,29 @@ export const TripAdvisorDetailModal: React.FC<TripAdvisorDetailModalProps> = ({
 
         {/* Scrollable Content Body */}
         <div className="overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6">
+          {/* Visual Showcase Banner with Public Folder Image */}
+          <div className="relative rounded-2xl overflow-hidden border border-gray-200/80 shadow-xs h-40 sm:h-48 bg-gray-100">
+            <ClientImage
+              src={activeTab === 'attractions' ? '/childern_3.webp' : '/food-1.webp'}
+              slotKey={activeTab === 'attractions' ? 'site:childrenTrampolines' : 'menu:the-classic-smash'}
+              fallbackSrc={activeTab === 'attractions' ? '/childern_3.webp' : '/food-1.webp'}
+              alt={activeTab === 'attractions' ? 'Children enjoying beach rides on Ramsgate Sands' : "Frankie's Smashed Beef Burger"}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex items-end p-4 sm:p-5">
+              <div>
+                <span className="inline-block text-[10px] font-extrabold uppercase tracking-wider text-emerald-300 bg-black/50 backdrop-blur-xs px-2.5 py-1 rounded-full border border-emerald-400/30 font-heading">
+                  {activeTab === 'attractions' ? 'Beach Rides & Family Entertainment' : 'Food Kiosk & Bar Favorites'}
+                </span>
+                <p className="text-white text-xs sm:text-sm font-bold mt-1.5 drop-shadow-xs">
+                  {activeTab === 'attractions'
+                    ? 'Giant inflatable slide, beach carousels & kids rides right on Ramsgate Sands'
+                    : 'Handcrafted smash burgers, loaded chips, and traditional 99 whippy cones'}
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Key Metrics Banner */}
           <div className="bg-gradient-to-br from-[#000000] to-[#001f3f] text-white rounded-2xl p-5 sm:p-7 shadow-sm">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">

@@ -51,7 +51,7 @@ export const DEFAULT_GALLERY_ITEMS: GalleryItem[] = [
     fallbackSrc: CLIENT_IMAGES.baconSandwichHighRes,
     title: 'Sizzling Beach Bacon Roll',
     category: 'burgers-dogs',
-    desc: 'Thick-cut grilled British bacon served in a warm toasted white roll right on Ramsgate sands.',
+    desc: 'Thick-cut grilled smoked bacon served in a warm toasted white roll right on Ramsgate sands.',
   },
   {
     id: 'g-dog-chilli',
@@ -117,7 +117,7 @@ export const DEFAULT_GALLERY_ITEMS: GalleryItem[] = [
     fallbackSrc: CLIENT_IMAGES.perfectChips,
     title: 'Classic Salted Golden Fries',
     category: 'loaded-fries',
-    desc: 'Traditional British seaside chips, golden-crisp on the outside and piping hot on the inside.',
+    desc: 'Traditional golden seaside chips, crispy on the outside and piping hot on the inside.',
   },
   {
     id: 'g-perfect-chips',

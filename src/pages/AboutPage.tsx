@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Palmtree,
+  Waves,
   Sparkles,
   MapPin,
   Heart,
@@ -37,9 +37,9 @@ export const AboutPage: React.FC = () => {
             </nav>
 
             <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-amber-300 font-heading mb-2">
-              <Palmtree className="w-4 h-4 text-[#D1A03F]" />
+              <Waves className="w-4 h-4 text-[#D1A03F]" />
               <span>THE TRUE STORY BEHIND FRANKIE'S</span>
-              <Palmtree className="w-4 h-4 text-[#D1A03F]" />
+              <Waves className="w-4 h-4 text-[#D1A03F]" />
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white font-heading">
@@ -299,10 +299,10 @@ export const AboutPage: React.FC = () => {
               <Sparkles className="w-6 h-6 text-[#D1A03F]" />
             </div>
             <h3 className="font-heading font-extrabold text-lg text-[#000000] uppercase">
-              Whippy Ice Creams
+              99 Whippy Ice Creams
             </h3>
             <p className="text-xs sm:text-sm text-[#526b74] leading-relaxed">
-              Rainbow sprinkle waffle cones, creamy soft-serve vanilla, Cadbury Flakes, and ice-cold fruit slushies right on the beach sand.
+              Rainbow sprinkle waffle cones, creamy soft-serve vanilla, Cadbury Flakes, and refreshing iced fruit slushes right by the beach promenade.
             </p>
           </div>
 
@@ -311,10 +311,10 @@ export const AboutPage: React.FC = () => {
               <Flame className="w-6 h-6 text-[#0580FF]" />
             </div>
             <h3 className="font-heading font-extrabold text-lg text-[#000000] uppercase">
-              Jumbo Seaside Dogs
+              Jumbo Promenade Dogs
             </h3>
             <p className="text-xs sm:text-sm text-[#526b74] leading-relaxed">
-              Premium grilled pork frankfurters smothered in melted cheddar cheese, caramelised onions, and savoury relish on the sand.
+              Premium grilled pork frankfurters smothered in melted mature cheddar cheese, caramelised onions, and savoury English mustard on the sand.
             </p>
           </div>
 
@@ -324,8 +324,8 @@ export const AboutPage: React.FC = () => {
         <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#dde0d5] shadow-sm">
           <div className="text-center max-w-2xl mx-auto mb-8">
             <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0580FF] font-heading bg-sky-50 border border-sky-200/80 px-3.5 py-1.5 rounded-full mb-3">
-              <Palmtree className="w-4 h-4 text-[#D1A03F]" />
-              <span>Right Beside Frankie's Kiosk</span>
+              <Waves className="w-4 h-4 text-[#D1A03F]" />
+              <span>Right Beside Frankie's Food Kiosk &amp; Bar</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold uppercase text-[#000000] font-heading">
               BEACH FUN FOR THE WHOLE FAMILY
@@ -397,16 +397,16 @@ export const AboutPage: React.FC = () => {
         <div className="bg-[#004fb3] text-white rounded-3xl p-8 sm:p-12 shadow-xl">
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <div className="inline-flex items-center gap-2 text-amber-300 text-xs font-extrabold uppercase tracking-widest font-heading">
-              <Palmtree className="w-4 h-4 text-[#D1A03F]" />
-              <span>SEE YOU AT THE BEACH!</span>
+              <Waves className="w-4 h-4 text-[#D1A03F]" />
+              <span>SEE YOU BY THE SEA!</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase font-heading">
-              JOIN US BY THE SEA IN RAMSGATE
+              JOIN US ON RAMSGATE MAIN SANDS
             </h2>
 
             <p className="text-xs sm:text-sm text-sky-100 leading-relaxed max-w-xl mx-auto">
-              Grab a seat on the sand, order your favourite smash burger and dirty fries, or stop by for creamy soft-serve cones on your seaside stroll.
+              Grab a seat on our promenade terrace, tuck into a proper smash burger and loaded chips, or stop by for a classic 99 whippy cone with a Cadbury Flake on your seaside stroll.
             </p>
 
             <div className="pt-4 flex flex-wrap justify-center gap-4">

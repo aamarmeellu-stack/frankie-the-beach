@@ -6,7 +6,7 @@ import {
   Star,
   Sparkles,
   Flame,
-  Palmtree,
+  Waves,
   Search,
   Info,
 } from 'lucide-react';
@@ -34,8 +34,8 @@ export const MenuPage: React.FC = () => {
   const [favorites, setFavorites] = useState<Record<string, boolean>>({
     'the-classic-smash': true,
     'bbq-bacon-stack': true,
-    'jumbo-boardwalk-dog': true,
-    'pepperoni-melted-cheddar-fries': true,
+    'jumbo-promenade-dog': true,
+    'pepperoni-melted-cheddar-chips': true,
     'rainbow-sprinkle-cone': true,
   });
 
@@ -46,7 +46,7 @@ export const MenuPage: React.FC = () => {
   const handleWhatsAppContact = () => {
     const phoneNumber = '447554663569';
     const message = encodeURIComponent(
-      "Hello Frankie's @ The Beach! 🌴🍔 I have a question about your menu and allergens."
+      "Hello Frankie's @ The Beach! 🌊🍔 I have a question about your menu and allergens."
     );
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
   };
@@ -85,9 +85,9 @@ export const MenuPage: React.FC = () => {
             </nav>
 
             <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-amber-300 font-heading mb-2">
-              <Palmtree className="w-4 h-4 text-[#D1A03F]" />
-              <span>BEACHFRONT KITCHEN & SHACK</span>
-              <Palmtree className="w-4 h-4 text-[#D1A03F]" />
+              <Waves className="w-4 h-4 text-[#D1A03F]" />
+              <span>BEACHFRONT FOOD KIOSK &amp; BAR</span>
+              <Waves className="w-4 h-4 text-[#D1A03F]" />
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white font-heading">
@@ -140,7 +140,7 @@ export const MenuPage: React.FC = () => {
               <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
-                placeholder="Search burgers, hot dogs, fries..."
+                placeholder="Search burgers, promenade dogs, chips..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-[#f8f9f5] border border-[#dde0d5] rounded-xl focus:outline-none focus:border-[#0580FF]"
@@ -214,7 +214,7 @@ export const MenuPage: React.FC = () => {
         {/* Menu Items Grid */}
         {filteredItems.length === 0 ? (
           <div className="bg-white rounded-3xl p-12 text-center border border-[#dde0d5] my-6">
-            <Palmtree className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+            <Waves className="w-12 h-12 text-gray-300 mx-auto mb-3" />
             <h3 className="font-heading font-extrabold text-lg text-[#000000] uppercase">
               No menu items match your search
             </h3>

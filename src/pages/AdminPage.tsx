@@ -20,7 +20,7 @@ import {
   Sparkles,
   Eye,
   FileText,
-  Palmtree,
+  Waves,
   ArrowRight,
   Info,
   X,
@@ -1130,7 +1130,7 @@ export const AdminPage: React.FC = () => {
                           <span className="font-script text-xl font-bold text-white">
                             Frankie's
                           </span>
-                          <Palmtree className="w-4 h-4 text-[#D1A03F]" />
+                          <Waves className="w-4 h-4 text-[#D1A03F]" />
                         </div>
                         <span className="text-[8px] font-extrabold tracking-widest text-[#D1A03F] uppercase block font-heading">
                           @ THE BEACH

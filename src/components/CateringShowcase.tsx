@@ -80,7 +80,7 @@ export const CateringShowcase: React.FC = () => {
   const handleWhatsAppEnquiry = () => {
     const phoneNumber = '447554663569';
     const text =
-      `🌴 *BEACH CATERING & PRIVATE HIRE ENQUIRY - Frankie's @ The Beach* 🌴\n\n` +
+      `🌊 *BEACH CATERING & PRIVATE HIRE ENQUIRY - Frankie's @ The Beach Ramsgate* 🌊\n\n` +
       `Hi Frankie's team! We're planning an event/gathering on Ramsgate Beach and would love details on your catering services, group boxes, and availability.\n\n` +
       `Looking forward to hearing from you!`;
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
@@ -112,7 +112,7 @@ export const CateringShowcase: React.FC = () => {
           </div>
 
           <p className="text-sm sm:text-base text-[#496068] leading-relaxed">
-            Planning a beach party, wedding reception, birthday celebration, corporate beach day, or family gathering on Ramsgate Sands? We serve hot smash burgers, loaded fries, hot dogs, and sweet seaside treats right by the waves.
+            Planning a beach gathering, wedding celebration, birthday party, corporate seaside day, or family get-together on Ramsgate Sands? We serve freshly seared smash burgers, loaded chips, jumbo promenade dogs, and 99 whippy cones right beside the waves.
           </p>
         </div>
 
@@ -227,7 +227,7 @@ export const CateringShowcase: React.FC = () => {
             <div className="flex flex-wrap items-center justify-between text-xs text-[#526b74] mt-3 px-2">
               <span className="flex items-center gap-1.5 font-medium">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                Live footage from Frankie's Beachfront Kiosk, Ramsgate
+                Live footage from Frankie's Beachfront Food Kiosk &amp; Bar, Ramsgate
               </span>
               <span className="font-heading font-extrabold uppercase text-[#000000]">
                 Groups from 10 to 200+ Guests
@@ -256,10 +256,10 @@ export const CateringShowcase: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-heading font-extrabold text-sm text-[#000000] uppercase">
-                    Hot Burger &amp; Loaded Fry Platters
+                    Hot Smash Burger &amp; Loaded Chip Platters
                   </h4>
                   <p className="text-xs text-[#526b74] mt-0.5">
-                    Double smash beef burgers, BBQ bacon stacks, chilli cheese dogs, and loaded chips boxed piping hot.
+                    Double smash beef burgers, BBQ bacon stacks, seaside promenade dogs, and loaded chips boxed piping hot.
                   </p>
                 </div>
               </div>
@@ -270,10 +270,10 @@ export const CateringShowcase: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-heading font-extrabold text-sm text-[#000000] uppercase">
-                    Terrace Hire or Beach Delivery
+                    Terrace Hire or Promenade Collection
                   </h4>
                   <p className="text-xs text-[#526b74] mt-0.5">
-                    Reserve our open-air beach dining terrace right beside the carousel, or have food delivered right to your beach spot.
+                    Reserve our open-air seaside dining terrace right beside the beach carousel, or collect directly from our food kiosk and bar window.
                   </p>
                 </div>
               </div>
@@ -284,10 +284,10 @@ export const CateringShowcase: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-heading font-extrabold text-sm text-[#000000] uppercase">
-                    Drinks, Slushies &amp; Ice Cream Treats
+                    Beers, Tea, Slushes &amp; 99 Whippy Cones
                   </h4>
                   <p className="text-xs text-[#526b74] mt-0.5">
-                    Cold canned beers, fruit slushies, whippy cones with Flakes, and artisan barista coffees for your whole crew.
+                    Chilled beers &amp; ciders, builder's tea, iced fruit slushes, traditional 99 whippy cones with Cadbury Flakes, and artisan coffees.
                   </p>
                 </div>
               </div>

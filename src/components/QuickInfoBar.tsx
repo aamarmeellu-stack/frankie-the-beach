@@ -30,25 +30,25 @@ export const QuickInfoBar: React.FC = () => {
             </div>
             <div>
               <p className="text-xs sm:text-sm font-extrabold tracking-wide uppercase text-[#000000] font-heading">
-                VISIT US
+                RAMSGATE MAIN SANDS
               </p>
               <p className="text-xs sm:text-sm font-medium text-[#506870] mt-0.5">
-                Kiosk 1, Marina Esplanade, Ramsgate CT11 8LS
+                Kiosk 1, Marina Esplanade, CT11 8LS
               </p>
             </div>
           </div>
 
-          {/* 3. DINE-IN */}
+          {/* 3. TAKEAWAY & SEASIDE TERRACE */}
           <div className="flex items-center gap-3.5 sm:gap-4 md:px-6 pt-4 md:pt-0">
             <div className="w-11 h-11 flex items-center justify-center shrink-0 text-[#0580FF]">
               <Utensils className="w-7 h-7 stroke-[2.2]" />
             </div>
             <div>
               <p className="text-xs sm:text-sm font-extrabold tracking-wide uppercase text-[#000000] font-heading">
-                DINE-IN
+                PROMENADE SEATING
               </p>
               <p className="text-xs sm:text-sm font-medium text-[#506870] mt-0.5">
-                Takeaway & Terrace
+                Takeaway &amp; Beach Terrace
               </p>
             </div>
           </div>

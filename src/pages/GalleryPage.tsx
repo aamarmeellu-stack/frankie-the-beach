@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Palmtree,
+  Waves,
   Camera,
   X,
   ChevronLeft,
@@ -61,9 +61,9 @@ export const GalleryPage: React.FC = () => {
             </nav>
 
             <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-amber-300 font-heading mb-2">
-              <Palmtree className="w-4 h-4 text-[#D1A03F]" />
+              <Waves className="w-4 h-4 text-[#D1A03F]" />
               <span>REAL PHOTOS FROM FRANKIE'S AT THE BEACH</span>
-              <Palmtree className="w-4 h-4 text-[#D1A03F]" />
+              <Waves className="w-4 h-4 text-[#D1A03F]" />
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white font-heading">
@@ -77,7 +77,7 @@ export const GalleryPage: React.FC = () => {
             </div>
 
             <p className="text-base sm:text-lg text-sky-100 max-w-xl mx-auto font-medium">
-              Real moments, genuine coastal food, ice cream cones, and family fun on Ramsgate Beach.
+              Real moments, genuine coastal food, 99 whippy cones, and family fun on Ramsgate Beach.
             </p>
           </div>
         </div>
@@ -91,10 +91,10 @@ export const GalleryPage: React.FC = () => {
           {[
             { id: 'all', label: `All Photos (${galleryItems.length})` },
             { id: 'kiosk-team', label: 'Beach Kiosk & Team' },
-            { id: 'burgers-dogs', label: 'Burgers & Hot Dogs' },
-            { id: 'loaded-fries', label: 'Loaded Fries & Sides' },
-            { id: 'treats', label: 'Ice Creams & Sweets' },
-            { id: 'family', label: 'Ramsgate Beach Rides' },
+            { id: 'burgers-dogs', label: 'Smash Burgers & Dogs' },
+            { id: 'loaded-fries', label: 'Loaded Chips & Sides' },
+            { id: 'treats', label: '99 Cones & Slushes' },
+            { id: 'family', label: 'Ramsgate Beach Funfair' },
           ].map((cat) => (
             <button
               key={cat.id}
@@ -160,7 +160,7 @@ export const GalleryPage: React.FC = () => {
                 #FRANKIESATTHEBEACH
               </h4>
               <p className="text-xs text-sky-100 mt-1">
-                Share your burgers, loaded fries, ice cream treats, and beach fun with @FrankiesAtTheBeach!
+                Share your burgers, loaded chips, 99 cones, and beach fun with @FrankiesAtTheBeach!
               </p>
             </div>
           </div>
@@ -198,7 +198,7 @@ export const GalleryPage: React.FC = () => {
             {/* Top Bar */}
             <div className="p-4 sm:p-5 flex items-center justify-between border-b border-white/10 bg-[#04191f]">
               <div className="flex items-center gap-2">
-                <Palmtree className="w-5 h-5 text-[#D1A03F]" />
+                <Waves className="w-5 h-5 text-[#D1A03F]" />
                 <span className="font-heading font-extrabold text-sm uppercase tracking-wider text-white truncate max-w-md">
                   {filteredItems[selectedImageIndex].title}
                 </span>

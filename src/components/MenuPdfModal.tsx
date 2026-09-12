@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, Printer, Download, Palmtree, MessageSquare } from 'lucide-react';
+import { X, Printer, Download, Waves, MessageSquare } from 'lucide-react';
 import { OFFICIAL_MENU } from '../data/restaurantData';
 
 interface MenuPdfModalProps {
@@ -8,10 +8,10 @@ interface MenuPdfModalProps {
 }
 
 const MENU_CATEGORIES = [
-  { id: 'burgers', title: 'BURGERS' },
-  { id: 'hot-dogs', title: 'HOT DOGS' },
-  { id: 'loaded-fries', title: 'LOADED FRIES' },
-  { id: 'ice-cream', title: 'ICE CREAM & TREATS' },
+  { id: 'burgers', title: 'SMASH BURGERS' },
+  { id: 'hot-dogs', title: 'JUMBO PROMENADE DOGS' },
+  { id: 'loaded-fries', title: 'PROPER SEASIDE CHIPS' },
+  { id: 'ice-cream', title: '99 WHIPPY CONES & TREATS' },
 ];
 
 export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) => {
@@ -55,7 +55,7 @@ export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) =
       content += `---------------------------------------------------------\n\n`;
     });
 
-    content += `See you at the beach! 🌴🍔`;
+    content += `See you at the seaside! 🌊🍔`;
 
     const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
@@ -77,7 +77,7 @@ export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) =
         {/* Top Control Bar */}
         <div className="bg-[#004fb3] text-white p-3.5 sm:p-5 flex items-center justify-between no-print border-b border-white/10">
           <div className="flex items-center gap-2">
-            <Palmtree className="w-5 h-5 text-[#D1A03F]" />
+            <Waves className="w-5 h-5 text-[#D1A03F]" />
             <span className="font-heading font-extrabold text-xs sm:text-base uppercase tracking-wider">
               FRANKIE'S PRINTABLE MENU (PDF)
             </span>
@@ -118,11 +118,11 @@ export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) =
           {/* Header */}
           <div className="text-center pb-6 border-b-2 border-dashed border-[#0580FF]/30">
             <div className="flex items-center justify-center gap-2 text-[#D1A03F] mb-1">
-              <Palmtree className="w-6 h-6" />
+              <Waves className="w-6 h-6" />
               <span className="font-heading font-black text-2xl tracking-wider text-[#0580FF]">
                 Frankie's @ THE BEACH
               </span>
-              <Palmtree className="w-6 h-6" />
+              <Waves className="w-6 h-6" />
             </div>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#0580FF]">
               OUR OFFICIAL SEASIDE MENU
@@ -183,7 +183,7 @@ export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) =
           {/* Footer note */}
           <div className="mt-8 pt-4 border-t border-gray-200 text-center text-xs text-gray-500">
             <p className="font-hand text-xl text-[#0580FF] font-bold">
-              See you at the beach! 🌴🍔
+              See you at the seaside! 🌊🍔
             </p>
             <p className="text-[10px] mt-1 text-gray-400">
               Please inform staff of any allergens or dietary requirements before ordering.

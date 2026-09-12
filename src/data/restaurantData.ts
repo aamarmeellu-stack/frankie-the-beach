@@ -129,11 +129,11 @@ export const FRANKIES_FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61
 // Official TripAdvisor Review Links for Frankie's @ the Beach
 export const TRIPADVISOR_LINKS = {
   restaurant: {
-    title: "Frankie's Restaurant & Food (Main)",
-    shortTitle: "Restaurant & Kiosk (Main)",
-    category: "Restaurant Review",
-    badge: "Food & Treats",
-    description: "Smash burgers, loaded fries, hot dogs & beach shack treats",
+    title: "Frankie's Food Kiosk & Bar (Main)",
+    shortTitle: "Food Kiosk & Bar (Main)",
+    category: "Food Kiosk & Bar",
+    badge: "Food & Bar",
+    description: "Handcrafted smash burgers, proper seaside chips, promenade dogs & bar drinks",
     url: "https://www.tripadvisor.co.uk/Restaurant_Review-g186314-d32841312-Reviews-Frankies_At_The_Beach_Ramsgate-Ramsgate_Isle_of_Thanet_Kent_England.html",
   },
   attractions: {
@@ -151,7 +151,7 @@ export const TRIPADVISOR_PROFILES_DATA: Record<'restaurant' | 'attractions', Tri
   restaurant: {
     id: 'tripadvisor-restaurant',
     title: "Frankie's At The Beach (The Main Page)",
-    shortTitle: "Restaurant & Food (Main)",
+    shortTitle: "Food Kiosk & Bar (Main)",
     tripadvisorId: "d32841312",
     location: "Kiosk 1, Marina Esplanade, Ramsgate CT11 8LS, Kent, England",
     rating: 4.9,
@@ -164,12 +164,13 @@ export const TRIPADVISOR_PROFILES_DATA: Record<'restaurant' | 'attractions', Tri
       "Value for Money": 4.9,
       "Atmosphere & Sea Views": 4.9,
     },
-    priceRange: "Seaside Fast Food & Beach Street Food",
-    categories: ["Quick Bites", "British Seaside", "Gourmet Burgers", "Loaded Fries", "Hot Dogs", "Ice Cream & Treats"],
+    priceRange: "Seaside Food Kiosk & Bar",
+    categories: ["Food Kiosk & Bar", "Quick Bites", "Gourmet Burgers", "Loaded Chips", "Promenade Dogs", "Traditional 99 Cones"],
     features: [
       "Seaside Beachfront Seating",
-      "Direct Panoramic Ocean Views",
-      "Freshly Smashed Double Patties",
+      "Direct Panoramic Royal Harbour Views",
+      "Freshly Smashed 100% Prime Beef Patties",
+      "Proper Hand-Cut Seaside Chips with Salt & Vinegar",
       "Dog Friendly with Water Bowls",
       "Wheelchair & Pushchair Accessible",
       "Vegetarian & Halal-friendly Options",
@@ -178,9 +179,9 @@ export const TRIPADVISOR_PROFILES_DATA: Record<'restaurant' | 'attractions', Tri
     popularItems: [
       "The Classic Smash Burger",
       "BBQ Bacon Wave Stack",
-      "Loaded Chilli Cheese Fries",
-      "Seaside Jumbo Hot Dog",
-      "Whippy Cones with Flake & Sauce",
+      "Pepperoni & Mature Cheddar Loaded Chips",
+      "Chilli Cheese Promenade Dog",
+      "Whippy 99 Cones with Flake & Sauce",
     ],
     url: TRIPADVISOR_LINKS.restaurant.url,
     reviews: [
@@ -279,7 +280,7 @@ export const TRIPADVISOR_PROFILES_DATA: Record<'restaurant' | 'attractions', Tri
     features: [
       "Full ADIPS Safety Inspected & Certified",
       "Attentive Trained Ride Marshalls on site",
-      "Directly Adjacent to Frankie's Food Kiosk",
+      "Directly Adjacent to Frankie's Food Kiosk & Bar",
       "Soft Landing Safety Mats & Padded Harnesses",
       "Token Kiosks Accepting Cards & Cash",
       "Activities for Toddlers to Young Teens",
@@ -311,10 +312,10 @@ export const TRIPADVISOR_PROFILES_DATA: Record<'restaurant' | 'attractions', Tri
         author: "Dean & Lucy G.",
         location: "Broadstairs, UK",
         rating: 5,
-        title: "Classic British seaside fun done to perfection",
+        title: "Classic seaside fun done to perfection",
         date: "Reviewed a month ago",
         visitType: "Visited with Family",
-        comment: "The vintage carousel is beautiful and right next to Frankie's food shack, so mum and dad could sip iced lattes while keeping an eye on the children. Clean, well maintained and lovely coastal sea breeze. A highlight of Ramsgate beach.",
+        comment: "The vintage carousel is beautiful and right next to Frankie's food kiosk, so mum and dad could sip iced lattes while keeping an eye on the children. Clean, well maintained and lovely coastal sea breeze. A highlight of Ramsgate beach.",
         helpfulVotes: 24,
         verified: true,
       },
@@ -350,7 +351,7 @@ export const TRIPADVISOR_PROFILES_DATA: Record<'restaurant' | 'attractions', Tri
         title: "Hours of pure seaside joy for the little ones",
         date: "Reviewed 3 months ago",
         visitType: "Holiday with Kids",
-        comment: "The giant slide overlooking the ocean is magnificent! Kids could not stop smiling. It is so convenient being right on the sand next to the food shack. We will definitely be back next holiday.",
+        comment: "The giant slide overlooking the ocean is magnificent! Kids could not stop smiling. It is so convenient being right on the sand next to the food kiosk. We will definitely be back next holiday.",
         helpfulVotes: 37,
         verified: true,
       },
@@ -371,13 +372,13 @@ export const TRIPADVISOR_PROFILES_DATA: Record<'restaurant' | 'attractions', Tri
 };
 
 
-// The 4 Chef's Favorites shown on the home page:
+// The 4 Chef's Favourites shown on the home page:
 export const CHEFS_FAVORITES: MenuItem[] = [
   {
     id: 'beach-classic',
     name: 'THE CLASSIC SMASH',
     price: 12.50,
-    description: 'Double beef patty, American cheese, lettuce, tomato, house sauce on a toasted brioche bun.',
+    description: 'Double prime beef patty, melted mature cheddar, crisp lettuce, sliced tomato, and house relish on a toasted brioche bun.',
     image: '/food-1.webp',
     fallbackImage: '/food-1.webp',
     category: 'burgers',
@@ -385,9 +386,9 @@ export const CHEFS_FAVORITES: MenuItem[] = [
   },
   {
     id: 'pepperoni-cheddar-fries',
-    name: 'PEPPERONI & CHEESE DIRTY FRIES',
+    name: 'PEPPERONI & MATURE CHEDDAR LOADED CHIPS',
     price: 7.50,
-    description: 'Crispy seaside chips drenched in melted cheddar cheese and slices of crispy grilled pepperoni.',
+    description: 'Crispy triple-cooked seaside chips loaded with melted mature cheddar and grilled pepperoni slices in a beach carton with a wooden fork.',
     image: '/food-2.webp',
     fallbackImage: '/food-2.webp',
     category: 'loaded-fries',
@@ -397,7 +398,7 @@ export const CHEFS_FAVORITES: MenuItem[] = [
     id: 'bacon-wave',
     name: 'BBQ BACON STACK',
     price: 14.50,
-    description: 'Double beef patty, crispy bacon, cheddar, onion rings, smoky BBQ sauce.',
+    description: 'Double prime beef patty, thick-cut dry-cured smoked bacon, mature cheddar, crispy onion rings, and rich smoky BBQ sauce.',
     image: '/food-5.webp',
     fallbackImage: '/food-5.webp',
     category: 'burgers',
@@ -405,9 +406,9 @@ export const CHEFS_FAVORITES: MenuItem[] = [
   },
   {
     id: 'chilli-cheese-dog',
-    name: 'CHILLI CHEESE DOG',
+    name: 'CHILLI CHEESE PROMENADE DOG',
     price: 9.50,
-    description: 'Jumbo grilled frankfurter topped with hot melted cheese, mustard, and diced onions.',
+    description: 'Jumbo grilled Cumberland-spiced sausage with melted cheddar, English mustard, ketchup, and diced sweet onions in a soft roll.',
     image: '/chilli_cheese_dog.webp',
     fallbackImage: '/chilli_cheese_dog.webp',
     category: 'hot-dogs',
@@ -419,10 +420,10 @@ export const CHEFS_FAVORITES: MenuItem[] = [
 // Official Menu Categories & Items
 export const MENU_CATEGORIES = [
   { id: 'all', label: 'All Items' },
-  { id: 'burgers', label: 'Burgers' },
-  { id: 'loaded-fries', label: 'Loaded Fries & Chips' },
-  { id: 'hot-dogs', label: 'Hot Dogs & Grill' },
-  { id: 'ice-cream', label: 'Ice Cream & Treats' },
+  { id: 'burgers', label: 'Smash Burgers' },
+  { id: 'loaded-fries', label: 'Loaded Seaside Chips' },
+  { id: 'hot-dogs', label: 'Promenade Dogs & Grill' },
+  { id: 'ice-cream', label: 'Traditional 99s & Treats' },
 ];
 
 export const OFFICIAL_MENU: MenuItem[] = [
@@ -431,7 +432,7 @@ export const OFFICIAL_MENU: MenuItem[] = [
     id: 'the-classic-smash',
     name: 'The Classic Smash',
     price: 12.50,
-    description: 'Double beef patty, American cheese, lettuce, tomato, house sauce on a toasted brioche bun.',
+    description: 'Double prime beef patty, melted mature cheddar, crisp lettuce, sliced tomato, and house relish on a toasted brioche bun.',
     image: '/food-1.webp',
     fallbackImage: '/food-1.webp',
     category: 'burgers',
@@ -441,7 +442,7 @@ export const OFFICIAL_MENU: MenuItem[] = [
     id: 'bbq-bacon-stack',
     name: 'BBQ Bacon Stack',
     price: 14.50,
-    description: 'Double beef patty, crispy bacon, cheddar, onion rings, smoky BBQ sauce.',
+    description: 'Double prime beef patty, thick-cut dry-cured smoked bacon, mature cheddar, crispy onion rings, and smoky BBQ glaze.',
     image: '/food-5.webp',
     fallbackImage: '/food-5.webp',
     category: 'burgers',
@@ -449,9 +450,9 @@ export const OFFICIAL_MENU: MenuItem[] = [
   },
   {
     id: 'spicy-beach-burger',
-    name: 'Spicy Beach Burger & Slushy',
+    name: 'Spicy Beach Burger & Iced Slush',
     price: 13.50,
-    description: 'Juicy spiced burger with melted cheese and crisp salad, paired with our signature slushy.',
+    description: 'Spiced beef patty with melted cheddar, crisp salad, and house chilli sauce, paired with our refreshing seaside iced slush.',
     image: '/food-8.webp',
     fallbackImage: '/food-8.webp',
     category: 'burgers',
@@ -459,10 +460,10 @@ export const OFFICIAL_MENU: MenuItem[] = [
     popular: true,
   },
 
-  // Loaded Fries & Chips
+  // Loaded Seaside Chips
   {
     id: 'pepperoni-melted-cheddar-fries',
-    name: 'Pepperoni & Melted Cheddar Dirty Fries',
+    name: 'Pepperoni & Mature Cheddar Loaded Chips',
     price: 7.50,
     description: 'Freshly fried golden crispy chips loaded with melted mature cheddar cheese and grilled savoury pepperoni slices in a beach carton with a wooden fork.',
     image: '/food-2.webp',
@@ -472,9 +473,9 @@ export const OFFICIAL_MENU: MenuItem[] = [
   },
   {
     id: 'cheesy-bacon-fries',
-    name: 'Loaded Cheesy Chips With Mayo',
+    name: 'Loaded Cheesy Seaside Chips with Mayo',
     price: 6.95,
-    description: 'Crispy seaside chips drenched in grated melted cheese and garlic mayonnaise in a takeaway box.',
+    description: 'Crispy seaside chips drenched in grated melted cheddar and garlic mayonnaise in a takeaway box with a wooden fork.',
     image: '/food-4.webp',
     fallbackImage: '/food-4.webp',
     category: 'loaded-fries',
@@ -482,9 +483,9 @@ export const OFFICIAL_MENU: MenuItem[] = [
   },
   {
     id: 'fully-loaded-chicken-fries',
-    name: 'Fully Loaded Chicken & Melted Cheese Chips',
+    name: 'Fully Loaded Chicken & Melted Cheddar Chips',
     price: 8.95,
-    description: 'Piping hot chips topped with crispy chicken bites, melted cheddar, and sweet barbecue drizzle.',
+    description: 'Piping hot chips topped with crispy buttermilk chicken bites, melted cheddar, and sweet barbecue drizzle.',
     image: '/food-6.webp',
     fallbackImage: '/food-6.webp',
     category: 'loaded-fries',
@@ -492,27 +493,27 @@ export const OFFICIAL_MENU: MenuItem[] = [
   },
   {
     id: 'triple-cooked-chips-feast',
-    name: 'Triple-Cooked Beach Chips Feast',
+    name: 'Triple-Cooked Seaside Chips Feast',
     price: 4.95,
-    description: 'Generous takeaway box of golden, crispy seaside chips lightly seasoned with coastal sea salt.',
+    description: 'Generous takeaway box of golden, crispy seaside chips lightly seasoned with coastal sea salt and ready for malt vinegar.',
     image: '/food-3.webp',
     fallbackImage: '/food-3.webp',
     category: 'loaded-fries',
   },
   {
     id: 'classic-salted-fries',
-    name: 'Classic Salted Golden Fries',
+    name: 'Classic Salted Golden Seaside Chips',
     price: 4.50,
-    description: 'Freshly cut and fried to crispy perfection, dusted with flaky sea salt.',
+    description: 'Traditional seaside chips, freshly cut and fried to crispy perfection, dusted with flaky sea salt and malt vinegar.',
     image: '/classic_salted_fries.webp',
     fallbackImage: '/classic_salted_fries.webp',
     category: 'loaded-fries',
   },
   {
     id: 'perfect-cooked-chips',
-    name: 'Perfect Seaside Cooked Chips',
+    name: 'Proper Golden Seaside Chips',
     price: 4.50,
-    description: 'Golden, crispy on the outside, fluffy on the inside – the authentic British seaside chip.',
+    description: 'Golden, crispy on the outside, fluffy on the inside – the authentic seaside chip served with wooden fork.',
     image: '/perfectly_cooked_chips.webp',
     fallbackImage: '/perfectly_cooked_chips.webp',
     category: 'loaded-fries',
@@ -521,9 +522,9 @@ export const OFFICIAL_MENU: MenuItem[] = [
   // Hot Dogs & Beach Grill
   {
     id: 'jumbo-boardwalk-dog',
-    name: 'Jumbo Seaside Dog & Chicken Burger Combo',
+    name: 'Jumbo Promenade Dog & Chicken Burger Combo',
     price: 11.50,
-    description: 'Premium grilled pork frankfurter with onions, mustard and ketchup, alongside a golden crispy chicken burger.',
+    description: 'Premium grilled pork sausage in a roll with onions, mustard and ketchup, alongside a golden crispy chicken burger.',
     image: '/food-7.webp',
     fallbackImage: '/food-7.webp',
     category: 'hot-dogs',
@@ -531,9 +532,9 @@ export const OFFICIAL_MENU: MenuItem[] = [
   },
   {
     id: 'chilli-cheese-dog',
-    name: 'Chilli Cheese Seaside Dog',
+    name: 'Chilli Cheese Promenade Dog',
     price: 9.50,
-    description: 'Jumbo grilled frankfurter topped with spicy cheese, mustard, ketchup and diced sweet onions.',
+    description: 'Jumbo grilled seaside sausage topped with spicy melted cheese, mustard, ketchup and diced sweet onions.',
     image: '/chilli_cheese_dog.webp',
     fallbackImage: '/chilli_cheese_dog.webp',
     category: 'hot-dogs',
@@ -554,9 +555,9 @@ export const OFFICIAL_MENU: MenuItem[] = [
   // Ice Cream & Treats
   {
     id: 'rainbow-sprinkle-cone',
-    name: 'Rainbow Sprinkle Waffle Cone',
+    name: 'Traditional 99 Cone with Flake & Sprinkles',
     price: 4.20,
-    description: 'Creamy soft-serve vanilla ice cream piled high and coated in rainbow sprinkles by the sea.',
+    description: 'Creamy soft-serve vanilla ice cream piled high, with a classic chocolate flake and rainbow sprinkles by the sea.',
     image: '/frankies_ice_cream_cone.webp',
     fallbackImage: '/frankies_ice_cream_cone.webp',
     category: 'ice-cream',
@@ -564,9 +565,9 @@ export const OFFICIAL_MENU: MenuItem[] = [
   },
   {
     id: 'classic-beach-soft-serve',
-    name: 'Classic Coastal Soft-Serve',
+    name: 'Classic Seaside 99 Whippy Cone',
     price: 3.80,
-    description: 'Velvety smooth vanilla soft-serve in a waffle cone enjoyed right on the Ramsgate sand.',
+    description: 'Velvety smooth vanilla soft-serve with Cadbury flake in a crisp waffle cone, enjoyed right on Ramsgate sand.',
     image: '/Cold_ice_cream.webp',
     fallbackImage: '/Cold_ice_cream.webp',
     category: 'ice-cream',

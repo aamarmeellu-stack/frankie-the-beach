@@ -160,7 +160,7 @@ export const ImageProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       : OFFICIAL_MENU;
 
     const customWithOverrides = customMenuItems
-      .filter((item) => (item.category as string) !== 'sides' && (item.category as string) !== 'drinks')
+      .filter((item) => (item.category as string) !== 'sides')
       .map((item) => {
         const override = hasOverrides ? resolveImageOverride(`menu:${item.id}`, slotOverrides) : undefined;
         if (override) {

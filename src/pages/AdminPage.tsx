@@ -1679,6 +1679,7 @@ export const AdminPage: React.FC = () => {
                   onChange={(e) => setCustomCategory(e.target.value)}
                   className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-xs font-medium"
                 >
+                  <option value="drinks">Drinks &amp; Slushies</option>
                   <option value="breakfast-rolls">Breakfast Rolls</option>
                   <option value="burgers">Burgers</option>
                   <option value="chicken-burgers">Chicken Burgers</option>

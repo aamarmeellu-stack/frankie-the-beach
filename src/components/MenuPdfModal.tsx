@@ -8,6 +8,7 @@ interface MenuPdfModalProps {
 }
 
 const MENU_CATEGORIES = [
+  { id: 'drinks', title: 'DRINKS & REFRESHING SLUSHIES' },
   { id: 'breakfast-rolls', title: 'BREAKFAST ROLLS' },
   { id: 'burgers', title: '6oz BURGERS' },
   { id: 'chicken-burgers', title: 'CHICKEN BURGERS' },

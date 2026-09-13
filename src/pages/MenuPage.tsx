@@ -284,22 +284,26 @@ export const MenuPage: React.FC = () => {
                     {/* Bottom Action */}
                     <div className="pt-4 mt-4 border-t border-[#edf0e6] flex items-center justify-between">
                       <div className="flex items-center gap-2 text-[11px] font-bold text-[#708993] uppercase">
-                        {item.vegetarian && (
+                        {item.category === 'drinks' ? (
+                          <span className="flex items-center gap-1 text-[#0580FF] font-bold bg-sky-50 px-2 py-0.5 rounded">
+                            <Sparkles className="w-3.5 h-3.5" />
+                            568ml Pint
+                          </span>
+                        ) : item.vegetarian ? (
                           <span className="flex items-center gap-1 text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded">
                             Vegetarian
                           </span>
-                        )}
-                        {item.spicyLevel ? (
+                        ) : item.spicyLevel ? (
                           <span className="flex items-center gap-1 text-red-500 font-bold">
                             <Flame className="w-3.5 h-3.5 fill-current" />
                             Spicy
                           </span>
-                        ) : !item.vegetarian ? (
+                        ) : (
                           <span className="flex items-center gap-1 text-[#0580FF]">
                             <Sparkles className="w-3.5 h-3.5" />
                             Fresh Daily
                           </span>
-                        ) : null}
+                        )}
                       </div>
 
                       <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0580FF] bg-[#e7f3f6] px-3 py-1 rounded-full">

@@ -222,10 +222,10 @@ export const HomePage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 max-w-6xl mx-auto gap-6">
             {/* Category Card 1: Burgers */}
             <div
-              onClick={() => navigate('/menu')}
+              onClick={() => navigate('/menu?category=burgers')}
               className="bg-white rounded-2xl overflow-hidden border border-[#dde0d5] shadow-sm hover:shadow-lg transition-all cursor-pointer group flex flex-col justify-between"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
@@ -247,7 +247,7 @@ export const HomePage: React.FC = () => {
                   </p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0580FF]">
-                  <span>View Selection</span>
+                  <span>View Burgers</span>
                   <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                     Explore →
                   </span>
@@ -257,7 +257,7 @@ export const HomePage: React.FC = () => {
 
             {/* Category Card 2: Fries & Loaded Fries */}
             <div
-              onClick={() => navigate('/menu')}
+              onClick={() => navigate('/menu?category=loaded-fries')}
               className="bg-white rounded-2xl overflow-hidden border border-[#dde0d5] shadow-sm hover:shadow-lg transition-all cursor-pointer group flex flex-col justify-between"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
@@ -279,7 +279,39 @@ export const HomePage: React.FC = () => {
                   </p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0580FF]">
-                  <span>View Selection</span>
+                  <span>View Fries</span>
+                  <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                    Explore →
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Category Card 3: Refreshing Slushies & Drinks */}
+            <div
+              onClick={() => navigate('/menu?category=drinks')}
+              className="bg-white rounded-2xl overflow-hidden border border-[#dde0d5] shadow-sm hover:shadow-lg transition-all cursor-pointer group flex flex-col justify-between"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                <ClientImage
+                  src="/dishes/Strawberry Slushy 568ml.webp"
+                  slotKey="menu:strawberry-slushy-568ml"
+                  fallbackSrc="/Strawberry Slushy 568ml.webp"
+                  alt="Refreshing Slushies & Drinks"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
+                    Drinks &amp; Slushies
+                  </h3>
+                  <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
+                    Refreshing 568ml pint slushies in strawberry, blue raspberry, sour cherry, Coca-Cola, lemon &amp; lime, and apple &amp; mango.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0580FF]">
+                  <span>View Drinks</span>
                   <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                     Explore →
                   </span>

@@ -12,13 +12,22 @@ import {
   MapPin,
   ShieldCheck,
   Heart,
-  BarChart3,
   CheckCircle2,
+  Trophy,
+  Newspaper,
+  Award,
+  HeartHandshake,
 } from 'lucide-react';
-import { CUSTOMER_REVIEWS, TRIPADVISOR_LINKS, TRIPADVISOR_PROFILES_DATA } from '../data/restaurantData';
+import {
+  CUSTOMER_REVIEWS,
+  TRIPADVISOR_LINKS,
+  TRIPADVISOR_PROFILES_DATA,
+  NATIONAL_AWARD_DATA,
+  EXTRA_MILE_AWARD_DATA,
+} from '../data/restaurantData';
 import { CustomerReview, TripAdvisorProfileData } from '../types';
 
-type ReviewSourceFilter = 'all' | 'tripadvisor-restaurant' | 'tripadvisor-attractions' | 'google';
+type ReviewSourceFilter = 'tripadvisor-restaurant' | 'tripadvisor-attractions' | 'google';
 
 export const ReviewsPage: React.FC = () => {
   const [sourceFilter, setSourceFilter] = useState<ReviewSourceFilter>('tripadvisor-restaurant');
@@ -114,7 +123,7 @@ export const ReviewsPage: React.FC = () => {
 
         {/* Primary Platform Selector Tabs */}
         <div className="bg-white rounded-3xl p-3 sm:p-4 border border-[#dde0d5] shadow-xs mb-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             
             {/* 1. TripAdvisor Restaurant */}
             <button
@@ -210,37 +219,54 @@ export const ReviewsPage: React.FC = () => {
               </div>
             </button>
 
-            {/* 4. All Combined */}
-            <button
-              onClick={() => setSourceFilter('all')}
-              className={`p-3 sm:p-4 rounded-2xl flex items-center gap-3 transition-all cursor-pointer text-left border ${
-                sourceFilter === 'all'
-                  ? 'bg-[#0580FF]/10 border-[#0580FF] shadow-sm ring-1 ring-[#0580FF]/20'
-                  : 'bg-[#fcfdfa] border-gray-200 hover:bg-gray-50'
-              }`}
-            >
-              <div className="w-10 h-10 rounded-xl bg-[#0580FF] text-white flex items-center justify-center shrink-0 shadow-xs">
-                <BarChart3 className="w-5 h-5" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#0580FF] font-heading block">
-                  All Platforms
-                </span>
-                <h3 className="text-xs sm:text-sm font-heading font-extrabold text-[#000000] truncate">
-                  Combined View
-                </h3>
-                <span className="text-[11px] text-gray-500 font-bold block mt-0.5">
-                  1,700+ Total Reviews
-                </span>
-              </div>
-            </button>
-
           </div>
         </div>
 
         {/* SECTION A: TRIPADVISOR RESTAURANT DATA PROFILE */}
         {sourceFilter === 'tripadvisor-restaurant' && (
           <div className="space-y-8 animate-in fade-in duration-300">
+
+            {/* National Award & The Sun Press Highlight Banner */}
+            <div className="bg-gradient-to-r from-[#17262b] via-[#213840] to-[#121e22] rounded-3xl p-6 sm:p-7 text-white border border-[#ECD87A]/40 shadow-lg relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-[#ECD87A]/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div className="space-y-2.5 max-w-2xl">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#ECD87A] via-[#D1A03F] to-[#8C6F2B] text-black font-heading font-black text-xs uppercase tracking-wider shadow-sm">
+                      <Trophy className="w-3.5 h-3.5 fill-black" />
+                      Tripadvisor Best of the Best Award
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0580FF] text-white font-heading font-extrabold text-xs uppercase tracking-wider shadow-sm">
+                      <Award className="w-3.5 h-3.5 text-amber-300" />
+                      2024 Extra Mile Award Winner
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-sky-300 bg-sky-400/15 border border-sky-400/30 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                      <Newspaper className="w-3 h-3" />
+                      The Sun UK Feature
+                    </span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-heading font-black text-white uppercase tracking-tight">
+                    "{NATIONAL_AWARD_DATA.quote}"
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                    Honoured in Tripadvisor's prestigious <strong className="text-amber-200">Travellers' Choice Best of the Best</strong> — ranking our seafront kiosk amongst the highest-rated dining spots in the UK, alongside the <strong className="text-sky-200">1066 Business Awards Extra Mile Award</strong> for gold-standard customer service.
+                  </p>
+                </div>
+
+                <a
+                  href={NATIONAL_AWARD_DATA.sunArticleUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 bg-[#d61e27] hover:bg-[#b5141d] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-5 py-3 rounded-2xl shadow-md hover:shadow-lg transition-all flex items-center gap-2 border border-white/20 active:scale-95 cursor-pointer"
+                  id="reviews-sun-article-btn"
+                >
+                  <Newspaper className="w-4 h-4" />
+                  <span>Read In The Sun</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+
             {/* Detailed Profile Showcase Card */}
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-emerald-200/80 shadow-sm">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -640,8 +666,8 @@ export const ReviewsPage: React.FC = () => {
           </div>
         )}
 
-        {/* SECTION C: GOOGLE REVIEWS OR COMBINED REVIEWS */}
-        {(sourceFilter === 'google' || sourceFilter === 'all') && (
+        {/* SECTION C: GOOGLE REVIEWS */}
+        {sourceFilter === 'google' && (
           <div className="space-y-8 animate-in fade-in duration-300">
             {/* Rating Breakdown & Write Review Banner */}
             <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#dde0d5] shadow-sm">
@@ -805,17 +831,6 @@ export const ReviewsPage: React.FC = () => {
               >
                 <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                 <span>5 Stars Only</span>
-              </button>
-              <button
-                onClick={() => setRatingFilter(4)}
-                className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1 ${
-                  ratingFilter === 4
-                    ? 'bg-[#0580FF] text-white shadow-sm'
-                    : 'bg-white text-[#496068] border border-[#dde0d5]'
-                }`}
-              >
-                <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                <span>4 Stars</span>
               </button>
             </div>
 

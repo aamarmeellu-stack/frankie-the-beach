@@ -96,8 +96,8 @@ export const ChefsFavorites: React.FC<ChefsFavoritesProps> = ({
 
                   {/* Card Bottom Tag & Menu Link */}
                   <div className="mt-4 pt-2.5 border-t border-[#edf0e6] flex justify-between items-center text-xs">
-                    <span className="text-sm font-black text-[#000000] tracking-tight">
-                      £{item.price.toFixed(2)}
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0580FF] bg-[#e7f3f6] px-2.5 py-1 rounded-full">
+                      Seaside Favourite
                     </span>
                     <button
                       onClick={onViewFullMenu}

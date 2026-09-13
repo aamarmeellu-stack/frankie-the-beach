@@ -13,8 +13,12 @@ import {
   HandHeart,
   Briefcase,
   Users,
+  Trophy,
+  Newspaper,
+  ExternalLink,
+  HeartHandshake,
 } from 'lucide-react';
-import { CLIENT_IMAGES, ASSETS } from '../data/restaurantData';
+import { CLIENT_IMAGES, ASSETS, EXTRA_MILE_AWARD_DATA, NATIONAL_AWARD_DATA, TRIPADVISOR_LINKS } from '../data/restaurantData';
 import { ClientImage } from '../components/ClientImage';
 import { TripAdvisorAttractionsBanner } from '../components/TripAdvisorBanner';
 import { useImages } from '../context/ImageContext';
@@ -227,6 +231,131 @@ export const AboutPage: React.FC = () => {
               </div>
             </div>
 
+          </div>
+        </div>
+
+        {/* 2.5 AWARDS & HONOURS: National & Local Accolades */}
+        <div className="bg-gradient-to-br from-[#17262b] via-[#213840] to-[#121e22] text-white rounded-3xl p-6 sm:p-10 border border-[#D1A03F]/40 shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#D1A03F]/10 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="relative z-10 space-y-8">
+            <div className="text-center max-w-2xl mx-auto space-y-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#ECD87A] via-[#D1A03F] to-[#8C6F2B] text-black font-heading font-black text-xs uppercase tracking-wider shadow-sm">
+                <Trophy className="w-3.5 h-3.5 fill-black" />
+                Accolades &amp; Recognition
+              </span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase text-white font-heading">
+                HONOURED LOCALLY &amp; NATIONALLY
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-300">
+                From national travel acclaim in <em>The Sun</em> to regional awards celebrating exceptional customer service, here is what independent bodies and our guests say about Frankie's.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+              
+              {/* Award Card 1: 1066 Business Awards Extra Mile */}
+              <div className="bg-white/10 rounded-2xl p-6 border border-sky-400/40 backdrop-blur-xs flex flex-col justify-between space-y-4 hover:border-sky-300 transition-colors">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0580FF] text-white font-heading font-extrabold text-[11px] uppercase tracking-wider">
+                      <Award className="w-3.5 h-3.5 text-amber-300" />
+                      {EXTRA_MILE_AWARD_DATA.awardTitle}
+                    </span>
+                    <span className="text-[11px] font-bold text-sky-200">
+                      {EXTRA_MILE_AWARD_DATA.ceremony}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-heading font-black text-white uppercase tracking-tight">
+                    {EXTRA_MILE_AWARD_DATA.category}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-gray-200 leading-relaxed">
+                    {EXTRA_MILE_AWARD_DATA.summary}
+                  </p>
+
+                  <div className="p-4 rounded-xl bg-black/25 border-l-4 border-amber-400 space-y-1">
+                    <p className="text-xs sm:text-sm italic text-gray-200 leading-relaxed">
+                      "{EXTRA_MILE_AWARD_DATA.quote}"
+                    </p>
+                    <p className="text-[11px] font-bold text-amber-300">
+                      — {EXTRA_MILE_AWARD_DATA.quoteAuthor}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-2 flex items-center justify-between text-xs text-sky-200 border-t border-white/10">
+                  <span className="font-semibold">{EXTRA_MILE_AWARD_DATA.sponsor}</span>
+                  <span className="inline-flex items-center gap-1 text-emerald-300 font-bold">
+                    <HeartHandshake className="w-4 h-4" />
+                    Customer First Culture
+                  </span>
+                </div>
+              </div>
+
+              {/* Award Card 2: Tripadvisor Best of the Best */}
+              <div className="bg-white/10 rounded-2xl p-6 border border-amber-400/40 backdrop-blur-xs flex flex-col justify-between space-y-4 hover:border-amber-300 transition-colors">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#ECD87A] via-[#D1A03F] to-[#8C6F2B] text-black font-heading font-extrabold text-[11px] uppercase tracking-wider">
+                      <Trophy className="w-3.5 h-3.5 fill-black" />
+                      Tripadvisor Best of the Best
+                    </span>
+                    <span className="text-[11px] font-bold text-amber-300 bg-amber-400/15 border border-amber-400/30 px-2 py-0.5 rounded-full">
+                      The Sun Feature
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-heading font-black text-white uppercase tracking-tight">
+                    "{NATIONAL_AWARD_DATA.quote}"
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-gray-200 leading-relaxed">
+                    {NATIONAL_AWARD_DATA.description}
+                  </p>
+
+                  <div className="p-4 rounded-xl bg-black/25 border-l-4 border-[#00aa6c] space-y-1">
+                    <div className="flex items-center gap-1.5 text-xs text-white">
+                      <span className="font-extrabold text-sm text-emerald-300">4.9 / 5.0 Rating</span>
+                      <div className="flex gap-0.5">
+                        {[1, 2, 3, 4, 5].map((i) => (
+                          <span key={i} className="w-2.5 h-2.5 rounded-full bg-[#00aa6c]" />
+                        ))}
+                      </div>
+                      <span className="text-gray-400">• Over 750+ 5-star reviews</span>
+                    </div>
+                    <p className="text-[11px] text-gray-300">
+                      Ranked among the very best seaside eateries across Great Britain.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-2 flex flex-wrap items-center gap-3 justify-between border-t border-white/10">
+                  <a
+                    href={NATIONAL_AWARD_DATA.sunArticleUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 bg-[#d61e27] hover:bg-[#b5141d] text-white text-xs font-heading font-bold uppercase tracking-wider px-3.5 py-2 rounded-xl transition-all cursor-pointer"
+                  >
+                    <Newspaper className="w-3.5 h-3.5" />
+                    <span>Read in The Sun</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+
+                  <a
+                    href={TRIPADVISOR_LINKS.restaurant.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs text-amber-300 hover:text-amber-200 font-bold uppercase tracking-wider"
+                  >
+                    <span>Tripadvisor Profile</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 

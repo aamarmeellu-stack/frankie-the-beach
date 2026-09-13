@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Hero } from '../components/Hero';
 import { QuickInfoBar } from '../components/QuickInfoBar';
 import { ChefsFavorites } from '../components/ChefsFavorites';
+import { NationalAwardBanner } from '../components/NationalAwardBanner';
 import { WhatPeopleSay } from '../components/WhatPeopleSay';
 import { CateringShowcase } from '../components/CateringShowcase';
 import {
@@ -48,6 +49,9 @@ export const HomePage: React.FC = () => {
 
       {/* 2. Quick Info Bar */}
       <QuickInfoBar />
+
+      {/* 2.5 National Award Winner Spotlight (The Sun & Tripadvisor Best of the Best) */}
+      <NationalAwardBanner />
 
       {/* 3. Chef's Favorites Showcase */}
       <ChefsFavorites
@@ -109,54 +113,74 @@ export const HomePage: React.FC = () => {
             {/* Right Story & Highlights */}
             <div className="lg:col-span-6 space-y-6">
               <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#0580FF] font-heading">
-                <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
-                <span>RAMSGATE SEAFRONT VIBES</span>
+                <span className="text-base">🌊</span>
+                <span>FUN, FOOD, DRINKS &amp; SEASIDE VIBES</span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-[#000000] font-heading leading-tight">
-                GOURMET 6oz STEAK BURGERS, PROPER CHIPS &amp; SEA BREEZES.
+                RIGHT ON THE MAIN SANDS OF OUR AWARD-WINNING BEACH.
               </h2>
 
               <p className="text-sm sm:text-base text-[#496068] leading-relaxed">
-                Frankie's @ the Beach is your quintessential seaside food kiosk and bar in Ramsgate for proper food, cold beers, 99 whippy ice creams, and laid-back beachside vibes. Whether you're popping in for a quick bite, a refreshing drink by the beach, a family day on the sand, or a sunset stroll along the promenade — we've got you sorted.
+                <strong className="text-[#000000]">Frankies At The Beach</strong> is the ultimate seaside destination for fun, food, and good times! From thrilling fair rides for the children to our award-winning quick bites, a well-stocked bar for the adults, giant 99 whippy ice creams, fresh warm doughnuts, and great music — everything you love about the seaside is right here in one fantastic location.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#f8f9f5] border border-[#e4e8dd]">
-                  <div className="w-9 h-9 rounded-lg bg-[#0580FF] text-white flex items-center justify-center shrink-0">
-                    <Flame className="w-5 h-5 text-[#D1A03F]" />
-                  </div>
+                  <span className="text-2xl shrink-0">🎡</span>
                   <div>
                     <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
-                      Juicy 6oz Steak Patties
+                      Fun Fair Rides
                     </h4>
                     <p className="text-[11px] text-[#556d75] mt-0.5">
-                      100% prime beef 6oz steak patties flame-grilled to juicy perfection.
+                      Great fun for the kids right by the waves!
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#f8f9f5] border border-[#e4e8dd]">
-                  <div className="w-9 h-9 rounded-lg bg-[#0580FF] text-white flex items-center justify-center shrink-0">
-                    <UtensilsCrossed className="w-5 h-5 text-[#D1A03F]" />
-                  </div>
+                  <span className="text-2xl shrink-0">🍔</span>
                   <div>
                     <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
-                      Promenade &amp; Beach Terrace
+                      Award-Winning Quick Bites
                     </h4>
                     <p className="text-[11px] text-[#556d75] mt-0.5">
-                      Panoramic views of Ramsgate Royal Harbour and the English Channel.
+                      Gourmet steak burgers &amp; footlong hot dogs served fast.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#f8f9f5] border border-[#e4e8dd]">
+                  <span className="text-2xl shrink-0">🍻</span>
+                  <div>
+                    <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
+                      Well-Stocked Bar
+                    </h4>
+                    <p className="text-[11px] text-[#556d75] mt-0.5">
+                      Cold draft beers, ciders, wine &amp; refreshing seaside cocktails.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#f8f9f5] border border-[#e4e8dd]">
+                  <span className="text-2xl shrink-0">🍦</span>
+                  <div>
+                    <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
+                      Massive Ice Cream Choice
+                    </h4>
+                    <p className="text-[11px] text-[#556d75] mt-0.5">
+                      99 whippies with Flakes, tubs &amp; so many flavours to choose from!
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 flex flex-wrap items-center gap-4">
+              <div className="pt-3 flex flex-wrap items-center gap-4">
                 <Link
                   to="/menu"
                   className="bg-[#0580FF] hover:bg-[#004fb3] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-md transition-all flex items-center gap-2 cursor-pointer group"
                 >
-                  <span>EXPLORE OUR COMPLETE MENU</span>
+                  <span>COME AND ENJOY FRANKIES</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
 
@@ -194,7 +218,7 @@ export const HomePage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto gap-6">
             {/* Category Card 1: Burgers */}
             <div
               onClick={() => navigate('/menu')}
@@ -254,76 +278,6 @@ export const HomePage: React.FC = () => {
                   </h3>
                   <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
                     Golden French fries loaded with mature cheddar torched to perfection, with bacon, chorizo, pepperoni, or southern fried chicken.
-                  </p>
-                </div>
-                <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0580FF]">
-                  <span>View Selection</span>
-                  <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                    Explore →
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Category Card 3: Crispy BBQ Wings & Sides */}
-            <div
-              onClick={() => navigate('/menu')}
-              className="bg-white rounded-2xl overflow-hidden border border-[#dde0d5] shadow-sm hover:shadow-lg transition-all cursor-pointer group flex flex-col justify-between"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                <ClientImage
-                  src={clientImages.hotWings}
-                  slotKey="site:hotWings"
-                  fallbackSrc={ASSETS.hotWings}
-                  alt="Crispy BBQ Wings & Coastal Chips"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <span className="absolute top-3 left-3 bg-[#0580FF] text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded">
-                  BBQ WINGS &amp; SIDES
-                </span>
-              </div>
-              <div className="p-4 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
-                    Crispy BBQ Wings &amp; Chips
-                  </h3>
-                  <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
-                    Succulent crispy chicken wings glazed in sweet smoky barbecue sauce, served piping hot with golden chips.
-                  </p>
-                </div>
-                <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0580FF]">
-                  <span>View Selection</span>
-                  <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                    Explore →
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Category Card 4: Drinks & 99 Treats */}
-            <div
-              onClick={() => navigate('/menu')}
-              className="bg-white rounded-2xl overflow-hidden border border-[#dde0d5] shadow-sm hover:shadow-lg transition-all cursor-pointer group flex flex-col justify-between"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                <ClientImage
-                  src={clientImages.drinksMenu}
-                  slotKey="site:drinksMenu"
-                  fallbackSrc={ASSETS.drinksMenu}
-                  alt="Frankie's Beach Drinks, Tea, Coffees & 99 Cones"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <span className="absolute top-3 left-3 bg-[#0580FF] text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded">
-                  SEASIDE DRINKS &amp; 99s
-                </span>
-              </div>
-              <div className="p-4 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
-                    Tea, Coffee, Slushes &amp; 99s
-                  </h3>
-                  <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
-                    Freshly brewed builder's tea, coastal espresso, traditional 99 whippy cones with Cadbury Flakes, and fruity slushes.
                   </p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0580FF]">

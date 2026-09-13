@@ -6,8 +6,17 @@ import {
   Phone,
   UtensilsCrossed,
   Facebook,
+  Trophy,
+  Award,
+  ExternalLink,
+  Newspaper,
 } from 'lucide-react';
-import { TRIPADVISOR_LINKS, FRANKIES_FACEBOOK_URL } from '../data/restaurantData';
+import {
+  TRIPADVISOR_LINKS,
+  FRANKIES_FACEBOOK_URL,
+  NATIONAL_AWARD_DATA,
+  EXTRA_MILE_AWARD_DATA,
+} from '../data/restaurantData';
 
 export const Footer: React.FC = () => {
   return (
@@ -35,8 +44,8 @@ export const Footer: React.FC = () => {
               Ramsgate's seafront food kiosk and bar for gourmet 6oz steak burgers, proper seaside chips, jumbo dogs, cold drinks, and traditional 99 whippy cones.
             </p>
 
-            {/* Social Link - Facebook Only */}
-            <div className="pt-1">
+            {/* Social Link - Facebook Only & National Award */}
+            <div className="pt-1 space-y-3">
               <a
                 href={FRANKIES_FACEBOOK_URL}
                 target="_blank"
@@ -48,6 +57,37 @@ export const Footer: React.FC = () => {
                 <Facebook className="w-4 h-4" />
                 <span>Facebook</span>
               </a>
+
+              {/* National Award Seal */}
+              <a
+                href={NATIONAL_AWARD_DATA.sunArticleUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-3 rounded-2xl bg-white/5 border border-amber-400/30 hover:border-amber-400 hover:bg-white/10 transition-all text-left group"
+                id="footer-award-badge"
+              >
+                <div className="flex items-center gap-1.5 text-amber-300 font-heading font-extrabold text-[11px] uppercase tracking-wider">
+                  <Trophy className="w-3.5 h-3.5 fill-amber-300" />
+                  <span>Tripadvisor Best of the Best</span>
+                </div>
+                <p className="text-[11px] text-white/80 mt-1 leading-snug">
+                  Crowned among the UK's best — as featured in <strong className="text-white underline decoration-amber-400 decoration-1">The Sun</strong>.
+                </p>
+              </a>
+
+              {/* Local Customer Service Award Seal */}
+              <div
+                className="block p-3 rounded-2xl bg-white/5 border border-sky-400/30 text-left"
+                id="footer-extra-mile-badge"
+              >
+                <div className="flex items-center gap-1.5 text-sky-300 font-heading font-extrabold text-[11px] uppercase tracking-wider">
+                  <Award className="w-3.5 h-3.5 text-amber-300" />
+                  <span>{EXTRA_MILE_AWARD_DATA.awardTitle}</span>
+                </div>
+                <p className="text-[11px] text-white/80 mt-1 leading-snug">
+                  {EXTRA_MILE_AWARD_DATA.ceremony} • Setting the gold standard for exceptional customer service.
+                </p>
+              </div>
             </div>
           </div>
 

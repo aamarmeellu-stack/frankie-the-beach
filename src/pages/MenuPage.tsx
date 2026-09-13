@@ -263,9 +263,7 @@ export const MenuPage: React.FC = () => {
                           ? '8oz Venison'
                           : 'Gourmet Chicken'
                         : item.category === 'hot-dogs'
-                        ? item.id === 'crispy-bbq-wings'
-                          ? 'BBQ Wings'
-                          : 'Gourmet Hot Dog'
+                        ? 'Gourmet Hot Dog'
                         : item.category === 'loaded-fries'
                         ? 'Crispy French Fries'
                         : item.category.replace('-', ' ')}
@@ -288,13 +286,10 @@ export const MenuPage: React.FC = () => {
                   {/* Content */}
                   <div className="p-5 flex flex-col flex-1 justify-between">
                     <div>
-                      <div className="flex items-start justify-between gap-2 mb-1.5">
+                      <div className="mb-1.5">
                         <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
                           {item.name}
                         </h3>
-                        <span className="font-heading font-extrabold text-sm text-[#0580FF] shrink-0">
-                          £{item.price.toFixed(2)}
-                        </span>
                       </div>
 
                       <p className="text-xs sm:text-sm text-[#526b74] leading-relaxed">

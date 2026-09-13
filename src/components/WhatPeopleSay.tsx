@@ -1,6 +1,6 @@
 import React from 'react';
-import { Star, ArrowRight } from 'lucide-react';
-import { CUSTOMER_REVIEWS } from '../data/restaurantData';
+import { Star, ArrowRight, Award, Sparkles, HeartHandshake } from 'lucide-react';
+import { CUSTOMER_REVIEWS, EXTRA_MILE_AWARD_DATA } from '../data/restaurantData';
 
 interface WhatPeopleSayProps {
   onViewAllReviews: () => void;
@@ -18,7 +18,7 @@ export const WhatPeopleSay: React.FC<WhatPeopleSayProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-8 gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1.5">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white border border-[#dde0d5] text-[#3c4043] shadow-xs">
@@ -56,6 +56,37 @@ export const WhatPeopleSay: React.FC<WhatPeopleSayProps> = ({
             <span>VIEW ALL 17 REVIEWS</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
+        </div>
+
+        {/* Extra Mile Customer Service Award Card */}
+        <div className="bg-gradient-to-r from-[#003882] via-[#0580FF] to-[#00224f] rounded-2xl p-4 sm:p-5 text-white mb-8 border border-sky-300/30 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="w-11 h-11 rounded-xl bg-amber-400 text-black flex items-center justify-center shrink-0 shadow-md">
+              <Award className="w-6 h-6" />
+            </div>
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs font-heading font-black uppercase tracking-wider text-amber-300">
+                  {EXTRA_MILE_AWARD_DATA.awardTitle}
+                </span>
+                <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold uppercase tracking-normal text-white">
+                  {EXTRA_MILE_AWARD_DATA.ceremony}
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm font-bold text-white mt-0.5 leading-snug">
+                "{EXTRA_MILE_AWARD_DATA.quote}"
+              </p>
+              <span className="text-[11px] text-sky-200 block mt-0.5">
+                — {EXTRA_MILE_AWARD_DATA.quoteAuthor} • {EXTRA_MILE_AWARD_DATA.sponsor}
+              </span>
+            </div>
+          </div>
+          <div className="shrink-0 self-end md:self-auto">
+            <span className="inline-flex items-center gap-1 text-[11px] font-heading font-extrabold uppercase tracking-wider bg-white text-[#003882] px-3 py-1.5 rounded-full shadow-xs">
+              <HeartHandshake className="w-3.5 h-3.5 text-[#0580FF]" />
+              <span>Gold Standard Care</span>
+            </span>
+          </div>
         </div>
 
         {/* 4 Columns: 4 Authentic Customer Review Cards */}

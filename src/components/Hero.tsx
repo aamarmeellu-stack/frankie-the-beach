@@ -1,6 +1,24 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Utensils, MapPin, UtensilsCrossed, Sandwich, IceCream, Volume2, VolumeX, Play, Pause, Video } from 'lucide-react';
-import { ASSETS } from '../data/restaurantData';
+import {
+  Utensils,
+  MapPin,
+  UtensilsCrossed,
+  Sandwich,
+  IceCream,
+  Volume2,
+  VolumeX,
+  Play,
+  Pause,
+  Sparkles,
+  FerrisWheel,
+  Beer,
+  Music,
+  CircleDot,
+  ArrowRight,
+  Trophy,
+  ExternalLink,
+} from 'lucide-react';
+import { ASSETS, NATIONAL_AWARD_DATA } from '../data/restaurantData';
 import { ClientImage } from './ClientImage';
 import { useImages } from '../context/ImageContext';
 
@@ -60,7 +78,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mt-1 sm:mt-2">
       <section
         id="home"
-        className="relative text-white pt-8 sm:pt-14 pb-24 sm:pb-36 overflow-hidden bg-[#0580FF] rounded-3xl shadow-lg border border-white/10"
+        className="relative text-white pt-8 sm:pt-14 pb-20 sm:pb-32 overflow-hidden bg-[#0580FF] rounded-3xl shadow-lg border border-white/10"
       >
       {/* 1. Full Beach Ocean Background (Video with Image Poster Fallback) */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -91,15 +109,15 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
             playsInline
             onLoadedData={() => setIsVideoLoaded(true)}
             onError={() => setVideoError(true)}
-            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 z-[1] ${
-              isVideoLoaded ? 'opacity-95' : 'opacity-0'
+            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 z-[1] ${
+              isVideoLoaded ? 'opacity-100' : 'opacity-0'
             }`}
           />
         )}
 
-        {/* Cinematic Ocean & Seaside Color Grading Overlay for contrast and readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#004fb3]/80 via-[#0580FF]/65 to-[#003680]/75 mix-blend-multiply z-[2]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#003680]/60 via-transparent to-[#002855]/75 z-[2]" />
+        {/* Crisp, subtle contrast gradient: Keeps the video vibrant and clear while ensuring high text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-black/10 z-[2]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/15 z-[2]" />
       </div>
 
       {/* Live Video Control Badge */}
@@ -131,75 +149,133 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
         </div>
       )}
 
-      {/* 2. Coastal Ambient Sun Flares & Atmosphere */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0 opacity-30">
-        {/* Sunny English Channel caustics & glimmers */}
-        <div className="absolute top-1/4 right-10 w-[500px] h-[500px] bg-cyan-300/15 rounded-full blur-3xl mix-blend-overlay"></div>
-        <div className="absolute top-12 left-1/4 w-96 h-96 bg-amber-200/15 rounded-full blur-3xl mix-blend-screen"></div>
-      </div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           
-          {/* Left Column: Bold Typography & Call to Actions */}
-          <div className="lg:col-span-6 xl:col-span-5 text-left pt-2 lg:pt-0">
-            {/* Seaside Food Kiosk & Bar Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/25 text-xs font-bold text-white mb-4 shadow-sm">
-              <UtensilsCrossed className="w-4 h-4 text-amber-300" />
-              <span className="uppercase tracking-widest text-[11px] font-heading text-amber-200 font-extrabold">
-                FOOD KIOSK &amp; BAR • RAMSGATE MAIN SANDS
+          {/* Left Column: Magical Welcoming Headlines & Story */}
+          <div className="lg:col-span-7 text-left pt-2 lg:pt-0">
+            
+            {/* National Award & Seaside Location Badges */}
+            <div className="flex flex-wrap items-center gap-2.5 mb-4">
+              <a
+                href={NATIONAL_AWARD_DATA.sunArticleUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#D1A03F]/90 via-[#ECD87A]/90 to-[#D1A03F]/90 hover:from-[#ECD87A] hover:to-[#D1A03F] text-[#000000] px-3.5 py-1.5 rounded-full font-heading font-black text-[11px] sm:text-xs uppercase tracking-wider shadow-lg hover:shadow-xl transition-all active:scale-95 group border border-amber-200/80"
+                title="Read The Sun feature on Frankie's winning Tripadvisor UK Best of the Best"
+                id="hero-national-award-pill"
+              >
+                <Trophy className="w-3.5 h-3.5 text-[#000000] shrink-0" />
+                <span>Tripadvisor UK Best of the Best Winner</span>
+                <span className="bg-black/85 text-[#ECD87A] text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-normal">
+                  In The Sun
+                </span>
+                <ExternalLink className="w-3 h-3 text-[#000000]/70 group-hover:translate-x-0.5 transition-transform" />
+              </a>
+
+              <div className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/30 text-[11px] font-bold text-white shadow-sm">
+                <span className="text-amber-300 text-xs">🌊</span>
+                <span className="uppercase tracking-widest text-[10px] sm:text-[11px] font-heading text-amber-200 font-black">
+                  RAMSGATE MAIN SANDS
+                </span>
+              </div>
+            </div>
+
+            {/* The Big Headline */}
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-impact tracking-tight uppercase leading-[0.95] text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]">
+              Welcome to{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFF2B2] via-[#ECD87A] to-[#D1A03F] block sm:inline">
+                Frankies At The Beach!
               </span>
+            </h1>
+
+            {/* Powerful Sub-headline */}
+            <p className="mt-4 text-base sm:text-xl font-medium text-white/95 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] max-w-2xl">
+              Right on the main sands of our award-winning beach, <span className="font-extrabold text-[#FFF2B2]">Frankies At The Beach</span> is the perfect place for <span className="text-white underline decoration-[#ECD87A] decoration-2 underline-offset-4">fun, food and good times!</span>
+            </p>
+
+            {/* Magical Highlights Grid / Badges */}
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-w-2xl">
+              <div className="flex items-center gap-2.5 bg-black/35 hover:bg-black/45 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/20 transition-colors">
+                <span className="text-lg">🎡</span>
+                <div className="leading-tight">
+                  <span className="font-heading font-extrabold text-xs uppercase tracking-wide text-[#FFF2B2]">Fun Fair Rides</span>
+                  <p className="text-[11px] text-white/80">Great fun for the kids!</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5 bg-black/35 hover:bg-black/45 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/20 transition-colors">
+                <span className="text-lg">🍔</span>
+                <div className="leading-tight">
+                  <span className="font-heading font-extrabold text-xs uppercase tracking-wide text-[#FFF2B2]">Award-Winning Quick Bites</span>
+                  <p className="text-[11px] text-white/80">Tasty food served fast.</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5 bg-black/35 hover:bg-black/45 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/20 transition-colors">
+                <span className="text-lg">🍻</span>
+                <div className="leading-tight">
+                  <span className="font-heading font-extrabold text-xs uppercase tracking-wide text-[#FFF2B2]">Well-Stocked Bar</span>
+                  <p className="text-[11px] text-white/80">Something for everyone.</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5 bg-black/35 hover:bg-black/45 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/20 transition-colors">
+                <span className="text-lg">🍦</span>
+                <div className="leading-tight">
+                  <span className="font-heading font-extrabold text-xs uppercase tracking-wide text-[#FFF2B2]">Massive Choice of Ice Creams</span>
+                  <p className="text-[11px] text-white/80">So many delicious flavours to choose from!</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5 bg-black/35 hover:bg-black/45 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/20 transition-colors">
+                <span className="text-lg">🍩</span>
+                <div className="leading-tight">
+                  <span className="font-heading font-extrabold text-xs uppercase tracking-wide text-[#FFF2B2]">Fresh Doughnuts</span>
+                  <p className="text-[11px] text-white/80">Loaded with a fantastic choice of toppings.</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5 bg-black/35 hover:bg-black/45 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/20 transition-colors">
+                <span className="text-lg">🎶</span>
+                <div className="leading-tight">
+                  <span className="font-heading font-extrabold text-xs uppercase tracking-wide text-[#FFF2B2]">Great Music</span>
+                  <p className="text-[11px] text-white/80">Sit back, relax and enjoy the atmosphere.</p>
+                </div>
+              </div>
             </div>
 
-            {/* Massive Display Heading with crisp shadow */}
-            <div className="space-y-0 tracking-tight font-impact text-7xl sm:text-8xl xl:text-9xl leading-[0.88] select-none">
-              <h1 className="text-white block drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] font-black">EAT.</h1>
-              <h1 className="text-white block drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] font-black">BEACH.</h1>
-              <h1 className="text-transparent bg-clip-text bg-gradient-to-b from-[#ECD87A] via-[#D1A03F] to-[#8C6F2B] block drop-shadow-[0_4px_14px_rgba(0,0,0,0.7)] font-black">
-                REPEAT.
-              </h1>
-            </div>
-
-            {/* Food Items Golden Accent Divider */}
-            <div className="mt-5 mb-5 flex items-center gap-3 text-[#ECD87A]">
-              <div className="h-0.5 w-8 bg-gradient-to-r from-transparent to-[#D1A03F]"></div>
-              <UtensilsCrossed className="w-5 h-5 text-[#ECD87A] drop-shadow-sm" />
-              <Sandwich className="w-5 h-5 text-[#D1A03F] drop-shadow-sm" />
-              <IceCream className="w-5 h-5 text-[#ECD87A] drop-shadow-sm" />
-              <div className="h-0.5 w-8 bg-gradient-to-l from-transparent to-[#D1A03F]"></div>
-            </div>
-
-            {/* Subtext */}
-            <div className="space-y-1 text-white text-lg sm:text-xl font-medium tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">
-              <p>Gourmet 6oz Steak Burgers. Hand-Cut Seaside Chips. Sea Views.</p>
-              <p className="text-sky-100 text-base font-normal">Freshly cooked at our beachfront kiosk on Ramsgate Main Sands.</p>
+            {/* Tagline Callout */}
+            <div className="mt-5 flex items-center gap-2 text-white font-heading font-bold text-xs sm:text-sm">
+              <Sparkles className="w-4 h-4 text-[#ECD87A] shrink-0" />
+              <span>Fun, food, drinks &amp; seaside vibes – all in one fantastic location!</span>
             </div>
 
             {/* Action Buttons */}
-            <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-7 flex flex-wrap items-center gap-3.5">
               <button
                 onClick={onExploreMenu}
                 id="btn-explore-menu"
-                className="bg-gradient-to-b from-[#ECD87A] via-[#D1A03F] to-[#8C6F2B] hover:brightness-105 active:scale-95 text-[#000000] font-heading font-extrabold text-sm uppercase tracking-wider px-6 sm:px-7 py-3.5 rounded-xl shadow-[0_8px_20px_rgba(0,0,0,0.3)] hover:shadow-2xl transition-all flex items-center gap-2.5 group cursor-pointer"
+                className="bg-gradient-to-b from-[#ECD87A] via-[#D1A03F] to-[#8C6F2B] hover:brightness-105 active:scale-95 text-[#000000] font-heading font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 sm:px-7 py-3.5 rounded-xl shadow-[0_8px_20px_rgba(0,0,0,0.3)] hover:shadow-2xl transition-all flex items-center gap-2.5 group cursor-pointer"
               >
-                <span>EXPLORE MENU</span>
+                <span>EXPLORE OUR SEASIDE MENU</span>
                 <Utensils className="w-4 h-4 text-[#000000] group-hover:rotate-12 transition-transform" />
               </button>
 
               <button
                 onClick={onContact}
                 id="btn-hero-contact"
-                className="bg-[#004fb3]/80 hover:bg-[#004fb3] active:scale-95 text-white font-normal text-sm px-6 sm:px-7 py-3 rounded-xl border border-white/60 shadow-md hover:shadow-lg transition-all flex items-center gap-2.5 group cursor-pointer backdrop-blur-xs"
+                className="bg-[#004fb3]/80 hover:bg-[#004fb3] active:scale-95 text-white font-normal text-xs sm:text-sm px-5 sm:px-6 py-3 rounded-xl border border-white/60 shadow-md hover:shadow-lg transition-all flex items-center gap-2.5 group cursor-pointer backdrop-blur-xs"
               >
-                <span>Find &amp; Contact Us</span>
+                <span>Come &amp; Enjoy Frankies</span>
                 <MapPin className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
               </button>
             </div>
           </div>
 
           {/* Right Column: Polaroid Collage & Stamp Badge */}
-          <div className="lg:col-span-6 xl:col-span-7 relative flex justify-center lg:justify-end mt-6 lg:mt-0">
-            <div className="relative w-full max-w-[560px] h-[480px] sm:h-[540px]">
+          <div className="lg:col-span-5 relative flex justify-center lg:justify-end mt-4 lg:mt-0">
+            <div className="relative w-full max-w-[480px] h-[460px] sm:h-[520px]">
               
               {/* White Artistic Paint Splatter / Seafoam Textures Behind Polaroids */}
               <div className="absolute inset-0 pointer-events-none select-none z-0">
@@ -218,7 +294,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
 
               {/* Polaroid 2 (Top-Right): Frankie's Beachfront Kiosk */}
               <div
-                className="absolute right-0 sm:right-2 top-2 sm:top-4 w-52 sm:w-64 bg-white p-2.5 pb-6 shadow-[0_20px_45px_rgba(0,0,0,0.45)] rounded-[2px] transform rotate-[6deg] hover:rotate-3 transition-transform duration-300 z-10 group cursor-pointer"
+                className="absolute right-0 sm:right-2 top-2 sm:top-4 w-48 sm:w-56 bg-white p-2.5 pb-6 shadow-[0_20px_45px_rgba(0,0,0,0.45)] rounded-[2px] transform rotate-[6deg] hover:rotate-3 transition-transform duration-300 z-10 group cursor-pointer"
                 onClick={onExploreMenu}
                 title="Frankie's Beachfront Kiosk"
               >
@@ -236,7 +312,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
 
               {/* Polaroid 1 (Center-Left): Main Cheeseburger */}
               <div
-                className="absolute left-2 sm:left-4 top-8 sm:top-12 w-64 sm:w-80 bg-white p-3 sm:p-3.5 pb-8 sm:pb-9 shadow-[0_28px_60px_rgba(0,0,0,0.55)] rounded-[2px] transform -rotate-[4deg] hover:-rotate-1 transition-transform duration-300 z-20 group cursor-pointer"
+                className="absolute left-1 sm:left-2 top-8 sm:top-10 w-56 sm:w-72 bg-white p-3 sm:p-3.5 pb-8 sm:pb-9 shadow-[0_28px_60px_rgba(0,0,0,0.55)] rounded-[2px] transform -rotate-[4deg] hover:-rotate-1 transition-transform duration-300 z-20 group cursor-pointer"
                 onClick={onExploreMenu}
                 title="Gourmet Cheeseburger at the beach"
               >
@@ -254,7 +330,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
 
               {/* Polaroid 3 (Bottom-Right): Pepperoni & Mature Cheddar Loaded Chips */}
               <div
-                className="absolute right-2 sm:right-6 bottom-4 sm:bottom-6 w-48 sm:w-60 bg-white p-2.5 pb-6 shadow-[0_22px_50px_rgba(0,0,0,0.48)] rounded-[2px] transform -rotate-[6deg] hover:rotate-0 transition-transform duration-300 z-30 group cursor-pointer"
+                className="absolute right-2 sm:right-4 bottom-4 sm:bottom-6 w-44 sm:w-52 bg-white p-2.5 pb-6 shadow-[0_22px_50px_rgba(0,0,0,0.48)] rounded-[2px] transform -rotate-[6deg] hover:rotate-0 transition-transform duration-300 z-30 group cursor-pointer"
                 onClick={onExploreMenu}
                 title="Pepperoni & Mature Cheddar Loaded Chips"
               >
@@ -270,12 +346,12 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                 </div>
               </div>
 
-              {/* Circular Stamp Badge: FOOD KIOSK & BAR ★ RAMSGATE */}
+              {/* Circular Stamp Badge: FRANKIES AT THE BEACH ★ RAMSGATE */}
               <div
-                className="absolute left-1 sm:left-6 top-[250px] sm:top-[280px] z-40 stamp-badge pointer-events-auto"
-                title="Food Kiosk & Bar Ramsgate"
+                className="absolute left-0 sm:left-4 top-[240px] sm:top-[260px] z-40 stamp-badge pointer-events-auto"
+                title="Frankies At The Beach Ramsgate"
               >
-                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-white border-2 border-dashed border-[#0580FF] p-1.5 flex items-center justify-center relative shadow-[0_12px_28px_rgba(0,0,0,0.35)]">
+                <div className="w-26 h-26 sm:w-30 sm:h-30 rounded-full bg-white border-2 border-dashed border-[#0580FF] p-1.5 flex items-center justify-center relative shadow-[0_12px_28px_rgba(0,0,0,0.35)]">
                   {/* Outer circular text simulated with SVG */}
                   <svg className="w-full h-full animate-[spin_25s_linear_infinite]" viewBox="0 0 100 100">
                     <defs>
@@ -284,16 +360,16 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                         d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
                       />
                     </defs>
-                    <text className="text-[8.5px] font-extrabold uppercase tracking-[0.16em] fill-[#0580FF]">
+                    <text className="text-[8px] font-extrabold uppercase tracking-[0.14em] fill-[#0580FF]">
                       <textPath href="#circlePathTop" startOffset="0%">
-                        FOOD KIOSK &amp; BAR ★ RAMSGATE ★
+                        FRANKIES AT THE BEACH ★ RAMSGATE ★
                       </textPath>
                     </text>
                   </svg>
 
-                  {/* Center Food Kiosk Icon */}
-                  <div className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-[#f0f9fa] flex items-center justify-center border border-[#0580FF]/20">
-                    <UtensilsCrossed className="w-6 h-6 text-[#0580FF] stroke-[2.4]" />
+                  {/* Center Beach & Fun Icon */}
+                  <div className="absolute inset-0 m-auto w-11 h-11 rounded-full bg-[#f0f9fa] flex items-center justify-center border border-[#0580FF]/20">
+                    <Sparkles className="w-5 h-5 text-[#0580FF] fill-current" />
                   </div>
                 </div>
               </div>

@@ -384,60 +384,32 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-gray-50 rounded-2xl p-3 border border-gray-200/60 flex items-center gap-3">
                   <ClientImage
                     src={CLIENT_IMAGES.food1Burger}
-                    slotKey="menu:the-classic-smash"
-                    alt="Smash Burger"
+                    slotKey="menu:beef-burger"
+                    alt="Gourmet 6oz Beef Burger"
                     className="w-16 h-16 rounded-xl object-cover"
                   />
                   <div>
-                    <h4 className="font-heading font-extrabold text-xs text-[#000000]">Smash Cheeseburger</h4>
+                    <h4 className="font-heading font-extrabold text-xs text-[#000000]">6oz Beef Burger</h4>
                     <span className="text-[10px] text-emerald-700 font-bold">100+ positive mentions</span>
-                    <p className="text-[11px] text-gray-500 mt-0.5">Fresh Angus beef on brioche</p>
+                    <p className="text-[11px] text-gray-500 mt-0.5">100% prime beef on toasted brioche</p>
                   </div>
                 </div>
 
                 <div className="bg-gray-50 rounded-2xl p-3 border border-gray-200/60 flex items-center gap-3">
                   <ClientImage
-                    src={CLIENT_IMAGES.food2LoadedChips}
-                    slotKey="menu:pepperoni-melted-cheddar-fries"
-                    alt="Loaded Chips"
+                    src={CLIENT_IMAGES.pepperoniFries}
+                    slotKey="menu:pepperoni-cheese-loaded-fries"
+                    alt="Pepperoni & Cheese Loaded Fries"
                     className="w-16 h-16 rounded-xl object-cover"
                   />
                   <div>
-                    <h4 className="font-heading font-extrabold text-xs text-[#000000]">Loaded Seaside Chips</h4>
+                    <h4 className="font-heading font-extrabold text-xs text-[#000000]">Pepperoni Loaded Fries</h4>
                     <span className="text-[10px] text-emerald-700 font-bold">85+ positive mentions</span>
-                    <p className="text-[11px] text-gray-500 mt-0.5">Warm cheese sauce &amp; bacon</p>
-                  </div>
-                </div>
-
-                <div className="bg-gray-50 rounded-2xl p-3 border border-gray-200/60 flex items-center gap-3">
-                  <ClientImage
-                    src={CLIENT_IMAGES.hotWings}
-                    slotKey="site:hotWings"
-                    alt="Crispy BBQ Wings"
-                    className="w-16 h-16 rounded-xl object-cover"
-                  />
-                  <div>
-                    <h4 className="font-heading font-extrabold text-xs text-[#000000]">Crispy BBQ Wings</h4>
-                    <span className="text-[10px] text-emerald-700 font-bold">75+ positive mentions</span>
-                    <p className="text-[11px] text-gray-500 mt-0.5">Glazed in smoky sweet BBQ</p>
-                  </div>
-                </div>
-
-                <div className="bg-gray-50 rounded-2xl p-3 border border-gray-200/60 flex items-center gap-3">
-                  <ClientImage
-                    src={CLIENT_IMAGES.drinksMenu}
-                    slotKey="site:drinksMenu"
-                    alt="Coastal Drinks & Coffees"
-                    className="w-16 h-16 rounded-xl object-cover"
-                  />
-                  <div>
-                    <h4 className="font-heading font-extrabold text-xs text-[#000000]">Coastal Coffee &amp; Slushies</h4>
-                    <span className="text-[10px] text-emerald-700 font-bold">120+ positive mentions</span>
-                    <p className="text-[11px] text-gray-500 mt-0.5">Barista coffee, lattes &amp; iced drinks</p>
+                    <p className="text-[11px] text-gray-500 mt-0.5">Torched mature cheddar &amp; pepperoni</p>
                   </div>
                 </div>
               </div>

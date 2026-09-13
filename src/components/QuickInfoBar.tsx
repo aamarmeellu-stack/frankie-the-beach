@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, Waves, Utensils, Phone } from 'lucide-react';
+import { Clock, Sandwich, Utensils, Phone } from 'lucide-react';
 
 export const QuickInfoBar: React.FC = () => {
   return (
@@ -26,7 +26,7 @@ export const QuickInfoBar: React.FC = () => {
           {/* 2. BEACHFRONT */}
           <div className="flex items-center gap-3.5 sm:gap-4 md:px-6 pt-4 md:pt-0">
             <div className="w-11 h-11 flex items-center justify-center shrink-0 text-[#0580FF]">
-              <Waves className="w-8 h-8 stroke-[2.2]" />
+              <Sandwich className="w-8 h-8 stroke-[2.2]" />
             </div>
             <div>
               <p className="text-xs sm:text-sm font-extrabold tracking-wide uppercase text-[#000000] font-heading">

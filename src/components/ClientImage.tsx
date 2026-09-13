@@ -1,7 +1,7 @@
 import React, { useState, useEffect, memo } from 'react';
 import { useImages } from '../context/ImageContext';
 import { resolveImageOverride } from '../utils/slotMapping';
-import { Utensils, Waves, Coffee, Sparkles } from 'lucide-react';
+import { Utensils, UtensilsCrossed, Coffee, Sparkles } from 'lucide-react';
 
 interface ClientImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src?: string;
@@ -68,7 +68,7 @@ export const ClientImage: React.FC<ClientImageProps> = memo(({
           {isDrink ? (
             <Coffee className="w-5 h-5 text-[#0580FF]" />
           ) : isBeach ? (
-            <Waves className="w-5 h-5 text-[#0580FF]" />
+            <UtensilsCrossed className="w-5 h-5 text-[#0580FF]" />
           ) : (
             <Utensils className="w-5 h-5 text-[#0580FF]" />
           )}

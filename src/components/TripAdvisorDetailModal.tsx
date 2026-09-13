@@ -113,7 +113,7 @@ export const TripAdvisorDetailModal: React.FC<TripAdvisorDetailModalProps> = ({
               }`}
             >
               <Utensils className="w-3.5 h-3.5 text-emerald-300" />
-              <span>Restaurant ({TRIPADVISOR_PROFILES_DATA.restaurant.reviewCountLabel})</span>
+              <span>Food Kiosk &amp; Bar ({TRIPADVISOR_PROFILES_DATA.restaurant.reviewCountLabel})</span>
             </button>
 
             <button

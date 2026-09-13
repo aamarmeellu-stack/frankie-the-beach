@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   Utensils,
+  UtensilsCrossed,
   Sparkles,
   MapPin,
   ExternalLink,
@@ -76,7 +77,7 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
               {activeProfile === 'restaurant' && (
                 <>
                   <span>/</span>
-                  <span className="text-white">THE MAIN (RESTAURANT)</span>
+                  <span className="text-white">THE MAIN (FOOD KIOSK &amp; BAR)</span>
                 </>
               )}
               {activeProfile === 'attractions' && (
@@ -95,16 +96,16 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white font-heading">
               {activeProfile === 'restaurant'
-                ? "FRANKIE'S RESTAURANT & BAR"
+                ? "FRANKIE'S FOOD KIOSK & BAR"
                 : activeProfile === 'attractions'
                 ? "BEACH RIDES & ATTRACTIONS"
                 : "TRIPADVISOR ACCOLADES"}
             </h1>
 
-            <div className="flex justify-center my-3">
-              <svg viewBox="0 0 80 10" className="w-16 text-[#D1A03F] fill-none stroke-current stroke-[3] stroke-linecap-round">
-                <path d="M0 5 Q10 0 20 5 T40 5 T60 5 T80 5" />
-              </svg>
+            <div className="flex items-center justify-center gap-2 my-3 text-[#D1A03F]">
+              <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
+              <UtensilsCrossed className="w-4 h-4 text-[#ECD87A]" />
+              <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
             </div>
 
             <p className="text-base sm:text-lg text-sky-100 max-w-2xl mx-auto font-medium">
@@ -153,7 +154,7 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
                   </span>
                 </div>
                 <h3 className="text-sm font-heading font-extrabold text-[#000000] truncate">
-                  Frankie's Restaurant &amp; Food
+                  Frankie's Food Kiosk &amp; Bar
                 </h3>
                 <div className="flex items-center gap-1.5 mt-0.5">
                   <div className="flex gap-0.5">

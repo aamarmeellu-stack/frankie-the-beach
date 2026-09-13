@@ -4,7 +4,7 @@ import {
   Clock,
   MapPin,
   Phone,
-  Waves,
+  UtensilsCrossed,
   Facebook,
 } from 'lucide-react';
 import { TRIPADVISOR_LINKS, FRANKIES_FACEBOOK_URL } from '../data/restaurantData';
@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
                 <span className="font-script text-3xl sm:text-4xl text-white tracking-wide font-bold group-hover:text-[#ECD87A] transition-colors">
                   Frankie's
                 </span>
-                <Waves className="w-6 h-6 text-[#ECD87A] stroke-[2.2] -rotate-6 -ml-1 transition-transform group-hover:rotate-0" />
+                <UtensilsCrossed className="w-6 h-6 text-[#ECD87A] stroke-[2.2] rotate-12 -ml-1 transition-transform group-hover:rotate-0" />
               </div>
               <span className="text-[10px] font-extrabold tracking-[0.28em] text-[#ECD87A] uppercase -mt-1 font-heading">
                 @ THE BEACH
@@ -32,7 +32,7 @@ export const Footer: React.FC = () => {
             </Link>
 
             <p className="text-xs text-white/70 leading-relaxed max-w-xs">
-              Ramsgate's seafront food kiosk and bar for authentic smash burgers, proper seaside chips, jumbo dogs, cold drinks, and traditional 99 whippy cones.
+              Ramsgate's seafront food kiosk and bar for gourmet 6oz steak burgers, proper seaside chips, jumbo dogs, cold drinks, and traditional 99 whippy cones.
             </p>
 
             {/* Social Link - Facebook Only */}
@@ -157,9 +157,10 @@ export const Footer: React.FC = () => {
               <p className="font-hand text-2xl sm:text-3xl text-[#D1A03F] font-bold tracking-wide">
                 See you at the beach!
               </p>
-              <svg viewBox="0 0 120 12" className="w-24 text-[#D1A03F] fill-none stroke-current stroke-[2.5] stroke-linecap-round mt-0.5">
-                <path d="M0 6 Q15 0 30 6 T60 6 T90 6 T120 6" />
-              </svg>
+              <div className="flex items-center gap-2 text-[#D1A03F] mt-1">
+                <UtensilsCrossed className="w-4 h-4 text-[#ECD87A]" />
+                <div className="h-0.5 w-16 bg-[#D1A03F]/60 rounded-full"></div>
+              </div>
             </div>
           </div>
 
@@ -206,23 +207,17 @@ export const Footer: React.FC = () => {
 
         </div>
 
-        {/* Bottom Bar with Copyright & Palm Tree / Wave Line Art */}
+        {/* Bottom Bar with Copyright & Branding */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
           <div>
             <p>© 2026 Frankie's @ the beach. All rights reserved.</p>
           </div>
 
-          <div className="flex items-center gap-2 text-white/40">
-            <svg
-              viewBox="0 0 120 30"
-              className="w-28 h-7 text-white/30 fill-none stroke-current stroke-[1.8] stroke-linecap-round"
-            >
-              <path d="M2 24 Q16 16 30 24 T60 24 T90 24 T118 24" />
-              <path d="M102 24 C100 16 102 8 106 2" />
-              <path d="M106 2 C100 0 94 4 92 6" />
-              <path d="M106 2 C112 0 118 4 120 6" />
-              <path d="M106 2 C104 -2 108 -6 110 -7" />
-            </svg>
+          <div className="flex items-center gap-2 text-white/50">
+            <UtensilsCrossed className="w-4 h-4 text-[#ECD87A]" />
+            <span className="text-[11px] font-heading font-extrabold uppercase tracking-wider text-[#ECD87A]">
+              Food Kiosk &amp; Bar Ramsgate
+            </span>
           </div>
         </div>
 

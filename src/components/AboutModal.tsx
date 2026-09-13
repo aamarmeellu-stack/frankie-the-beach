@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Waves, Award, Heart, Sunset } from 'lucide-react';
+import { X, UtensilsCrossed, Award, Heart, Sunset } from 'lucide-react';
 import { ASSETS } from '../data/restaurantData';
 import { ClientImage } from './ClientImage';
 
@@ -45,7 +45,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({
 
           <div className="absolute bottom-6 left-6 text-white">
             <div className="flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-widest font-heading mb-1">
-              <Waves className="w-4 h-4 text-[#D1A03F]" />
+              <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
               ESTABLISHED ON RAMSGATE BEACH, KENT
             </div>
             <h2 className="text-2xl sm:text-3xl font-heading font-extrabold uppercase">

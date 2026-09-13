@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Waves,
+  UtensilsCrossed,
   Camera,
   X,
   ChevronLeft,
@@ -61,19 +61,19 @@ export const GalleryPage: React.FC = () => {
             </nav>
 
             <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-amber-300 font-heading mb-2">
-              <Waves className="w-4 h-4 text-[#D1A03F]" />
+              <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
               <span>REAL PHOTOS FROM FRANKIE'S AT THE BEACH</span>
-              <Waves className="w-4 h-4 text-[#D1A03F]" />
+              <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white font-heading">
               BEACHFRONT GALLERY
             </h1>
 
-            <div className="flex justify-center my-3">
-              <svg viewBox="0 0 80 10" className="w-16 text-[#D1A03F] fill-none stroke-current stroke-[3] stroke-linecap-round">
-                <path d="M0 5 Q10 0 20 5 T40 5 T60 5 T80 5" />
-              </svg>
+            <div className="flex items-center justify-center gap-2 my-3 text-[#D1A03F]">
+              <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
+              <UtensilsCrossed className="w-4 h-4 text-[#ECD87A]" />
+              <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
             </div>
 
             <p className="text-base sm:text-lg text-sky-100 max-w-xl mx-auto font-medium">
@@ -90,7 +90,7 @@ export const GalleryPage: React.FC = () => {
         <div className="bg-white rounded-2xl p-3 sm:p-4 border border-[#dde0d5] shadow-sm mb-8 flex items-center justify-center gap-2 overflow-x-auto scrollbar-none flex-wrap">
           {[
             { id: 'all', label: `All Photos (${galleryItems.length})` },
-            { id: 'kiosk-team', label: 'Beach Kiosk & Team' },
+            { id: 'kiosk-team', label: 'Food Kiosk & Bar Team' },
             { id: 'burgers-dogs', label: 'Smash Burgers & Dogs' },
             { id: 'loaded-fries', label: 'Loaded Chips & Sides' },
             { id: 'treats', label: '99 Cones & Slushes' },
@@ -198,7 +198,7 @@ export const GalleryPage: React.FC = () => {
             {/* Top Bar */}
             <div className="p-4 sm:p-5 flex items-center justify-between border-b border-white/10 bg-[#04191f]">
               <div className="flex items-center gap-2">
-                <Waves className="w-5 h-5 text-[#D1A03F]" />
+                <UtensilsCrossed className="w-5 h-5 text-[#D1A03F]" />
                 <span className="font-heading font-extrabold text-sm uppercase tracking-wider text-white truncate max-w-md">
                   {filteredItems[selectedImageIndex].title}
                 </span>

@@ -8,6 +8,7 @@ import {
   Sparkles,
   ExternalLink,
   Utensils,
+  UtensilsCrossed,
   MapPin,
   ShieldCheck,
   Heart,
@@ -95,10 +96,10 @@ export const ReviewsPage: React.FC = () => {
               AUTHENTIC REVIEWS &amp; RATINGS
             </h1>
 
-            <div className="flex justify-center my-3">
-              <svg viewBox="0 0 80 10" className="w-16 text-[#D1A03F] fill-none stroke-current stroke-[3] stroke-linecap-round">
-                <path d="M0 5 Q10 0 20 5 T40 5 T60 5 T80 5" />
-              </svg>
+            <div className="flex items-center justify-center gap-2 my-3 text-[#D1A03F]">
+              <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
+              <UtensilsCrossed className="w-4 h-4 text-[#ECD87A]" />
+              <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
             </div>
 
             <p className="text-base sm:text-lg text-sky-100 max-w-2xl mx-auto font-medium">
@@ -132,7 +133,7 @@ export const ReviewsPage: React.FC = () => {
                   TripAdvisor (The Main)
                 </span>
                 <h3 className="text-xs sm:text-sm font-heading font-extrabold text-[#000000] truncate">
-                  Restaurant &amp; Food
+                  Food Kiosk &amp; Bar
                 </h3>
                 <div className="flex items-center gap-1 mt-0.5">
                   <span className="text-xs font-black text-gray-900">4.9</span>

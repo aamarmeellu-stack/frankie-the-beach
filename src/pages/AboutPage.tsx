@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Waves,
+  UtensilsCrossed,
   Sparkles,
   MapPin,
   Heart,
@@ -37,19 +37,19 @@ export const AboutPage: React.FC = () => {
             </nav>
 
             <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-amber-300 font-heading mb-2">
-              <Waves className="w-4 h-4 text-[#D1A03F]" />
+              <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
               <span>THE TRUE STORY BEHIND FRANKIE'S</span>
-              <Waves className="w-4 h-4 text-[#D1A03F]" />
+              <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white font-heading">
               OUR STORY
             </h1>
 
-            <div className="flex justify-center my-3">
-              <svg viewBox="0 0 80 10" className="w-16 text-[#D1A03F] fill-none stroke-current stroke-[3] stroke-linecap-round">
-                <path d="M0 5 Q10 0 20 5 T40 5 T60 5 T80 5" />
-              </svg>
+            <div className="flex items-center justify-center gap-2 my-3 text-[#D1A03F]">
+              <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
+              <UtensilsCrossed className="w-4 h-4 text-[#ECD87A]" />
+              <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
             </div>
 
             <p className="text-base sm:text-lg text-sky-100 max-w-2xl mx-auto font-medium leading-relaxed">
@@ -324,7 +324,7 @@ export const AboutPage: React.FC = () => {
         <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#dde0d5] shadow-sm">
           <div className="text-center max-w-2xl mx-auto mb-8">
             <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0580FF] font-heading bg-sky-50 border border-sky-200/80 px-3.5 py-1.5 rounded-full mb-3">
-              <Waves className="w-4 h-4 text-[#D1A03F]" />
+              <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
               <span>Right Beside Frankie's Food Kiosk &amp; Bar</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold uppercase text-[#000000] font-heading">
@@ -359,7 +359,7 @@ export const AboutPage: React.FC = () => {
                 src: clientImages.childrenCarousel,
                 slotKey: 'site:childrenCarousel',
                 title: 'Vintage Seaside Carousel',
-                desc: 'Traditional red and yellow scalloped carousel ride right beside the waves.',
+                desc: 'Traditional red and yellow scalloped carousel ride right on the seaside sands.',
               },
             ].map((ride, idx) => (
               <div
@@ -397,7 +397,7 @@ export const AboutPage: React.FC = () => {
         <div className="bg-[#004fb3] text-white rounded-3xl p-8 sm:p-12 shadow-xl">
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <div className="inline-flex items-center gap-2 text-amber-300 text-xs font-extrabold uppercase tracking-widest font-heading">
-              <Waves className="w-4 h-4 text-[#D1A03F]" />
+              <UtensilsCrossed className="w-4 h-4 text-amber-300" />
               <span>SEE YOU BY THE SEA!</span>
             </div>
 

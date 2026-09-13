@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import {
   Menu as MenuIcon,
   X,
-  Waves,
+  UtensilsCrossed,
   ChevronDown,
   ExternalLink,
   Utensils,
@@ -92,7 +92,7 @@ export const Header: React.FC<HeaderProps> = () => {
                 <span className="font-script text-2xl sm:text-4xl text-white tracking-wide font-bold group-hover:text-[#ECD87A] transition-colors drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
                   Frankie's
                 </span>
-                <Waves className="w-5 h-5 sm:w-6 sm:h-6 text-[#ECD87A] stroke-[2.4] -rotate-6 -ml-0.5 sm:-ml-1 transition-transform group-hover:rotate-0 shrink-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]" />
+                <UtensilsCrossed className="w-5 h-5 sm:w-6 sm:h-6 text-[#ECD87A] stroke-[2.4] rotate-12 -ml-0.5 sm:-ml-1 transition-transform group-hover:rotate-0 shrink-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]" />
               </div>
               <div className="flex items-center gap-1.5 -mt-1">
                 <span className="text-[9px] sm:text-[11px] font-extrabold tracking-[0.24em] sm:tracking-[0.28em] text-[#ECD87A] uppercase font-heading drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
@@ -199,7 +199,7 @@ export const Header: React.FC<HeaderProps> = () => {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-1">
                           <h4 className="text-xs font-heading font-extrabold text-[#000000] group-hover:text-emerald-800 transition-colors">
-                            The Main: Restaurant &amp; Food Page
+                            The Main: Food Kiosk &amp; Bar Page
                           </h4>
                           <span className="text-[9px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">
                             Dedicated Page
@@ -401,7 +401,7 @@ export const Header: React.FC<HeaderProps> = () => {
                       <div className="flex items-center gap-2">
                         <Utensils className="w-4 h-4 text-emerald-300 shrink-0" />
                         <span className="text-xs font-heading font-extrabold text-white group-hover:text-[#D1A03F]">
-                          The Main: Restaurant &amp; Food
+                          The Main: Food Kiosk &amp; Bar
                         </span>
                       </div>
                       <span className="text-[9px] font-bold text-emerald-300 bg-emerald-900/50 px-1.5 py-0.5 rounded">

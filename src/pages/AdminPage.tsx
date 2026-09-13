@@ -20,7 +20,7 @@ import {
   Sparkles,
   Eye,
   FileText,
-  Waves,
+  UtensilsCrossed,
   ArrowRight,
   Info,
   X,
@@ -73,7 +73,7 @@ export const AdminPage: React.FC = () => {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [fileDetails, setFileDetails] = useState<{ size: string; name: string } | null>(null);
   const [uploadDestination, setUploadDestination] = useState<'library' | 'menu' | 'site' | 'gallery-slot' | 'gallery' | 'new-menu-item' | 'logo'>('library');
-  const [targetSlot, setTargetSlot] = useState<string>('the-classic-smash');
+  const [targetSlot, setTargetSlot] = useState<string>('beef-burger');
   const [customTitle, setCustomTitle] = useState('');
   const [customCategory, setCustomCategory] = useState('burgers-dogs');
   const [customDesc, setCustomDesc] = useState('');
@@ -89,7 +89,7 @@ export const AdminPage: React.FC = () => {
   const [slotSearch, setSlotSearch] = useState('');
   const [libraryPickerSlot, setLibraryPickerSlot] = useState<UnifiedSlot | null>(null);
   const [assignModalImage, setAssignModalImage] = useState<UploadedImage | null>(null);
-  const [assignModalTarget, setAssignModalTarget] = useState<string>('the-classic-smash');
+  const [assignModalTarget, setAssignModalTarget] = useState<string>('beef-burger');
   const [assignModalCategory, setAssignModalCategory] = useState<'all' | 'menu' | 'site' | 'gallery'>('all');
   const [assignModalSearch, setAssignModalSearch] = useState('');
 
@@ -729,7 +729,7 @@ export const AdminPage: React.FC = () => {
                           checked={uploadDestination === 'menu'}
                           onChange={() => {
                             setUploadDestination('menu');
-                            setTargetSlot(menuItems[0]?.id || 'the-classic-smash');
+                            setTargetSlot(menuItems[0]?.id || 'beef-burger');
                           }}
                           className="mt-0.5 text-[#0580FF] focus:ring-[#0580FF]"
                         />
@@ -891,7 +891,7 @@ export const AdminPage: React.FC = () => {
                           type="text"
                           value={customTitle}
                           onChange={(e) => setCustomTitle(e.target.value)}
-                          placeholder="e.g. Sunset Burgers by the Waves"
+                          placeholder="e.g. Sunset Burgers by the Beach"
                           className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-xs"
                         />
                       </div>
@@ -1130,7 +1130,7 @@ export const AdminPage: React.FC = () => {
                           <span className="font-script text-xl font-bold text-white">
                             Frankie's
                           </span>
-                          <Waves className="w-4 h-4 text-[#D1A03F]" />
+                          <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
                         </div>
                         <span className="text-[8px] font-extrabold tracking-widest text-[#D1A03F] uppercase block font-heading">
                           @ THE BEACH

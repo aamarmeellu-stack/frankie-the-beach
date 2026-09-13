@@ -8,7 +8,7 @@ import { CateringShowcase } from '../components/CateringShowcase';
 import {
   Utensils,
   Calendar,
-  Waves,
+  UtensilsCrossed,
   ArrowRight,
   Flame,
   Clock,
@@ -85,9 +85,9 @@ export const HomePage: React.FC = () => {
               <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-white p-3.5 rounded-2xl shadow-xl border border-[#dde0d5] flex items-center gap-3 max-w-xs">
                 <ClientImage
                   src={clientImages.food1Burger}
-                  slotKey="menu:the-classic-smash"
+                  slotKey="menu:beef-burger"
                   fallbackSrc={ASSETS.fallbacks.heroBurger}
-                  alt="Classic Smash Burger"
+                  alt="Gourmet 6oz Steak Burger"
                   className="w-14 h-14 rounded-xl object-cover"
                   priority
                 />
@@ -95,13 +95,13 @@ export const HomePage: React.FC = () => {
                   <div className="flex items-center gap-1 text-[#D1A03F]">
                     <Sparkles className="w-3.5 h-3.5 fill-current" />
                     <span className="text-[10px] font-black uppercase tracking-wider text-[#0580FF]">
-                      100% Prime Angus
+                      100% Prime Beef
                     </span>
                   </div>
                   <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
-                    Seared Fresh Daily
+                    Gourmet 6oz Steak
                   </h4>
-                  <p className="text-[11px] text-gray-500">Flat-top caramelised crust</p>
+                  <p className="text-[11px] text-gray-500">Cooked to juicy perfection</p>
                 </div>
               </div>
             </div>
@@ -109,16 +109,16 @@ export const HomePage: React.FC = () => {
             {/* Right Story & Highlights */}
             <div className="lg:col-span-6 space-y-6">
               <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#0580FF] font-heading">
-                <Waves className="w-4 h-4 text-[#D1A03F]" />
+                <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
                 <span>RAMSGATE SEAFRONT VIBES</span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-[#000000] font-heading leading-tight">
-                CRISPY SMASH BURGERS, PROPER CHIPS &amp; SEA BREEZES.
+                GOURMET 6oz STEAK BURGERS, PROPER CHIPS &amp; SEA BREEZES.
               </h2>
 
               <p className="text-sm sm:text-base text-[#496068] leading-relaxed">
-                Frankie's @ the Beach is your quintessential seaside food kiosk and bar in Ramsgate for proper food, cold beers, 99 whippy ice creams, and laid-back beachside vibes. Whether you're popping in for a quick bite, a refreshing drink by the waves, a family day on the sand, or a sunset stroll along the promenade — we've got you sorted.
+                Frankie's @ the Beach is your quintessential seaside food kiosk and bar in Ramsgate for proper food, cold beers, 99 whippy ice creams, and laid-back beachside vibes. Whether you're popping in for a quick bite, a refreshing drink by the beach, a family day on the sand, or a sunset stroll along the promenade — we've got you sorted.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -128,17 +128,17 @@ export const HomePage: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
-                      Freshly Smashed Beef
+                      Juicy 6oz Steak Patties
                     </h4>
                     <p className="text-[11px] text-[#556d75] mt-0.5">
-                      Prime beef seared hard on the flat-top with caramelised lacy crispy borders.
+                      100% prime beef 6oz steak patties flame-grilled to juicy perfection.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#f8f9f5] border border-[#e4e8dd]">
                   <div className="w-9 h-9 rounded-lg bg-[#0580FF] text-white flex items-center justify-center shrink-0">
-                    <Waves className="w-5 h-5 text-[#D1A03F]" />
+                    <UtensilsCrossed className="w-5 h-5 text-[#D1A03F]" />
                   </div>
                   <div>
                     <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
@@ -184,13 +184,13 @@ export const HomePage: React.FC = () => {
             <h2 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-[#000000] font-heading mt-1">
               EXPLORE OUR SEASIDE SPECIALS
             </h2>
-            <div className="flex justify-center my-3">
-              <svg viewBox="0 0 80 10" className="w-16 text-[#D1A03F] fill-none stroke-current stroke-[3] stroke-linecap-round">
-                <path d="M0 5 Q10 0 20 5 T40 5 T60 5 T80 5" />
-              </svg>
+            <div className="flex items-center justify-center gap-2 my-3 text-[#D1A03F]">
+              <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
+              <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
+              <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
             </div>
             <p className="text-sm text-[#496068]">
-              From jumbo promenade dogs to traditional 99 whippy cones with Flakes, discover what makes Frankie's Ramsgate's favourite food kiosk and bar.
+              From gourmet footlong hot dogs to traditional 99 whippy cones with Flakes, discover what makes Frankie's Ramsgate's favourite food kiosk and bar.
             </p>
           </div>
 
@@ -203,22 +203,22 @@ export const HomePage: React.FC = () => {
               <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                 <ClientImage
                   src={clientImages.food1Burger}
-                  slotKey="menu:the-classic-smash"
+                  slotKey="menu:beef-burger"
                   fallbackSrc={ASSETS.fallbacks.heroBurger}
-                  alt="Signature Smash Burgers"
+                  alt="Gourmet 6oz Steak Burgers"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <span className="absolute top-3 left-3 bg-[#0580FF] text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded">
-                  SMASH BURGERS
+                  GOURMET 6oz STEAK BURGERS
                 </span>
               </div>
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
-                    Classic Smash Burgers
+                    Gourmet 6oz Steak Burgers
                   </h3>
                   <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
-                    Prime beef patties, melted mature cheddar, and toasted brioche seared with caramelised lacy edges.
+                    Juicy 6oz steak patties cooked to perfection with mature cheddar, thick Danish bacon, stilton, or specialty bajan sauce.
                   </p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0580FF]">
@@ -230,7 +230,7 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            {/* Category Card 2: Pepperoni & Loaded Chips */}
+            {/* Category Card 2: Gourmet Crispy French Fries */}
             <div
               onClick={() => navigate('/menu')}
               className="bg-white rounded-2xl overflow-hidden border border-[#dde0d5] shadow-sm hover:shadow-lg transition-all cursor-pointer group flex flex-col justify-between"
@@ -238,22 +238,22 @@ export const HomePage: React.FC = () => {
               <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                 <ClientImage
                   src={clientImages.pepperoniFries}
-                  slotKey="menu:pepperoni-melted-cheddar-fries"
+                  slotKey="menu:pepperoni-cheese-loaded-fries"
                   fallbackSrc={ASSETS.loadedFries}
-                  alt="Pepperoni & Mature Cheddar Loaded Chips"
+                  alt="Gourmet Crispy French Fries"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <span className="absolute top-3 left-3 bg-[#0580FF] text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded">
-                  LOADED SEASIDE CHIPS
+                  CRISPY FRENCH FRIES
                 </span>
               </div>
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
-                    Pepperoni &amp; Loaded Chips
+                    Gourmet Crispy Fries
                   </h3>
                   <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
-                    Triple-cooked seaside chips loaded with melted mature English cheddar, grilled pepperoni slices, and wooden forks.
+                    Golden French fries loaded with mature cheddar torched to perfection, with bacon, chorizo, pepperoni, or southern fried chicken.
                   </p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0580FF]">
@@ -433,7 +433,7 @@ export const HomePage: React.FC = () => {
       <section className="bg-[#004fb3] py-16 text-white text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 space-y-5">
           <div className="inline-flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-widest font-heading">
-            <Waves className="w-4 h-4 text-[#D1A03F]" />
+            <UtensilsCrossed className="w-4 h-4 text-amber-300" />
             <span>JOIN US BY THE SEA</span>
           </div>
 
@@ -442,7 +442,7 @@ export const HomePage: React.FC = () => {
           </h2>
 
           <p className="text-sm sm:text-base text-sky-100 max-w-2xl mx-auto leading-relaxed">
-            Drop by our food kiosk and bar at Kiosk 1, Marina Esplanade for signature smash burgers, loaded chips, cold drinks, 99 whippy cones, and kids' beach rides right on the sand. Walk-ins are always welcomed by the waves!
+            Drop by our food kiosk and bar at Kiosk 1, Marina Esplanade for gourmet 6oz steak burgers, loaded chips, cold drinks, 99 whippy cones, and kids' beach rides right on the sand. Walk-ins are always welcomed by the beach!
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-3">

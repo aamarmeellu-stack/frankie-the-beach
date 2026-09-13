@@ -11,10 +11,10 @@ export const ChefsFavorites: React.FC<ChefsFavoritesProps> = ({
   onViewFullMenu,
 }) => {
   const [favorites, setFavorites] = useState<Record<string, boolean>>({
-    'beach-classic': true,
-    'bacon-wave': true,
-    'spicy-beach': true,
-    'loaded-fries': true,
+    'beef-burger': true,
+    'bacon-cheese-burger': true,
+    'pepperoni-cheese-loaded-fries': true,
+    'the-footlong-frankfurter': true,
   });
 
   const toggleFavorite = (id: string) => {

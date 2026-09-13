@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, Printer, Download, Waves, MessageSquare } from 'lucide-react';
+import { X, Printer, Download, UtensilsCrossed, MessageSquare } from 'lucide-react';
 import { OFFICIAL_MENU } from '../data/restaurantData';
 
 interface MenuPdfModalProps {
@@ -8,9 +8,10 @@ interface MenuPdfModalProps {
 }
 
 const MENU_CATEGORIES = [
-  { id: 'burgers', title: 'SMASH BURGERS' },
-  { id: 'hot-dogs', title: 'JUMBO PROMENADE DOGS' },
-  { id: 'loaded-fries', title: 'PROPER SEASIDE CHIPS' },
+  { id: 'burgers', title: 'GOURMET 6oz STEAK BURGERS' },
+  { id: 'chicken-burgers', title: 'GOURMET CHICKEN & SPECIALITY BURGERS' },
+  { id: 'hot-dogs', title: 'GOURMET HOT DOGS' },
+  { id: 'loaded-fries', title: 'GOURMET CRISPY FRENCH FRIES' },
   { id: 'ice-cream', title: '99 WHIPPY CONES & TREATS' },
 ];
 
@@ -55,7 +56,7 @@ export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) =
       content += `---------------------------------------------------------\n\n`;
     });
 
-    content += `See you at the seaside! 🌊🍔`;
+    content += `See you at the seaside! 🍔🍦`;
 
     const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
@@ -77,7 +78,7 @@ export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) =
         {/* Top Control Bar */}
         <div className="bg-[#004fb3] text-white p-3.5 sm:p-5 flex items-center justify-between no-print border-b border-white/10">
           <div className="flex items-center gap-2">
-            <Waves className="w-5 h-5 text-[#D1A03F]" />
+            <UtensilsCrossed className="w-5 h-5 text-[#D1A03F]" />
             <span className="font-heading font-extrabold text-xs sm:text-base uppercase tracking-wider">
               FRANKIE'S PRINTABLE MENU (PDF)
             </span>
@@ -118,11 +119,11 @@ export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) =
           {/* Header */}
           <div className="text-center pb-6 border-b-2 border-dashed border-[#0580FF]/30">
             <div className="flex items-center justify-center gap-2 text-[#D1A03F] mb-1">
-              <Waves className="w-6 h-6" />
+              <UtensilsCrossed className="w-6 h-6" />
               <span className="font-heading font-black text-2xl tracking-wider text-[#0580FF]">
                 Frankie's @ THE BEACH
               </span>
-              <Waves className="w-6 h-6" />
+              <UtensilsCrossed className="w-6 h-6" />
             </div>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#0580FF]">
               OUR OFFICIAL SEASIDE MENU

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Utensils,
+  UtensilsCrossed,
   Play,
   Pause,
   Volume2,
@@ -105,14 +106,14 @@ export const CateringShowcase: React.FC = () => {
             BRING FRANKIE'S FEAST TO YOUR NEXT EVENT
           </h2>
 
-          <div className="flex justify-center my-3">
-            <svg viewBox="0 0 80 10" className="w-16 text-[#D1A03F] fill-none stroke-current stroke-[3] stroke-linecap-round">
-              <path d="M0 5 Q10 0 20 5 T40 5 T60 5 T80 5" />
-            </svg>
+          <div className="flex items-center justify-center gap-2 my-3 text-[#D1A03F]">
+            <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
+            <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
+            <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
           </div>
 
           <p className="text-sm sm:text-base text-[#496068] leading-relaxed">
-            Planning a beach gathering, wedding celebration, birthday party, corporate seaside day, or family get-together on Ramsgate Sands? We serve freshly seared smash burgers, loaded chips, jumbo promenade dogs, and 99 whippy cones right beside the waves.
+            Planning a beach gathering, wedding celebration, birthday party, corporate seaside day, or family get-together on Ramsgate Sands? We serve freshly seared smash burgers, loaded chips, jumbo promenade dogs, and 99 whippy cones right on Ramsgate beach.
           </p>
         </div>
 

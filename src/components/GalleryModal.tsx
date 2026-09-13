@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, ChevronLeft, ChevronRight, Waves } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, UtensilsCrossed } from 'lucide-react';
 import { ASSETS } from '../data/restaurantData';
 import { ClientImage } from './ClientImage';
 
@@ -58,7 +58,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({ isOpen, onClose }) =
         {/* Header */}
         <div className="p-4 sm:p-5 flex items-center justify-between border-b border-white/10 bg-[#051a20]">
           <div className="flex items-center gap-2">
-            <Waves className="w-5 h-5 text-[#D1A03F]" />
+            <UtensilsCrossed className="w-5 h-5 text-[#D1A03F]" />
             <h3 className="font-heading font-extrabold text-sm sm:text-base uppercase tracking-wider">
               FRANKIE'S SEASIDE GALLERY
             </h3>

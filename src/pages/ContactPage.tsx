@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Waves,
+  UtensilsCrossed,
   MapPin,
   Clock,
   Phone,
@@ -73,23 +73,23 @@ export const ContactPage: React.FC = () => {
             </nav>
 
             <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-amber-300 font-heading mb-2">
-              <Waves className="w-4 h-4 text-[#D1A03F]" />
+              <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
               <span>KIOSK 1, MARINA ESPLANADE • RAMSGATE CT11 8LS</span>
-              <Waves className="w-4 h-4 text-[#D1A03F]" />
+              <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white font-heading">
               CONTACT & LOCATION
             </h1>
 
-            <div className="flex justify-center my-3">
-              <svg viewBox="0 0 80 10" className="w-16 text-[#D1A03F] fill-none stroke-current stroke-[3] stroke-linecap-round">
-                <path d="M0 5 Q10 0 20 5 T40 5 T60 5 T80 5" />
-              </svg>
+            <div className="flex items-center justify-center gap-2 my-3 text-[#D1A03F]">
+              <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
+              <UtensilsCrossed className="w-4 h-4 text-[#ECD87A]" />
+              <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
             </div>
 
             <p className="text-base sm:text-lg text-sky-100 max-w-xl mx-auto font-medium">
-              Drop by our beachfront food kiosk and bar on Ramsgate Main Sands or reach out directly for enquiries, groups, and beach updates. Walk-ins are always welcomed by the waves!
+              Drop by our beachfront food kiosk and bar on Ramsgate Main Sands or reach out directly for enquiries, groups, and beach updates. Walk-ins are always welcomed by the beach!
             </p>
           </div>
         </div>

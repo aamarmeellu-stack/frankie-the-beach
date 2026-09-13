@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Utensils, MapPin, Waves, Volume2, VolumeX, Play, Pause, Video } from 'lucide-react';
+import { Utensils, MapPin, UtensilsCrossed, Sandwich, IceCream, Volume2, VolumeX, Play, Pause, Video } from 'lucide-react';
 import { ASSETS } from '../data/restaurantData';
 import { ClientImage } from './ClientImage';
 import { useImages } from '../context/ImageContext';
@@ -131,27 +131,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
         </div>
       )}
 
-      {/* 2. Coastal Ambient Wave Patterns & Sun Flares */}
+      {/* 2. Coastal Ambient Sun Flares & Atmosphere */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0 opacity-30">
-        {/* Coastal rolling wave silhouette */}
-        <svg
-          className="absolute -top-10 -left-16 w-[500px] h-[500px] text-[#001226] transform -rotate-6 filter blur-[1px]"
-          viewBox="0 0 200 200"
-          fill="currentColor"
-        >
-          <path d="M0 100 C 40 70, 70 130, 110 90 C 150 50, 180 120, 200 80 L 200 0 L 0 0 Z" />
-          <path d="M0 140 C 50 110, 90 160, 140 120 C 170 100, 190 140, 200 130 L 200 0 L 0 0 Z" opacity="0.6" />
-        </svg>
-
-        {/* Coastal sea spray light effect */}
-        <svg
-          className="absolute -top-16 -right-16 w-[480px] h-[480px] text-[#001833] transform rotate-12 filter blur-[1px]"
-          viewBox="0 0 200 200"
-          fill="currentColor"
-        >
-          <path d="M0 80 C 60 40, 100 120, 160 70 C 180 55, 190 90, 200 80 L 200 0 L 0 0 Z" />
-        </svg>
-
         {/* Sunny English Channel caustics & glimmers */}
         <div className="absolute top-1/4 right-10 w-[500px] h-[500px] bg-cyan-300/15 rounded-full blur-3xl mix-blend-overlay"></div>
         <div className="absolute top-12 left-1/4 w-96 h-96 bg-amber-200/15 rounded-full blur-3xl mix-blend-screen"></div>
@@ -164,7 +145,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
           <div className="lg:col-span-6 xl:col-span-5 text-left pt-2 lg:pt-0">
             {/* Seaside Food Kiosk & Bar Badge */}
             <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/25 text-xs font-bold text-white mb-4 shadow-sm">
-              <Waves className="w-4 h-4 text-amber-300" />
+              <UtensilsCrossed className="w-4 h-4 text-amber-300" />
               <span className="uppercase tracking-widest text-[11px] font-heading text-amber-200 font-extrabold">
                 FOOD KIOSK &amp; BAR • RAMSGATE MAIN SANDS
               </span>
@@ -179,23 +160,19 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
               </h1>
             </div>
 
-            {/* Golden Triple Wavy Lines */}
-            <div className="mt-5 mb-5 flex flex-col gap-1.5 w-24">
-              <svg viewBox="0 0 100 12" className="w-20 text-[#D1A03F] fill-none stroke-current stroke-[3.5] stroke-linecap-round stroke-linejoin-round drop-shadow-sm">
-                <path d="M0 6 Q12.5 0 25 6 T50 6 T75 6 T100 6" />
-              </svg>
-              <svg viewBox="0 0 100 12" className="w-20 text-[#D1A03F] fill-none stroke-current stroke-[3.5] stroke-linecap-round stroke-linejoin-round -mt-1 drop-shadow-sm">
-                <path d="M0 6 Q12.5 0 25 6 T50 6 T75 6 T100 6" />
-              </svg>
-              <svg viewBox="0 0 100 12" className="w-20 text-[#D1A03F] fill-none stroke-current stroke-[3.5] stroke-linecap-round stroke-linejoin-round -mt-1 drop-shadow-sm">
-                <path d="M0 6 Q12.5 0 25 6 T50 6 T75 6 T100 6" />
-              </svg>
+            {/* Food Items Golden Accent Divider */}
+            <div className="mt-5 mb-5 flex items-center gap-3 text-[#ECD87A]">
+              <div className="h-0.5 w-8 bg-gradient-to-r from-transparent to-[#D1A03F]"></div>
+              <UtensilsCrossed className="w-5 h-5 text-[#ECD87A] drop-shadow-sm" />
+              <Sandwich className="w-5 h-5 text-[#D1A03F] drop-shadow-sm" />
+              <IceCream className="w-5 h-5 text-[#ECD87A] drop-shadow-sm" />
+              <div className="h-0.5 w-8 bg-gradient-to-l from-transparent to-[#D1A03F]"></div>
             </div>
 
             {/* Subtext */}
             <div className="space-y-1 text-white text-lg sm:text-xl font-medium tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">
-              <p>Fresh Smash Burgers. Hand-Cut Seaside Chips. Sea Views.</p>
-              <p className="text-sky-100 text-base font-normal">Freshly seared by the waves on Ramsgate Main Sands.</p>
+              <p>Gourmet 6oz Steak Burgers. Hand-Cut Seaside Chips. Sea Views.</p>
+              <p className="text-sky-100 text-base font-normal">Freshly cooked at our beachfront kiosk on Ramsgate Main Sands.</p>
             </div>
 
             {/* Action Buttons */}
@@ -314,9 +291,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                     </text>
                   </svg>
 
-                  {/* Center Coastal Waves Icon */}
+                  {/* Center Food Kiosk Icon */}
                   <div className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-[#f0f9fa] flex items-center justify-center border border-[#0580FF]/20">
-                    <Waves className="w-6 h-6 text-[#0580FF] stroke-[2.4]" />
+                    <UtensilsCrossed className="w-6 h-6 text-[#0580FF] stroke-[2.4]" />
                   </div>
                 </div>
               </div>
@@ -327,25 +304,16 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
         </div>
       </div>
 
-      {/* Realistic Wave / Beach Sand Torn-Edge Transition into Cream Info Bar */}
+      {/* Clean Angled Transition into Cream Info Bar */}
       <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
         <svg
-          viewBox="0 0 1440 95"
+          viewBox="0 0 1440 36"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-14 sm:h-20 lg:h-24 object-cover text-[#EEEFE9]"
+          className="w-full h-8 sm:h-10 lg:h-12 object-cover text-[#EEEFE9]"
           preserveAspectRatio="none"
         >
-          {/* Soft wave spray highlight */}
-          <path
-            d="M0,45 C150,75 350,20 540,55 C720,85 920,25 1100,50 C1280,75 1380,35 1440,55 L1440,95 L0,95 Z"
-            fill="rgba(255,255,255,0.45)"
-          />
-          {/* Main solid sand edge matching section below */}
-          <path
-            d="M0,52 C180,25 360,80 540,48 C720,18 900,72 1080,42 C1260,15 1360,60 1440,40 L1440,95 L0,95 Z"
-            fill="#EEEFE9"
-          />
+          <polygon points="0,36 1440,0 1440,36" fill="#EEEFE9" />
         </svg>
       </div>
     </section>

@@ -5,10 +5,11 @@ export interface MenuItem {
   description: string;
   image: string;
   fallbackImage?: string;
-  category: 'burgers' | 'hot-dogs' | 'loaded-fries' | 'ice-cream';
+  category: 'burgers' | 'chicken-burgers' | 'hot-dogs' | 'loaded-fries' | 'ice-cream';
   isFavorite?: boolean;
   spicyLevel?: number;
   popular?: boolean;
+  vegetarian?: boolean;
 }
 
 export interface CartItem {

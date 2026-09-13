@@ -6,7 +6,7 @@ import {
   Star,
   Sparkles,
   Flame,
-  Waves,
+  UtensilsCrossed,
   Search,
   Info,
 } from 'lucide-react';
@@ -32,10 +32,11 @@ export const MenuPage: React.FC = () => {
   }, [searchParams]);
   const [onlyPopular, setOnlyPopular] = useState(false);
   const [favorites, setFavorites] = useState<Record<string, boolean>>({
-    'the-classic-smash': true,
-    'bbq-bacon-stack': true,
-    'jumbo-promenade-dog': true,
-    'pepperoni-melted-cheddar-chips': true,
+    'beef-burger': true,
+    'bacon-cheese-burger': true,
+    'the-footlong-frankfurter': true,
+    'pepperoni-cheese-loaded-fries': true,
+    'cheesy-fries': true,
     'rainbow-sprinkle-cone': true,
   });
 
@@ -85,19 +86,19 @@ export const MenuPage: React.FC = () => {
             </nav>
 
             <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-amber-300 font-heading mb-2">
-              <Waves className="w-4 h-4 text-[#D1A03F]" />
+              <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
               <span>BEACHFRONT FOOD KIOSK &amp; BAR</span>
-              <Waves className="w-4 h-4 text-[#D1A03F]" />
+              <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white font-heading">
               OUR MENU
             </h1>
 
-            <div className="flex justify-center my-3">
-              <svg viewBox="0 0 80 10" className="w-16 text-[#D1A03F] fill-none stroke-current stroke-[3] stroke-linecap-round">
-                <path d="M0 5 Q10 0 20 5 T40 5 T60 5 T80 5" />
-              </svg>
+            <div className="flex items-center justify-center gap-2 my-3 text-[#D1A03F]">
+              <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
+              <UtensilsCrossed className="w-4 h-4 text-[#ECD87A]" />
+              <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
             </div>
 
             <p className="text-base sm:text-lg text-sky-100 max-w-xl mx-auto font-medium">
@@ -140,7 +141,7 @@ export const MenuPage: React.FC = () => {
               <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
-                placeholder="Search burgers, promenade dogs, chips..."
+                placeholder="Search burgers, hot dogs, crispy French fries..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-[#f8f9f5] border border-[#dde0d5] rounded-xl focus:outline-none focus:border-[#0580FF]"
@@ -214,7 +215,7 @@ export const MenuPage: React.FC = () => {
         {/* Menu Items Grid */}
         {filteredItems.length === 0 ? (
           <div className="bg-white rounded-3xl p-12 text-center border border-[#dde0d5] my-6">
-            <Waves className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+            <UtensilsCrossed className="w-12 h-12 text-gray-300 mx-auto mb-3" />
             <h3 className="font-heading font-extrabold text-lg text-[#000000] uppercase">
               No menu items match your search
             </h3>
@@ -255,7 +256,19 @@ export const MenuPage: React.FC = () => {
 
                     {/* Category Pill Tag */}
                     <div className="absolute top-3 left-3 bg-[#004fb3]/90 backdrop-blur-xs text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-xs">
-                      {item.category.replace('-', ' ')}
+                      {item.category === 'burgers'
+                        ? '6oz Steak Burger'
+                        : item.category === 'chicken-burgers'
+                        ? item.id === 'venison-burger'
+                          ? '8oz Venison'
+                          : 'Gourmet Chicken'
+                        : item.category === 'hot-dogs'
+                        ? item.id === 'crispy-bbq-wings'
+                          ? 'BBQ Wings'
+                          : 'Gourmet Hot Dog'
+                        : item.category === 'loaded-fries'
+                        ? 'Crispy French Fries'
+                        : item.category.replace('-', ' ')}
                     </div>
 
                     {/* Favorite Star Button */}
@@ -275,10 +288,13 @@ export const MenuPage: React.FC = () => {
                   {/* Content */}
                   <div className="p-5 flex flex-col flex-1 justify-between">
                     <div>
-                      <div className="mb-1.5">
+                      <div className="flex items-start justify-between gap-2 mb-1.5">
                         <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
                           {item.name}
                         </h3>
+                        <span className="font-heading font-extrabold text-sm text-[#0580FF] shrink-0">
+                          £{item.price.toFixed(2)}
+                        </span>
                       </div>
 
                       <p className="text-xs sm:text-sm text-[#526b74] leading-relaxed">
@@ -288,18 +304,23 @@ export const MenuPage: React.FC = () => {
 
                     {/* Bottom Action */}
                     <div className="pt-4 mt-4 border-t border-[#edf0e6] flex items-center justify-between">
-                      <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#708993] uppercase">
+                      <div className="flex items-center gap-2 text-[11px] font-bold text-[#708993] uppercase">
+                        {item.vegetarian && (
+                          <span className="flex items-center gap-1 text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded">
+                            Vegetarian
+                          </span>
+                        )}
                         {item.spicyLevel ? (
                           <span className="flex items-center gap-1 text-red-500 font-bold">
                             <Flame className="w-3.5 h-3.5 fill-current" />
                             Spicy
                           </span>
-                        ) : (
+                        ) : !item.vegetarian ? (
                           <span className="flex items-center gap-1 text-[#0580FF]">
                             <Sparkles className="w-3.5 h-3.5" />
                             Fresh Daily
                           </span>
-                        )}
+                        ) : null}
                       </div>
 
                       <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0580FF] bg-[#e7f3f6] px-3 py-1 rounded-full">

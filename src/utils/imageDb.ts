@@ -10,7 +10,7 @@ const STORES = {
   MENU: 'custom_menu_items',
 };
 
-const CURRENT_STORAGE_VERSION = 'v5_authentic_frankies_photos';
+const CURRENT_STORAGE_VERSION = 'v8_frankies_apple_mango_fixed';
 
 export function isMockupUrl(url: string | undefined): boolean {
   if (!url || typeof url !== 'string') return true;
@@ -18,7 +18,9 @@ export function isMockupUrl(url: string | undefined): boolean {
   return (
     lower.includes('unsplash.com') ||
     lower.includes('placeholder') ||
-    lower.includes('mockup')
+    lower.includes('mockup') ||
+    lower.includes('/src/assets/images/') ||
+    lower.includes('apple_mango_slushy_')
   );
 }
 

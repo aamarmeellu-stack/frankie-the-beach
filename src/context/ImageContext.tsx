@@ -82,6 +82,13 @@ export const ImageProvider: React.FC<{ children: React.ReactNode }> = ({ childre
           const cleanOverrides: Record<string, string> = {};
           for (const [k, v] of Object.entries(overrides)) {
             if (typeof v === 'string' && !isMockupUrl(v)) {
+              const lowerKey = k.toLowerCase();
+              if (lowerKey.includes('apple') && lowerKey.includes('mango')) {
+                // If the override points to an invalid/stale mock or old missing path, ignore it
+                if (!v.startsWith('data:image') && !v.includes('Apple and Mango') && !v.includes('Apple & mango')) {
+                  continue;
+                }
+              }
               cleanOverrides[k] = v;
             }
           }

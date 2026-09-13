@@ -15,8 +15,13 @@ if (typeof window !== 'undefined') {
   });
 }
 
-// Automatically register the service worker for PWA support & offline caching
-registerSW({ immediate: true });
+// Automatically register and update the service worker for PWA support & offline caching
+const updateSW = registerSW({
+  immediate: true,
+  onNeedRefresh() {
+    updateSW(true);
+  },
+});
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

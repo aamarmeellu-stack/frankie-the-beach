@@ -271,6 +271,10 @@ export const UNIFIED_SLOTS: UnifiedSlot[] = [
       'Apple & mango Slushy',
       'apple-mango-slushy',
       'menu:apple-mango-slushy',
+      'Apple and Mango Slushy',
+      'Apple and Mango Slushy 568ml',
+      'apple-and-mango-slushy-568ml',
+      'menu:apple-and-mango-slushy-568ml',
     ],
   },
 

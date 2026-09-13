@@ -1,4 +1,5 @@
 import { MenuItem, CustomerReview, TripAdvisorProfileData } from '../types';
+import { APPLE_MANGO_SLUSHY_DATA_URI } from '../assets/appleMangoSlushyBase64';
 
 // Clean image placeholders - populated with all real images from public/
 export const CLIENT_IMAGES = {
@@ -55,7 +56,7 @@ export const CLIENT_IMAGES = {
   sourCherrySlushy: '/dishes/Sour Cherry slushy 568ml.webp',
   cocaColaSlushy: '/dishes/Coca-Cola Slushy 568ml.webp',
   lemonLimeSlushy: '/dishes/Lemon and Lime Slushy 568ml.webp',
-  appleMangoSlushy: '/dishes/Apple & mango Slushy.webp',
+  appleMangoSlushy: APPLE_MANGO_SLUSHY_DATA_URI,
   coffeeLatte: '/frankies_cheesy_fries_slushy.webp',
   coffeeAmericano: '/frankies_cheesy_fries_slushy.webp',
   luxuryHotChoc: '/frankies_cheesy_fries_slushy.webp',
@@ -139,7 +140,7 @@ export const ASSETS = {
   sourCherrySlushy: '/dishes/Sour Cherry slushy 568ml.webp',
   cocaColaSlushy: '/dishes/Coca-Cola Slushy 568ml.webp',
   lemonLimeSlushy: '/dishes/Lemon and Lime Slushy 568ml.webp',
-  appleMangoSlushy: '/dishes/Apple & mango Slushy.webp',
+  appleMangoSlushy: APPLE_MANGO_SLUSHY_DATA_URI,
 
   // Kids & Family Funfair
   children1: '/childern_1.webp',
@@ -870,8 +871,8 @@ export const OFFICIAL_MENU: MenuItem[] = [
     name: 'Apple & mango Slushy 568ml',
     price: 4.50,
     description: 'Our slushies are so popular! A premium slush mix and great flavours that offer a refreshing alternative to have with your food.',
-    image: '/dishes/Apple & mango Slushy.webp',
-    fallbackImage: '/Apple & mango Slushy.webp',
+    image: APPLE_MANGO_SLUSHY_DATA_URI,
+    fallbackImage: '/dishes/Apple and Mango Slushy 568ml.webp',
     category: 'drinks',
     popular: true,
     vegetarian: true,

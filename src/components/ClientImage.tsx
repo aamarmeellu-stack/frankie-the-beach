@@ -42,8 +42,25 @@ export const ClientImage: React.FC<ClientImageProps> = memo(({
       if (!url || typeof url !== 'string') return;
       const trimmed = url.trim();
       if (!trimmed || isMockupUrl(trimmed)) return;
+
+      // If it's a PNG and not a data URI, prioritize the ultra-fast WebP counterpart first!
+      if (trimmed.toLowerCase().endsWith('.png') && !trimmed.startsWith('data:')) {
+        const webpCandidate = trimmed.replace(/\.png$/i, '.webp');
+        if (!list.includes(webpCandidate)) {
+          list.push(webpCandidate);
+        }
+      }
+
       if (!list.includes(trimmed)) {
         list.push(trimmed);
+      }
+
+      // If it's a WebP, ensure the PNG version is available as a fallback
+      if (trimmed.toLowerCase().endsWith('.webp') && !trimmed.startsWith('data:')) {
+        const pngCandidate = trimmed.replace(/\.webp$/i, '.png');
+        if (!list.includes(pngCandidate)) {
+          list.push(pngCandidate);
+        }
       }
 
       // Safe URL variant replacing ampersand (&) with 'and'

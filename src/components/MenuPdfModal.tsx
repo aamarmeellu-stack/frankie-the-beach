@@ -8,10 +8,12 @@ interface MenuPdfModalProps {
 }
 
 const MENU_CATEGORIES = [
-  { id: 'burgers', title: 'GOURMET 6oz STEAK BURGERS' },
-  { id: 'chicken-burgers', title: 'GOURMET CHICKEN & SPECIALITY BURGERS' },
-  { id: 'hot-dogs', title: 'GOURMET HOT DOGS' },
-  { id: 'loaded-fries', title: 'GOURMET CRISPY FRENCH FRIES' },
+  { id: 'breakfast-rolls', title: 'BREAKFAST ROLLS' },
+  { id: 'burgers', title: '6oz BURGERS' },
+  { id: 'chicken-burgers', title: 'CHICKEN BURGERS' },
+  { id: 'fries', title: 'FRIES' },
+  { id: 'loaded-fries', title: 'LOADED FRIES' },
+  { id: 'hot-dogs', title: 'HOT DOGS' },
 ];
 
 export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) => {

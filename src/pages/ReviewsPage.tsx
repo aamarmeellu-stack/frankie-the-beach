@@ -100,7 +100,7 @@ export const ReviewsPage: React.FC = () => {
               </div>
 
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-sky-100 font-heading border border-white/15">
-                <span>GOOGLE VERIFIED (4.9)</span>
+                <span>GOOGLE VERIFIED (4.7 • 75 REVIEWS)</span>
               </div>
             </div>
 
@@ -215,9 +215,9 @@ export const ReviewsPage: React.FC = () => {
                   Customer Community
                 </h3>
                 <div className="flex items-center gap-1 mt-0.5">
-                  <span className="text-xs font-black text-gray-900">4.9</span>
+                  <span className="text-xs font-black text-gray-900">4.7</span>
                   <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-                  <span className="text-[10px] text-gray-500 font-bold ml-1">340+ Reviews</span>
+                  <span className="text-[10px] text-gray-500 font-bold ml-1">75 Reviews</span>
                 </div>
               </div>
             </button>
@@ -741,7 +741,7 @@ export const ReviewsPage: React.FC = () => {
                 <div className="lg:col-span-4 text-center lg:text-left lg:border-r border-[#dde0d5] lg:pr-8">
                   <div className="flex items-center justify-center lg:justify-start gap-3">
                     <span className="text-5xl sm:text-6xl font-black font-heading text-[#000000]">
-                      4.9
+                      4.7
                     </span>
                     <div>
                       <div className="flex items-center gap-1 text-[#D1A03F]">
@@ -750,12 +750,12 @@ export const ReviewsPage: React.FC = () => {
                         ))}
                       </div>
                       <span className="text-xs text-[#69828b] font-medium block mt-1">
-                        Based on 340+ verified customer reviews
+                        Based on 75 verified customer reviews
                       </span>
                     </div>
                   </div>
                   <p className="text-xs text-[#526b74] mt-3 leading-relaxed">
-                    98% of customers recommend Frankie's @ The Beach for smash burgers and seaside family gatherings.
+                    95% of customers recommend Frankie's @ The Beach on Google for 6oz burgers and seaside family gatherings.
                   </p>
                 </div>
 
@@ -764,23 +764,30 @@ export const ReviewsPage: React.FC = () => {
                   <div className="flex items-center gap-3">
                     <span className="w-12 font-bold text-[#000000]">5 Stars</span>
                     <div className="flex-1 h-3 bg-gray-100 rounded-full overflow-hidden">
-                      <div className="h-full bg-[#D1A03F] rounded-full w-[94%]" />
+                      <div className="h-full bg-[#D1A03F] rounded-full w-[82%]" />
                     </div>
-                    <span className="w-10 text-right text-gray-500 font-bold">94%</span>
+                    <span className="w-10 text-right text-gray-500 font-bold">82%</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="w-12 font-bold text-[#000000]">4 Stars</span>
                     <div className="flex-1 h-3 bg-gray-100 rounded-full overflow-hidden">
-                      <div className="h-full bg-[#D1A03F] rounded-full w-[5%]" />
+                      <div className="h-full bg-[#D1A03F] rounded-full w-[12%]" />
                     </div>
-                    <span className="w-10 text-right text-gray-500 font-bold">5%</span>
+                    <span className="w-10 text-right text-gray-500 font-bold">12%</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="w-12 font-bold text-[#000000]">3 Stars</span>
                     <div className="flex-1 h-3 bg-gray-100 rounded-full overflow-hidden">
-                      <div className="h-full bg-[#D1A03F] rounded-full w-[1%]" />
+                      <div className="h-full bg-[#D1A03F] rounded-full w-[4%]" />
                     </div>
-                    <span className="w-10 text-right text-gray-500 font-bold">1%</span>
+                    <span className="w-10 text-right text-gray-500 font-bold">4%</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="w-12 font-bold text-[#000000]">2 Stars</span>
+                    <div className="flex-1 h-3 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="h-full bg-[#D1A03F] rounded-full w-[2%]" />
+                    </div>
+                    <span className="w-10 text-right text-gray-500 font-bold">2%</span>
                   </div>
                 </div>
 

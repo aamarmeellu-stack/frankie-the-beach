@@ -929,7 +929,7 @@ export const AdminPage: React.FC = () => {
                         type="text"
                         value={customTitle}
                         onChange={(e) => setCustomTitle(e.target.value)}
-                        placeholder="e.g. Fresh Gourmet Burger by the Beach"
+                        placeholder="e.g. Fresh Beef Burger by the Beach"
                         className="w-full px-3 py-2.5 bg-white border border-gray-300 rounded-xl text-xs font-medium"
                       />
                     </div>
@@ -1359,7 +1359,7 @@ export const AdminPage: React.FC = () => {
                           <button
                             onClick={() => {
                               setAssignModalImage(image);
-                              setAssignModalTarget(UNIFIED_SLOTS[0]?.key || 'the-classic-smash');
+                              setAssignModalTarget(UNIFIED_SLOTS[0]?.key || 'beef-burger');
                             }}
                             className="p-1.5 text-[#0580FF] hover:bg-sky-50 rounded-lg text-[11px] font-bold flex items-center gap-1"
                             title="Assign to Website Slot"
@@ -1667,7 +1667,7 @@ export const AdminPage: React.FC = () => {
                   type="text"
                   value={customTitle}
                   onChange={(e) => setCustomTitle(e.target.value)}
-                  placeholder="e.g. Seaside Monster Truffle Smash Burger"
+                  placeholder="e.g. Seaside Monster Truffle Burger"
                   className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-xs font-medium"
                 />
               </div>
@@ -1679,9 +1679,12 @@ export const AdminPage: React.FC = () => {
                   onChange={(e) => setCustomCategory(e.target.value)}
                   className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-xs font-medium"
                 >
+                  <option value="breakfast-rolls">Breakfast Rolls</option>
                   <option value="burgers">Burgers</option>
-                  <option value="loaded-fries">Loaded Fries &amp; Chips</option>
-                  <option value="hot-dogs">Hot Dogs &amp; Grill</option>
+                  <option value="chicken-burgers">Chicken Burgers</option>
+                  <option value="fries">Fries</option>
+                  <option value="loaded-fries">Loaded Fries</option>
+                  <option value="hot-dogs">Hot Dogs</option>
                 </select>
               </div>
 

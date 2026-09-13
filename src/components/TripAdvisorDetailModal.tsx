@@ -161,9 +161,9 @@ export const TripAdvisorDetailModal: React.FC<TripAdvisorDetailModalProps> = ({
           <div className="relative rounded-2xl overflow-hidden border border-gray-200/80 shadow-xs h-40 sm:h-48 bg-gray-100">
             <ClientImage
               src={activeTab === 'attractions' ? '/childern_3.webp' : '/food-1.webp'}
-              slotKey={activeTab === 'attractions' ? 'site:childrenTrampolines' : 'menu:the-classic-smash'}
+              slotKey={activeTab === 'attractions' ? 'site:childrenTrampolines' : 'menu:beef-burger'}
               fallbackSrc={activeTab === 'attractions' ? '/childern_3.webp' : '/food-1.webp'}
-              alt={activeTab === 'attractions' ? 'Children enjoying beach rides on Ramsgate Sands' : "Frankie's Smashed Beef Burger"}
+              alt={activeTab === 'attractions' ? 'Children enjoying beach rides on Ramsgate Sands' : "Frankie's Beef Burger"}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex items-end p-4 sm:p-5">
@@ -174,7 +174,7 @@ export const TripAdvisorDetailModal: React.FC<TripAdvisorDetailModalProps> = ({
                 <p className="text-white text-xs sm:text-sm font-bold mt-1.5 drop-shadow-xs">
                   {activeTab === 'attractions'
                     ? 'Giant inflatable slide, beach carousels & kids rides right on Ramsgate Sands'
-                    : 'Handcrafted smash burgers, loaded chips, and footlong gourmet hot dogs'}
+                    : 'Handcrafted 6oz burgers, loaded chips, and footlong hot dogs'}
                 </p>
               </div>
             </div>

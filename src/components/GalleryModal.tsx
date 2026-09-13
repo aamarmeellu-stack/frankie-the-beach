@@ -20,7 +20,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({ isOpen, onClose }) =
       src: ASSETS.heroBurger,
       slotKey: 'site:heroBurger',
       title: 'Beach Classic Cheeseburger',
-      desc: 'Double Angus smash patty, melted aged cheddar, smoky crispy bacon, freshly baked brioche.',
+      desc: 'Double Angus beef patty, melted aged cheddar, smoky crispy bacon, freshly baked brioche.',
     },
     {
       src: ASSETS.beachPatio,

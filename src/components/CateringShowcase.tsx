@@ -113,7 +113,7 @@ export const CateringShowcase: React.FC = () => {
           </div>
 
           <p className="text-sm sm:text-base text-[#496068] leading-relaxed">
-            Planning a beach gathering, wedding celebration, birthday party, corporate seaside day, or family get-together on Ramsgate Sands? We serve freshly seared smash burgers, loaded chips, jumbo promenade dogs, and cold refreshments right on Ramsgate beach.
+            Planning a beach gathering, wedding celebration, birthday party, corporate seaside day, or family get-together on Ramsgate Sands? We serve freshly seared burgers, loaded chips, jumbo promenade dogs, and cold refreshments right on Ramsgate beach.
           </p>
         </div>
 
@@ -244,7 +244,7 @@ export const CateringShowcase: React.FC = () => {
                 Freshly Prepared By The Sea
               </h3>
               <p className="text-sm text-[#496068] leading-relaxed">
-                Take the stress out of catering your next beach day. We prepare everything fresh to order with generous portions, gourmet packaging, and seaside hospitality.
+                Take the stress out of catering your next beach day. We prepare everything fresh to order with generous portions, fresh packaging, and seaside hospitality.
               </p>
             </div>
 
@@ -257,10 +257,10 @@ export const CateringShowcase: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-heading font-extrabold text-sm text-[#000000] uppercase">
-                    Hot Smash Burger &amp; Loaded Chip Platters
+                    Burger &amp; Loaded Chip Platters
                   </h4>
                   <p className="text-xs text-[#526b74] mt-0.5">
-                    Double smash beef burgers, BBQ bacon stacks, seaside promenade dogs, and loaded chips boxed piping hot.
+                    Double beef burgers, BBQ bacon stacks, seaside promenade dogs, and loaded chips boxed piping hot.
                   </p>
                 </div>
               </div>

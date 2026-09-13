@@ -68,7 +68,7 @@ export const ReviewsModal: React.FC<ReviewsModalProps> = ({ isOpen, onClose }) =
         <div className="bg-white p-5 border-b border-[#dde0d5] flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <div className="text-3xl font-heading font-extrabold text-[#000000]">
-              4.9
+              4.7
             </div>
             <div>
               <div className="flex items-center text-[#D1A03F]">
@@ -76,7 +76,7 @@ export const ReviewsModal: React.FC<ReviewsModalProps> = ({ isOpen, onClose }) =
                   <Star key={i} className="w-4 h-4 fill-current" />
                 ))}
               </div>
-              <p className="text-xs text-[#526971] mt-0.5">Based on 340+ customer reviews</p>
+              <p className="text-xs text-[#526971] mt-0.5">Based on 75 customer reviews</p>
             </div>
           </div>
 

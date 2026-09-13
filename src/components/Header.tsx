@@ -409,7 +409,7 @@ export const Header: React.FC<HeaderProps> = () => {
                       </span>
                     </div>
                     <p className="text-[11px] text-white/75 mt-1 pl-6 leading-tight">
-                      Dedicated profile with 751 4.9-Star customer reviews, smash burgers &amp; treats.
+                      Dedicated profile with 751 4.9-Star customer reviews, delicious burgers &amp; treats.
                     </p>
                   </Link>
 

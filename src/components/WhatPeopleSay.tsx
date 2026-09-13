@@ -34,7 +34,7 @@ export const WhatPeopleSay: React.FC<WhatPeopleSayProps> = ({
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-3.5 h-3.5 fill-[#D1A03F] text-[#D1A03F]" />
                 ))}
-                <span className="text-xs font-extrabold text-[#000000] ml-1">4.9 / 5</span>
+                <span className="text-xs font-extrabold text-[#000000] ml-1">4.7 / 5 (75 Reviews)</span>
               </div>
             </div>
 
@@ -53,7 +53,7 @@ export const WhatPeopleSay: React.FC<WhatPeopleSayProps> = ({
             id="link-view-all-reviews"
             className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0580FF] hover:text-[#002866] transition-colors cursor-pointer self-start sm:self-auto"
           >
-            <span>VIEW ALL 17 REVIEWS</span>
+            <span>VIEW ALL 75 REVIEWS</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>

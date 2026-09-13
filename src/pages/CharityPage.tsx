@@ -290,9 +290,6 @@ export const CharityPage: React.FC = () => {
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <span className="absolute top-3 left-3 bg-[#0580FF] text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded shadow-sm">
-                    {item.badge}
-                  </span>
                 </div>
                 <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>

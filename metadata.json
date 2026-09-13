@@ -1,6 +1,6 @@
 {
   "name": "Frankie's @ The Beach",
-  "description": "Beachfront food kiosk and bar featuring coastal views of Ramsgate Royal Harbour, gourmet smash burgers, loaded seaside chips, cold drinks, and footlong hot dogs in Kent.",
+  "description": "Beachfront food kiosk and bar featuring coastal views of Ramsgate Royal Harbour, 6oz burgers, loaded seaside chips, cold drinks, and footlong hot dogs in Kent.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

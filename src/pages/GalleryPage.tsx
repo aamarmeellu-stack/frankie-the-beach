@@ -91,7 +91,7 @@ export const GalleryPage: React.FC = () => {
           {[
             { id: 'all', label: `All Photos (${galleryItems.length})` },
             { id: 'kiosk-team', label: 'Food Kiosk & Bar Team' },
-            { id: 'burgers-dogs', label: 'Smash Burgers & Dogs' },
+            { id: 'burgers-dogs', label: 'Burgers & Dogs' },
             { id: 'loaded-fries', label: 'Loaded Chips & Sides' },
             { id: 'family', label: 'Ramsgate Beach Funfair' },
           ].map((cat) => (

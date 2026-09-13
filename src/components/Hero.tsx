@@ -222,7 +222,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
               <div className="flex items-center gap-2.5 bg-black/35 hover:bg-black/45 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/20 transition-colors">
                 <span className="text-lg">🍟</span>
                 <div className="leading-tight">
-                  <span className="font-heading font-extrabold text-xs uppercase tracking-wide text-[#FFF2B2]">Gourmet Loaded Fries</span>
+                  <span className="font-heading font-extrabold text-xs uppercase tracking-wide text-[#FFF2B2]">Loaded French Fries</span>
                   <p className="text-[11px] text-white/80">Hot golden chips piled high with delicious toppings.</p>
                 </div>
               </div>
@@ -313,14 +313,14 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
               <div
                 className="absolute left-1 sm:left-2 top-8 sm:top-10 w-56 sm:w-72 bg-white p-3 sm:p-3.5 pb-8 sm:pb-9 shadow-[0_28px_60px_rgba(0,0,0,0.55)] rounded-[2px] transform -rotate-[4deg] hover:-rotate-1 transition-transform duration-300 z-20 group cursor-pointer"
                 onClick={onExploreMenu}
-                title="Gourmet Cheeseburger at the beach"
+                title="Cheeseburger at the beach"
               >
                 <div className="overflow-hidden aspect-square bg-[#004fb3]">
                   <ClientImage
                     src={clientImages.heroBurger || ASSETS.heroBurger}
                     slotKey="site:heroBurger"
                     fallbackSrc={ASSETS.heroBurger}
-                    alt="Towering gourmet double bacon cheeseburger by the ocean"
+                    alt="Towering double bacon cheeseburger by the ocean"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     priority
                   />

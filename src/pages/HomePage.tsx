@@ -95,7 +95,7 @@ export const HomePage: React.FC = () => {
                   src={clientImages.food1Burger}
                   slotKey="menu:beef-burger"
                   fallbackSrc={ASSETS.fallbacks.heroBurger}
-                  alt="Gourmet 6oz Steak Burger"
+                  alt="6oz Steak Burger"
                   className="w-14 h-14 rounded-xl object-cover"
                   priority
                 />
@@ -107,7 +107,7 @@ export const HomePage: React.FC = () => {
                     </span>
                   </div>
                   <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
-                    Gourmet 6oz Steak
+                    6oz Prime Steak
                   </h4>
                   <p className="text-[11px] text-gray-500">Cooked to juicy perfection</p>
                 </div>
@@ -126,7 +126,7 @@ export const HomePage: React.FC = () => {
               </h2>
 
               <p className="text-sm sm:text-base text-[#496068] leading-relaxed">
-                <strong className="text-[#000000]">Frankies At The Beach</strong> is the ultimate seaside destination for fun, food, and good times! From thrilling fair rides for the children to our award-winning quick bites, a well-stocked bar for the adults, gourmet loaded fries, fresh warm doughnuts, and great music — everything you love about the seaside is right here in one fantastic location.
+                <strong className="text-[#000000]">Frankies At The Beach</strong> is the ultimate seaside destination for fun, food, and good times! From thrilling fair rides for the children to our award-winning quick bites, a well-stocked bar for the adults, loaded fries, fresh warm doughnuts, and great music — everything you love about the seaside is right here in one fantastic location.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
@@ -149,7 +149,7 @@ export const HomePage: React.FC = () => {
                       Award-Winning Quick Bites
                     </h4>
                     <p className="text-[11px] text-[#556d75] mt-0.5">
-                      Gourmet steak burgers &amp; footlong hot dogs served fast.
+                      Steak burgers &amp; footlong hot dogs served fast.
                     </p>
                   </div>
                 </div>
@@ -170,7 +170,7 @@ export const HomePage: React.FC = () => {
                   <span className="text-2xl shrink-0">🍟</span>
                   <div>
                     <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
-                      Gourmet Loaded Fries
+                      Crispy Loaded Fries
                     </h4>
                     <p className="text-[11px] text-[#556d75] mt-0.5">
                       Crispy golden chips with cheese, bacon &amp; toppings!
@@ -218,7 +218,7 @@ export const HomePage: React.FC = () => {
               <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
             </div>
             <p className="text-sm text-[#496068]">
-              From gourmet footlong hot dogs to loaded seaside fries, discover what makes Frankie's Ramsgate's favourite food kiosk and bar.
+              From footlong hot dogs to loaded seaside fries, discover what makes Frankie's Ramsgate's favourite food kiosk and bar.
             </p>
           </div>
 
@@ -233,17 +233,14 @@ export const HomePage: React.FC = () => {
                   src={clientImages.food1Burger}
                   slotKey="menu:beef-burger"
                   fallbackSrc={ASSETS.fallbacks.heroBurger}
-                  alt="Gourmet 6oz Steak Burgers"
+                  alt="6oz Burgers"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <span className="absolute top-3 left-3 bg-[#0580FF] text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded">
-                  GOURMET 6oz STEAK BURGERS
-                </span>
               </div>
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
-                    Gourmet 6oz Steak Burgers
+                    6oz Burgers
                   </h3>
                   <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
                     Juicy 6oz steak patties cooked to perfection with mature cheddar, thick Danish bacon, stilton, or specialty bajan sauce.
@@ -258,7 +255,7 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            {/* Category Card 2: Gourmet Crispy French Fries */}
+            {/* Category Card 2: Fries & Loaded Fries */}
             <div
               onClick={() => navigate('/menu')}
               className="bg-white rounded-2xl overflow-hidden border border-[#dde0d5] shadow-sm hover:shadow-lg transition-all cursor-pointer group flex flex-col justify-between"
@@ -268,20 +265,17 @@ export const HomePage: React.FC = () => {
                   src={clientImages.pepperoniFries}
                   slotKey="menu:pepperoni-cheese-loaded-fries"
                   fallbackSrc={ASSETS.loadedFries}
-                  alt="Gourmet Crispy French Fries"
+                  alt="Fries & Loaded Fries"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <span className="absolute top-3 left-3 bg-[#0580FF] text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded">
-                  CRISPY FRENCH FRIES
-                </span>
               </div>
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
-                    Gourmet Crispy Fries
+                    Fries &amp; Loaded Fries
                   </h3>
                   <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
-                    Golden French fries loaded with mature cheddar torched to perfection, with bacon, chorizo, pepperoni, or southern fried chicken.
+                    Crispy skin-on fries and loaded fries piled high with torched mature cheddar, pepperoni, bacon, fish fingers, or southern fried chicken.
                   </p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0580FF]">
@@ -400,7 +394,7 @@ export const HomePage: React.FC = () => {
           </h2>
 
           <p className="text-sm sm:text-base text-sky-100 max-w-2xl mx-auto leading-relaxed">
-            Drop by our food kiosk and bar at Kiosk 1, Marina Esplanade for gourmet 6oz steak burgers, loaded chips, cold drinks, footlong dogs, and kids' beach rides right on the sand. Walk-ins are always welcomed by the beach!
+            Drop by our food kiosk and bar at Kiosk 1, Marina Esplanade for 6oz steak burgers, loaded chips, cold drinks, footlong dogs, and kids' beach rides right on the sand. Walk-ins are always welcomed by the beach!
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-3">

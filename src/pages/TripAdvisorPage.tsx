@@ -389,7 +389,7 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
                   <ClientImage
                     src={CLIENT_IMAGES.food1Burger}
                     slotKey="menu:beef-burger"
-                    alt="Gourmet 6oz Beef Burger"
+                    alt="6oz Beef Burger"
                     className="w-16 h-16 rounded-xl object-cover"
                   />
                   <div>
@@ -744,7 +744,7 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
                   Visit Frankie's Restaurant &amp; Beach Bar
                 </h3>
                 <p className="text-xs sm:text-sm text-emerald-100 font-medium max-w-xl">
-                  Check out our #1 UK Quick Bite food profile with 751 4.9-Star reviews for freshly smashed burgers, loaded chips, promenade dogs, and cold refreshing drinks.
+                  Check out our #1 UK Quick Bite food profile with 751 4.9-Star reviews for freshly grilled burgers, loaded chips, promenade dogs, and cold refreshing drinks.
                 </p>
               </div>
               <button
@@ -779,14 +779,11 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
                   <div className="relative h-44 rounded-2xl overflow-hidden border border-emerald-200/80 shadow-xs">
                     <ClientImage
                       src="/food-1.webp"
-                      slotKey="menu:the-classic-smash"
+                      slotKey="menu:beef-burger"
                       fallbackSrc="/food-1.webp"
-                      alt="Signature Smash Burger"
+                      alt="Signature Beef Burger"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute top-2.5 left-2.5 bg-black/60 backdrop-blur-xs text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full font-heading">
-                      Food &amp; Treats
-                    </div>
                   </div>
 
                   <div className="flex items-center justify-between">
@@ -815,7 +812,7 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
                   </div>
 
                   <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                    Celebrated coastal quick bite serving handcrafted smash burgers, loaded chips, promenade dogs, milkshakes, and hot drinks directly on Ramsgate sands.
+                    Celebrated coastal quick bite serving handcrafted 6oz burgers, loaded chips, promenade dogs, milkshakes, and hot drinks directly on Ramsgate sands.
                   </p>
                 </div>
 
@@ -851,9 +848,6 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
                       alt="Children having fun on Ramsgate beach rides"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute top-2.5 left-2.5 bg-black/60 backdrop-blur-xs text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full font-heading">
-                      Beach Rides &amp; Slide
-                    </div>
                   </div>
 
                   <div className="flex items-center justify-between">

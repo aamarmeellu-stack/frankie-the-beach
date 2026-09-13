@@ -253,21 +253,6 @@ export const MenuPage: React.FC = () => {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
 
-                    {/* Category Pill Tag */}
-                    <div className="absolute top-3 left-3 bg-[#004fb3]/90 backdrop-blur-xs text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-xs">
-                      {item.category === 'burgers'
-                        ? '6oz Steak Burger'
-                        : item.category === 'chicken-burgers'
-                        ? item.id === 'venison-burger'
-                          ? '8oz Venison'
-                          : 'Gourmet Chicken'
-                        : item.category === 'hot-dogs'
-                        ? 'Gourmet Hot Dog'
-                        : item.category === 'loaded-fries'
-                        ? 'Crispy French Fries'
-                        : item.category.replace('-', ' ')}
-                    </div>
-
                     {/* Favorite Star Button */}
                     <button
                       onClick={() => toggleFavorite(item.id)}

@@ -435,7 +435,7 @@ export const AboutPage: React.FC = () => {
               Award-Winning Bites
             </h3>
             <p className="text-xs sm:text-sm text-[#526b74] leading-relaxed">
-              Voted UK's No. 1 Quick Bite with hearty portions, sizzling smash Angus beef burgers, and hand-cut triple-cooked sea salt chips.
+              Voted UK's No. 1 Quick Bite with hearty portions, sizzling Angus beef burgers, and hand-cut triple-cooked sea salt chips.
             </p>
           </div>
 
@@ -444,7 +444,7 @@ export const AboutPage: React.FC = () => {
               <Sparkles className="w-6 h-6 text-[#D1A03F]" />
             </div>
             <h3 className="font-heading font-extrabold text-lg text-[#000000] uppercase">
-              Gourmet Loaded Fries
+              Crispy Loaded Fries
             </h3>
             <p className="text-xs sm:text-sm text-[#526b74] leading-relaxed">
               Crisp golden French fries loaded with melted mature cheddar, sizzling bacon, pepperoni, or spicy chilli beef right by the beach promenade.
@@ -551,7 +551,7 @@ export const AboutPage: React.FC = () => {
             </h2>
 
             <p className="text-xs sm:text-sm text-sky-100 leading-relaxed max-w-xl mx-auto">
-              Grab a seat on our promenade terrace, tuck into a proper smash burger and loaded chips, or relax with a cold refreshing drink on your seaside stroll.
+              Grab a seat on our promenade terrace, tuck into a proper burger and loaded chips, or relax with a cold refreshing drink on your seaside stroll.
             </p>
 
             <div className="pt-4 flex flex-wrap justify-center gap-4">

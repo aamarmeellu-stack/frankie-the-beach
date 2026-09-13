@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
             </Link>
 
             <p className="text-xs text-white/70 leading-relaxed max-w-xs">
-              Ramsgate's seafront food kiosk and bar for gourmet 6oz steak burgers, proper seaside chips, jumbo dogs, and cold drinks.
+              Ramsgate's seafront food kiosk and bar for 6oz steak burgers, proper seaside chips, jumbo dogs, and cold drinks.
             </p>
 
             {/* Social Link - Facebook Only & National Award */}

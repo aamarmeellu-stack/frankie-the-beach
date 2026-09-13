@@ -116,7 +116,7 @@ export const NationalAwardBanner: React.FC = () => {
 
               {/* Simple description */}
               <p className="text-sm sm:text-base text-[#B0C8E8] leading-relaxed max-w-xl mx-auto lg:mx-0">
-                Recognised across the coast for hospitality that goes above and beyond — from handcrafted smash burgers and fresh loaded chips to friendly smiles for every beachgoer, family, and dog walker right on Ramsgate Sands.
+                Recognised across the coast for hospitality that goes above and beyond — from handcrafted burgers and fresh loaded chips to friendly smiles for every beachgoer, family, and dog walker right on Ramsgate Sands.
               </p>
 
               {/* 3 Spacious Highlights */}

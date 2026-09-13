@@ -60,7 +60,6 @@ export default function App() {
       ASSETS.heroBurger,
       ASSETS.loadedFries,
       ASSETS.boardwalkDog,
-      ASSETS.rainbowSprinkleCone,
       ASSETS.tropicalDrink,
       CLIENT_IMAGES.childrenKiddiesCorner,
     ]);

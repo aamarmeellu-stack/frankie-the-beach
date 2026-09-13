@@ -4,6 +4,9 @@ import { MenuItem, CustomerReview, TripAdvisorProfileData } from '../types';
 export const CLIENT_IMAGES = {
   // Brand Logo
   logo: '/logo.webp',
+
+  // 2024 Award Image
+  award2024: '/2024 Award.jpeg',
   
   // Kiosk, Terrace & Bar Team
   kiosk: '/genuine-bar-selfie.png',
@@ -16,7 +19,6 @@ export const CLIENT_IMAGES = {
   heroVideo: '/hero-video.mp4',
   cateringVideo: '/catering-video.mp4',
   heroBurger: '/dishes/Beef Burger.png',
-  heroIceCream: '/frankies_ice_cream_cone.webp',
   heroDrink: '/frankies_cheesy_fries_slushy.webp',
   sunsetBeach: '',
   
@@ -61,11 +63,6 @@ export const CLIENT_IMAGES = {
   perfectChips: '/classic_salted_fries.webp',
   perfectlyCookedChips: '/perfectly_cooked_chips.webp',
   
-  // Sweets & Treats
-  massiveIceCream: '/frankies_massive_ice_cream.webp',
-  iceCreamCone: '/frankies_ice_cream_cone.webp',
-  coldIceCream: '/Cold_ice_cream.webp',
-  
   // Ramsgate Beach Playing & Rides
   childrenSlide: '/childern_1.webp',
   childrenKiddiesCorner: '/childern_2.webp',
@@ -78,6 +75,9 @@ export const CLIENT_IMAGES = {
 export const ASSETS = {
   // Brand Logo
   logo: '/logo.webp',
+
+  // 2024 Award
+  award2024: '/2024 Award.jpeg',
   
   // Kiosk & Atmosphere
   kiosk: '/genuine-bar-selfie.png',
@@ -119,10 +119,6 @@ export const ASSETS = {
   cookedChips: '/perfectly_cooked_chips.webp',
   drinksMenu: '/frankies_cheesy_fries_slushy.webp',
 
-  // Treats & Cones
-  rainbowSprinkleCone: '/frankies_ice_cream_cone.webp',
-  coldIceCream: '/Cold_ice_cream.webp',
-
   // Kids & Family Funfair
   children1: '/childern_1.webp',
   children2: '/childern_2.webp',
@@ -147,7 +143,6 @@ export const ASSETS = {
     slicedSausage: '/frankies_sausage_tray.webp',
     friesSlushyCombo: '/frankies_cheesy_fries_slushy.webp',
     classicSaltedFries: '/classic_salted_fries.webp',
-    rainbowSprinkleCone: '/frankies_ice_cream_cone.webp',
     beachPatio: '/childern_2.webp',
     childrenScooter: '/childern_4.webp',
   },
@@ -179,6 +174,38 @@ export const EXTRA_MILE_AWARD_DATA = {
     "For a small business like Frankies, we could see the commitment to achieving the extra mile in customer service was engrained in the culture of Frankies which is why we felt they deserved the award.",
   quoteAuthor: "Paul Goldsmith, Director, Goldstar IT Consultancy",
   badge: "Gold Standard Customer Service",
+};
+
+// Independent Food Critic Review: Anne at the table
+export const FOOD_CRITIC_REVIEW = {
+  criticName: "Anne at the table",
+  channelUrl: "https://www.youtube.com/@Anneatthetable",
+  videoUrl: "https://www.youtube.com/watch?v=vmb1puvkpv4",
+  shareUrl: "https://share.google/OwKrYWjfgs6UGNCO8",
+  embedUrl: "https://www.youtube.com/embed/vmb1puvkpv4",
+  thumbnailUrl: "https://i.ytimg.com/vi/vmb1puvkpv4/hqdefault.jpg",
+  title: "Trying the BEST Beach Food in the UK? Frankie's Food Review",
+  rating: "8.5 / 10",
+  verdict: "TripAdvisor was spot on — well worth a visit when visiting the Kent Coast!",
+  summary:
+    "Independent food critic Anne visited Frankie's beachfront kiosk to sample the menu and test whether TripAdvisor's #1 Quick Bites ranking held up. She sampled the German Bratwurst, Caribbean Chicken Burger, and fresh chips right by the sea.",
+  sampledItems: [
+    {
+      name: "German Bratwurst & Onions",
+      review: "Good sausage, nice bite to it, good flavour, cooked nicely with generous toppings.",
+      rating: "Very High",
+    },
+    {
+      name: "Caribbean Chicken Burger",
+      review: "Loads of flavour and specialty seasonings you don't typically find at beach food vans.",
+      rating: "Standout Dish",
+    },
+    {
+      name: "Golden Seaside Chips",
+      review: "Proper hot crispy chips enjoyed right with panoramic sea views.",
+      rating: "Classic",
+    },
+  ],
 };
 
 // Official TripAdvisor Review Links for Frankie's @ the Beach
@@ -220,7 +247,7 @@ export const TRIPADVISOR_PROFILES_DATA: Record<'restaurant' | 'attractions', Tri
       "Atmosphere & Sea Views": 4.9,
     },
     priceRange: "Seaside Food Kiosk & Bar",
-    categories: ["Food Kiosk & Bar", "Quick Bites", "Gourmet Burgers", "Gourmet Hot Dogs", "Loaded Chips", "Traditional 99 Cones"],
+    categories: ["Food Kiosk & Bar", "Quick Bites", "Gourmet Burgers", "Gourmet Hot Dogs", "Loaded Chips", "Cold Drinks & Bar"],
     features: [
       "Seaside Beachfront Seating",
       "Direct Panoramic Royal Harbour Views",
@@ -238,7 +265,7 @@ export const TRIPADVISOR_PROFILES_DATA: Record<'restaurant' | 'attractions', Tri
       "The Footlong Frankfurter",
       "The Chilli Beef Dog",
       "Pepperoni & Cheese Loaded Fries",
-      "Whippy 99 Cones with Flake & Sauce",
+      "Gourmet Crispy French Fries",
     ],
     url: TRIPADVISOR_LINKS.restaurant.url,
     reviews: [
@@ -480,7 +507,6 @@ export const MENU_CATEGORIES = [
   { id: 'chicken-burgers', label: 'Gourmet Chicken Burgers' },
   { id: 'loaded-fries', label: 'Gourmet Crispy French Fries' },
   { id: 'hot-dogs', label: 'Gourmet Hot Dogs' },
-  { id: 'ice-cream', label: 'Traditional 99s & Treats' },
 ];
 
 export const OFFICIAL_MENU: MenuItem[] = [
@@ -697,27 +723,6 @@ export const OFFICIAL_MENU: MenuItem[] = [
     spicyLevel: 2,
     popular: true,
   },
-
-  // Ice Cream & Treats
-  {
-    id: 'rainbow-sprinkle-cone',
-    name: 'Traditional 99 Cone with Flake & Sprinkles',
-    price: 4.20,
-    description: 'Creamy soft-serve vanilla ice cream piled high, with a classic chocolate flake and rainbow sprinkles by the sea.',
-    image: '/frankies_ice_cream_cone.webp',
-    fallbackImage: '/frankies_ice_cream_cone.webp',
-    category: 'ice-cream',
-    popular: true,
-  },
-  {
-    id: 'classic-beach-soft-serve',
-    name: 'Classic Seaside 99 Whippy Cone',
-    price: 3.80,
-    description: 'Velvety smooth vanilla soft-serve with Cadbury flake in a crisp waffle cone, enjoyed right on Ramsgate sand.',
-    image: '/Cold_ice_cream.webp',
-    fallbackImage: '/Cold_ice_cream.webp',
-    category: 'ice-cream',
-  },
 ];
 
 export const FULL_MENU: MenuItem[] = OFFICIAL_MENU;
@@ -774,7 +779,7 @@ export const CUSTOMER_REVIEWS: CustomerReview[] = [
     name: 'Xen Xenophontes',
     avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=160&h=160&q=80',
     rating: 5,
-    comment: "Really great place to spend your day at the beach. Frankie and his team are great! Maggie and Kevin are super friendly. The team can't do enough for you. The food and drink is good value and really tasty! Fantastic ice cream selection.",
+    comment: "Really great place to spend your day at the beach. Frankie and his team are great! Maggie and Kevin are super friendly. The team can't do enough for you. The food and drink is good value and really tasty! Fantastic burger selection.",
     date: 'a year ago',
     tag: 'Google Review',
   },
@@ -810,7 +815,7 @@ export const CUSTOMER_REVIEWS: CustomerReview[] = [
     name: 'S Rahman',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&h=160&q=80',
     rating: 5,
-    comment: "Always lovely to get some quality ice cream after a nice day in the beach! Staff are lovely here and welcome all the customers. It’s right next to the kids playing area too which is handy while the kids are running around or jumping on the trampoline. You can keep the babies calm with an ice cream!",
+    comment: "Always lovely to get some quality food after a nice day on the beach! Staff are lovely here and welcome all the customers. It’s right next to the kids playing area too which is handy while the kids are running around or jumping on the trampoline. Delicious food and great atmosphere!",
     date: '5 years ago',
     tag: 'Google Review',
   },

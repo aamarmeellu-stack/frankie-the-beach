@@ -61,7 +61,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({
               Our Story: Eat. Beach. Repeat.
             </h3>
             <p>
-              Born from a love for salty sea air, golden hour sunsets, and unapologetically juicy burgers, Frankie’s @ The Beach started as a beloved beachfront food kiosk and bar at Marina Esplanade on Ramsgate Main Sands. Today, it’s the go-to coastal food kiosk and bar for locals, day-trippers, and beach lovers looking for signature smash burgers, proper seaside chips, cold drinks, and traditional 99 whippy cones.
+              Born from a love for salty sea air, golden hour sunsets, and unapologetically juicy burgers, Frankie’s @ The Beach started as a beloved beachfront food kiosk and bar at Marina Esplanade on Ramsgate Main Sands. Today, it’s the go-to coastal food kiosk and bar for locals, day-trippers, and beach lovers looking for signature smash burgers, proper seaside chips, footlong dogs, and cold drinks.
             </p>
           </div>
 

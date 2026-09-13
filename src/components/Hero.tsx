@@ -4,7 +4,6 @@ import {
   MapPin,
   UtensilsCrossed,
   Sandwich,
-  IceCream,
   Volume2,
   VolumeX,
   Play,
@@ -221,10 +220,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
               </div>
 
               <div className="flex items-center gap-2.5 bg-black/35 hover:bg-black/45 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/20 transition-colors">
-                <span className="text-lg">🍦</span>
+                <span className="text-lg">🍟</span>
                 <div className="leading-tight">
-                  <span className="font-heading font-extrabold text-xs uppercase tracking-wide text-[#FFF2B2]">Massive Choice of Ice Creams</span>
-                  <p className="text-[11px] text-white/80">So many delicious flavours to choose from!</p>
+                  <span className="font-heading font-extrabold text-xs uppercase tracking-wide text-[#FFF2B2]">Gourmet Loaded Fries</span>
+                  <p className="text-[11px] text-white/80">Hot golden chips piled high with delicious toppings.</p>
                 </div>
               </div>
 

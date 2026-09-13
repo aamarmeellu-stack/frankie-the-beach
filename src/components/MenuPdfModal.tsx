@@ -12,7 +12,6 @@ const MENU_CATEGORIES = [
   { id: 'chicken-burgers', title: 'GOURMET CHICKEN & SPECIALITY BURGERS' },
   { id: 'hot-dogs', title: 'GOURMET HOT DOGS' },
   { id: 'loaded-fries', title: 'GOURMET CRISPY FRENCH FRIES' },
-  { id: 'ice-cream', title: '99 WHIPPY CONES & TREATS' },
 ];
 
 export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) => {

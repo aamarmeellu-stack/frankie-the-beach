@@ -29,10 +29,10 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({ isOpen, onClose }) =
       desc: 'Open air seaside seating with sea breeze, rattan chairs, and panoramic coastline view.',
     },
     {
-      src: ASSETS.rainbowSprinkleCone,
-      slotKey: 'site:rainbowSprinkleCone',
-      title: 'Rainbow Sprinkle Waffle Cone',
-      desc: 'Creamy soft-serve vanilla ice cream piled high and coated in rainbow sprinkles by the sea.',
+      src: '/dishes/The Footlong Frankfurter.png',
+      slotKey: 'menu:the-footlong-frankfurter',
+      title: 'The Footlong Frankfurter',
+      desc: 'Packed full of flavours, served in a soft brioche roll by Ramsgate beach.',
     },
     {
       src: ASSETS.loadedFries,

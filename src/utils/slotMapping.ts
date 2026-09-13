@@ -177,27 +177,6 @@ export const UNIFIED_SLOTS: UnifiedSlot[] = [
     location: 'Menu',
     aliases: ['menu:the-chilli-beef-dog', 'the-chilli-beef-dog'],
   },
-  {
-    key: 'cold-whippy-cone',
-    type: 'menu',
-    label: 'Whippy Ice Cream & Flake Cone',
-    category: 'ice-cream',
-    location: 'Menu / Home / Seaside Treats',
-    aliases: [
-      'menu:cold-whippy-cone',
-      'cold-whippy-cone',
-      'menu:whippy-ice-cream-flake',
-      'whippy-ice-cream-flake',
-      'coldIceCream',
-      'site:coldIceCream',
-      'iceCreamCone',
-      'site:iceCreamCone',
-      'iceCreamSundaes',
-      'site:iceCreamSundaes',
-      'massiveIceCream',
-      'site:massiveIceCream',
-    ],
-  },
 
   // ==========================================
   // 2. HOMEPAGE & KEY WEBSITE SECTIONS
@@ -238,11 +217,11 @@ export const UNIFIED_SLOTS: UnifiedSlot[] = [
     aliases: ['heroBurger', 'site:heroBurger'],
   },
   {
-    key: 'heroIceCream',
+    key: 'heroLoadedChips',
     type: 'site',
-    label: 'Homepage Hero Seaside Cone Polaroid',
+    label: 'Homepage Hero Loaded Chips Polaroid',
     location: 'Homepage Top Hero Bottom-Right Polaroid',
-    aliases: ['heroIceCream', 'site:heroIceCream', 'heroDrink', 'site:heroDrink'],
+    aliases: ['heroLoadedChips', 'site:heroLoadedChips', 'heroDrink', 'site:heroDrink'],
   },
   {
     key: 'kiosk',
@@ -271,13 +250,6 @@ export const UNIFIED_SLOTS: UnifiedSlot[] = [
     label: 'Jumbo Seaside Dogs Feature Card',
     location: 'Homepage Category Cards (Hot Dogs & Grill)',
     aliases: ['food7BurgerDogCombo', 'site:food7BurgerDogCombo'],
-  },
-  {
-    key: 'massiveIceCream',
-    type: 'site',
-    label: 'Whippy Ice Cream & Cones Promo Card',
-    location: 'Homepage Category Cards (Ice Cream & Treats)',
-    aliases: ['massiveIceCream', 'site:massiveIceCream'],
   },
   {
     key: 'childrenCarousel',
@@ -453,22 +425,6 @@ export const UNIFIED_SLOTS: UnifiedSlot[] = [
     category: 'loaded-fries',
     location: 'Customer Gallery (Loaded Fries & Sides)',
     aliases: ['gallery:g-fish-fingers-fries', 'g-fish-fingers-fries'],
-  },
-  {
-    key: 'g-sprinkle-cone',
-    type: 'gallery',
-    label: 'Rainbow Sprinkle Dipped Soft-Serve Cone',
-    category: 'treats',
-    location: 'Customer Gallery (Ice Creams & Sweets)',
-    aliases: ['gallery:g-sprinkle-cone', 'g-sprinkle-cone'],
-  },
-  {
-    key: 'g-cold-icecream',
-    type: 'gallery',
-    label: 'Classic Vanilla Beach Soft-Serve Cone',
-    category: 'treats',
-    location: 'Customer Gallery (Ice Creams & Sweets)',
-    aliases: ['gallery:g-cold-icecream', 'g-cold-icecream'],
   },
   {
     key: 'g-childern-1',

@@ -744,7 +744,7 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
                   Visit Frankie's Restaurant &amp; Beach Bar
                 </h3>
                 <p className="text-xs sm:text-sm text-emerald-100 font-medium max-w-xl">
-                  Check out our #1 UK Quick Bite food profile with 751 4.9-Star reviews for freshly smashed burgers, loaded chips, promenade dogs, and 99 whippy ice creams.
+                  Check out our #1 UK Quick Bite food profile with 751 4.9-Star reviews for freshly smashed burgers, loaded chips, promenade dogs, and cold refreshing drinks.
                 </p>
               </div>
               <button

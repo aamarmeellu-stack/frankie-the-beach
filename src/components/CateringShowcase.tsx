@@ -113,7 +113,7 @@ export const CateringShowcase: React.FC = () => {
           </div>
 
           <p className="text-sm sm:text-base text-[#496068] leading-relaxed">
-            Planning a beach gathering, wedding celebration, birthday party, corporate seaside day, or family get-together on Ramsgate Sands? We serve freshly seared smash burgers, loaded chips, jumbo promenade dogs, and 99 whippy cones right on Ramsgate beach.
+            Planning a beach gathering, wedding celebration, birthday party, corporate seaside day, or family get-together on Ramsgate Sands? We serve freshly seared smash burgers, loaded chips, jumbo promenade dogs, and cold refreshments right on Ramsgate beach.
           </p>
         </div>
 
@@ -285,10 +285,10 @@ export const CateringShowcase: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-heading font-extrabold text-sm text-[#000000] uppercase">
-                    Beers, Tea, Slushes &amp; 99 Whippy Cones
+                    Beers, Ciders, Slushes &amp; Teas
                   </h4>
                   <p className="text-xs text-[#526b74] mt-0.5">
-                    Chilled beers &amp; ciders, builder's tea, iced fruit slushes, traditional 99 whippy cones with Cadbury Flakes, and artisan coffees.
+                    Chilled beers &amp; ciders, builder's tea, iced fruit slushes, soft drinks, and artisan coffees.
                   </p>
                 </div>
               </div>

@@ -80,7 +80,7 @@ export const AboutPage: React.FC = () => {
               </h2>
 
               <p className="text-sm sm:text-base text-[#496068] leading-relaxed">
-                Frankie Fernando's story started long before the Frankie's name became synonymous with beachfront burgers, golden chips, and ice creams on Ramsgate Beach.
+                Frankie Fernando's story started long before the Frankie's name became synonymous with beachfront burgers, golden chips, and hospitality on Ramsgate Beach.
               </p>
 
               <p className="text-sm sm:text-base text-[#496068] leading-relaxed">
@@ -88,7 +88,7 @@ export const AboutPage: React.FC = () => {
               </p>
 
               <p className="text-sm sm:text-base text-[#496068] leading-relaxed">
-                Rather than letting his upbringing define him as a victim, Frankie made a conscious decision to crack on with life, work hard, and break the mould. Over the decades, his working life spanned retail, menswear, cars, street trading, and ice cream — learning the value of genuine relationships and honest graft.
+                Rather than letting his upbringing define him as a victim, Frankie made a conscious decision to crack on with life, work hard, and break the mould. Over the decades, his working life spanned retail, menswear, cars, street trading, and catering — learning the value of genuine relationships and honest graft.
               </p>
 
               {/* Frankie's Quote */}
@@ -257,6 +257,22 @@ export const AboutPage: React.FC = () => {
               {/* Award Card 1: 1066 Business Awards Extra Mile */}
               <div className="bg-white/10 rounded-2xl p-6 border border-sky-400/40 backdrop-blur-xs flex flex-col justify-between space-y-4 hover:border-sky-300 transition-colors">
                 <div className="space-y-3">
+                  {/* Real Ceremony Photo */}
+                  <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-black/40 border border-white/15 group">
+                    <img
+                      src="/2024 Award.jpeg"
+                      alt="Frankie's @ The Beach team winning 2024 Extra Mile Award"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        if (target.src !== '/2024-award.jpeg') target.src = '/2024-award.jpeg';
+                      }}
+                    />
+                    <div className="absolute bottom-2 left-2 bg-black/70 backdrop-blur-xs text-[#ECD87A] text-[10px] font-bold px-2 py-0.5 rounded-md">
+                      1066 Business Awards Ceremony Stage
+                    </div>
+                  </div>
+
                   <div className="flex items-center justify-between gap-2">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0580FF] text-white font-heading font-extrabold text-[11px] uppercase tracking-wider">
                       <Award className="w-3.5 h-3.5 text-amber-300" />
@@ -428,10 +444,10 @@ export const AboutPage: React.FC = () => {
               <Sparkles className="w-6 h-6 text-[#D1A03F]" />
             </div>
             <h3 className="font-heading font-extrabold text-lg text-[#000000] uppercase">
-              99 Whippy Ice Creams
+              Gourmet Loaded Fries
             </h3>
             <p className="text-xs sm:text-sm text-[#526b74] leading-relaxed">
-              Rainbow sprinkle waffle cones, creamy soft-serve vanilla, Cadbury Flakes, and refreshing iced fruit slushes right by the beach promenade.
+              Crisp golden French fries loaded with melted mature cheddar, sizzling bacon, pepperoni, or spicy chilli beef right by the beach promenade.
             </p>
           </div>
 
@@ -535,7 +551,7 @@ export const AboutPage: React.FC = () => {
             </h2>
 
             <p className="text-xs sm:text-sm text-sky-100 leading-relaxed max-w-xl mx-auto">
-              Grab a seat on our promenade terrace, tuck into a proper smash burger and loaded chips, or stop by for a classic 99 whippy cone with a Cadbury Flake on your seaside stroll.
+              Grab a seat on our promenade terrace, tuck into a proper smash burger and loaded chips, or relax with a cold refreshing drink on your seaside stroll.
             </p>
 
             <div className="pt-4 flex flex-wrap justify-center gap-4">

@@ -604,7 +604,7 @@ export const AdminPage: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-[#526b74]">
                   <div className="p-3 bg-gray-50 rounded-xl border border-gray-100">
                     <strong className="text-[#000000] block mb-1">🍔 Replace Menu Item Photos</strong>
-                    Swap out any burger, dirty fries, hot dog, or ice cream image with your own fresh photograph.
+                    Swap out any burger, dirty fries, or hot dog image with your own fresh photograph.
                   </div>
                   <div className="p-3 bg-gray-50 rounded-xl border border-gray-100">
                     <strong className="text-[#000000] block mb-1">📸 Add to Photo Gallery</strong>
@@ -904,7 +904,6 @@ export const AdminPage: React.FC = () => {
                         >
                           <option value="burgers-dogs">Burgers &amp; Hot Dogs</option>
                           <option value="loaded-fries">Loaded Fries &amp; Sides</option>
-                          <option value="treats">Ice Creams &amp; Sweets</option>
                           <option value="kiosk-team">Kiosk &amp; Team</option>
                           <option value="family">Beach Rides &amp; Family Fun</option>
                         </select>
@@ -930,7 +929,7 @@ export const AdminPage: React.FC = () => {
                         type="text"
                         value={customTitle}
                         onChange={(e) => setCustomTitle(e.target.value)}
-                        placeholder="e.g. Morning Bacon Roll on Beach Bench"
+                        placeholder="e.g. Fresh Gourmet Burger by the Beach"
                         className="w-full px-3 py-2.5 bg-white border border-gray-300 rounded-xl text-xs font-medium"
                       />
                     </div>
@@ -1683,7 +1682,6 @@ export const AdminPage: React.FC = () => {
                   <option value="burgers">Burgers</option>
                   <option value="loaded-fries">Loaded Fries &amp; Chips</option>
                   <option value="hot-dogs">Hot Dogs &amp; Grill</option>
-                  <option value="ice-cream">Ice Cream &amp; Treats</option>
                 </select>
               </div>
 

@@ -4,6 +4,7 @@ import { Hero } from '../components/Hero';
 import { QuickInfoBar } from '../components/QuickInfoBar';
 import { ChefsFavorites } from '../components/ChefsFavorites';
 import { NationalAwardBanner } from '../components/NationalAwardBanner';
+import { FoodCriticReview } from '../components/FoodCriticReview';
 import { WhatPeopleSay } from '../components/WhatPeopleSay';
 import { CateringShowcase } from '../components/CateringShowcase';
 import {
@@ -50,8 +51,11 @@ export const HomePage: React.FC = () => {
       {/* 2. Quick Info Bar */}
       <QuickInfoBar />
 
-      {/* 2.5 National Award Winner Spotlight (The Sun & Tripadvisor Best of the Best) */}
+      {/* 2.5 National Award Winner Spotlight (2024 Extra Mile Award) */}
       <NationalAwardBanner />
+
+      {/* 2.6 Independent Food Critic Taste Test & Video Report (Anne at the table) */}
+      <FoodCriticReview />
 
       {/* 3. Chef's Favorites Showcase */}
       <ChefsFavorites
@@ -122,7 +126,7 @@ export const HomePage: React.FC = () => {
               </h2>
 
               <p className="text-sm sm:text-base text-[#496068] leading-relaxed">
-                <strong className="text-[#000000]">Frankies At The Beach</strong> is the ultimate seaside destination for fun, food, and good times! From thrilling fair rides for the children to our award-winning quick bites, a well-stocked bar for the adults, giant 99 whippy ice creams, fresh warm doughnuts, and great music — everything you love about the seaside is right here in one fantastic location.
+                <strong className="text-[#000000]">Frankies At The Beach</strong> is the ultimate seaside destination for fun, food, and good times! From thrilling fair rides for the children to our award-winning quick bites, a well-stocked bar for the adults, gourmet loaded fries, fresh warm doughnuts, and great music — everything you love about the seaside is right here in one fantastic location.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
@@ -163,13 +167,13 @@ export const HomePage: React.FC = () => {
                 </div>
 
                 <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#f8f9f5] border border-[#e4e8dd]">
-                  <span className="text-2xl shrink-0">🍦</span>
+                  <span className="text-2xl shrink-0">🍟</span>
                   <div>
                     <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
-                      Massive Ice Cream Choice
+                      Gourmet Loaded Fries
                     </h4>
                     <p className="text-[11px] text-[#556d75] mt-0.5">
-                      99 whippies with Flakes, tubs &amp; so many flavours to choose from!
+                      Crispy golden chips with cheese, bacon &amp; toppings!
                     </p>
                   </div>
                 </div>
@@ -214,7 +218,7 @@ export const HomePage: React.FC = () => {
               <div className="h-0.5 w-6 bg-[#D1A03F]/50 rounded-full" />
             </div>
             <p className="text-sm text-[#496068]">
-              From gourmet footlong hot dogs to traditional 99 whippy cones with Flakes, discover what makes Frankie's Ramsgate's favourite food kiosk and bar.
+              From gourmet footlong hot dogs to loaded seaside fries, discover what makes Frankie's Ramsgate's favourite food kiosk and bar.
             </p>
           </div>
 
@@ -396,7 +400,7 @@ export const HomePage: React.FC = () => {
           </h2>
 
           <p className="text-sm sm:text-base text-sky-100 max-w-2xl mx-auto leading-relaxed">
-            Drop by our food kiosk and bar at Kiosk 1, Marina Esplanade for gourmet 6oz steak burgers, loaded chips, cold drinks, 99 whippy cones, and kids' beach rides right on the sand. Walk-ins are always welcomed by the beach!
+            Drop by our food kiosk and bar at Kiosk 1, Marina Esplanade for gourmet 6oz steak burgers, loaded chips, cold drinks, footlong dogs, and kids' beach rides right on the sand. Walk-ins are always welcomed by the beach!
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-3">

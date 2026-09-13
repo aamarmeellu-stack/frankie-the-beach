@@ -37,7 +37,6 @@ export const MenuPage: React.FC = () => {
     'the-footlong-frankfurter': true,
     'pepperoni-cheese-loaded-fries': true,
     'cheesy-fries': true,
-    'rainbow-sprinkle-cone': true,
   });
 
   const toggleFavorite = (id: string) => {

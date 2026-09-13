@@ -17,6 +17,8 @@ import {
   Newspaper,
   Award,
   HeartHandshake,
+  Youtube,
+  Play,
 } from 'lucide-react';
 import {
   CUSTOMER_REVIEWS,
@@ -24,6 +26,7 @@ import {
   TRIPADVISOR_PROFILES_DATA,
   NATIONAL_AWARD_DATA,
   EXTRA_MILE_AWARD_DATA,
+  FOOD_CRITIC_REVIEW,
 } from '../data/restaurantData';
 import { CustomerReview, TripAdvisorProfileData } from '../types';
 
@@ -264,6 +267,67 @@ export const ReviewsPage: React.FC = () => {
                   <span>Read In The Sun</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
+              </div>
+            </div>
+
+            {/* Independent Food Critic Taste Test & Video Report Card */}
+            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#e2e6db] shadow-xs">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <div className="lg:col-span-4 relative rounded-2xl overflow-hidden aspect-video bg-black group">
+                  <img
+                    src={FOOD_CRITIC_REVIEW.thumbnailUrl}
+                    alt="Food critic Anne testing Frankie's food"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <a
+                      href={FOOD_CRITIC_REVIEW.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+                      aria-label="Play video on YouTube"
+                    >
+                      <Play className="w-5 h-5 fill-current translate-x-0.5" />
+                    </a>
+                  </div>
+                  <div className="absolute bottom-2 left-2 bg-black/80 px-2 py-0.5 rounded text-[10px] text-amber-300 font-bold">
+                    Rating: {FOOD_CRITIC_REVIEW.rating}
+                  </div>
+                </div>
+
+                <div className="lg:col-span-8 space-y-2.5">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-red-50 border border-red-200 text-red-700 text-[11px] font-bold">
+                      <Youtube className="w-3 h-3 text-red-600" />
+                      Independent Food Critic Report
+                    </span>
+                    <span className="text-xs text-gray-500 font-medium">
+                      By {FOOD_CRITIC_REVIEW.criticName}
+                    </span>
+                  </div>
+
+                  <h3 className="text-lg sm:text-xl font-heading font-extrabold text-gray-900">
+                    "{FOOD_CRITIC_REVIEW.title}"
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    "{FOOD_CRITIC_REVIEW.verdict}" Sampled dishes included the German Bratwurst, Caribbean Chicken Burger, and seaside chips.
+                  </p>
+
+                  <div className="pt-1 flex items-center gap-4 text-xs font-semibold">
+                    <a
+                      href={FOOD_CRITIC_REVIEW.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#0580FF] hover:underline flex items-center gap-1"
+                    >
+                      <span>Watch Review Video</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                    <span className="text-gray-300">•</span>
+                    <span className="text-emerald-700 font-bold">Score: 8.5 / 10</span>
+                  </div>
+                </div>
               </div>
             </div>
 

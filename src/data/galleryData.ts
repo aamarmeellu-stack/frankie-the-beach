@@ -2,6 +2,16 @@ import { GalleryItem } from '../types';
 import { CLIENT_IMAGES } from './restaurantData';
 
 export const DEFAULT_GALLERY_ITEMS: GalleryItem[] = [
+  // 0. Prestigious Awards
+  {
+    id: 'g-award-2024',
+    src: '/2024 Award.jpeg',
+    fallbackSrc: '/2024-award.jpeg',
+    title: '2024 Extra Mile Award Winner — 1066 Business Awards',
+    category: 'kiosk-team',
+    desc: 'Frankie and team receiving the 2024 Extra Mile Award on stage, celebrating outstanding dedication to customer care and hospitality at Ramsgate Beach.',
+  },
+
   // 1. Kiosk & Team
   {
     id: 'g-team',
@@ -94,14 +104,6 @@ export const DEFAULT_GALLERY_ITEMS: GalleryItem[] = [
     desc: '8oz Venison burger, locally farmed venison with melted cheddar or blue cheese.',
   },
   {
-    id: 'g-bacon-sandwich',
-    src: CLIENT_IMAGES.baconSandwichHighRes,
-    fallbackSrc: CLIENT_IMAGES.baconSandwichHighRes,
-    title: 'Sizzling Beach Bacon Roll',
-    category: 'burgers-dogs',
-    desc: 'Thick-cut grilled smoked bacon served in a warm toasted white roll right on Ramsgate sands.',
-  },
-  {
     id: 'g-dog-frankfurter',
     src: '/dishes/The Footlong Frankfurter.png',
     fallbackSrc: '/dishes/The Footlong Frankfurter.png',
@@ -152,25 +154,7 @@ export const DEFAULT_GALLERY_ITEMS: GalleryItem[] = [
     desc: 'Fish fingers and our mature cheddars torched to perfection over our fries.',
   },
 
-  // 4. Ice Creams & Sweets
-  {
-    id: 'g-sprinkle-cone',
-    src: CLIENT_IMAGES.iceCreamCone,
-    fallbackSrc: CLIENT_IMAGES.iceCreamCone,
-    title: 'Rainbow Sprinkle Waffle Cone',
-    category: 'treats',
-    desc: 'Creamy soft-serve vanilla ice cream piled high and coated in rainbow sprinkles by the sea.',
-  },
-  {
-    id: 'g-cold-icecream',
-    src: CLIENT_IMAGES.coldIceCream,
-    fallbackSrc: CLIENT_IMAGES.coldIceCream,
-    title: 'Classic Coastal Vanilla Soft-Serve',
-    category: 'treats',
-    desc: 'Smooth and creamy vanilla soft-serve served in a crisp artisan waffle cone right on Ramsgate sands.',
-  },
-
-  // 5. Beach Rides & Family Fun
+  // 4. Beach Rides & Family Fun
   {
     id: 'g-childern-1',
     src: CLIENT_IMAGES.childrenSlide,

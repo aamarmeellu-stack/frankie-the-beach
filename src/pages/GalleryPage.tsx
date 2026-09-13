@@ -77,7 +77,7 @@ export const GalleryPage: React.FC = () => {
             </div>
 
             <p className="text-base sm:text-lg text-sky-100 max-w-xl mx-auto font-medium">
-              Real moments, genuine coastal food, 99 whippy cones, and family fun on Ramsgate Beach.
+              Real moments, genuine coastal food, and family fun on Ramsgate Beach.
             </p>
           </div>
         </div>
@@ -93,7 +93,6 @@ export const GalleryPage: React.FC = () => {
             { id: 'kiosk-team', label: 'Food Kiosk & Bar Team' },
             { id: 'burgers-dogs', label: 'Smash Burgers & Dogs' },
             { id: 'loaded-fries', label: 'Loaded Chips & Sides' },
-            { id: 'treats', label: '99 Cones & Slushes' },
             { id: 'family', label: 'Ramsgate Beach Funfair' },
           ].map((cat) => (
             <button
@@ -160,7 +159,7 @@ export const GalleryPage: React.FC = () => {
                 #FRANKIESATTHEBEACH
               </h4>
               <p className="text-xs text-sky-100 mt-1">
-                Share your burgers, loaded chips, 99 cones, and beach fun with @FrankiesAtTheBeach!
+                Share your burgers, loaded chips, footlong dogs, and beach fun with @FrankiesAtTheBeach!
               </p>
             </div>
           </div>

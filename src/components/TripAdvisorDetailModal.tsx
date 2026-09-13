@@ -174,7 +174,7 @@ export const TripAdvisorDetailModal: React.FC<TripAdvisorDetailModalProps> = ({
                 <p className="text-white text-xs sm:text-sm font-bold mt-1.5 drop-shadow-xs">
                   {activeTab === 'attractions'
                     ? 'Giant inflatable slide, beach carousels & kids rides right on Ramsgate Sands'
-                    : 'Handcrafted smash burgers, loaded chips, and traditional 99 whippy cones'}
+                    : 'Handcrafted smash burgers, loaded chips, and footlong gourmet hot dogs'}
                 </p>
               </div>
             </div>

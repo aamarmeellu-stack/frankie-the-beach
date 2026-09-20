@@ -126,13 +126,15 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
     [isPlaying, startVideo, stopVideo]
   );
 
-  // Navigate directly to the 3 Frankie's Beach Moments videos section
+  // Navigate directly to the 3 Frankie's Beach Moments videos section and play all 3
   const handleWatchVideosClick = useCallback((e?: React.MouseEvent) => {
     e?.preventDefault();
     const videoSection = document.getElementById('frankies-beach-videos-section');
     if (videoSection) {
       videoSection.scrollIntoView({ behavior: 'smooth' });
     }
+    // Automatically trigger all 3 videos to play together!
+    window.dispatchEvent(new CustomEvent('play-all-frankie-videos'));
   }, []);
 
   return (

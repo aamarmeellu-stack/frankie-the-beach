@@ -1,15 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Clock,
   MapPin,
   Phone,
   UtensilsCrossed,
   Facebook,
   Trophy,
   Award,
-  ExternalLink,
-  Newspaper,
 } from 'lucide-react';
 import {
   TRIPADVISOR_LINKS,
@@ -27,8 +24,8 @@ export const Footer: React.FC = () => {
     <footer className="bg-[#000000] text-white pt-14 pb-8 border-t border-white/10" id="contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Main 4 Columns Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 pb-12 border-b border-white/10">
+        {/* Main 3 Columns Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 pb-12 border-b border-white/10">
           
           {/* Column 1: Brand & Socials */}
           <div className="space-y-6">
@@ -192,37 +189,8 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 3: Opening Hours & Script */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Clock className="w-4 h-4 text-[#D1A03F]" />
-              <h4 className="text-xs font-extrabold tracking-[0.2em] uppercase text-white/90 font-heading">
-                OPEN HOURS
-              </h4>
-            </div>
-
-            <div className="space-y-1.5 text-xs sm:text-[13px] text-white/75">
-              <p className="font-semibold text-white/95">Mon - Thu: 9 AM - 5 PM</p>
-              <p className="font-semibold text-white/95">Fri - Sun: 10 AM - 6 PM</p>
-              <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full bg-emerald-900/60 border border-emerald-500/40 text-emerald-300 text-[10px] font-bold">
-                ● Open Today by the Sea
-              </span>
-            </div>
-
-            {/* Signature "See you at the beach!" cursive in gold */}
-            <div className="mt-6 pt-1">
-              <p className="font-hand text-2xl sm:text-3xl text-[#D1A03F] font-bold tracking-wide">
-                See you at the beach!
-              </p>
-              <div className="flex items-center gap-2 text-[#D1A03F] mt-1">
-                <UtensilsCrossed className="w-4 h-4 text-[#ECD87A]" />
-                <div className="h-0.5 w-16 bg-[#D1A03F]/60 rounded-full"></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Column 4: Find Us & Call Us */}
-          <div className="space-y-5">
+          {/* Column 3: Visit Us, Contact & Seaside Welcome */}
+          <div className="space-y-6">
             <div>
               <div className="flex items-center gap-2 mb-2.5">
                 <MapPin className="w-4 h-4 text-[#D1A03F] shrink-0" />
@@ -258,6 +226,17 @@ export const Footer: React.FC = () => {
                 >
                   frankiefernando@msn.com
                 </a>
+              </div>
+            </div>
+
+            {/* Signature "See you at the beach!" cursive in gold */}
+            <div className="pt-2">
+              <p className="font-hand text-2xl sm:text-3xl text-[#D1A03F] font-bold tracking-wide">
+                See you at the beach!
+              </p>
+              <div className="flex items-center gap-2 text-[#D1A03F] mt-1">
+                <UtensilsCrossed className="w-4 h-4 text-[#ECD87A]" />
+                <div className="h-0.5 w-16 bg-[#D1A03F]/60 rounded-full"></div>
               </div>
             </div>
           </div>

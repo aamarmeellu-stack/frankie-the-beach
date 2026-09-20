@@ -9,7 +9,7 @@ import {
   Sparkles,
   Award,
 } from 'lucide-react';
-import { TRIPADVISOR_LINKS } from '../data/restaurantData';
+import { TRIPADVISOR_LINKS, FRANKIE_VIDEOS } from '../data/restaurantData';
 import { PWAInstallButton } from './PWAInstallButton';
 import { useImages } from '../context/ImageContext';
 import { ClientImage } from './ClientImage';
@@ -415,7 +415,7 @@ export const Header: React.FC<HeaderProps> = () => {
               <div className="flex items-center justify-between w-full">
                 <span className="text-[#ECD87A]">BEACH VIDEOS 🎥</span>
                 <span className="text-[10px] bg-red-600 text-white px-2 py-0.5 rounded font-bold uppercase tracking-wider">
-                  3 Videos
+                  {FRANKIE_VIDEOS.length} Videos
                 </span>
               </div>
             </a>

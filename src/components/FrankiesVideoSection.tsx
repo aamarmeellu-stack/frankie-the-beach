@@ -351,11 +351,11 @@ export const FrankiesVideoSection: React.FC = () => {
                 <Volume2 className="w-3 h-3" />
                 <span>Audio:</span>
               </span>
-              {FRANKIE_VIDEOS.map((_, idx) => {
+              {FRANKIE_VIDEOS.map((video, idx) => {
                 const isActive = activeAudioIndex === idx && !isMuted[idx];
                 return (
                   <button
-                    key={idx}
+                    key={video.id}
                     type="button"
                     onClick={() => setAudioFocus(idx)}
                     className={`px-2 py-0.5 rounded text-[10px] font-heading font-black uppercase transition-all ${
@@ -363,9 +363,9 @@ export const FrankiesVideoSection: React.FC = () => {
                         ? 'bg-amber-400 text-black shadow-sm'
                         : 'bg-white/10 hover:bg-white/20 text-white/80'
                     }`}
-                    title={`Switch sound to Video ${idx + 1}`}
+                    title={`Switch sound to Video ${video.number}`}
                   >
-                    Vid {idx + 1}
+                    Vid {video.number}
                   </button>
                 );
               })}

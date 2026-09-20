@@ -507,27 +507,27 @@ export const FrankiesVideoSection: React.FC = () => {
                       el.dataset.attemptCount = String(attempt + 1);
 
                       if (attempt === 0) {
-                        // Attempt 1: Space-separated filename e.g. /video 4 frankie.mp4
-                        el.src = getAssetUrl(video.fallbackSrc);
-                        el.load();
-                      } else if (attempt === 1) {
-                        // Attempt 2: No-dash filename e.g. /video4frankie.mp4
+                        // Attempt 1: No-dash version e.g. /video4frankie.mp4
                         el.src = getAssetUrl(`/video${video.number}frankie.mp4`);
                         el.load();
+                      } else if (attempt === 1) {
+                        // Attempt 2: Spaced version e.g. /video 4 frankie.mp4
+                        el.src = getAssetUrl(video.fallbackSrc);
+                        el.load();
                       } else if (attempt === 2) {
-                        // Attempt 3: Guaranteed built-in catering / hero video so deploy never stays at 0:00
-                        el.src = getAssetUrl(video.number % 2 === 0 ? '/catering-video.mp4' : '/hero-video.mp4');
+                        // Attempt 3: URL encoded spaced version e.g. /video%204%20frankie.mp4
+                        el.src = getAssetUrl(encodeURI(video.fallbackSrc));
                         el.load();
                       }
+                      // Strictly no fallback to catering or hero video - ensures only real video is played
                     }}
                     className="w-full h-full object-cover absolute inset-0 cursor-pointer"
                     onClick={() => handleTogglePlaySingle(index)}
                   >
                     <source src={getAssetUrl(video.src)} type="video/mp4" />
+                    <source src={getAssetUrl(`/video${video.number}frankie.mp4`)} type="video/mp4" />
                     <source src={getAssetUrl(video.fallbackSrc)} type="video/mp4" />
                     <source src={getAssetUrl(encodeURI(video.fallbackSrc))} type="video/mp4" />
-                    <source src={getAssetUrl(`/video${video.number}frankie.mp4`)} type="video/mp4" />
-                    <source src={getAssetUrl(video.number % 2 === 0 ? '/catering-video.mp4' : '/hero-video.mp4')} type="video/mp4" />
                     Your browser does not support video playback.
                   </video>
 

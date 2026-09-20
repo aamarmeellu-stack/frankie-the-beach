@@ -425,8 +425,9 @@ export const FrankiesVideoSection: React.FC = () => {
                       videoRefs.current[index] = el;
                     }}
                     src={video.src}
+                    poster={video.poster}
                     playsInline
-                    preload="auto"
+                    preload="metadata"
                     loop
                     muted={videoIsMuted}
                     onTimeUpdate={() => {
@@ -463,10 +464,17 @@ export const FrankiesVideoSection: React.FC = () => {
                         return next;
                       });
                     }}
-                    onError={() => {
+                    onError={(e) => {
                       const el = videoRefs.current[index];
-                      if (el && el.src !== video.fallbackSrc) {
+                      if (el && !el.dataset.attemptedFallback) {
+                        el.dataset.attemptedFallback = '1';
+                        // Try fallback source with space or URL encoded
                         el.src = video.fallbackSrc;
+                        el.load();
+                      } else if (el && el.dataset.attemptedFallback === '1') {
+                        el.dataset.attemptedFallback = '2';
+                        // Try no-dash version e.g. /video4frankie.mp4
+                        el.src = `/video${video.number}frankie.mp4`;
                         el.load();
                       }
                     }}
@@ -475,6 +483,8 @@ export const FrankiesVideoSection: React.FC = () => {
                   >
                     <source src={video.src} type="video/mp4" />
                     <source src={video.fallbackSrc} type="video/mp4" />
+                    <source src={encodeURI(video.fallbackSrc)} type="video/mp4" />
+                    <source src={`/video${video.number}frankie.mp4`} type="video/mp4" />
                     Your browser does not support video playback.
                   </video>
 

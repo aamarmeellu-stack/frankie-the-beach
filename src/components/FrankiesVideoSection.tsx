@@ -10,6 +10,15 @@ import {
 } from 'lucide-react';
 import { FRANKIE_VIDEOS, FrankieVideoItem } from '../data/restaurantData';
 
+const getAssetUrl = (url: string): string => {
+  if (!url) return '';
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) return url;
+  const base = import.meta.env.BASE_URL || '/';
+  const cleanBase = base.endsWith('/') ? base.slice(0, -1) : base;
+  const cleanUrl = url.startsWith('/') ? url : `/${url}`;
+  return `${cleanBase}${cleanUrl}`;
+};
+
 export const FrankiesVideoSection: React.FC = () => {
   const videoCount = FRANKIE_VIDEOS.length;
 
@@ -419,13 +428,25 @@ export const FrankiesVideoSection: React.FC = () => {
                   }}
                   className="relative rounded-2xl overflow-hidden bg-black aspect-video sm:aspect-[4/3] md:aspect-video border border-white/25 shadow-inner flex flex-col justify-end group/player"
                 >
+                  {/* High-definition Poster Image Preview - Always visible immediately */}
+                  {video.poster && (
+                    <img
+                      src={getAssetUrl(video.poster)}
+                      alt={video.title}
+                      className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-300 pointer-events-none ${
+                        videoIsPlaying ? 'opacity-0' : 'opacity-100'
+                      }`}
+                      loading="eager"
+                    />
+                  )}
+
                   {/* HTML5 Video Element */}
                   <video
                     ref={(el) => {
                       videoRefs.current[index] = el;
                     }}
-                    src={video.src}
-                    poster={video.poster}
+                    src={getAssetUrl(video.src)}
+                    poster={getAssetUrl(video.poster)}
                     playsInline
                     preload="metadata"
                     loop
@@ -469,22 +490,22 @@ export const FrankiesVideoSection: React.FC = () => {
                       if (el && !el.dataset.attemptedFallback) {
                         el.dataset.attemptedFallback = '1';
                         // Try fallback source with space or URL encoded
-                        el.src = video.fallbackSrc;
+                        el.src = getAssetUrl(video.fallbackSrc);
                         el.load();
                       } else if (el && el.dataset.attemptedFallback === '1') {
                         el.dataset.attemptedFallback = '2';
                         // Try no-dash version e.g. /video4frankie.mp4
-                        el.src = `/video${video.number}frankie.mp4`;
+                        el.src = getAssetUrl(`/video${video.number}frankie.mp4`);
                         el.load();
                       }
                     }}
                     className="w-full h-full object-cover absolute inset-0 cursor-pointer"
                     onClick={() => handleTogglePlaySingle(index)}
                   >
-                    <source src={video.src} type="video/mp4" />
-                    <source src={video.fallbackSrc} type="video/mp4" />
-                    <source src={encodeURI(video.fallbackSrc)} type="video/mp4" />
-                    <source src={`/video${video.number}frankie.mp4`} type="video/mp4" />
+                    <source src={getAssetUrl(video.src)} type="video/mp4" />
+                    <source src={getAssetUrl(video.fallbackSrc)} type="video/mp4" />
+                    <source src={getAssetUrl(encodeURI(video.fallbackSrc))} type="video/mp4" />
+                    <source src={getAssetUrl(`/video${video.number}frankie.mp4`)} type="video/mp4" />
                     Your browser does not support video playback.
                   </video>
 

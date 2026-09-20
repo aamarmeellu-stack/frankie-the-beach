@@ -42,6 +42,9 @@ export const FrankiesVideoSection: React.FC = () => {
     if (!videoRef.current) return;
 
     if (videoRef.current.paused) {
+      videoRef.current.muted = false;
+      videoRef.current.volume = 1.0;
+      setIsMuted(false);
       videoRef.current
         .play()
         .then(() => {
@@ -49,7 +52,7 @@ export const FrankiesVideoSection: React.FC = () => {
         })
         .catch((err) => {
           console.log('Playback error or blocked:', err);
-          // If blocked with audio, try muted
+          // If browser policy blocks unmuted autoplay, fallback to muted
           if (videoRef.current) {
             videoRef.current.muted = true;
             setIsMuted(true);
@@ -106,10 +109,19 @@ export const FrankiesVideoSection: React.FC = () => {
       setIsPlaying(true);
       setTimeout(() => {
         if (videoRef.current) {
+          videoRef.current.muted = false;
+          videoRef.current.volume = 1.0;
+          setIsMuted(false);
           videoRef.current
             .play()
             .then(() => setIsPlaying(true))
-            .catch(() => {});
+            .catch(() => {
+              if (videoRef.current) {
+                videoRef.current.muted = true;
+                setIsMuted(true);
+                videoRef.current.play().then(() => setIsPlaying(true));
+              }
+            });
         }
       }, 100);
     }
@@ -242,7 +254,7 @@ export const FrankiesVideoSection: React.FC = () => {
 
                   <div className="mt-4 px-4 py-1.5 rounded-full bg-black/75 border border-white/30 text-white font-heading font-black text-xs uppercase tracking-wider shadow-lg flex items-center gap-2">
                     <Sparkles className="w-3.5 h-3.5 text-[#ECD87A]" />
-                    <span>Click Here 🔊</span>
+                    <span>PLAY WITH SOUND 🔊</span>
                   </div>
                 </div>
               )}

@@ -142,7 +142,7 @@ export const ReviewsPage: React.FC = () => {
               </div>
               <div className="min-w-0 flex-1">
                 <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 font-heading block">
-                  TripAdvisor (The Main)
+                  Click Here: The Main
                 </span>
                 <h3 className="text-xs sm:text-sm font-heading font-extrabold text-[#000000] truncate">
                   Food Kiosk &amp; Bar
@@ -173,7 +173,7 @@ export const ReviewsPage: React.FC = () => {
               </div>
               <div className="min-w-0 flex-1">
                 <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-800 font-heading block">
-                  TripAdvisor (The Children)
+                  Click Here: Beach Rides
                 </span>
                 <h3 className="text-xs sm:text-sm font-heading font-extrabold text-[#000000] truncate">
                   Beach Rides &amp; Play
@@ -209,7 +209,7 @@ export const ReviewsPage: React.FC = () => {
               </div>
               <div className="min-w-0 flex-1">
                 <span className="text-[10px] font-extrabold uppercase tracking-wider text-blue-800 font-heading block">
-                  Google Reviews
+                  Click Here: Google Reviews
                 </span>
                 <h3 className="text-xs sm:text-sm font-heading font-extrabold text-[#000000] truncate">
                   Customer Community
@@ -262,9 +262,10 @@ export const ReviewsPage: React.FC = () => {
                   rel="noopener noreferrer"
                   className="shrink-0 bg-[#d61e27] hover:bg-[#b5141d] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-5 py-3 rounded-2xl shadow-md hover:shadow-lg transition-all flex items-center gap-2 border border-white/20 active:scale-95 cursor-pointer"
                   id="reviews-sun-article-btn"
+                  title="Read The Sun UK newspaper feature on Frankie's"
                 >
                   <Newspaper className="w-4 h-4" />
-                  <span>Click Here</span>
+                  <span>Read The Sun Feature</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
@@ -319,9 +320,10 @@ export const ReviewsPage: React.FC = () => {
                       href={FOOD_CRITIC_REVIEW.videoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#0070E0] hover:underline flex items-center gap-1"
+                      className="text-[#0070E0] hover:underline flex items-center gap-1 font-bold"
+                      title="Click Here to watch review video on YouTube"
                     >
-                      <span>Watch Review Video</span>
+                      <span>Click Here to Watch Review Video</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
                     <span className="text-gray-300">•</span>
@@ -442,9 +444,10 @@ export const ReviewsPage: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#f26522] hover:bg-[#d9531e] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-5 py-3 rounded-xl shadow-md transition-all"
+                      title="Click Here to read all 751 reviews on TripAdvisor UK"
                     >
                       <MessageSquare className="w-4 h-4" />
-                      <span>Read All 751 on TripAdvisor UK</span>
+                      <span>Click Here to Read All 751 on TripAdvisor</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
 
@@ -453,8 +456,9 @@ export const ReviewsPage: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 text-xs font-bold text-emerald-800 hover:text-emerald-900 transition-colors"
+                      title="Click Here to leave a review on TripAdvisor"
                     >
-                      <span>Leave TripAdvisor Review</span>
+                      <span>Click Here to Leave Review</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>

@@ -51,7 +51,14 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
         setIsPlaying(true);
       })
       .catch((err) => {
-        console.warn('Play error:', err);
+        console.warn('Play unmuted blocked by policy, trying muted fallback:', err);
+        video.muted = true;
+        video
+          .play()
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch(() => {});
       });
   }, []);
 
@@ -286,9 +293,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                 onClick={onExploreMenu}
                 id="btn-explore-menu"
                 className="bg-gradient-to-b from-[#ECD87A] via-[#D1A03F] to-[#8C6F2B] hover:brightness-105 active:scale-95 text-[#000000] font-heading font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 sm:px-7 py-3.5 rounded-xl shadow-[0_8px_20px_rgba(0,0,0,0.3)] hover:shadow-2xl transition-all flex items-center gap-2.5 group cursor-pointer"
-                title="Click Here to explore menu"
+                title="Explore our full food, drinks, and beach treats menu"
               >
-                <span>Click Here</span>
+                <span>EXPLORE MENU</span>
                 <Utensils className="w-4 h-4 text-[#000000] group-hover:rotate-12 transition-transform" />
               </button>
 
@@ -300,17 +307,17 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                     ? 'bg-black/60 hover:bg-black/80 border-amber-300 text-amber-300'
                     : 'bg-gradient-to-r from-[#ECD87A] via-[#FFD700] to-[#E5A823] hover:brightness-110 border-white/80 text-black shadow-[0_8px_20px_rgba(236,196,64,0.4)]'
                 }`}
-                title={isPlaying ? 'Click to Stop Video' : 'Click Here'}
+                title={isPlaying ? 'Click to Stop Video' : 'Watch video with beach sounds and music'}
               >
                 {isPlaying ? (
                   <>
                     <Pause className="w-4 h-4 text-amber-300 group-hover:scale-110 transition-transform" />
-                    <span>Stop Video</span>
+                    <span>STOP VIDEO</span>
                   </>
                 ) : (
                   <>
                     <Play className="w-4 h-4 fill-current text-black group-hover:scale-110 transition-transform" />
-                    <span>Click Here 🔊</span>
+                    <span>WATCH VIDEO 🔊</span>
                   </>
                 )}
               </button>
@@ -319,9 +326,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                 onClick={onContact}
                 id="btn-hero-contact"
                 className="bg-[#003899]/70 hover:bg-[#003899] active:scale-95 text-white font-heading font-extrabold text-xs sm:text-sm uppercase tracking-wider px-5 sm:px-6 py-3.5 rounded-xl border-2 border-white/70 shadow-lg hover:shadow-xl transition-all flex items-center gap-2.5 group cursor-pointer backdrop-blur-md"
-                title="Click Here to come & enjoy Frankies"
+                title="Find us on Marina Esplanade, Ramsgate Beach"
               >
-                <span>Click Here</span>
+                <span>FIND US ON THE BEACH</span>
                 <MapPin className="w-4 h-4 text-[#FFF2B2] group-hover:scale-110 transition-transform" />
               </button>
             </div>
@@ -346,27 +353,11 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                 </svg>
               </div>
 
-              {/* Polaroid: Hot Sugared Beach Donuts (From File Explorer) */}
+              {/* Polaroid 1: Frankie's Beachfront Kiosk (Top-Left) */}
               <div
-                className="absolute -left-1 sm:left-2 top-0 sm:top-1 w-38 sm:w-46 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_20px_45px_rgba(0,0,0,0.45)] rounded-[2px] transform -rotate-[7deg] hover:-rotate-2 hover:scale-105 transition-all duration-300 z-15 group cursor-pointer"
+                className="absolute -left-2 sm:left-0 top-0 sm:top-1 w-38 sm:w-44 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_20px_45px_rgba(0,0,0,0.45)] rounded-[2px] transform -rotate-[7deg] hover:-rotate-2 hover:scale-105 transition-all duration-300 z-10 group cursor-pointer"
                 onClick={onExploreMenu}
-              >
-                <div className="overflow-hidden aspect-square bg-[#FFE0B2]">
-                  <img
-                    src="/donut-img.jpeg"
-                    alt="Frankie's Beach Donuts"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = '/donut img.jpeg';
-                    }}
-                  />
-                </div>
-              </div>
-
-              {/* Polaroid: Frankie's Beachfront Kiosk */}
-              <div
-                className="absolute right-0 sm:right-2 top-1 sm:top-2 w-40 sm:w-48 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_20px_45px_rgba(0,0,0,0.45)] rounded-[2px] transform rotate-[6deg] hover:rotate-2 hover:scale-105 transition-all duration-300 z-10 group cursor-pointer"
-                onClick={onExploreMenu}
+                title="Frankie's Beachfront Kiosk on Ramsgate Beach"
               >
                 <div className="overflow-hidden aspect-square bg-[#006ee0]">
                   <ClientImage
@@ -380,10 +371,29 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                 </div>
               </div>
 
-              {/* Polaroid: Centerpiece Gourmet Cheeseburger */}
+              {/* Polaroid 2: Hot Sugared Beach Donuts (Top-Right - Shuffled to Front with High Visibility) */}
               <div
-                className="absolute left-6 sm:left-10 top-20 sm:top-22 w-50 sm:w-60 bg-white p-2.5 sm:p-3 pb-7 sm:pb-8 shadow-[0_28px_60px_rgba(0,0,0,0.55)] rounded-[2px] transform -rotate-[3deg] hover:rotate-0 hover:scale-105 transition-all duration-300 z-20 group cursor-pointer"
+                className="absolute right-0 sm:right-1 top-0 sm:top-1 w-44 sm:w-52 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_26px_55px_rgba(0,0,0,0.52)] rounded-[2px] transform rotate-[5deg] hover:rotate-1 hover:scale-105 transition-all duration-300 z-25 group cursor-pointer border-t border-white"
                 onClick={onExploreMenu}
+                title="Frankie's Famous Hot Beach Donuts & Toppings"
+              >
+                <div className="overflow-hidden aspect-[4/5] bg-[#FFE0B2] rounded-[1px]">
+                  <img
+                    src="/donut-img.jpeg"
+                    alt="Frankie's Beach Donuts"
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = '/donut img.jpeg';
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Polaroid 3: Centerpiece Gourmet Cheeseburger */}
+              <div
+                className="absolute left-4 sm:left-8 top-22 sm:top-24 w-48 sm:w-56 bg-white p-2.5 sm:p-3 pb-7 sm:pb-8 shadow-[0_28px_60px_rgba(0,0,0,0.55)] rounded-[2px] transform -rotate-[2deg] hover:rotate-0 hover:scale-105 transition-all duration-300 z-18 group cursor-pointer"
+                onClick={onExploreMenu}
+                title="Gourmet Burger at Frankie's"
               >
                 <div className="overflow-hidden aspect-square bg-[#005FCE]">
                   <ClientImage
@@ -397,10 +407,11 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                 </div>
               </div>
 
-              {/* Polaroid: Pepperoni & Mature Cheddar Loaded Chips */}
+              {/* Polaroid 4: Pepperoni & Mature Cheddar Loaded Chips */}
               <div
-                className="absolute right-1 sm:right-3 bottom-10 sm:bottom-12 w-40 sm:w-48 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_22px_50px_rgba(0,0,0,0.48)] rounded-[2px] transform -rotate-[5deg] hover:rotate-0 hover:scale-105 transition-all duration-300 z-25 group cursor-pointer"
+                className="absolute right-1 sm:right-3 bottom-8 sm:bottom-10 w-40 sm:w-46 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_22px_50px_rgba(0,0,0,0.48)] rounded-[2px] transform -rotate-[4deg] hover:rotate-0 hover:scale-105 transition-all duration-300 z-20 group cursor-pointer"
                 onClick={onExploreMenu}
+                title="Loaded Chips at Frankie's"
               >
                 <div className="overflow-hidden aspect-square bg-[#003680]">
                   <ClientImage
@@ -414,10 +425,11 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                 </div>
               </div>
 
-              {/* Polaroid: Cold Draught Pint / Alcohol From Menu */}
+              {/* Polaroid 5: Cold Draught Pint / Alcohol From Menu */}
               <div
-                className="absolute -left-1 sm:left-3 bottom-0 sm:bottom-2 w-40 sm:w-48 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_26px_55px_rgba(0,0,0,0.5)] rounded-[2px] transform rotate-[5deg] hover:rotate-1 hover:scale-105 transition-all duration-300 z-30 group cursor-pointer"
+                className="absolute -left-1 sm:left-2 bottom-0 sm:bottom-2 w-38 sm:w-44 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_26px_55px_rgba(0,0,0,0.5)] rounded-[2px] transform rotate-[4deg] hover:rotate-1 hover:scale-105 transition-all duration-300 z-30 group cursor-pointer"
                 onClick={onExploreMenu}
+                title="Seaside Bar Drink at Frankie's"
               >
                 <div className="overflow-hidden aspect-square bg-[#0047AB]">
                   <ClientImage
@@ -432,7 +444,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
 
               {/* Circular Stamp Badge: FRANKIES AT THE BEACH ★ RAMSGATE */}
               <div
-                className="absolute right-24 sm:right-28 top-[205px] sm:top-[225px] z-35 stamp-badge pointer-events-auto"
+                className="absolute left-[44%] -translate-x-1/2 top-[195px] sm:top-[215px] z-35 stamp-badge pointer-events-auto"
                 title="Frankies At The Beach Ramsgate"
               >
                 <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white border-2 border-dashed border-[#0070E0] p-1.5 flex items-center justify-center relative shadow-[0_12px_28px_rgba(0,112,224,0.35)]">

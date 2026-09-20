@@ -147,7 +147,7 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 font-heading">
-                    The Main Profile
+                    Click Here: The Main
                   </span>
                   <span className="text-[10px] font-black text-white bg-emerald-700 px-1.5 py-0.5 rounded">
                     #1 IN UK
@@ -189,7 +189,7 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-800 font-heading">
-                    The Children Profile
+                    Click Here: Beach Rides
                   </span>
                   <span className="text-[10px] font-black text-amber-900 bg-amber-200 px-1.5 py-0.5 rounded">
                     RIDES &amp; FUN
@@ -230,7 +230,7 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
               </div>
               <div className="min-w-0 flex-1">
                 <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#0070E0] font-heading block">
-                  TripAdvisor Hub
+                  Click Here: Overview
                 </span>
                 <h3 className="text-sm font-heading font-extrabold text-[#000000] truncate">
                   Both Profiles Overview
@@ -348,7 +348,7 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
                       className="w-full bg-[#00aa6c] hover:bg-[#008f5b] active:scale-95 text-white font-heading font-extrabold text-sm uppercase tracking-wider py-3.5 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 group cursor-pointer"
                       id="btn-visit-tripadvisor-restaurant"
                     >
-                      <span>Read All 751 on TripAdvisor UK</span>
+                      <span>Click Here to Read on TripAdvisor UK</span>
                       <ExternalLink className="w-4 h-4 text-white/90 group-hover:translate-x-0.5 transition-transform" />
                     </a>
 
@@ -600,7 +600,7 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
                       className="w-full bg-[#00aa6c] hover:bg-[#008f5b] active:scale-95 text-white font-heading font-extrabold text-sm uppercase tracking-wider py-3.5 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 group cursor-pointer"
                       id="btn-visit-tripadvisor-attractions"
                     >
-                      <span>Read All 270 on TripAdvisor UK</span>
+                      <span>Click Here to Read on TripAdvisor UK</span>
                       <ExternalLink className="w-4 h-4 text-white/90 group-hover:translate-x-0.5 transition-transform" />
                     </a>
 

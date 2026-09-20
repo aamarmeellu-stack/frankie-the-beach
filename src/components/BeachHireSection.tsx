@@ -153,10 +153,10 @@ export const BeachHireSection: React.FC = () => {
                 type="button"
                 onClick={() => setSelectedImageModal(true)}
                 className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-black/70 hover:bg-black/90 text-white text-xs font-bold px-3 py-1.5 rounded-xl backdrop-blur-md flex items-center gap-1.5 shadow-lg transition-transform active:scale-95 cursor-pointer"
-                title="View full banner"
+                title="Click Here to enlarge banner photo"
               >
                 <Maximize2 className="w-3.5 h-3.5 text-amber-300" />
-                <span className="hidden sm:inline">View Banner</span>
+                <span>Click Here to Enlarge</span>
               </button>
 
               {/* Corner Live Availability Pill */}
@@ -231,9 +231,10 @@ export const BeachHireSection: React.FC = () => {
                   type="button"
                   onClick={() => handleWhatsAppHire(item.name)}
                   className="w-full bg-[#f0f6ff] hover:bg-[#0070E0] text-[#0070E0] hover:text-white text-xs font-heading font-extrabold uppercase tracking-wider py-2.5 px-3 rounded-xl transition-colors flex items-center justify-center gap-1.5 cursor-pointer active:scale-98"
+                  title={`Click Here to enquire for ${item.name} hire on WhatsApp`}
                 >
                   <MessageSquare className="w-3.5 h-3.5" />
-                  <span>Enquire for {item.name}</span>
+                  <span>Click Here to Enquire</span>
                 </button>
               </div>
             );
@@ -306,9 +307,10 @@ export const BeachHireSection: React.FC = () => {
                   type="button"
                   onClick={() => handleWhatsAppHire()}
                   className="w-full bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white font-heading font-black text-xs uppercase tracking-wider py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  title="Click Here to contact us on WhatsApp about beach hire"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  <span>WhatsApp Beach Hire</span>
+                  <span>Click Here to WhatsApp Us</span>
                 </button>
 
                 <a

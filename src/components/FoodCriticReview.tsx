@@ -94,7 +94,7 @@ export const FoodCriticReview: React.FC = () => {
                   className="text-[#0070E0] hover:underline flex items-center gap-1 font-semibold"
                   title="Click Here to watch on YouTube"
                 >
-                  <span>Click Here</span>
+                  <span>Click Here to Watch on YouTube</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>

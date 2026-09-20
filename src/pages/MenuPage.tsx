@@ -144,18 +144,20 @@ export const MenuPage: React.FC = () => {
                 onClick={handleWhatsAppContact}
                 id="btn-whatsapp-chat"
                 className="inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20bd5a] text-white font-heading font-extrabold text-xs sm:text-sm uppercase tracking-wider px-5 sm:px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg active:scale-95 transition-all cursor-pointer"
+                title="Click Here to chat on WhatsApp"
               >
                 <MessageSquare className="w-4 h-4 fill-current" />
-                <span>CHAT ON WHATSAPP</span>
+                <span>Click Here to Chat on WhatsApp</span>
               </button>
 
               <button
                 onClick={() => setIsPdfMenuOpen(true)}
                 id="btn-download-menu-pdf"
                 className="inline-flex items-center gap-2 bg-gradient-to-b from-[#ECD87A] via-[#D1A03F] to-[#8C6F2B] hover:brightness-105 active:scale-95 text-[#000000] font-heading font-extrabold text-xs sm:text-sm uppercase tracking-wider px-5 sm:px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg active:scale-95 transition-all cursor-pointer"
+                title="Click Here to download menu PDF"
               >
                 <Download className="w-4 h-4" />
-                <span>DOWNLOAD MENU (PDF)</span>
+                <span>Click Here for Menu (PDF)</span>
               </button>
             </div>
           </div>
@@ -207,6 +209,9 @@ export const MenuPage: React.FC = () => {
 
           {/* Category Tabs */}
           <div className="flex items-center gap-2 overflow-x-auto pt-2 pb-1 scrollbar-none border-t border-[#edf0e6]">
+            <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0070E0] bg-blue-50 px-3 py-1.5 rounded-full shrink-0 border border-blue-200 shadow-2xs">
+              Click Here to Filter:
+            </span>
             {MENU_CATEGORIES.map((cat) => {
               const isActive = activeCategory === cat.id;
               return (
@@ -454,9 +459,15 @@ export const MenuPage: React.FC = () => {
                         )}
                       </div>
 
-                      <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0070E0] bg-[#eaf4ff] px-3 py-1 rounded-full border border-[#0070E0]/20">
-                        {item.popular ? '★ Popular Pick' : 'Chilled & Fresh'}
-                      </span>
+                      <button
+                        type="button"
+                        onClick={handleWhatsAppContact}
+                        className="text-[11px] font-heading font-extrabold uppercase tracking-wider text-[#0070E0] hover:text-white bg-[#eaf4ff] hover:bg-[#0070E0] px-3 py-1.5 rounded-xl border border-[#0070E0]/30 transition-all cursor-pointer flex items-center gap-1.5 shadow-2xs group-hover:bg-[#0070E0] group-hover:text-white active:scale-95"
+                        title={`Click Here to enquire about ${item.name}`}
+                      >
+                        <span>Click Here</span>
+                        <MessageSquare className="w-3 h-3" />
+                      </button>
                     </div>
                   </div>
                 </div>

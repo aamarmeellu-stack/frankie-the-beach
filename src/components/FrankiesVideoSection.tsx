@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import {
   Play,
   Pause,
@@ -6,87 +6,235 @@ import {
   VolumeX,
   Maximize2,
   RotateCcw,
-  Sparkles,
-  Video,
-  Clapperboard,
   Film,
 } from 'lucide-react';
 import { FRANKIE_VIDEOS, FrankieVideoItem } from '../data/restaurantData';
 
 export const FrankiesVideoSection: React.FC = () => {
-  const [activeVideoId, setActiveVideoId] = useState<string>(FRANKIE_VIDEOS[0].id);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [isMuted, setIsMuted] = useState<boolean>(false);
-  const [currentTime, setCurrentTime] = useState<number>(0);
-  const [duration, setDuration] = useState<number>(0);
-  const [videoErrors, setVideoErrors] = useState<Record<string, boolean>>({});
+  const videoCount = FRANKIE_VIDEOS.length;
 
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const playerContainerRef = useRef<HTMLDivElement | null>(null);
+  // Refs for each video element and container
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const containerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const activeVideo =
-    FRANKIE_VIDEOS.find((v) => v.id === activeVideoId) || FRANKIE_VIDEOS[0];
+  // Playback states for each video index
+  const [isPlaying, setIsPlaying] = useState<boolean[]>(() =>
+    new Array(videoCount).fill(false)
+  );
+  // Video 1 has sound by default, others muted for seamless browser simultaneous playback
+  const [isMuted, setIsMuted] = useState<boolean[]>(() =>
+    FRANKIE_VIDEOS.map((_, i) => i !== 0)
+  );
+  const [currentTimes, setCurrentTimes] = useState<number[]>(() =>
+    new Array(videoCount).fill(0)
+  );
+  const [durations, setDurations] = useState<number[]>(() =>
+    new Array(videoCount).fill(0)
+  );
+  const [isSyncMode, setIsSyncMode] = useState<boolean>(true); // Playing one plays all!
+  const [activeAudioIndex, setActiveAudioIndex] = useState<number>(0); // Which video has active unmuted sound
 
-  // Sync state when active video changes
+  // Keep state arrays in sync if video count changes
   useEffect(() => {
-    setIsPlaying(false);
-    setCurrentTime(0);
-    setDuration(0);
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.load();
-    }
-  }, [activeVideoId]);
+    setIsPlaying((prev) =>
+      prev.length === videoCount ? prev : new Array(videoCount).fill(false)
+    );
+    setIsMuted((prev) =>
+      prev.length === videoCount
+        ? prev
+        : FRANKIE_VIDEOS.map((_, i) => i !== 0)
+    );
+    setCurrentTimes((prev) =>
+      prev.length === videoCount ? prev : new Array(videoCount).fill(0)
+    );
+    setDurations((prev) =>
+      prev.length === videoCount ? prev : new Array(videoCount).fill(0)
+    );
+  }, [videoCount]);
 
-  const togglePlay = () => {
-    if (!videoRef.current) return;
+  // Check if any video is playing
+  const isAnyPlaying = isPlaying.some(Boolean);
 
-    if (videoRef.current.paused) {
-      videoRef.current.muted = false;
-      videoRef.current.volume = 1.0;
-      setIsMuted(false);
-      videoRef.current
-        .play()
-        .then(() => {
-          setIsPlaying(true);
-        })
-        .catch((err) => {
-          console.log('Playback error or blocked:', err);
-          // If browser policy blocks unmuted autoplay, fallback to muted
-          if (videoRef.current) {
-            videoRef.current.muted = true;
-            setIsMuted(true);
-            videoRef.current.play().then(() => setIsPlaying(true));
-          }
+  // Safely play a video element
+  const playVideoSafe = useCallback(async (index: number, shouldMute: boolean) => {
+    const el = videoRefs.current[index];
+    if (!el) return;
+    try {
+      el.muted = shouldMute;
+      if (!shouldMute) {
+        el.volume = 1.0;
+      }
+      await el.play();
+      setIsPlaying((prev) => {
+        const next = [...prev];
+        next[index] = true;
+        return next;
+      });
+    } catch (err) {
+      console.log(`Playback attempt on video ${index + 1}:`, err);
+      try {
+        el.muted = true;
+        await el.play();
+        setIsPlaying((prev) => {
+          const next = [...prev];
+          next[index] = true;
+          return next;
         });
+        setIsMuted((prev) => {
+          const next = [...prev];
+          next[index] = true;
+          return next;
+        });
+      } catch (fallbackErr) {
+        console.warn(`Could not start video ${index + 1}:`, fallbackErr);
+      }
+    }
+  }, []);
+
+  // Safely pause a video element
+  const pauseVideoSafe = useCallback((index: number) => {
+    const el = videoRefs.current[index];
+    if (!el) return;
+    el.pause();
+    setIsPlaying((prev) => {
+      const next = [...prev];
+      next[index] = false;
+      return next;
+    });
+  }, []);
+
+  // Play all videos simultaneously
+  const playAllVideos = useCallback(() => {
+    FRANKIE_VIDEOS.forEach((_, idx) => {
+      const muteThis = idx !== activeAudioIndex;
+      playVideoSafe(idx, muteThis);
+    });
+  }, [activeAudioIndex, playVideoSafe]);
+
+  // Pause all videos
+  const pauseAllVideos = useCallback(() => {
+    FRANKIE_VIDEOS.forEach((_, idx) => {
+      pauseVideoSafe(idx);
+    });
+  }, [pauseVideoSafe]);
+
+  // Toggle Play / Pause for all videos
+  const togglePlayAll = () => {
+    if (isAnyPlaying) {
+      pauseAllVideos();
     } else {
-      videoRef.current.pause();
-      setIsPlaying(false);
+      playAllVideos();
     }
   };
 
-  const toggleMute = () => {
-    if (!videoRef.current) return;
-    const nextMuted = !videoRef.current.muted;
-    videoRef.current.muted = nextMuted;
-    setIsMuted(nextMuted);
+  // Restart all videos from beginning
+  const restartAllVideos = () => {
+    FRANKIE_VIDEOS.forEach((_, idx) => {
+      const el = videoRefs.current[idx];
+      if (el) {
+        el.currentTime = 0;
+      }
+    });
+    playAllVideos();
   };
 
-  const restartVideo = () => {
-    if (!videoRef.current) return;
-    videoRef.current.currentTime = 0;
-    videoRef.current.play().then(() => setIsPlaying(true));
+  // Handle individual video play toggle
+  const handleTogglePlaySingle = (index: number) => {
+    const el = videoRefs.current[index];
+    if (!el) return;
+
+    if (el.paused) {
+      // If sync mode is ON, playing one video plays all of them!
+      if (isSyncMode) {
+        setActiveAudioIndex(index);
+        FRANKIE_VIDEOS.forEach((_, idx) => {
+          const muteThis = idx !== index;
+          setIsMuted((prev) => {
+            const next = [...prev];
+            next[idx] = muteThis;
+            return next;
+          });
+          playVideoSafe(idx, muteThis);
+        });
+      } else {
+        playVideoSafe(index, false);
+      }
+    } else {
+      if (isSyncMode) {
+        pauseAllVideos();
+      } else {
+        pauseVideoSafe(index);
+      }
+    }
   };
 
-  const toggleFullscreen = () => {
-    if (!playerContainerRef.current) return;
+  // Switch sound focus to a specific video
+  const setAudioFocus = (targetIndex: number) => {
+    setActiveAudioIndex(targetIndex);
+    FRANKIE_VIDEOS.forEach((_, idx) => {
+      const el = videoRefs.current[idx];
+      if (el) {
+        if (idx === targetIndex) {
+          el.muted = false;
+          el.volume = 1.0;
+        } else {
+          el.muted = true;
+        }
+      }
+    });
+    setIsMuted(FRANKIE_VIDEOS.map((_, i) => i !== targetIndex));
+  };
+
+  // Toggle Mute on a specific video
+  const toggleMuteSingle = (index: number) => {
+    const el = videoRefs.current[index];
+    if (!el) return;
+    const nextMuted = !el.muted;
+    el.muted = nextMuted;
+    if (!nextMuted) {
+      el.volume = 1.0;
+      setActiveAudioIndex(index);
+      FRANKIE_VIDEOS.forEach((_, idx) => {
+        if (idx !== index && videoRefs.current[idx]) {
+          videoRefs.current[idx]!.muted = true;
+        }
+      });
+      setIsMuted((prev) => prev.map((_, i) => i !== index));
+    } else {
+      setIsMuted((prev) => {
+        const next = [...prev];
+        next[index] = true;
+        return next;
+      });
+    }
+  };
+
+  // Seek video
+  const handleSeek = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    const targetTime = parseFloat(e.target.value);
+    const el = videoRefs.current[index];
+    if (el) {
+      el.currentTime = targetTime;
+    }
+    setCurrentTimes((prev) => {
+      const next = [...prev];
+      next[index] = targetTime;
+      return next;
+    });
+  };
+
+  // Fullscreen container
+  const toggleFullscreen = (index: number) => {
+    const container = containerRefs.current[index];
+    if (!container) return;
     if (!document.fullscreenElement) {
-      playerContainerRef.current.requestFullscreen().catch(() => {});
+      container.requestFullscreen().catch(() => {});
     } else {
       document.exitFullscreen().catch(() => {});
     }
   };
 
+  // Format seconds to mm:ss
   const formatTime = (secs: number) => {
     if (isNaN(secs) || secs < 0) return '0:00';
     const m = Math.floor(secs / 60);
@@ -94,38 +242,19 @@ export const FrankiesVideoSection: React.FC = () => {
     return `${m}:${s < 10 ? '0' : ''}${s}`;
   };
 
-  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!videoRef.current) return;
-    const targetTime = parseFloat(e.target.value);
-    videoRef.current.currentTime = targetTime;
-    setCurrentTime(targetTime);
-  };
-
-  const handleVideoSelect = (video: FrankieVideoItem) => {
-    if (activeVideoId === video.id) {
-      togglePlay();
-    } else {
-      setActiveVideoId(video.id);
-      setIsPlaying(true);
+  // Listen to custom global event: 'play-all-frankie-videos' (triggered by Watch Videos button)
+  useEffect(() => {
+    const handleGlobalPlayAll = () => {
       setTimeout(() => {
-        if (videoRef.current) {
-          videoRef.current.muted = false;
-          videoRef.current.volume = 1.0;
-          setIsMuted(false);
-          videoRef.current
-            .play()
-            .then(() => setIsPlaying(true))
-            .catch(() => {
-              if (videoRef.current) {
-                videoRef.current.muted = true;
-                setIsMuted(true);
-                videoRef.current.play().then(() => setIsPlaying(true));
-              }
-            });
-        }
-      }, 100);
-    }
-  };
+        playAllVideos();
+      }, 300);
+    };
+
+    window.addEventListener('play-all-frankie-videos', handleGlobalPlayAll);
+    return () => {
+      window.removeEventListener('play-all-frankie-videos', handleGlobalPlayAll);
+    };
+  }, [playAllVideos]);
 
   return (
     <section
@@ -140,10 +269,10 @@ export const FrankiesVideoSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-[#ECD87A]/40 text-[#ECD87A] text-xs font-black uppercase tracking-widest mb-3 backdrop-blur-md shadow-lg">
             <Film className="w-3.5 h-3.5" />
-            <span>FRANKIE'S BEACH MOMENTS 🎥</span>
+            <span>FRANKIE'S BEACH MOMENTS 🎥 • LIVE VIDEOS</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading tracking-tight uppercase leading-tight">
@@ -151,335 +280,356 @@ export const FrankiesVideoSection: React.FC = () => {
           </h2>
 
           <p className="mt-3 text-sm sm:text-base text-[#C2D8F2] max-w-2xl mx-auto leading-relaxed">
-            Watch real moments captured live on Ramsgate Sands — feel the sea breeze, seaside atmosphere, and friendly coastal energy.
+            Watch real moments captured live on Ramsgate Sands — feel the sea breeze, sizzle on the grill, and friendly seaside coastal energy!
           </p>
         </div>
 
-        {/* 3 Video Quick Switcher Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 mb-8">
-          {FRANKIE_VIDEOS.map((video) => {
-            const isActive = video.id === activeVideoId;
-            return (
-              <button
-                key={video.id}
-                id={`btn-tab-${video.id}`}
-                onClick={() => handleVideoSelect(video)}
-                className={`flex items-center gap-2.5 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-heading font-extrabold text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer border ${
-                  isActive
-                    ? 'bg-gradient-to-r from-[#ECD87A] via-[#FFD700] to-[#E5A823] text-black border-white shadow-[0_4px_18px_rgba(236,216,122,0.35)] scale-102'
-                    : 'bg-white/10 hover:bg-white/20 text-white/90 border-white/20 hover:border-white/40'
-                }`}
-                title={`Click Here to watch Video ${video.number}`}
-              >
-                <Clapperboard
-                  className={`w-4 h-4 ${isActive ? 'text-black' : 'text-[#ECD87A]'}`}
-                />
-                <span>Video {video.number}</span>
-                {isActive && isPlaying && (
-                  <span className="flex h-2 w-2 relative">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 animate-ping opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600" />
-                  </span>
-                )}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Cinema Video Player Showcase */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Master Control Bar */}
+        <div className="bg-white/10 border-2 border-[#ECD87A]/60 rounded-2xl p-4 sm:p-5 backdrop-blur-md shadow-2xl mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
           
-          {/* Main Stage Cinema Player (8 Cols on Desktop) */}
-          <div className="lg:col-span-8">
-            <div
-              ref={playerContainerRef}
-              className="relative rounded-3xl overflow-hidden bg-black shadow-2xl border-2 border-white/20 aspect-video flex flex-col justify-end group"
+          {/* Left: Master Play/Pause & Restart Buttons */}
+          <div className="flex flex-wrap items-center gap-3 w-full md:w-auto justify-center md:justify-start">
+            <button
+              type="button"
+              id="btn-play-all-videos"
+              onClick={togglePlayAll}
+              className="bg-gradient-to-r from-[#ECD87A] via-[#FFD700] to-[#E5A823] hover:brightness-110 active:scale-95 text-black font-heading font-black text-xs sm:text-sm uppercase tracking-wider px-5 sm:px-6 py-3 rounded-xl shadow-[0_4px_16px_rgba(236,216,122,0.4)] flex items-center gap-2.5 transition-all cursor-pointer border border-white"
+              title={isAnyPlaying ? 'Click Here to Pause all videos' : 'Click Here to Play all videos simultaneously'}
             >
-              {/* Video Element */}
-              <video
-                ref={videoRef}
-                key={activeVideo.src}
-                playsInline
-                preload="metadata"
-                loop
-                muted={isMuted}
-                onTimeUpdate={() => {
-                  if (videoRef.current) {
-                    setCurrentTime(videoRef.current.currentTime);
-                  }
-                }}
-                onLoadedMetadata={() => {
-                  if (videoRef.current) {
-                    setDuration(videoRef.current.duration);
-                  }
-                }}
-                onPlay={() => setIsPlaying(true)}
-                onPause={() => setIsPlaying(false)}
-                onError={() => {
-                  // If safe URL fails, try space-encoded fallback
-                  if (videoRef.current && videoRef.current.src !== activeVideo.fallbackSrc) {
-                    videoRef.current.src = activeVideo.fallbackSrc;
-                    videoRef.current.load();
-                  } else {
-                    setVideoErrors((prev) => ({ ...prev, [activeVideo.id]: true }));
-                  }
-                }}
-                className="w-full h-full object-cover object-center absolute inset-0 cursor-pointer"
-                onClick={togglePlay}
-              >
-                <source src={activeVideo.src} type="video/mp4" />
-                <source src={activeVideo.fallbackSrc} type="video/mp4" />
-                Your browser does not support HTML5 video.
-              </video>
-
-              {/* Big Center Play Button Overlay when paused */}
-              {!isPlaying && (
-                <div
-                  className="absolute inset-0 bg-black/40 backdrop-blur-[1px] flex flex-col items-center justify-center cursor-pointer transition-opacity z-10"
-                  onClick={togglePlay}
-                >
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      togglePlay();
-                    }}
-                    id="btn-video-center-play"
-                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-r from-[#ECD87A] via-[#FFD700] to-[#E5A823] text-black flex items-center justify-center shadow-[0_0_30px_rgba(255,215,0,0.5)] hover:scale-110 active:scale-95 transition-all border-4 border-white cursor-pointer group"
-                    title="Click Here to start video"
-                    aria-label="Click Here to start video"
-                  >
-                    <Play className="w-9 h-9 sm:w-11 sm:h-11 fill-current translate-x-1" />
-                  </button>
-
-                  <div className="mt-4 px-4 py-1.5 rounded-full bg-black/75 border border-white/30 text-white font-heading font-black text-xs uppercase tracking-wider shadow-lg flex items-center gap-2">
-                    <Sparkles className="w-3.5 h-3.5 text-[#ECD87A]" />
-                    <span>PLAY WITH SOUND 🔊</span>
-                  </div>
-                </div>
+              {isAnyPlaying ? (
+                <>
+                  <Pause className="w-4 h-4 fill-black" />
+                  <span>PAUSE ALL 3 VIDEOS</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-4 h-4 fill-black" />
+                  <span>▶ PLAY ALL 3 VIDEOS SIMULTANEOUSLY</span>
+                </>
               )}
+            </button>
 
-              {/* Top Watermark & Video Title Pill */}
-              <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
-                <div className="flex items-center gap-2 bg-black/70 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 text-white text-xs font-bold uppercase tracking-wider">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>{activeVideo.tag}</span>
-                </div>
+            <button
+              type="button"
+              id="btn-restart-all-videos"
+              onClick={restartAllVideos}
+              className="bg-white/15 hover:bg-white/25 active:scale-95 text-white font-heading font-extrabold text-xs uppercase tracking-wider px-4 py-3 rounded-xl border border-white/20 flex items-center gap-2 transition-all cursor-pointer"
+              title="Restart all videos from 0:00"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Restart All</span>
+            </button>
+          </div>
 
-                <div className="bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-[#ECD87A] text-[11px] font-extrabold uppercase tracking-wider">
-                  Video {activeVideo.number} of 3
-                </div>
-              </div>
+          {/* Right: Sync Status & Audio Switcher */}
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 w-full md:w-auto justify-center md:justify-end text-xs">
+            {/* Sync Toggle */}
+            <label className="flex items-center gap-2 cursor-pointer bg-black/40 px-3 py-1.5 rounded-lg border border-white/20 select-none hover:bg-black/60 transition-colors">
+              <input
+                type="checkbox"
+                checked={isSyncMode}
+                onChange={(e) => setIsSyncMode(e.target.checked)}
+                className="w-4 h-4 rounded text-amber-500 accent-amber-400 cursor-pointer"
+              />
+              <span className="font-heading font-bold text-white uppercase text-[11px] sm:text-xs">
+                Sync Playback ({isSyncMode ? 'ON' : 'OFF'})
+              </span>
+            </label>
 
-              {/* Bottom Custom Video Player Bar */}
-              <div className="relative z-20 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-3 sm:p-5 pt-10">
-                {/* Seek / Progress Slider */}
-                <div className="w-full flex items-center gap-2 mb-2">
-                  <input
-                    type="range"
-                    min={0}
-                    max={duration || 100}
-                    step={0.1}
-                    value={currentTime}
-                    onChange={handleSeek}
-                    className="w-full h-1.5 bg-white/30 rounded-lg appearance-none cursor-pointer accent-[#ECD87A]"
-                    title="Seek video position"
-                  />
-                  <span className="text-[11px] font-mono text-white/80 shrink-0">
-                    {formatTime(currentTime)} / {formatTime(duration)}
-                  </span>
-                </div>
-
-                {/* Player Controls Row */}
-                <div className="flex items-center justify-between gap-2">
-                  {/* Left: Play/Pause & Click Here action */}
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <button
-                      type="button"
-                      id="btn-player-play-toggle"
-                      onClick={togglePlay}
-                      className="px-3.5 sm:px-4 py-1.5 rounded-lg bg-gradient-to-r from-[#ECD87A] via-[#FFD700] to-[#E5A823] hover:brightness-110 active:scale-95 text-black font-heading font-black text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer shadow-md"
-                      title={isPlaying ? 'Click Here to pause' : 'Click Here to play'}
-                    >
-                      {isPlaying ? (
-                        <>
-                          <Pause className="w-3.5 h-3.5 fill-black" />
-                          <span>Stop Video</span>
-                        </>
-                      ) : (
-                        <>
-                          <Play className="w-3.5 h-3.5 fill-black" />
-                          <span>Click Here 🔊</span>
-                        </>
-                      )}
-                    </button>
-
-                    <button
-                      type="button"
-                      id="btn-player-restart"
-                      onClick={restartVideo}
-                      className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white/90 hover:text-white transition-colors cursor-pointer"
-                      title="Restart Video from beginning"
-                      aria-label="Restart Video"
-                    >
-                      <RotateCcw className="w-4 h-4" />
-                    </button>
-                  </div>
-
-                  {/* Right: Sound Toggle & Fullscreen */}
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      id="btn-player-mute-toggle"
-                      onClick={toggleMute}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
-                        isMuted
-                          ? 'bg-red-500/20 text-red-300 border-red-400/40 hover:bg-red-500/30'
-                          : 'bg-white/15 text-white border-white/20 hover:bg-white/25'
-                      }`}
-                      title={isMuted ? 'Click to Unmute' : 'Click to Mute'}
-                    >
-                      {isMuted ? (
-                        <>
-                          <VolumeX className="w-3.5 h-3.5" />
-                          <span className="hidden sm:inline">Unmute</span>
-                        </>
-                      ) : (
-                        <>
-                          <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
-                          <span className="hidden sm:inline">Sound On</span>
-                        </>
-                      )}
-                    </button>
-
-                    <button
-                      type="button"
-                      id="btn-player-fullscreen"
-                      onClick={toggleFullscreen}
-                      className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-                      title="Toggle Fullscreen"
-                      aria-label="Toggle Fullscreen"
-                    >
-                      <Maximize2 className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Current Video Info Banner */}
-            <div className="mt-4 p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-              <div>
-                <h3 className="font-heading font-extrabold text-base sm:text-lg text-white">
-                  {activeVideo.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-[#B6D0ED] mt-0.5">
-                  {activeVideo.subtitle}
-                </p>
-              </div>
-
-              <button
-                type="button"
-                onClick={togglePlay}
-                id="btn-video-hero-action"
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#ECD87A] via-[#FFD700] to-[#E5A823] text-black font-heading font-extrabold text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-md flex items-center gap-2 cursor-pointer shrink-0"
-                title="Click Here"
-              >
-                <Video className="w-4 h-4 text-black" />
-                <span>Click Here</span>
-              </button>
+            {/* Quick Audio Switcher */}
+            <div className="flex items-center gap-1 bg-black/40 px-2 py-1 rounded-lg border border-white/20">
+              <span className="text-[11px] text-[#ECD87A] font-bold uppercase pl-1 pr-1 flex items-center gap-1">
+                <Volume2 className="w-3 h-3" />
+                <span>Audio:</span>
+              </span>
+              {FRANKIE_VIDEOS.map((_, idx) => {
+                const isActive = activeAudioIndex === idx && !isMuted[idx];
+                return (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setAudioFocus(idx)}
+                    className={`px-2 py-0.5 rounded text-[10px] font-heading font-black uppercase transition-all ${
+                      isActive
+                        ? 'bg-amber-400 text-black shadow-sm'
+                        : 'bg-white/10 hover:bg-white/20 text-white/80'
+                    }`}
+                    title={`Switch sound to Video ${idx + 1}`}
+                  >
+                    Vid {idx + 1}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          {/* Right Column: 3 Video Playlist Cards (4 Cols on Desktop) */}
-          <div className="lg:col-span-4 flex flex-col gap-4">
-            <div className="flex items-center justify-between pb-1 border-b border-white/10">
-              <span className="font-heading font-extrabold text-sm uppercase tracking-wider text-[#ECD87A] flex items-center gap-1.5">
-                <Film className="w-4 h-4" />
-                <span>All 3 Videos</span>
-              </span>
-              <span className="text-xs text-white/70">Tap card to play</span>
-            </div>
+        </div>
 
-            {FRANKIE_VIDEOS.map((video) => {
-              const isActive = video.id === activeVideoId;
+        {/* Video Showcase Grid (Side-by-Side Live Playback) */}
+        <div
+          className={
+            FRANKIE_VIDEOS.length === 2
+              ? 'grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-6 sm:gap-8'
+              : 'grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8'
+          }
+        >
+          {FRANKIE_VIDEOS.map((video: FrankieVideoItem, index: number) => {
+            const videoIsPlaying = isPlaying[index] || false;
+            const videoIsMuted = isMuted[index] ?? true;
+            const videoCurrentTime = currentTimes[index] || 0;
+            const videoDuration = durations[index] || 0;
+            const hasAudio = activeAudioIndex === index && !videoIsMuted;
 
-              return (
+            return (
+              <div
+                key={video.id}
+                id={`card-video-${video.number}`}
+                className="bg-gradient-to-b from-[#113A6B] to-[#0A2647] rounded-3xl p-4 sm:p-5 border-2 border-white/20 shadow-2xl flex flex-col justify-between hover:border-[#ECD87A]/80 transition-all group"
+              >
+                {/* Card Top Title Row */}
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="bg-[#ECD87A] text-black text-xs font-heading font-black uppercase px-2.5 py-1 rounded-md shadow-sm">
+                      Video {video.number}
+                    </span>
+                    <span className="bg-white/15 text-[#CBE1F8] text-[11px] font-extrabold uppercase px-2 py-0.5 rounded border border-white/15">
+                      {video.tag}
+                    </span>
+                  </div>
+
+                  {/* Playing Live Status Badge */}
+                  <div>
+                    {videoIsPlaying ? (
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 text-[10px] font-black uppercase tracking-wider animate-pulse">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                        <span>LIVE</span>
+                      </span>
+                    ) : (
+                      <span className="text-[10px] font-bold uppercase text-white/50 px-2 py-0.5 rounded bg-white/5">
+                        Ready
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Video Player Container */}
                 <div
-                  key={video.id}
-                  id={`card-video-${video.number}`}
-                  onClick={() => handleVideoSelect(video)}
-                  className={`p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between group ${
-                    isActive
-                      ? 'bg-[#0048B8]/40 border-[#ECD87A] shadow-[0_8px_24px_rgba(0,112,224,0.3)] ring-1 ring-[#ECD87A]/50'
-                      : 'bg-white/5 hover:bg-white/10 border-white/15 hover:border-white/30'
-                  }`}
+                  ref={(el) => {
+                    containerRefs.current[index] = el;
+                  }}
+                  className="relative rounded-2xl overflow-hidden bg-black aspect-video sm:aspect-[4/3] md:aspect-video border border-white/25 shadow-inner flex flex-col justify-end group/player"
                 >
-                  <div className="flex items-start gap-3.5">
-                    {/* Video Badge / Thumbnail Icon */}
+                  {/* HTML5 Video Element */}
+                  <video
+                    ref={(el) => {
+                      videoRefs.current[index] = el;
+                    }}
+                    src={video.src}
+                    playsInline
+                    preload="auto"
+                    loop
+                    muted={videoIsMuted}
+                    onTimeUpdate={() => {
+                      const el = videoRefs.current[index];
+                      if (el) {
+                        setCurrentTimes((prev) => {
+                          const next = [...prev];
+                          next[index] = el.currentTime;
+                          return next;
+                        });
+                      }
+                    }}
+                    onLoadedMetadata={() => {
+                      const el = videoRefs.current[index];
+                      if (el) {
+                        setDurations((prev) => {
+                          const next = [...prev];
+                          next[index] = el.duration;
+                          return next;
+                        });
+                      }
+                    }}
+                    onPlay={() => {
+                      setIsPlaying((prev) => {
+                        const next = [...prev];
+                        next[index] = true;
+                        return next;
+                      });
+                    }}
+                    onPause={() => {
+                      setIsPlaying((prev) => {
+                        const next = [...prev];
+                        next[index] = false;
+                        return next;
+                      });
+                    }}
+                    onError={() => {
+                      const el = videoRefs.current[index];
+                      if (el && el.src !== video.fallbackSrc) {
+                        el.src = video.fallbackSrc;
+                        el.load();
+                      }
+                    }}
+                    className="w-full h-full object-cover absolute inset-0 cursor-pointer"
+                    onClick={() => handleTogglePlaySingle(index)}
+                  >
+                    <source src={video.src} type="video/mp4" />
+                    <source src={video.fallbackSrc} type="video/mp4" />
+                    Your browser does not support video playback.
+                  </video>
+
+                  {/* Big Center Play Overlay when this video is paused */}
+                  {!videoIsPlaying && (
                     <div
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-transform group-hover:scale-105 ${
-                        isActive
-                          ? 'bg-gradient-to-br from-[#ECD87A] to-[#D1A03F] text-black border-white shadow-md'
-                          : 'bg-white/10 text-[#ECD87A] border-white/20'
-                      }`}
+                      className="absolute inset-0 bg-black/45 backdrop-blur-[1px] flex flex-col items-center justify-center cursor-pointer transition-opacity z-10 p-3"
+                      onClick={() => handleTogglePlaySingle(index)}
                     >
-                      {isActive && isPlaying ? (
-                        <Pause className="w-5 h-5 fill-current" />
-                      ) : (
-                        <Play className="w-5 h-5 fill-current ml-0.5" />
-                      )}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleTogglePlaySingle(index);
+                        }}
+                        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-[#ECD87A] via-[#FFD700] to-[#E5A823] text-black flex items-center justify-center shadow-[0_0_25px_rgba(255,215,0,0.5)] hover:scale-110 active:scale-95 transition-all border-2 border-white cursor-pointer"
+                        title={`Click Here to play Video ${video.number}`}
+                      >
+                        <Play className="w-7 h-7 fill-current translate-x-0.5" />
+                      </button>
+
+                      <div className="mt-3 px-3 py-1 rounded-full bg-black/80 border border-white/30 text-white font-heading font-black text-[11px] uppercase tracking-wider shadow-md">
+                        {isSyncMode ? 'CLICK HERE (ALL 3 PLAY) 🎬' : `CLICK HERE TO PLAY VID ${video.number}`}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Sound Status Badge on Top-Right */}
+                  <div className="absolute top-2.5 right-2.5 z-20 pointer-events-none">
+                    {hasAudio ? (
+                      <span className="bg-emerald-500/90 text-white text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full flex items-center gap-1 shadow-md">
+                        <Volume2 className="w-3 h-3 text-white" />
+                        <span>Sound ON</span>
+                      </span>
+                    ) : (
+                      <span className="bg-black/60 text-white/80 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full flex items-center gap-1 shadow-md">
+                        <VolumeX className="w-3 h-3 text-white/70" />
+                        <span>Muted</span>
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Bottom Video Controls Overlay */}
+                  <div className="relative z-20 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-2.5 pt-6">
+                    {/* Time Progress Slider */}
+                    <div className="w-full flex items-center gap-2 mb-1.5">
+                      <input
+                        type="range"
+                        min={0}
+                        max={videoDuration || 100}
+                        step={0.1}
+                        value={videoCurrentTime}
+                        onChange={(e) => handleSeek(index, e)}
+                        className="w-full h-1 bg-white/30 rounded-lg appearance-none cursor-pointer accent-[#ECD87A]"
+                        title="Seek video position"
+                      />
+                      <span className="text-[10px] font-mono text-white/80 shrink-0">
+                        {formatTime(videoCurrentTime)}
+                      </span>
                     </div>
 
-                    {/* Meta info */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="text-[11px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded bg-white/10 text-[#ECD87A]">
-                          {video.tag}
-                        </span>
-                        <span className="text-[11px] font-mono text-white/60">
-                          Video #{video.number}
-                        </span>
+                    {/* Bottom Controls Bar */}
+                    <div className="flex items-center justify-between gap-1">
+                      {/* Left: Play / Pause */}
+                      <button
+                        type="button"
+                        onClick={() => handleTogglePlaySingle(index)}
+                        className="px-2.5 py-1 rounded-md bg-amber-400 hover:bg-amber-300 text-black font-heading font-black text-[11px] uppercase tracking-wider transition-all flex items-center gap-1 cursor-pointer active:scale-95"
+                        title={videoIsPlaying ? 'Pause Video' : 'Play Video'}
+                      >
+                        {videoIsPlaying ? (
+                          <>
+                            <Pause className="w-3 h-3 fill-black" />
+                            <span>Pause</span>
+                          </>
+                        ) : (
+                          <>
+                            <Play className="w-3 h-3 fill-black" />
+                            <span>Play</span>
+                          </>
+                        )}
+                      </button>
+
+                      {/* Right: Sound toggle & Fullscreen */}
+                      <div className="flex items-center gap-1">
+                        <button
+                          type="button"
+                          onClick={() => toggleMuteSingle(index)}
+                          className={`p-1.5 rounded-md text-[10px] font-bold transition-all cursor-pointer ${
+                            videoIsMuted
+                              ? 'bg-white/10 hover:bg-white/20 text-white/70'
+                              : 'bg-emerald-500/80 text-white'
+                          }`}
+                          title={videoIsMuted ? 'Click to Unmute' : 'Click to Mute'}
+                        >
+                          {videoIsMuted ? (
+                            <VolumeX className="w-3.5 h-3.5" />
+                          ) : (
+                            <Volume2 className="w-3.5 h-3.5" />
+                          )}
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => toggleFullscreen(index)}
+                          className="p-1.5 rounded-md bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                          title="Fullscreen"
+                        >
+                          <Maximize2 className="w-3.5 h-3.5" />
+                        </button>
                       </div>
-
-                      <h4 className="font-heading font-bold text-sm text-white mt-1.5 leading-snug group-hover:text-[#ECD87A] transition-colors truncate">
-                        {video.title}
-                      </h4>
-
-                      <p className="text-xs text-[#A9C7E8] mt-0.5 line-clamp-2 leading-relaxed">
-                        {video.description}
-                      </p>
                     </div>
                   </div>
 
-                  {/* Card Action Row */}
-                  <div className="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between">
-                    <span className="text-[11px] text-white/70">
-                      {isActive && isPlaying ? 'Now Playing 🔊' : 'Ready to watch'}
+                </div>
+
+                {/* Video Info & Click Here Action */}
+                <div className="mt-4 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h4 className="font-heading font-extrabold text-base text-white leading-snug group-hover:text-[#ECD87A] transition-colors">
+                      {video.title}
+                    </h4>
+                    <p className="text-xs text-[#B2CDE8] font-medium mt-0.5">
+                      {video.subtitle}
+                    </p>
+                    <p className="text-xs text-[#8BAECD] mt-2 line-clamp-2 leading-relaxed">
+                      {video.description}
+                    </p>
+                  </div>
+
+                  {/* Card Bottom Click Here Action Button */}
+                  <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
+                    <span className="text-[11px] text-white/60">
+                      {videoIsPlaying ? 'Playing Now 🔊' : 'Ready'}
                     </span>
 
                     <button
                       type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleVideoSelect(video);
-                      }}
-                      className={`px-3 py-1 rounded-lg text-xs font-heading font-black uppercase tracking-wider transition-all flex items-center gap-1 cursor-pointer ${
-                        isActive
-                          ? 'bg-[#ECD87A] text-black hover:bg-[#ffe680]'
-                          : 'bg-white/15 hover:bg-white/25 text-white'
-                      }`}
-                      title={`Click Here to watch Video ${video.number}`}
+                      onClick={() => handleTogglePlaySingle(index)}
+                      className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#ECD87A] via-[#FFD700] to-[#E5A823] hover:brightness-110 active:scale-95 text-black font-heading font-black text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer shadow-md"
+                      title={`Click Here to play Video ${video.number}`}
                     >
-                      <span>Click Here</span>
-                      <Play className="w-3 h-3 fill-current" />
+                      <span>CLICK HERE</span>
+                      {videoIsPlaying ? (
+                        <Pause className="w-3.5 h-3.5 fill-black" />
+                      ) : (
+                        <Play className="w-3.5 h-3.5 fill-black" />
+                      )}
                     </button>
                   </div>
                 </div>
-              );
-            })}
-          </div>
 
+              </div>
+            );
+          })}
         </div>
 
       </div>

@@ -105,6 +105,9 @@ export const ASSETS = {
   video1: '/video-1-frankie.mp4',
   video2: '/video-2-frankie.mp4',
   video3: '/video-3-frankie.mp4',
+  video4: '/video-4-frankie.mp4',
+  video5: '/video-5-frankie.mp4',
+  video6: '/video-6-frankie.mp4',
 
   // Food Images
   heroBurger: '/dishes/Beef Burger.webp',

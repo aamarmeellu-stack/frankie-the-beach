@@ -41,10 +41,12 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
 
   const togglePlay = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
-    const video = videoRef.current;
+    const video = (document.getElementById('heroVideo') as HTMLVideoElement | null) || videoRef.current;
     if (!video) return;
 
     if (video.paused) {
+      video.muted = false;
+      video.volume = 1;
       video
         .play()
         .then(() => setIsPlaying(true))
@@ -56,14 +58,43 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
   }, []);
 
   useEffect(() => {
-    const video = videoRef.current;
+    const video = (document.getElementById('heroVideo') as HTMLVideoElement | null) || videoRef.current;
     if (!video) return;
 
-    // Standard smooth autoplay on mount
+    video.muted = false;
+    video.volume = 1;
+
     video
       .play()
       .then(() => setIsPlaying(true))
-      .catch(() => {});
+      .catch(() => {
+        // Browser blocked autoplay with sound.
+        // Keep the video available for the user's interaction.
+        video.muted = true;
+        video
+          .play()
+          .then(() => setIsPlaying(true))
+          .catch(() => {});
+      });
+
+    // If browser initially blocked audio, unmute with full volume on user interaction
+    const handleInteraction = () => {
+      const v = (document.getElementById('heroVideo') as HTMLVideoElement | null) || videoRef.current;
+      if (v) {
+        v.muted = false;
+        v.volume = 1;
+      }
+    };
+
+    window.addEventListener('click', handleInteraction, { passive: true });
+    window.addEventListener('touchstart', handleInteraction, { passive: true });
+    window.addEventListener('keydown', handleInteraction, { passive: true });
+
+    return () => {
+      window.removeEventListener('click', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+      window.removeEventListener('keydown', handleInteraction);
+    };
   }, [heroVideoSrc]);
 
   return (
@@ -90,15 +121,15 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
           )}
         </div>
 
-        {/* Ambient Hero Video Loop - Simple, smooth, universal mobile & desktop autoplay */}
+        {/* Ambient Hero Video Loop - Requested approach */}
         {!videoError && heroVideoSrc && (
           <video
+            id="heroVideo"
             ref={videoRef}
-            src={heroVideoSrc}
             autoPlay
             loop
-            muted
             playsInline
+            preload="auto"
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
             onLoadedData={() => setIsVideoLoaded(true)}
@@ -106,7 +137,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
             className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 z-[1] ${
               isVideoLoaded ? 'opacity-90' : 'opacity-0'
             }`}
-          />
+          >
+            <source src={heroVideoSrc} type="video/mp4" />
+          </video>
         )}
 
         {/* Powerful Frankie's Signage Blue Overlay: Electrifies the ocean video with the iconic board blue */}

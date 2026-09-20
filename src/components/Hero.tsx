@@ -4,8 +4,6 @@ import {
   MapPin,
   UtensilsCrossed,
   Sandwich,
-  Volume2,
-  VolumeX,
   Play,
   Pause,
   Sparkles,
@@ -31,7 +29,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
+  const [needsUserClickForAudio, setNeedsUserClickForAudio] = useState(false);
   const [videoError, setVideoError] = useState(false);
 
   const heroVideoSrc =
@@ -42,16 +41,53 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
     '/hero-video.mp4';
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Handle mobile autoplay restriction
-        if (videoRef.current) {
-          videoRef.current.muted = true;
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Attempt unmuted autoplay first so the authentic video voice/audio plays
+    video.muted = false;
+    const playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          setIsPlaying(true);
+          setIsMuted(false);
+          setNeedsUserClickForAudio(false);
+        })
+        .catch(() => {
+          // Browser prevented unmuted autoplay, fallback to muted autoplay
+          video.muted = true;
           setIsMuted(true);
-          videoRef.current.play().catch(() => {});
-        }
-      });
+          setNeedsUserClickForAudio(true);
+          video
+            .play()
+            .then(() => setIsPlaying(true))
+            .catch(() => setIsPlaying(false));
+        });
     }
+
+    // When the user interacts anywhere with the page, unmute voice if it was blocked by autoplay policy
+    const handleFirstUserInteraction = () => {
+      if (video && video.muted) {
+        video.muted = false;
+        setIsMuted(false);
+        setNeedsUserClickForAudio(false);
+        if (video.paused) {
+          video.play().then(() => setIsPlaying(true)).catch(() => {});
+        }
+      }
+    };
+
+    window.addEventListener('click', handleFirstUserInteraction, { once: true });
+    window.addEventListener('touchstart', handleFirstUserInteraction, { once: true });
+    window.addEventListener('keydown', handleFirstUserInteraction, { once: true });
+
+    return () => {
+      window.removeEventListener('click', handleFirstUserInteraction);
+      window.removeEventListener('touchstart', handleFirstUserInteraction);
+      window.removeEventListener('keydown', handleFirstUserInteraction);
+    };
   }, [heroVideoSrc]);
 
   const togglePlay = () => {
@@ -60,6 +96,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
       videoRef.current.pause();
       setIsPlaying(false);
     } else {
+      videoRef.current.muted = isMuted;
       videoRef.current
         .play()
         .then(() => setIsPlaying(true))
@@ -69,8 +106,13 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
 
   const toggleMute = () => {
     if (!videoRef.current) return;
-    videoRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
+    const nextMuted = !isMuted;
+    videoRef.current.muted = nextMuted;
+    setIsMuted(nextMuted);
+    setNeedsUserClickForAudio(false);
+    if (!nextMuted && videoRef.current.paused) {
+      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
   };
 
   return (
@@ -106,6 +148,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
             loop
             muted={isMuted}
             playsInline
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
             onLoadedData={() => setIsVideoLoaded(true)}
             onError={() => setVideoError(true)}
             className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 z-[1] ${
@@ -115,37 +159,45 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
         )}
 
         {/* Powerful Frankie's Signage Blue Overlay: Electrifies the ocean video with the iconic board blue */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#003699]/90 via-[#0050D8]/65 to-[#003899]/40 z-[2]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#003699]/80 via-[#0050D8]/55 to-[#003899]/35 z-[2]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#002B82]/85 via-transparent to-[#0055EE]/30 z-[2]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_35%_40%,rgba(0,119,255,0.35)_0%,transparent_75%)] z-[2] pointer-events-none" />
       </div>
 
       {/* Live Video Control Badge */}
-      {!videoError && isVideoLoaded && (
-        <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 flex items-center gap-2 bg-black/40 hover:bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 transition-all text-xs font-medium text-white shadow-lg">
-          <span className="flex h-2 w-2 relative">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </span>
-          <span className="hidden sm:inline uppercase tracking-wider text-[10px] font-bold text-white/90">
-            Beach Video
-          </span>
-          <button
-            onClick={togglePlay}
-            className="p-1 hover:text-[#ECD87A] transition-colors cursor-pointer"
-            title={isPlaying ? 'Pause Background Video' : 'Play Background Video'}
-            aria-label={isPlaying ? 'Pause Background Video' : 'Play Background Video'}
-          >
-            {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-          </button>
-          <button
-            onClick={toggleMute}
-            className="p-1 hover:text-[#ECD87A] transition-colors cursor-pointer"
-            title={isMuted ? 'Unmute Audio' : 'Mute Audio'}
-            aria-label={isMuted ? 'Unmute Audio' : 'Mute Audio'}
-          >
-            {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
-          </button>
+      {!videoError && (
+        <div className="absolute top-3 right-3 sm:top-5 sm:right-6 z-20 flex items-center gap-2">
+          <div className="flex items-center gap-2 bg-black/65 hover:bg-black/85 backdrop-blur-md px-3 sm:px-3.5 py-1.5 rounded-full border border-white/30 text-xs font-semibold text-white shadow-2xl transition-all">
+            <span className="flex h-2 w-2 relative">
+              <span className={`absolute inline-flex h-full w-full rounded-full ${isPlaying ? 'bg-emerald-400 animate-ping opacity-75' : 'bg-amber-400'}`}></span>
+              <span className={`relative inline-flex rounded-full h-2 w-2 ${isPlaying ? 'bg-emerald-500' : 'bg-amber-500'}`}></span>
+            </span>
+
+            <span className="hidden md:inline uppercase tracking-wider text-[11px] font-extrabold text-white/95">
+              {isPlaying ? 'Beach Video' : 'Video Stopped'}
+            </span>
+
+            {/* Stop / Play Button */}
+            <button
+              onClick={togglePlay}
+              className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white/15 hover:bg-white/30 text-white font-heading font-extrabold text-[11px] uppercase tracking-wider transition-all cursor-pointer"
+              title={isPlaying ? 'Stop / Pause Video' : 'Play Video'}
+              aria-label={isPlaying ? 'Stop / Pause Video' : 'Play Video'}
+              id="hero-toggle-play-btn"
+            >
+              {isPlaying ? (
+                <>
+                  <Pause className="w-3.5 h-3.5 text-amber-300" />
+                  <span>Stop</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-3.5 h-3.5 text-emerald-300" />
+                  <span>Play</span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
       )}
 
@@ -181,7 +233,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
 
                 {/* Distinct Clickable Action Button Pill */}
                 <span className="inline-flex items-center gap-1.5 bg-black text-[#ECD87A] group-hover:bg-[#141414] group-hover:text-white px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wide shadow-xs transition-colors shrink-0 border border-black/30 ml-0.5">
-                  <span>Read in The Sun</span>
+                  <span>Click Here</span>
                   <ExternalLink className="w-3.5 h-3.5 text-[#ECD87A] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
                 </span>
               </a>

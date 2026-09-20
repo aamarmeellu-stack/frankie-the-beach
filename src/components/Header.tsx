@@ -69,7 +69,7 @@ export const Header: React.FC<HeaderProps> = () => {
   return (
     <header className="sticky top-0 z-50 w-full px-2 sm:px-6 lg:px-8 pt-2 sm:pt-4 pb-2 sm:pb-3 backdrop-blur-xs">
       <div className="max-w-7xl mx-auto bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0048B8_100%)] shadow-[0_14px_36px_rgba(0,112,224,0.45)] border-2 border-amber-300/45 rounded-2xl sm:rounded-3xl relative transition-all">
-        <div className="px-3 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
+        <div className="px-3 sm:px-6 lg:px-8 min-h-[76px] sm:min-h-[92px] md:min-h-[104px] py-1.5 sm:py-2 flex items-center justify-between">
           {/* Brand Logo */}
           <Link
             to="/"
@@ -82,7 +82,7 @@ export const Header: React.FC<HeaderProps> = () => {
               src={clientImages.logo || '/logo.webp'}
               fallbackSrc="/logo.webp"
               alt="Frankie's @ The Beach"
-              className="h-12 sm:h-14 md:h-15 lg:h-16 w-auto max-w-[150px] sm:max-w-[180px] md:max-w-[210px] object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.35)] group-hover:scale-105 group-hover:drop-shadow-[0_6px_16px_rgba(236,216,122,0.45)] transition-all duration-200 shrink-0"
+              className="h-14 sm:h-18 md:h-22 lg:h-24 w-auto max-w-[170px] sm:max-w-[220px] md:max-w-[270px] lg:max-w-[310px] object-contain drop-shadow-[0_4px_14px_rgba(0,0,0,0.4)] group-hover:scale-105 group-hover:drop-shadow-[0_6px_20px_rgba(236,216,122,0.55)] transition-all duration-200 shrink-0"
               priority
             />
           </Link>

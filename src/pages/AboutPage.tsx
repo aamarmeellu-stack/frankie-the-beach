@@ -355,7 +355,7 @@ export const AboutPage: React.FC = () => {
                     className="inline-flex items-center gap-1.5 bg-[#d61e27] hover:bg-[#b5141d] text-white text-xs font-heading font-bold uppercase tracking-wider px-3.5 py-2 rounded-xl transition-all cursor-pointer"
                   >
                     <Newspaper className="w-3.5 h-3.5" />
-                    <span>Read in The Sun</span>
+                    <span>Click Here</span>
                     <ExternalLink className="w-3 h-3" />
                   </a>
 

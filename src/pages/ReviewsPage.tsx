@@ -264,7 +264,7 @@ export const ReviewsPage: React.FC = () => {
                   id="reviews-sun-article-btn"
                 >
                   <Newspaper className="w-4 h-4" />
-                  <span>Read In The Sun</span>
+                  <span>Click Here</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>

@@ -299,12 +299,12 @@ export const FrankiesVideoSection: React.FC = () => {
               {isAnyPlaying ? (
                 <>
                   <Pause className="w-4 h-4 fill-black" />
-                  <span>PAUSE ALL 3 VIDEOS</span>
+                  <span>PAUSE ALL {FRANKIE_VIDEOS.length} VIDEOS</span>
                 </>
               ) : (
                 <>
                   <Play className="w-4 h-4 fill-black" />
-                  <span>▶ PLAY ALL 3 VIDEOS SIMULTANEOUSLY</span>
+                  <span>▶ PLAY ALL {FRANKIE_VIDEOS.length} VIDEOS SIMULTANEOUSLY</span>
                 </>
               )}
             </button>
@@ -368,9 +368,9 @@ export const FrankiesVideoSection: React.FC = () => {
         {/* Video Showcase Grid (Side-by-Side Live Playback) */}
         <div
           className={
-            FRANKIE_VIDEOS.length === 2
+            FRANKIE_VIDEOS.length <= 2
               ? 'grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-6 sm:gap-8'
-              : 'grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8'
+              : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'
           }
         >
           {FRANKIE_VIDEOS.map((video: FrankieVideoItem, index: number) => {
@@ -497,7 +497,7 @@ export const FrankiesVideoSection: React.FC = () => {
                       </button>
 
                       <div className="mt-3 px-3 py-1 rounded-full bg-black/80 border border-white/30 text-white font-heading font-black text-[11px] uppercase tracking-wider shadow-md">
-                        {isSyncMode ? 'CLICK HERE (ALL 3 PLAY) 🎬' : `CLICK HERE TO PLAY VID ${video.number}`}
+                        {isSyncMode ? `CLICK HERE (ALL ${FRANKIE_VIDEOS.length} PLAY) 🎬` : `CLICK HERE TO PLAY VID ${video.number}`}
                       </div>
                     </div>
                   )}

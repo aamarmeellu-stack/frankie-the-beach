@@ -251,6 +251,7 @@ export interface FrankieVideoItem {
   subtitle: string;
   src: string;
   fallbackSrc: string;
+  poster: string;
   tag: string;
   description: string;
 }
@@ -263,6 +264,7 @@ export const FRANKIE_VIDEOS: FrankieVideoItem[] = [
     subtitle: 'Ramsgate Beach Atmosphere & Fresh Grill',
     src: '/video-1-frankie.mp4',
     fallbackSrc: '/video 1 frankie.mp4',
+    poster: '/video-1-poster.webp',
     tag: 'Beachfront Vibe',
     description: 'Experience the real atmosphere right on Ramsgate Sands with fresh food cooking on the grill and sea breezes.',
   },
@@ -273,6 +275,7 @@ export const FRANKIE_VIDEOS: FrankieVideoItem[] = [
     subtitle: 'Seaside Energy & Boardwalk Moments',
     src: '/video-2-frankie.mp4',
     fallbackSrc: '/video 2 frankie.mp4',
+    poster: '/video-2-poster.webp',
     tag: 'Coast in Action',
     description: 'A genuine glimpse of Frankie’s kiosk in action on the sands — laughter, seaside energy, and coastal memories.',
   },
@@ -283,6 +286,7 @@ export const FRANKIE_VIDEOS: FrankieVideoItem[] = [
     subtitle: 'Award-Winning Hospitality & Refreshments',
     src: '/video-3-frankie.mp4',
     fallbackSrc: '/video 3 frankie.mp4',
+    poster: '/video-3-poster.webp',
     tag: 'Award Winner',
     description: 'TripAdvisor Travelers’ Choice award-winning food, refreshing iced slushies, beach cocktails, and ice-cold beers served right on the beach.',
   },
@@ -293,6 +297,7 @@ export const FRANKIE_VIDEOS: FrankieVideoItem[] = [
     subtitle: 'Golden Sands & Boardwalk Life',
     src: '/video-4-frankie.mp4',
     fallbackSrc: '/video 4 frankie.mp4',
+    poster: '/video-4-poster.webp',
     tag: 'Boardwalk Fun',
     description: 'Golden sands, seafront strolls, and genuine holiday vibes right outside Frankie’s kiosk on Ramsgate Beach.',
   },
@@ -303,6 +308,7 @@ export const FRANKIE_VIDEOS: FrankieVideoItem[] = [
     subtitle: 'Sunny Days & Coastal Flavours',
     src: '/video-5-frankie.mp4',
     fallbackSrc: '/video 5 frankie.mp4',
+    poster: '/video-5-poster.webp',
     tag: 'Beach Day',
     description: 'Basking in the Kent seaside sun with fresh treats, chilled drinks, and friendly coastal smiles.',
   },
@@ -313,6 +319,7 @@ export const FRANKIE_VIDEOS: FrankieVideoItem[] = [
     subtitle: 'Seaside Waves & Coastal Buzz',
     src: '/video-6-frankie.mp4',
     fallbackSrc: '/video 6 frankie.mp4',
+    poster: '/video-6-poster.webp',
     tag: 'Seaside Sunset',
     description: 'The beach alive with energy as waves roll in — cold draught beers, hot food, and memorable seaside moments.',
   },

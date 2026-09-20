@@ -286,6 +286,36 @@ export const FRANKIE_VIDEOS: FrankieVideoItem[] = [
     tag: 'Award Winner',
     description: 'TripAdvisor Travelers’ Choice award-winning food, refreshing iced slushies, beach cocktails, and ice-cold beers served right on the beach.',
   },
+  {
+    id: 'video-4',
+    number: 4,
+    title: 'Frankie at the Beach — Video 4',
+    subtitle: 'Golden Sands & Boardwalk Life',
+    src: '/video-4-frankie.mp4',
+    fallbackSrc: '/video 4 frankie.mp4',
+    tag: 'Boardwalk Fun',
+    description: 'Golden sands, seafront strolls, and genuine holiday vibes right outside Frankie’s kiosk on Ramsgate Beach.',
+  },
+  {
+    id: 'video-5',
+    number: 5,
+    title: 'Frankie at the Beach — Video 5',
+    subtitle: 'Sunny Days & Coastal Flavours',
+    src: '/video-5-frankie.mp4',
+    fallbackSrc: '/video 5 frankie.mp4',
+    tag: 'Beach Day',
+    description: 'Basking in the Kent seaside sun with fresh treats, chilled drinks, and friendly coastal smiles.',
+  },
+  {
+    id: 'video-6',
+    number: 6,
+    title: 'Frankie at the Beach — Video 6',
+    subtitle: 'Seaside Waves & Coastal Buzz',
+    src: '/video-6-frankie.mp4',
+    fallbackSrc: '/video 6 frankie.mp4',
+    tag: 'Seaside Sunset',
+    description: 'The beach alive with energy as waves roll in — cold draught beers, hot food, and memorable seaside moments.',
+  },
 ];
 
 // Official TripAdvisor Review Links for Frankie's @ the Beach

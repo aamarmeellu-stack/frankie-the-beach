@@ -437,6 +437,21 @@ export const FrankiesVideoSection: React.FC = () => {
                         videoIsPlaying ? 'opacity-0' : 'opacity-100'
                       }`}
                       loading="eager"
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        if (!target.dataset.attemptedJpg) {
+                          target.dataset.attemptedJpg = '1';
+                          // Try JPG format fallback if WebP failed
+                          target.src = getAssetUrl(`/video-${video.number}-poster.jpg`);
+                        } else if (!target.dataset.attemptedBanner) {
+                          target.dataset.attemptedBanner = '1';
+                          // Try reliable static banner fallback
+                          target.src = getAssetUrl('/frankies-beach-hire-banner.jpg');
+                        } else {
+                          // Cleanly hide broken image glyph so broken icon never covers the video card
+                          target.style.display = 'none';
+                        }
+                      }}
                     />
                   )}
 
@@ -485,17 +500,23 @@ export const FrankiesVideoSection: React.FC = () => {
                         return next;
                       });
                     }}
-                    onError={(e) => {
+                    onError={() => {
                       const el = videoRefs.current[index];
-                      if (el && !el.dataset.attemptedFallback) {
-                        el.dataset.attemptedFallback = '1';
-                        // Try fallback source with space or URL encoded
+                      if (!el) return;
+                      const attempt = Number(el.dataset.attemptCount || '0');
+                      el.dataset.attemptCount = String(attempt + 1);
+
+                      if (attempt === 0) {
+                        // Attempt 1: Space-separated filename e.g. /video 4 frankie.mp4
                         el.src = getAssetUrl(video.fallbackSrc);
                         el.load();
-                      } else if (el && el.dataset.attemptedFallback === '1') {
-                        el.dataset.attemptedFallback = '2';
-                        // Try no-dash version e.g. /video4frankie.mp4
+                      } else if (attempt === 1) {
+                        // Attempt 2: No-dash filename e.g. /video4frankie.mp4
                         el.src = getAssetUrl(`/video${video.number}frankie.mp4`);
+                        el.load();
+                      } else if (attempt === 2) {
+                        // Attempt 3: Guaranteed built-in catering / hero video so deploy never stays at 0:00
+                        el.src = getAssetUrl(video.number % 2 === 0 ? '/catering-video.mp4' : '/hero-video.mp4');
                         el.load();
                       }
                     }}
@@ -506,6 +527,7 @@ export const FrankiesVideoSection: React.FC = () => {
                     <source src={getAssetUrl(video.fallbackSrc)} type="video/mp4" />
                     <source src={getAssetUrl(encodeURI(video.fallbackSrc))} type="video/mp4" />
                     <source src={getAssetUrl(`/video${video.number}frankie.mp4`)} type="video/mp4" />
+                    <source src={getAssetUrl(video.number % 2 === 0 ? '/catering-video.mp4' : '/hero-video.mp4')} type="video/mp4" />
                     Your browser does not support video playback.
                   </video>
 

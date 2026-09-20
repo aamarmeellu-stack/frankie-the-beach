@@ -17,7 +17,7 @@ import {
   Trophy,
   ExternalLink,
 } from 'lucide-react';
-import { ASSETS, NATIONAL_AWARD_DATA } from '../data/restaurantData';
+import { ASSETS, NATIONAL_AWARD_DATA, FRANKIE_VIDEOS } from '../data/restaurantData';
 import { ClientImage } from './ClientImage';
 import { useImages } from '../context/ImageContext';
 
@@ -379,10 +379,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                 onClick={handleWatchVideosClick}
                 id="btn-hero-watch-video"
                 className="bg-gradient-to-r from-[#ECD87A] via-[#FFD700] to-[#E5A823] hover:brightness-110 active:scale-95 border-2 border-white/80 text-black font-heading font-extrabold text-xs sm:text-sm uppercase tracking-wider px-5 sm:px-6 py-3.5 rounded-xl shadow-[0_8px_20px_rgba(236,196,64,0.4)] hover:shadow-2xl transition-all flex items-center gap-2.5 group cursor-pointer backdrop-blur-md"
-                title="Watch all 3 Frankie at the Beach videos in the cinema showcase below"
+                title={`Watch all ${FRANKIE_VIDEOS.length} Frankie at the Beach videos in the cinema showcase below`}
               >
                 <Play className="w-4 h-4 fill-current text-black group-hover:scale-110 transition-transform" />
-                <span>WATCH VIDEOS (3) 🎥</span>
+                <span>WATCH VIDEOS ({FRANKIE_VIDEOS.length}) 🎥</span>
               </button>
 
               <button

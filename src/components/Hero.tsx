@@ -6,6 +6,8 @@ import {
   Sandwich,
   Play,
   Pause,
+  Volume2,
+  VolumeX,
   Sparkles,
   FerrisWheel,
   Beer,
@@ -30,6 +32,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
 
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [videoError, setVideoError] = useState(false);
 
   const heroVideoSrc =
@@ -39,12 +42,52 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
     ASSETS.heroVideo ||
     '/hero-video.mp4';
 
+  // Automatically start playing video on page load (muted for modern browser autoplay compliance)
+  useEffect(() => {
+    const video = (document.getElementById('heroVideo') as HTMLVideoElement | null) || videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    setIsMuted(true);
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((err) => {
+          console.warn('Hero video autoplay muted attempt:', err);
+        });
+    }
+  }, [heroVideoSrc]);
+
+  // Toggle video sound or play/pause
+  const toggleSound = useCallback((e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    const video = (document.getElementById('heroVideo') as HTMLVideoElement | null) || videoRef.current;
+    if (!video) return;
+
+    if (video.muted) {
+      video.muted = false;
+      video.volume = 1.0;
+      setIsMuted(false);
+      if (video.paused) {
+        video.play().then(() => setIsPlaying(true)).catch(() => {});
+      }
+    } else {
+      video.muted = true;
+      setIsMuted(true);
+    }
+  }, []);
+
   const startVideo = useCallback(() => {
     const video = (document.getElementById('heroVideo') as HTMLVideoElement | null) || videoRef.current;
     if (!video) return;
 
     video.muted = false;
     video.volume = 1.0;
+    setIsMuted(false);
     video
       .play()
       .then(() => {
@@ -53,6 +96,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
       .catch((err) => {
         console.warn('Play unmuted blocked by policy, trying muted fallback:', err);
         video.muted = true;
+        setIsMuted(true);
         video
           .play()
           .then(() => {
@@ -82,11 +126,20 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
     [isPlaying, startVideo, stopVideo]
   );
 
+  // Navigate directly to the 3 Frankie's Beach Moments videos section
+  const handleWatchVideosClick = useCallback((e?: React.MouseEvent) => {
+    e?.preventDefault();
+    const videoSection = document.getElementById('frankies-beach-videos-section');
+    if (videoSection) {
+      videoSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
+
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mt-1 sm:mt-2">
       <section
         id="home"
-        className="relative text-white pt-8 sm:pt-14 pb-20 sm:pb-32 overflow-hidden bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0042A8_100%)] rounded-3xl shadow-[0_20px_50px_rgba(0,112,224,0.4)] border-2 border-amber-300/40"
+        className="relative text-white pt-8 sm:pt-14 pb-16 sm:pb-24 overflow-hidden bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0042A8_100%)] rounded-3xl shadow-[0_20px_50px_rgba(0,112,224,0.4)] border-2 border-amber-300/40"
       >
       {/* 1. Full Beach Ocean Background (Video with Image Poster Fallback) */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -106,11 +159,13 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
           )}
         </div>
 
-        {/* Ambient Hero Video Loop - Plays with sound when user clicks Start Video */}
+        {/* Ambient Hero Video Loop - Plays automatically upon page load */}
         {!videoError && heroVideoSrc && (
           <video
             id="heroVideo"
             ref={videoRef}
+            autoPlay
+            muted
             loop
             playsInline
             preload="auto"
@@ -143,30 +198,49 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
               </span>
 
               <span className="uppercase tracking-wider text-[11px] font-extrabold text-white/95">
-                Video Playing 🔊
+                {isMuted ? 'Video Live' : 'Sound On 🔊'}
               </span>
 
               <button
+                onClick={toggleSound}
+                className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-400/20 hover:bg-amber-400/35 text-amber-300 font-heading font-extrabold text-[11px] uppercase tracking-wider transition-all cursor-pointer"
+                title={isMuted ? 'Unmute Sound' : 'Mute Sound'}
+                aria-label={isMuted ? 'Unmute Sound' : 'Mute Sound'}
+                id="hero-mute-sound-btn"
+              >
+                {isMuted ? (
+                  <>
+                    <VolumeX className="w-3.5 h-3.5 text-amber-300" />
+                    <span>Unmute</span>
+                  </>
+                ) : (
+                  <>
+                    <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Sound On</span>
+                  </>
+                )}
+              </button>
+
+              <button
                 onClick={togglePlay}
-                className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white/15 hover:bg-white/30 text-white font-heading font-extrabold text-[11px] uppercase tracking-wider transition-all cursor-pointer"
-                title="Stop Video"
-                aria-label="Stop Video"
+                className="flex items-center gap-1 px-2 py-1 rounded-lg bg-white/15 hover:bg-white/30 text-white font-heading font-extrabold text-[11px] uppercase tracking-wider transition-all cursor-pointer"
+                title="Pause Video"
+                aria-label="Pause Video"
                 id="hero-stop-video-top-btn"
               >
-                <Pause className="w-3.5 h-3.5 text-amber-300" />
-                <span>Stop Video</span>
+                <Pause className="w-3.5 h-3.5 text-white/80" />
               </button>
             </div>
           ) : (
             <button
               onClick={togglePlay}
               className="flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-[#ECD87A] via-[#FFD700] to-[#E5A823] hover:brightness-110 active:scale-95 text-black font-heading font-black text-xs uppercase tracking-wider shadow-2xl transition-all cursor-pointer border-2 border-white/80 animate-pulse"
-              title="Click Here to Start Video with sound"
-              aria-label="Click Here to Start Video with sound"
+              title="Click Here to Play Video"
+              aria-label="Click Here to Play Video"
               id="hero-start-video-top-btn"
             >
               <Play className="w-3.5 h-3.5 fill-black text-black shrink-0" />
-              <span>Click Here 🔊</span>
+              <span>Play Video 🎥</span>
             </button>
           )}
         </div>
@@ -300,26 +374,13 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
               </button>
 
               <button
-                onClick={togglePlay}
+                onClick={handleWatchVideosClick}
                 id="btn-hero-watch-video"
-                className={`active:scale-95 font-heading font-extrabold text-xs sm:text-sm uppercase tracking-wider px-5 sm:px-6 py-3.5 rounded-xl border-2 shadow-lg hover:shadow-xl transition-all flex items-center gap-2.5 group cursor-pointer backdrop-blur-md ${
-                  isPlaying
-                    ? 'bg-black/60 hover:bg-black/80 border-amber-300 text-amber-300'
-                    : 'bg-gradient-to-r from-[#ECD87A] via-[#FFD700] to-[#E5A823] hover:brightness-110 border-white/80 text-black shadow-[0_8px_20px_rgba(236,196,64,0.4)]'
-                }`}
-                title={isPlaying ? 'Click to Stop Video' : 'Watch video with beach sounds and music'}
+                className="bg-gradient-to-r from-[#ECD87A] via-[#FFD700] to-[#E5A823] hover:brightness-110 active:scale-95 border-2 border-white/80 text-black font-heading font-extrabold text-xs sm:text-sm uppercase tracking-wider px-5 sm:px-6 py-3.5 rounded-xl shadow-[0_8px_20px_rgba(236,196,64,0.4)] hover:shadow-2xl transition-all flex items-center gap-2.5 group cursor-pointer backdrop-blur-md"
+                title="Watch all 3 Frankie at the Beach videos in the cinema showcase below"
               >
-                {isPlaying ? (
-                  <>
-                    <Pause className="w-4 h-4 text-amber-300 group-hover:scale-110 transition-transform" />
-                    <span>STOP VIDEO</span>
-                  </>
-                ) : (
-                  <>
-                    <Play className="w-4 h-4 fill-current text-black group-hover:scale-110 transition-transform" />
-                    <span>WATCH VIDEO 🔊</span>
-                  </>
-                )}
+                <Play className="w-4 h-4 fill-current text-black group-hover:scale-110 transition-transform" />
+                <span>WATCH VIDEOS (3) 🎥</span>
               </button>
 
               <button
@@ -334,9 +395,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
             </div>
           </div>
 
-          {/* Right Column: Polaroid Collage & Stamp Badge */}
+          {/* Right Column: Polaroid Collage & Stamp Badge - Made Fully Visible */}
           <div className="lg:col-span-5 relative flex justify-center lg:justify-end mt-4 lg:mt-0">
-            <div className="relative w-full max-w-[500px] sm:max-w-[540px] h-[500px] sm:h-[560px]">
+            <div className="relative w-full max-w-[420px] xs:max-w-[480px] sm:max-w-[540px] md:max-w-[560px] h-[500px] xs:h-[530px] sm:h-[570px] my-2">
               
               {/* White Artistic Paint Splatter / Seafoam Textures Behind Polaroids */}
               <div className="absolute inset-0 pointer-events-none select-none z-0">
@@ -353,9 +414,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                 </svg>
               </div>
 
-              {/* Polaroid 1: Frankie's Beachfront Kiosk (Top-Left) */}
+              {/* Polaroid 1: Frankie's Beachfront Kiosk (Top-Left - Fully Visible) */}
               <div
-                className="absolute -left-2 sm:left-0 top-0 sm:top-1 w-38 sm:w-44 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_20px_45px_rgba(0,0,0,0.45)] rounded-[2px] transform -rotate-[7deg] hover:-rotate-2 hover:scale-105 transition-all duration-300 z-10 group cursor-pointer"
+                className="absolute left-0 sm:-left-2 top-0 sm:top-1 w-34 xs:w-40 sm:w-46 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_16px_36px_rgba(0,0,0,0.45)] rounded-[2px] transform -rotate-[7deg] hover:-rotate-1 hover:scale-105 hover:z-35 transition-all duration-300 z-10 group cursor-pointer"
                 onClick={onExploreMenu}
                 title="Frankie's Beachfront Kiosk on Ramsgate Beach"
               >
@@ -369,11 +430,14 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                     priority
                   />
                 </div>
+                <p className="text-center font-hand font-bold text-gray-700 text-xs sm:text-sm mt-1.5 leading-none select-none">
+                  Beach Kiosk 🏖️
+                </p>
               </div>
 
-              {/* Polaroid 2: Hot Sugared Beach Donuts (Top-Right - Shuffled to Front with High Visibility) */}
+              {/* Polaroid 2: Hot Sugared Beach Donuts (Top-Right - Fully Visible) */}
               <div
-                className="absolute right-0 sm:right-1 top-0 sm:top-1 w-44 sm:w-52 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_26px_55px_rgba(0,0,0,0.52)] rounded-[2px] transform rotate-[5deg] hover:rotate-1 hover:scale-105 transition-all duration-300 z-25 group cursor-pointer border-t border-white"
+                className="absolute right-0 sm:-right-2 top-0 sm:top-1 w-36 xs:w-42 sm:w-48 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_20px_45px_rgba(0,0,0,0.52)] rounded-[2px] transform rotate-[6deg] hover:rotate-1 hover:scale-105 hover:z-35 transition-all duration-300 z-10 group cursor-pointer border-t border-white"
                 onClick={onExploreMenu}
                 title="Frankie's Famous Hot Beach Donuts & Toppings"
               >
@@ -387,13 +451,16 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                     }}
                   />
                 </div>
+                <p className="text-center font-hand font-bold text-gray-700 text-xs sm:text-sm mt-1.5 leading-none select-none">
+                  Hot Donuts 🍩
+                </p>
               </div>
 
-              {/* Polaroid 3: Centerpiece Gourmet Cheeseburger */}
+              {/* Polaroid 3: CENTERPIECE Gourmet Cheeseburger (Directly in Center) */}
               <div
-                className="absolute left-4 sm:left-8 top-22 sm:top-24 w-48 sm:w-56 bg-white p-2.5 sm:p-3 pb-7 sm:pb-8 shadow-[0_28px_60px_rgba(0,0,0,0.55)] rounded-[2px] transform -rotate-[2deg] hover:rotate-0 hover:scale-105 transition-all duration-300 z-18 group cursor-pointer"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-42 xs:w-48 sm:w-56 md:w-60 bg-white p-2.5 sm:p-3 pb-7 sm:pb-8 shadow-[0_25px_60px_rgba(0,0,0,0.65)] rounded-[2px] transform -rotate-[1deg] hover:rotate-0 hover:scale-105 hover:z-35 transition-all duration-300 z-20 group cursor-pointer border border-white"
                 onClick={onExploreMenu}
-                title="Gourmet Burger at Frankie's"
+                title="Centerpiece Gourmet Burger at Frankie's"
               >
                 <div className="overflow-hidden aspect-square bg-[#005FCE]">
                   <ClientImage
@@ -405,11 +472,14 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                     priority
                   />
                 </div>
+                <p className="text-center font-hand font-bold text-gray-800 text-sm sm:text-base mt-2 leading-none select-none">
+                  6oz Gourmet Burger 🍔
+                </p>
               </div>
 
-              {/* Polaroid 4: Pepperoni & Mature Cheddar Loaded Chips */}
+              {/* Polaroid 4: Pepperoni & Mature Cheddar Loaded Chips (Bottom-Right - Fully Visible) */}
               <div
-                className="absolute right-1 sm:right-3 bottom-8 sm:bottom-10 w-40 sm:w-46 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_22px_50px_rgba(0,0,0,0.48)] rounded-[2px] transform -rotate-[4deg] hover:rotate-0 hover:scale-105 transition-all duration-300 z-20 group cursor-pointer"
+                className="absolute right-0 sm:-right-2 bottom-0 sm:bottom-1 w-36 xs:w-42 sm:w-48 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_18px_40px_rgba(0,0,0,0.48)] rounded-[2px] transform -rotate-[5deg] hover:rotate-0 hover:scale-105 hover:z-35 transition-all duration-300 z-10 group cursor-pointer"
                 onClick={onExploreMenu}
                 title="Loaded Chips at Frankie's"
               >
@@ -423,11 +493,14 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                     priority
                   />
                 </div>
+                <p className="text-center font-hand font-bold text-gray-700 text-xs sm:text-sm mt-1.5 leading-none select-none">
+                  Loaded Fries 🍟
+                </p>
               </div>
 
-              {/* Polaroid 5: Cold Draught Pint / Alcohol From Menu */}
+              {/* Polaroid 5: Cold Draught Pint / Alcohol From Menu (Bottom-Left - Fully Visible) */}
               <div
-                className="absolute -left-1 sm:left-2 bottom-0 sm:bottom-2 w-38 sm:w-44 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_26px_55px_rgba(0,0,0,0.5)] rounded-[2px] transform rotate-[4deg] hover:rotate-1 hover:scale-105 transition-all duration-300 z-30 group cursor-pointer"
+                className="absolute left-0 sm:-left-2 bottom-0 sm:bottom-1 w-34 xs:w-40 sm:w-46 bg-white p-2 sm:p-2.5 pb-6 sm:pb-7 shadow-[0_20px_45px_rgba(0,0,0,0.5)] rounded-[2px] transform rotate-[5deg] hover:rotate-1 hover:scale-105 hover:z-35 transition-all duration-300 z-10 group cursor-pointer"
                 onClick={onExploreMenu}
                 title="Seaside Bar Drink at Frankie's"
               >
@@ -440,14 +513,17 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
+                <p className="text-center font-hand font-bold text-gray-700 text-xs sm:text-sm mt-1.5 leading-none select-none">
+                  Cold Draught 🍺
+                </p>
               </div>
 
-              {/* Circular Stamp Badge: FRANKIES AT THE BEACH ★ RAMSGATE */}
+              {/* Circular Stamp Badge: FRANKIES AT THE BEACH ★ RAMSGATE (Accents bottom center cleanly without blocking food photos) */}
               <div
-                className="absolute left-[44%] -translate-x-1/2 top-[195px] sm:top-[215px] z-35 stamp-badge pointer-events-auto"
+                className="absolute bottom-2 sm:bottom-3 left-1/2 -translate-x-1/2 z-30 stamp-badge pointer-events-auto"
                 title="Frankies At The Beach Ramsgate"
               >
-                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white border-2 border-dashed border-[#0070E0] p-1.5 flex items-center justify-center relative shadow-[0_12px_28px_rgba(0,112,224,0.35)]">
+                <div className="w-18 h-18 sm:w-22 sm:h-22 rounded-full bg-white border-2 border-dashed border-[#0070E0] p-1 flex items-center justify-center relative shadow-[0_12px_28px_rgba(0,112,224,0.35)]">
                   {/* Outer circular text simulated with SVG */}
                   <svg className="w-full h-full animate-[spin_25s_linear_infinite]" viewBox="0 0 100 100">
                     <defs>
@@ -464,8 +540,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                   </svg>
 
                   {/* Center Beach & Fun Icon */}
-                  <div className="absolute inset-0 m-auto w-10 h-10 rounded-full bg-[#eef7ff] flex items-center justify-center border border-[#0070E0]/25">
-                    <Sparkles className="w-4 h-4 text-[#0070E0] fill-current" />
+                  <div className="absolute inset-0 m-auto w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#eef7ff] flex items-center justify-center border border-[#0070E0]/25">
+                    <Sparkles className="w-3.5 h-3.5 text-[#0070E0] fill-current" />
                   </div>
                 </div>
               </div>

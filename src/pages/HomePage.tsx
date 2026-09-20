@@ -5,6 +5,7 @@ import { QuickInfoBar } from '../components/QuickInfoBar';
 import { ChefsFavorites } from '../components/ChefsFavorites';
 import { NationalAwardBanner } from '../components/NationalAwardBanner';
 import { FoodCriticReview } from '../components/FoodCriticReview';
+import { FrankiesVideoSection } from '../components/FrankiesVideoSection';
 import { BeachHireSection } from '../components/BeachHireSection';
 import { WhatPeopleSay } from '../components/WhatPeopleSay';
 import { CateringShowcase } from '../components/CateringShowcase';
@@ -57,6 +58,9 @@ export const HomePage: React.FC = () => {
 
       {/* 2.6 Independent Food Critic Taste Test & Video Report (Anne at the table) */}
       <FoodCriticReview />
+
+      {/* 2.7 Frankie's Beach Moments Video Section (Video 1, Video 2, Video 3) */}
+      <FrankiesVideoSection />
 
       {/* 3. Chef's Favorites Showcase */}
       <ChefsFavorites
@@ -518,16 +522,18 @@ export const HomePage: React.FC = () => {
             <Link
               to="/contact"
               className="bg-white/10 hover:bg-white/20 text-white border border-white/30 text-xs sm:text-sm font-normal px-6 py-3.5 rounded-xl transition-all cursor-pointer"
+              title="Click Here to contact & get directions"
             >
-              Contact &amp; Get Directions
+              Click Here
             </Link>
 
             <button
               onClick={handleWhatsAppContact}
               className="bg-[#25D366] hover:bg-[#20bd5a] text-white font-heading font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg flex items-center gap-2 cursor-pointer transition-all"
+              title="Click Here to chat on WhatsApp"
             >
               <MessageSquare className="w-4 h-4 fill-current" />
-              <span>CHAT ON WHATSAPP</span>
+              <span>Click Here</span>
             </button>
           </div>
         </div>

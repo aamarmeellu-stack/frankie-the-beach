@@ -129,6 +129,22 @@ export const Header: React.FC<HeaderProps> = () => {
               <span>BEACH HIRE</span>
             </a>
 
+            {/* Videos Anchor */}
+            <a
+              href="/#frankies-beach-videos-section"
+              onClick={(e) => {
+                const el = document.getElementById('frankies-beach-videos-section');
+                if (el) {
+                  e.preventDefault();
+                  el.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="text-[13px] font-extrabold uppercase tracking-widest text-[#ECD87A] hover:text-white transition-colors py-1 flex items-center gap-1 select-none"
+              id="nav-videos"
+            >
+              <span>VIDEOS 🎥</span>
+            </a>
+
             {/* TripAdvisor Dropdown with Direct Dedicated Page Links */}
             <div className="relative" ref={tripAdvisorRef}>
               <div className="flex items-center">
@@ -377,6 +393,27 @@ export const Header: React.FC<HeaderProps> = () => {
                 <span className="text-[#ECD87A]">BEACH HIRE</span>
                 <span className="text-[10px] bg-[#0070E0] text-white px-2 py-0.5 rounded font-bold uppercase tracking-wider">
                   Deckchairs
+                </span>
+              </div>
+            </a>
+
+            <a
+              href="/#frankies-beach-videos-section"
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                const el = document.getElementById('frankies-beach-videos-section');
+                if (el) {
+                  e.preventDefault();
+                  el.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className={mobileLinkClass}
+              id="mobile-nav-videos"
+            >
+              <div className="flex items-center justify-between w-full">
+                <span className="text-[#ECD87A]">BEACH VIDEOS 🎥</span>
+                <span className="text-[10px] bg-red-600 text-white px-2 py-0.5 rounded font-bold uppercase tracking-wider">
+                  3 Videos
                 </span>
               </div>
             </a>

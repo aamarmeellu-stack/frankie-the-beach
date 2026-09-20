@@ -302,17 +302,18 @@ export const CateringShowcase: React.FC = () => {
                 onClick={handleWhatsAppEnquiry}
                 type="button"
                 className="flex-1 bg-[#25D366] hover:bg-[#20bd5a] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-5 py-3.5 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
-                title="Enquire about catering on WhatsApp"
+                title="Click Here to enquire about catering on WhatsApp"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
-                <span>ENQUIRE VIA WHATSAPP</span>
+                <span>Click Here</span>
               </button>
 
               <Link
                 to="/contact"
                 className="bg-[#0070E0] hover:bg-[#005FCE] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-5 py-3.5 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer group"
+                title="Click Here for event enquiry form"
               >
-                <span>EVENT ENQUIRY FORM</span>
+                <span>Click Here</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
 

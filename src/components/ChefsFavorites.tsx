@@ -36,7 +36,7 @@ export const ChefsFavorites: React.FC<ChefsFavoritesProps> = ({
             id="link-view-full-menu"
             className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0070E0] hover:text-[#005FCE] transition-colors cursor-pointer"
           >
-            <span>VIEW FULL MENU</span>
+            <span>CLICK HERE</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
@@ -103,7 +103,7 @@ export const ChefsFavorites: React.FC<ChefsFavoritesProps> = ({
                       onClick={onViewFullMenu}
                       className="text-[#0070E0] hover:text-[#005FCE] font-bold inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform cursor-pointer text-xs"
                     >
-                      <span>Menu</span>
+                      <span>Click Here</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   </div>

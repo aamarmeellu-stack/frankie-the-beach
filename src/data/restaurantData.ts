@@ -20,6 +20,8 @@ export const CLIENT_IMAGES = {
   heroVideo: '/hero-video.mp4',
   cateringVideo: '/catering-video.mp4',
   heroBurger: '/dishes/Beef Burger.webp',
+  heroDonut: '/donut-img.jpeg',
+  heroAlcohol: '/drinks/cruzcampo-pint.webp',
   heroDrink: '/frankies_cheesy_fries_slushy.webp',
   sunsetBeach: '',
   
@@ -100,9 +102,14 @@ export const ASSETS = {
   heroBeachBg: '',
   heroVideo: '/hero-video.mp4',
   cateringVideo: '/catering-video.mp4',
+  video1: '/video-1-frankie.mp4',
+  video2: '/video-2-frankie.mp4',
+  video3: '/video-3-frankie.mp4',
 
   // Food Images
   heroBurger: '/dishes/Beef Burger.webp',
+  heroDonut: '/donut-img.jpeg',
+  heroAlcohol: '/drinks/cruzcampo-pint.webp',
   beefBurger: '/dishes/Beef Burger.webp',
   baconBurger: '/dishes/Bacon Cheese Burger.webp',
   spicyBurger: '/dishes/Caribbean Chilli Cheese Burger.webp',
@@ -235,6 +242,51 @@ export const FOOD_CRITIC_REVIEW = {
     },
   ],
 };
+
+// Frankie's Beach Videos (Video 1, Video 2, Video 3)
+export interface FrankieVideoItem {
+  id: string;
+  number: number;
+  title: string;
+  subtitle: string;
+  src: string;
+  fallbackSrc: string;
+  tag: string;
+  description: string;
+}
+
+export const FRANKIE_VIDEOS: FrankieVideoItem[] = [
+  {
+    id: 'video-1',
+    number: 1,
+    title: 'Frankie at the Beach — Video 1',
+    subtitle: 'Ramsgate Beach Atmosphere & Fresh Grill',
+    src: '/video-1-frankie.mp4',
+    fallbackSrc: '/video 1 frankie.mp4',
+    tag: 'Beachfront Vibe',
+    description: 'Experience the real atmosphere right on Ramsgate Sands with fresh food cooking on the grill and sea breezes.',
+  },
+  {
+    id: 'video-2',
+    number: 2,
+    title: 'Frankie at the Beach — Video 2',
+    subtitle: 'Seaside Energy & Happy Customers',
+    src: '/video-2-frankie.mp4',
+    fallbackSrc: '/video 2 frankie.mp4',
+    tag: 'Coast in Action',
+    description: 'A genuine glimpse of Frankie’s kiosk in action by the boardwalk — laughter, delicious bites, and seaside vibes.',
+  },
+  {
+    id: 'video-3',
+    number: 3,
+    title: 'Frankie at the Beach — Video 3',
+    subtitle: 'Award-Winning Hospitality & Refreshments',
+    src: '/video-3-frankie.mp4',
+    fallbackSrc: '/video 3 frankie.mp4',
+    tag: 'Award Winner',
+    description: 'Serving up the UK’s #1 quick bites, cold draught beers, and signature hospitality right beside the ocean.',
+  },
+];
 
 // Official TripAdvisor Review Links for Frankie's @ the Beach
 export const TRIPADVISOR_LINKS = {

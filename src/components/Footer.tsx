@@ -17,8 +17,12 @@ import {
   NATIONAL_AWARD_DATA,
   EXTRA_MILE_AWARD_DATA,
 } from '../data/restaurantData';
+import { useImages } from '../context/ImageContext';
+import { ClientImage } from './ClientImage';
 
 export const Footer: React.FC = () => {
+  const { clientImages } = useImages();
+
   return (
     <footer className="bg-[#000000] text-white pt-14 pb-8 border-t border-white/10" id="contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,16 +32,19 @@ export const Footer: React.FC = () => {
           
           {/* Column 1: Brand & Socials */}
           <div className="space-y-6">
-            <Link to="/" className="flex flex-col items-start group">
-              <div className="flex items-center gap-1.5">
-                <span className="font-script text-3xl sm:text-4xl text-white tracking-wide font-bold group-hover:text-[#ECD87A] transition-colors">
-                  Frankie's
-                </span>
-                <UtensilsCrossed className="w-6 h-6 text-[#ECD87A] stroke-[2.2] rotate-12 -ml-1 transition-transform group-hover:rotate-0" />
-              </div>
-              <span className="text-[10px] font-extrabold tracking-[0.28em] text-[#ECD87A] uppercase -mt-1 font-heading">
-                @ THE BEACH
-              </span>
+            <Link
+              to="/"
+              className="flex items-center select-none group shrink-0 focus:outline-none"
+              id="footer-brand-logo"
+              aria-label="Frankie's @ The Beach - Home"
+            >
+              <ClientImage
+                slotKey="site:logo"
+                src={clientImages.logo || '/logo.webp'}
+                fallbackSrc="/logo.webp"
+                alt="Frankie's @ The Beach"
+                className="h-14 sm:h-16 w-auto max-w-[180px] sm:max-w-[210px] object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.35)] group-hover:scale-105 group-hover:drop-shadow-[0_6px_16px_rgba(236,216,122,0.45)] transition-all duration-200"
+              />
             </Link>
 
             <p className="text-xs text-white/70 leading-relaxed max-w-xs">

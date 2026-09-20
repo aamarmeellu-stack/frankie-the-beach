@@ -137,6 +137,7 @@ export const Header: React.FC<HeaderProps> = () => {
                 if (el) {
                   e.preventDefault();
                   el.scrollIntoView({ behavior: 'smooth' });
+                  window.dispatchEvent(new CustomEvent('play-all-frankie-videos'));
                 }
               }}
               className="text-[13px] font-extrabold uppercase tracking-widest text-[#ECD87A] hover:text-white transition-colors py-1 flex items-center gap-1 select-none"
@@ -405,6 +406,7 @@ export const Header: React.FC<HeaderProps> = () => {
                 if (el) {
                   e.preventDefault();
                   el.scrollIntoView({ behavior: 'smooth' });
+                  window.dispatchEvent(new CustomEvent('play-all-frankie-videos'));
                 }
               }}
               className={mobileLinkClass}

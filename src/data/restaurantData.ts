@@ -270,11 +270,11 @@ export const FRANKIE_VIDEOS: FrankieVideoItem[] = [
     id: 'video-2',
     number: 2,
     title: 'Frankie at the Beach — Video 2',
-    subtitle: 'Seaside Energy & Happy Customers',
+    subtitle: 'Seaside Energy & Boardwalk Moments',
     src: '/video-2-frankie.mp4',
     fallbackSrc: '/video 2 frankie.mp4',
     tag: 'Coast in Action',
-    description: 'A genuine glimpse of Frankie’s kiosk in action by the boardwalk — laughter, delicious bites, and seaside vibes.',
+    description: 'A genuine glimpse of Frankie’s kiosk in action on the sands — laughter, seaside energy, and coastal memories.',
   },
   {
     id: 'video-3',
@@ -284,7 +284,7 @@ export const FRANKIE_VIDEOS: FrankieVideoItem[] = [
     src: '/video-3-frankie.mp4',
     fallbackSrc: '/video 3 frankie.mp4',
     tag: 'Award Winner',
-    description: 'Serving up the UK’s #1 quick bites, cold draught beers, and signature hospitality right beside the ocean.',
+    description: 'TripAdvisor Travelers’ Choice award-winning food, refreshing iced slushies, beach cocktails, and ice-cold beers served right on the beach.',
   },
 ];
 

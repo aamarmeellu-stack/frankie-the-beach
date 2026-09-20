@@ -43,7 +43,7 @@ export const Footer: React.FC = () => {
                 src={clientImages.logo || '/logo.webp'}
                 fallbackSrc="/logo.webp"
                 alt="Frankie's @ The Beach"
-                className="h-14 sm:h-16 w-auto max-w-[180px] sm:max-w-[210px] object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.35)] group-hover:scale-105 group-hover:drop-shadow-[0_6px_16px_rgba(236,216,122,0.45)] transition-all duration-200"
+                className="h-16 sm:h-18 md:h-20 w-auto max-w-[220px] sm:max-w-[250px] object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.35)] group-hover:scale-105 group-hover:drop-shadow-[0_6px_16px_rgba(236,216,122,0.45)] transition-all duration-200"
               />
             </Link>
 

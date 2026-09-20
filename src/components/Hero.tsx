@@ -4,6 +4,8 @@ import {
   MapPin,
   UtensilsCrossed,
   Sandwich,
+  Volume2,
+  VolumeX,
   Play,
   Pause,
   Sparkles,
@@ -27,6 +29,9 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
   const { clientImages, slotOverrides } = useImages();
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const playPromiseRef = useRef<Promise<void> | null>(null);
+  const isUserPausedRef = useRef<boolean>(false);
+
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
@@ -39,121 +44,153 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
     ASSETS.heroVideo ||
     '/hero-video.mp4';
 
-  const attemptUnmute = useCallback(() => {
+  const safePlay = useCallback(async (requireUnmute = true) => {
+    const video = videoRef.current;
+    if (!video || isUserPausedRef.current) return;
+
+    if (requireUnmute) {
+      video.muted = false;
+      video.volume = 1.0;
+    }
+
+    try {
+      const p = video.play();
+      playPromiseRef.current = p;
+      await p;
+      setIsPlaying(true);
+      setIsMuted(video.muted);
+    } catch (err: unknown) {
+      const error = err as { name?: string };
+      if (error?.name === 'AbortError') {
+        return;
+      }
+      // If browser strictly blocked unmuted autoplay, fallback to muted so video frames flow
+      if (requireUnmute) {
+        try {
+          video.muted = true;
+          setIsMuted(true);
+          const fallbackPromise = video.play();
+          playPromiseRef.current = fallbackPromise;
+          await fallbackPromise;
+          setIsPlaying(true);
+        } catch {
+          // Ignored
+        }
+      }
+    } finally {
+      playPromiseRef.current = null;
+    }
+  }, []);
+
+  const safePause = useCallback(async () => {
     const video = videoRef.current;
     if (!video) return;
 
-    video.muted = false;
-    video.volume = 1.0;
+    isUserPausedRef.current = true;
 
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          setIsPlaying(true);
-          setIsMuted(false);
-        })
-        .catch(() => {
-          // If browser strictly blocked unmuted autoplay prior to user interaction,
-          // temporarily enable muted so video frames stream, while listeners await first touch
-          if (video.paused) {
-            video.muted = true;
-            setIsMuted(true);
-            video
-              .play()
-              .then(() => setIsPlaying(true))
-              .catch(() => {});
-          }
-        });
+    // Await any pending play promise to prevent DOMException: interrupted by call to pause
+    if (playPromiseRef.current) {
+      try {
+        await playPromiseRef.current;
+      } catch {
+        // Ignored
+      }
+    }
+
+    try {
+      video.pause();
+      setIsPlaying(false);
+    } catch {
+      // Ignored
     }
   }, []);
+
+  const unmuteAndPlay = useCallback(
+    (e?: React.MouseEvent) => {
+      e?.stopPropagation();
+      const video = videoRef.current;
+      if (!video) return;
+
+      isUserPausedRef.current = false;
+      video.muted = false;
+      video.volume = 1.0;
+      setIsMuted(false);
+
+      if (video.paused) {
+        safePlay(true);
+      }
+    },
+    [safePlay]
+  );
+
+  const togglePlay = useCallback(
+    (e?: React.MouseEvent) => {
+      e?.stopPropagation();
+      if (isPlaying) {
+        safePause();
+      } else {
+        isUserPausedRef.current = false;
+        safePlay(true);
+      }
+    },
+    [isPlaying, safePause, safePlay]
+  );
+
+  const toggleMute = useCallback(
+    (e?: React.MouseEvent) => {
+      e?.stopPropagation();
+      const video = videoRef.current;
+      if (!video) return;
+
+      if (video.muted) {
+        unmuteAndPlay(e);
+      } else {
+        video.muted = true;
+        setIsMuted(true);
+      }
+    },
+    [unmuteAndPlay]
+  );
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Set audio volume to full
+    isUserPausedRef.current = false;
     video.volume = 1.0;
 
     // 1. Attempt unmuted autoplay immediately on mount / page refresh
-    attemptUnmute();
+    safePlay(true);
 
-    // 2. Retry intervals for when tab activation settles right after refresh
-    const retryDelays = [150, 400, 800, 1500, 2500];
-    const timers = retryDelays.map((delay) =>
-      setTimeout(() => {
-        if (videoRef.current && (videoRef.current.muted || videoRef.current.paused)) {
-          attemptUnmute();
-        }
-      }, delay)
-    );
-
-    // 3. Document-wide capture listeners for ANY user interaction (click, tap, key, wheel, scroll)
-    const interactionEvents = [
-      'pointerdown',
-      'mousedown',
-      'touchstart',
-      'touchend',
-      'click',
-      'keydown',
-      'wheel',
-      'scroll',
-      'focus',
-    ];
-
-    const handleUserInteraction = () => {
-      const v = videoRef.current;
-      if (!v) return;
-      v.muted = false;
-      v.volume = 1.0;
-      const p = v.play();
-      if (p !== undefined) {
-        p.then(() => {
-          setIsMuted(false);
-          setIsPlaying(true);
-        }).catch(() => {});
+    // 2. Window-wide first interaction listener to unmute if browser held back audio
+    const handleFirstInteraction = () => {
+      if (isUserPausedRef.current) return;
+      if (videoRef.current && videoRef.current.muted) {
+        videoRef.current.muted = false;
+        videoRef.current.volume = 1.0;
+        setIsMuted(false);
       }
     };
 
-    interactionEvents.forEach((ev) => {
-      window.addEventListener(ev, handleUserInteraction, { capture: true, passive: true });
-      document.addEventListener(ev, handleUserInteraction, { capture: true, passive: true });
+    const interactionEvents = ['click', 'touchstart', 'pointerdown', 'keydown', 'scroll'];
+    interactionEvents.forEach((type) => {
+      window.addEventListener(type, handleFirstInteraction, { passive: true });
     });
 
     const handleVisibilityChange = () => {
-      if (!document.hidden && videoRef.current && videoRef.current.muted) {
-        attemptUnmute();
+      if (!document.hidden && videoRef.current && !isUserPausedRef.current && videoRef.current.paused) {
+        safePlay(!videoRef.current.muted);
       }
     };
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
-      timers.forEach(clearTimeout);
-      interactionEvents.forEach((ev) => {
-        window.removeEventListener(ev, handleUserInteraction, { capture: true });
-        document.removeEventListener(ev, handleUserInteraction, { capture: true });
+      interactionEvents.forEach((type) => {
+        window.removeEventListener(type, handleFirstInteraction);
       });
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, [heroVideoSrc, attemptUnmute]);
-
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      videoRef.current.muted = false;
-      videoRef.current.volume = 1.0;
-      videoRef.current
-        .play()
-        .then(() => {
-          setIsPlaying(true);
-          setIsMuted(false);
-        })
-        .catch(() => {});
-    }
-  };
+  }, [heroVideoSrc, safePlay]);
 
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mt-1 sm:mt-2">
@@ -188,13 +225,21 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
             loop
             playsInline
             onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
+            onPause={() => {
+              if (isUserPausedRef.current) {
+                setIsPlaying(false);
+              }
+            }}
             onLoadedData={() => {
               setIsVideoLoaded(true);
-              attemptUnmute();
+              if (!isUserPausedRef.current) {
+                safePlay(true);
+              }
             }}
             onCanPlay={() => {
-              attemptUnmute();
+              if (!isUserPausedRef.current && videoRef.current?.paused) {
+                safePlay(true);
+              }
             }}
             onError={() => setVideoError(true)}
             className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 z-[1] ${
@@ -211,7 +256,20 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
 
       {/* Live Video Control Badge */}
       {!videoError && (
-        <div className="absolute top-3 right-3 sm:top-5 sm:right-6 z-20 flex items-center gap-2">
+        <div className="absolute top-3 right-3 sm:top-5 sm:right-6 z-20 flex flex-wrap items-center gap-2">
+          {/* Audio prompt banner if browser autoplay restricted initial unmuted audio */}
+          {isMuted && isPlaying && (
+            <button
+              onClick={unmuteAndPlay}
+              className="flex items-center gap-1.5 bg-gradient-to-r from-[#ECD87A] via-[#FFD700] to-[#E5A823] hover:brightness-110 active:scale-95 text-black px-3 py-1.5 rounded-full text-xs font-heading font-black uppercase tracking-wide shadow-xl cursor-pointer border border-white/60 transition-all animate-pulse"
+              title="Click to hear video voice & seaside atmosphere"
+              id="hero-unmute-prompt-btn"
+            >
+              <Volume2 className="w-4 h-4 text-black shrink-0 animate-bounce" />
+              <span>Click for Voice 🔊</span>
+            </button>
+          )}
+
           <div className="flex items-center gap-2 bg-black/65 hover:bg-black/85 backdrop-blur-md px-3 sm:px-3.5 py-1.5 rounded-full border border-white/30 text-xs font-semibold text-white shadow-2xl transition-all">
             <span className="flex h-2 w-2 relative">
               <span className={`absolute inline-flex h-full w-full rounded-full ${isPlaying ? 'bg-emerald-400 animate-ping opacity-75' : 'bg-amber-400'}`}></span>
@@ -239,6 +297,31 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                 <>
                   <Play className="w-3.5 h-3.5 text-emerald-300" />
                   <span>Play</span>
+                </>
+              )}
+            </button>
+
+            {/* Voice Mute / Unmute Button */}
+            <button
+              onClick={toggleMute}
+              className={`flex items-center gap-1 px-2.5 py-1 rounded-lg font-heading font-extrabold text-[11px] uppercase tracking-wider transition-all cursor-pointer ${
+                isMuted
+                  ? 'bg-amber-400/30 text-amber-300 hover:bg-amber-400/40'
+                  : 'bg-white/15 hover:bg-white/30 text-emerald-300'
+              }`}
+              title={isMuted ? 'Unmute Video Voice' : 'Mute Video Voice'}
+              aria-label={isMuted ? 'Unmute Video Voice' : 'Mute Video Voice'}
+              id="hero-toggle-mute-btn"
+            >
+              {isMuted ? (
+                <>
+                  <VolumeX className="w-3.5 h-3.5 text-amber-300" />
+                  <span>Muted</span>
+                </>
+              ) : (
+                <>
+                  <Volume2 className="w-3.5 h-3.5 text-emerald-300" />
+                  <span>Voice On</span>
                 </>
               )}
             </button>

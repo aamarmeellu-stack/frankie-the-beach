@@ -69,23 +69,28 @@ export const Header: React.FC<HeaderProps> = () => {
   return (
     <header className="sticky top-0 z-50 w-full px-2 sm:px-6 lg:px-8 pt-2 sm:pt-4 pb-2 sm:pb-3 backdrop-blur-xs">
       <div className="max-w-7xl mx-auto bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0048B8_100%)] shadow-[0_14px_36px_rgba(0,112,224,0.45)] border-2 border-amber-300/45 rounded-2xl sm:rounded-3xl relative transition-all">
-        <div className="px-3 sm:px-6 lg:px-8 min-h-[76px] sm:min-h-[92px] md:min-h-[104px] py-1.5 sm:py-2 flex items-center justify-between">
-          {/* Brand Logo */}
-          <Link
-            to="/"
-            className="flex items-center select-none group shrink-0 py-1 focus:outline-none"
-            id="brand-logo"
-            aria-label="Frankie's @ The Beach - Home"
-          >
-            <ClientImage
-              slotKey="site:logo"
-              src={clientImages.logo || '/logo.webp'}
-              fallbackSrc="/logo.webp"
-              alt="Frankie's @ The Beach"
-              className="h-14 sm:h-18 md:h-22 lg:h-24 w-auto max-w-[170px] sm:max-w-[220px] md:max-w-[270px] lg:max-w-[310px] object-contain drop-shadow-[0_4px_14px_rgba(0,0,0,0.4)] group-hover:scale-105 group-hover:drop-shadow-[0_6px_20px_rgba(236,216,122,0.55)] transition-all duration-200 shrink-0"
-              priority
-            />
-          </Link>
+        <div className="px-3 sm:px-6 lg:px-8 min-h-[84px] sm:min-h-[96px] md:min-h-[104px] py-1.5 sm:py-2 flex items-center justify-between">
+          {/* Left Balance Spacer on Mobile (matches width of right hamburger button for optical centering) */}
+          <div className="flex md:hidden items-center justify-start w-11 sm:w-12 shrink-0 pointer-events-none" aria-hidden="true" />
+
+          {/* Brand Logo - Centered on mobile, aligned to left on desktop */}
+          <div className="flex-1 md:flex-initial flex items-center justify-center md:justify-start">
+            <Link
+              to="/"
+              className="flex items-center justify-center select-none group shrink-0 py-1 focus:outline-none"
+              id="brand-logo"
+              aria-label="Frankie's @ The Beach - Home"
+            >
+              <ClientImage
+                slotKey="site:logo"
+                src={clientImages.logo || '/logo.webp'}
+                fallbackSrc="/logo.webp"
+                alt="Frankie's @ The Beach"
+                className="h-16 min-[380px]:h-20 min-[480px]:h-22 sm:h-22 md:h-22 lg:h-24 w-auto max-w-[210px] min-[380px]:max-w-[260px] min-[480px]:max-w-[290px] sm:max-w-[290px] md:max-w-[270px] lg:max-w-[310px] object-contain drop-shadow-[0_4px_14px_rgba(0,0,0,0.4)] group-hover:scale-105 group-hover:drop-shadow-[0_6px_20px_rgba(236,216,122,0.55)] transition-all duration-200 shrink-0"
+                priority
+              />
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-7" id="desktop-nav">
@@ -277,19 +282,19 @@ export const Header: React.FC<HeaderProps> = () => {
           </nav>
 
           {/* Right Action: PWA Install (desktop) & Mobile Toggle */}
-          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
-            <div className="hidden min-[420px]:block">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0 w-11 sm:w-12 md:w-auto justify-end">
+            <div className="hidden md:block">
               <PWAInstallButton variant="header" />
             </div>
 
             {/* Mobile menu hamburger button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden min-w-[38px] min-h-[38px] sm:min-w-[42px] sm:min-h-[42px] flex items-center justify-center text-white hover:text-amber-300 p-2 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 focus:outline-none cursor-pointer transition-colors shrink-0"
+              className="md:hidden w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center text-white hover:text-amber-300 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 focus:outline-none cursor-pointer transition-colors shrink-0 border border-white/20 shadow-xs"
               aria-label="Toggle navigation menu"
               id="btn-mobile-toggle"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <MenuIcon className="w-5 h-5 sm:w-6 sm:h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
             </button>
           </div>
         </div>

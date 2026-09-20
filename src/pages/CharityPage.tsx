@@ -63,7 +63,7 @@ export const CharityPage: React.FC = () => {
       
       {/* 1. HERO BANNER */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mt-1 sm:mt-2 mb-8 sm:mb-10">
-        <div className="bg-[#0580FF] text-white py-12 sm:py-16 px-4 sm:px-8 rounded-3xl relative overflow-hidden shadow-sm">
+        <div className="bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0048B8_100%)] text-white py-12 sm:py-16 px-4 sm:px-8 rounded-3xl relative overflow-hidden shadow-sm">
           {/* Subtle background glow */}
           <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-cyan-600/30 blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 rounded-full bg-amber-500/20 blur-3xl pointer-events-none" />
@@ -125,16 +125,16 @@ export const CharityPage: React.FC = () => {
 
         {/* Featured Quote Card */}
         <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#dde0d5] shadow-sm mb-10 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-8 opacity-5 text-[#0580FF] pointer-events-none">
+          <div className="absolute top-0 right-0 p-8 opacity-5 text-[#0070E0] pointer-events-none">
             <Quote className="w-32 h-32" />
           </div>
 
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-amber-100 text-[#0580FF] flex items-center justify-center shrink-0 mt-1 shadow-2xs">
-              <Quote className="w-6 h-6 text-[#0580FF]" />
+            <div className="w-12 h-12 rounded-2xl bg-amber-100 text-[#0070E0] flex items-center justify-center shrink-0 mt-1 shadow-2xs">
+              <Quote className="w-6 h-6 text-[#0070E0]" />
             </div>
             <div className="space-y-2 text-left">
-              <span className="text-xs font-extrabold uppercase tracking-widest text-[#0580FF] font-heading block">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-[#0070E0] font-heading block">
                 FROM THE HEART
               </span>
               <blockquote className="text-lg sm:text-2xl font-heading font-extrabold text-[#000000] italic leading-snug">
@@ -153,7 +153,7 @@ export const CharityPage: React.FC = () => {
             
             {/* Story Text */}
             <div className="lg:col-span-7 space-y-5 text-left text-[#324b53] leading-relaxed text-base sm:text-lg">
-              <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0580FF] font-heading bg-sky-50 border border-sky-200/80 px-3.5 py-1.5 rounded-full mb-1">
+              <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0070E0] font-heading bg-sky-50 border border-sky-200/80 px-3.5 py-1.5 rounded-full mb-1">
                 <Heart className="w-4 h-4 text-[#D1A03F]" />
                 <span>The Story of Giving Back</span>
               </div>
@@ -162,7 +162,7 @@ export const CharityPage: React.FC = () => {
                 MORE THAN JUST A BUSINESS
               </h2>
 
-              <p className="first-letter:text-5xl first-letter:font-extrabold first-letter:text-[#0580FF] first-letter:mr-2 first-letter:float-left first-letter:leading-none">
+              <p className="first-letter:text-5xl first-letter:font-extrabold first-letter:text-[#0070E0] first-letter:mr-2 first-letter:float-left first-letter:leading-none">
                 {CHARITY_MESSAGE.paragraphs[0]}
               </p>
 
@@ -170,7 +170,7 @@ export const CharityPage: React.FC = () => {
                 {CHARITY_MESSAGE.paragraphs[1]}
               </p>
 
-              <div className="p-5 sm:p-6 bg-[#f8f9f5] rounded-2xl border-l-4 border-[#0580FF] space-y-3 my-6">
+              <div className="p-5 sm:p-6 bg-[#f8f9f5] rounded-2xl border-l-4 border-[#0070E0] space-y-3 my-6">
                 <h3 className="font-heading font-extrabold text-sm sm:text-base text-[#000000] uppercase">
                   A Very Personal Reason
                 </h3>
@@ -217,7 +217,7 @@ export const CharityPage: React.FC = () => {
               </div>
 
               {/* Visual Preview Card: Beach Play & Children Days Out */}
-              <div className="relative rounded-2xl overflow-hidden shadow-md border-2 border-white aspect-[16/10] bg-[#004fb3] group">
+              <div className="relative rounded-2xl overflow-hidden shadow-md border-2 border-white aspect-[16/10] bg-[#0048B8] group">
                 <ClientImage
                   src={CLIENT_IMAGES.childrenKiddiesCorner}
                   slotKey="site:childrenKiddiesCorner"
@@ -243,15 +243,15 @@ export const CharityPage: React.FC = () => {
                 </h4>
                 <div className="space-y-2 text-xs text-[#496068]">
                   <div className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#0580FF] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#0070E0] shrink-0 mt-0.5" />
                     <span><strong>Break the mould:</strong> Overcoming childhood hardship through hard work and determination.</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#0580FF] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#0070E0] shrink-0 mt-0.5" />
                     <span><strong>Never forget roots:</strong> Having a genuine soft spot for those facing tough times.</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#0580FF] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#0070E0] shrink-0 mt-0.5" />
                     <span><strong>Real action:</strong> Direct community support rather than marketing publicity.</span>
                   </div>
                 </div>
@@ -264,7 +264,7 @@ export const CharityPage: React.FC = () => {
         {/* 3. DEDICATED VISUAL SHOWCASE: CHILDREN & PLAY AREAS ON RAMSGATE BEACH */}
         <div className="bg-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-[#dde0d5] shadow-sm mb-10 text-left">
           <div className="max-w-3xl mb-8">
-            <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0580FF] font-heading bg-amber-50 border border-amber-200/80 px-3.5 py-1.5 rounded-full mb-2">
+            <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0070E0] font-heading bg-amber-50 border border-amber-200/80 px-3.5 py-1.5 rounded-full mb-2">
               <Smile className="w-4 h-4 text-[#D1A03F]" />
               <span>Children &amp; Community Play Areas</span>
             </div>
@@ -293,14 +293,14 @@ export const CharityPage: React.FC = () => {
                 </div>
                 <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
+                    <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0070E0] transition-colors">
                       {item.title}
                     </h3>
                     <p className="text-xs sm:text-sm text-[#526b74] mt-2 leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
-                  <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center gap-1.5 text-[11px] font-bold text-[#0580FF]">
+                  <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center gap-1.5 text-[11px] font-bold text-[#0070E0]">
                     <MapPin className="w-3.5 h-3.5 text-[#D1A03F]" />
                     <span>Ramsgate Main Sands Beachfront</span>
                   </div>
@@ -313,7 +313,7 @@ export const CharityPage: React.FC = () => {
         {/* 4. CHARITABLE PILLARS & INITIATIVES */}
         <div className="mb-10">
           <div className="text-center max-w-2xl mx-auto mb-8">
-            <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0580FF] font-heading bg-sky-50 border border-sky-200/80 px-3.5 py-1.5 rounded-full mb-2">
+            <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0070E0] font-heading bg-sky-50 border border-sky-200/80 px-3.5 py-1.5 rounded-full mb-2">
               <Sparkles className="w-4 h-4 text-[#D1A03F]" />
               <span>Decades of Community Commitment</span>
             </div>
@@ -332,15 +332,15 @@ export const CharityPage: React.FC = () => {
                   case 'heart':
                     return <Heart className="w-6 h-6 text-[#D1A03F]" />;
                   case 'wheelchair':
-                    return <Accessibility className="w-6 h-6 text-[#0580FF]" />;
+                    return <Accessibility className="w-6 h-6 text-[#0070E0]" />;
                   case 'users':
-                    return <Users className="w-6 h-6 text-[#0580FF]" />;
+                    return <Users className="w-6 h-6 text-[#0070E0]" />;
                   case 'sparkles':
                     return <Sparkles className="w-6 h-6 text-[#D1A03F]" />;
                   case 'briefcase':
-                    return <Briefcase className="w-6 h-6 text-[#0580FF]" />;
+                    return <Briefcase className="w-6 h-6 text-[#0070E0]" />;
                   default:
-                    return <Heart className="w-6 h-6 text-[#0580FF]" />;
+                    return <Heart className="w-6 h-6 text-[#0070E0]" />;
                 }
               };
 
@@ -354,7 +354,7 @@ export const CharityPage: React.FC = () => {
                       <div className="w-12 h-12 rounded-xl bg-[#f8f9f5] border border-[#e4e8dd] flex items-center justify-center">
                         {getIcon()}
                       </div>
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-sky-50 text-[#0580FF] border border-sky-200">
+                      <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-sky-50 text-[#0070E0] border border-sky-200">
                         {cause.badge}
                       </span>
                     </div>
@@ -417,9 +417,9 @@ export const CharityPage: React.FC = () => {
             </p>
 
             {/* Autism Support Highlight */}
-            <div className="bg-[#0580FF]/5 p-6 rounded-2xl border border-sky-200/60 space-y-2">
-              <div className="flex items-center gap-2 text-[#0580FF]">
-                <Sparkles className="w-5 h-5 text-[#0580FF]" />
+            <div className="bg-[#0070E0]/5 p-6 rounded-2xl border border-sky-200/60 space-y-2">
+              <div className="flex items-center gap-2 text-[#0070E0]">
+                <Sparkles className="w-5 h-5 text-[#0070E0]" />
                 <h4 className="font-heading font-extrabold text-base text-[#000000] uppercase">
                   Supporting Autism in Thanet
                 </h4>
@@ -443,7 +443,7 @@ export const CharityPage: React.FC = () => {
 
             {/* Powerful Final Quote Callout */}
             <div className="mt-8 pt-6 border-t-2 border-[#D1A03F]/30">
-              <blockquote className="text-xl sm:text-2xl font-heading font-extrabold text-[#0580FF] italic leading-snug">
+              <blockquote className="text-xl sm:text-2xl font-heading font-extrabold text-[#0070E0] italic leading-snug">
                 {CHARITY_MESSAGE.closingQuote}
               </blockquote>
               <div className="mt-3 flex items-center justify-between flex-wrap gap-2">
@@ -465,7 +465,7 @@ export const CharityPage: React.FC = () => {
         </div>
 
         {/* 6. LOCAL CAUSES CONTACT BOX */}
-        <div className="bg-[#004fb3] text-white rounded-3xl p-8 sm:p-12 shadow-xl mb-8">
+        <div className="bg-[#0048B8] text-white rounded-3xl p-8 sm:p-12 shadow-xl mb-8">
           <div className="max-w-3xl mx-auto text-center space-y-5">
             <div className="inline-flex items-center gap-2 text-amber-300 text-xs font-extrabold uppercase tracking-widest font-heading bg-white/10 px-4 py-1.5 rounded-full border border-white/20">
               <HandHeart className="w-4 h-4 text-[#D1A03F]" />
@@ -508,7 +508,7 @@ export const CharityPage: React.FC = () => {
         <div className="flex flex-wrap items-center justify-between gap-4 p-5 bg-white rounded-2xl border border-[#dde0d5] text-xs font-semibold">
           <Link
             to="/about"
-            className="text-[#0580FF] hover:underline flex items-center gap-1.5 font-heading font-extrabold uppercase tracking-wider"
+            className="text-[#0070E0] hover:underline flex items-center gap-1.5 font-heading font-extrabold uppercase tracking-wider"
           >
             ← Learn More About Frankie's Beach Story
           </Link>

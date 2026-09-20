@@ -62,7 +62,7 @@ export const ContactPage: React.FC = () => {
       
       {/* Page Header Banner */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mt-1 sm:mt-2 mb-8 sm:mb-10">
-        <div className="bg-[#0580FF] text-white py-12 sm:py-16 px-4 sm:px-8 rounded-3xl relative overflow-hidden shadow-sm">
+        <div className="bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0048B8_100%)] text-white py-12 sm:py-16 px-4 sm:px-8 rounded-3xl relative overflow-hidden shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <nav className="flex justify-center items-center gap-2 text-xs uppercase tracking-widest text-sky-200 mb-3 font-semibold">
               <Link to="/" className="hover:text-white transition-colors">
@@ -102,7 +102,7 @@ export const ContactPage: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           
           <div className="bg-white p-5 rounded-2xl border border-[#dde0d5] shadow-xs flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-[#0580FF]/10 text-[#0580FF] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-[#0070E0]/10 text-[#0070E0] flex items-center justify-center shrink-0">
               <MapPin className="w-5 h-5" />
             </div>
             <div>
@@ -115,7 +115,7 @@ export const ContactPage: React.FC = () => {
           </div>
 
           <div className="bg-white p-5 rounded-2xl border border-[#dde0d5] shadow-xs flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-[#0580FF]/10 text-[#0580FF] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-[#0070E0]/10 text-[#0070E0] flex items-center justify-center shrink-0">
               <Clock className="w-5 h-5" />
             </div>
             <div>
@@ -128,18 +128,18 @@ export const ContactPage: React.FC = () => {
           </div>
 
           <div className="bg-white p-5 rounded-2xl border border-[#dde0d5] shadow-xs flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-[#0580FF]/10 text-[#0580FF] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-[#0070E0]/10 text-[#0070E0] flex items-center justify-center shrink-0">
               <Phone className="w-5 h-5" />
             </div>
             <div>
               <span className="text-[10px] font-extrabold tracking-wider uppercase text-[#718b95]">DIRECT CALL</span>
               <h4 className="font-heading font-extrabold text-xs sm:text-sm text-[#000000] uppercase mt-0.5">
-                <a href="tel:+447554663569" className="hover:text-[#0580FF]">
+                <a href="tel:+447554663569" className="hover:text-[#0070E0]">
                   +44 7554 663569
                 </a>
               </h4>
               <p className="text-xs text-[#526b74] break-all">
-                <a href="mailto:frankiefernando@msn.com" className="hover:text-[#0580FF]">
+                <a href="mailto:frankiefernando@msn.com" className="hover:text-[#0070E0]">
                   frankiefernando@msn.com
                 </a>
               </p>
@@ -252,7 +252,7 @@ export const ContactPage: React.FC = () => {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. Alex Henderson"
-                      className="w-full px-3.5 py-2.5 text-xs font-medium border border-[#dde0d5] rounded-xl bg-[#f8f9f5] focus:outline-none focus:border-[#0580FF]"
+                      className="w-full px-3.5 py-2.5 text-xs font-medium border border-[#dde0d5] rounded-xl bg-[#f8f9f5] focus:outline-none focus:border-[#0070E0]"
                     />
                   </div>
 
@@ -266,7 +266,7 @@ export const ContactPage: React.FC = () => {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="e.g. 07554 663569 or +44 ..."
-                      className="w-full px-3.5 py-2.5 text-xs font-medium border border-[#dde0d5] rounded-xl bg-[#f8f9f5] focus:outline-none focus:border-[#0580FF]"
+                      className="w-full px-3.5 py-2.5 text-xs font-medium border border-[#dde0d5] rounded-xl bg-[#f8f9f5] focus:outline-none focus:border-[#0070E0]"
                     />
                   </div>
                 </div>
@@ -280,7 +280,7 @@ export const ContactPage: React.FC = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="alex@example.com"
-                    className="w-full px-3.5 py-2.5 text-xs font-medium border border-[#dde0d5] rounded-xl bg-[#f8f9f5] focus:outline-none focus:border-[#0580FF]"
+                    className="w-full px-3.5 py-2.5 text-xs font-medium border border-[#dde0d5] rounded-xl bg-[#f8f9f5] focus:outline-none focus:border-[#0070E0]"
                   />
                 </div>
 
@@ -294,7 +294,7 @@ export const ContactPage: React.FC = () => {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Ask us anything about our food, beach rides, accessibility, or seaside visit..."
-                    className="w-full px-3.5 py-2.5 text-xs font-medium border border-[#dde0d5] rounded-xl bg-[#f8f9f5] focus:outline-none focus:border-[#0580FF]"
+                    className="w-full px-3.5 py-2.5 text-xs font-medium border border-[#dde0d5] rounded-xl bg-[#f8f9f5] focus:outline-none focus:border-[#0070E0]"
                   />
                 </div>
 
@@ -330,11 +330,11 @@ export const ContactPage: React.FC = () => {
             {/* Interactive Google Map */}
             <div className="bg-white rounded-3xl border border-[#dde0d5] shadow-sm overflow-hidden p-5 sm:p-6">
               <div className="flex items-center justify-between gap-2 mb-3">
-                <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-[#0580FF] font-heading">
+                <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-[#0070E0] font-heading">
                   <Compass className="w-4 h-4 text-[#D1A03F]" />
                   <span>FINDING US ON THE SEAFRONT</span>
                 </div>
-                <span className="text-[10px] font-bold text-[#0580FF] uppercase bg-sky-50 border border-sky-200 px-2 py-0.5 rounded-full">
+                <span className="text-[10px] font-bold text-[#0070E0] uppercase bg-sky-50 border border-sky-200 px-2 py-0.5 rounded-full">
                   Interactive Map
                 </span>
               </div>
@@ -357,14 +357,14 @@ export const ContactPage: React.FC = () => {
               {/* Address Bar under Map */}
               <div className="mt-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 p-3 bg-[#f8f9f5] rounded-xl border border-[#dde0d5] text-xs text-[#476069]">
                 <div className="flex items-center gap-1.5 font-medium text-[#000000]">
-                  <MapPin className="w-3.5 h-3.5 text-[#0580FF] shrink-0" />
+                  <MapPin className="w-3.5 h-3.5 text-[#0070E0] shrink-0" />
                   <span>Kiosk 1, Marina Esplanade, Ramsgate CT11 8LS</span>
                 </div>
                 <a
                   href="https://maps.google.com/?q=Frankie%E2%80%99s+%40+the+beach+Ramsgate"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-[#0580FF] font-bold hover:underline shrink-0"
+                  className="text-[#0070E0] font-bold hover:underline shrink-0"
                 >
                   Open in Google Maps →
                 </a>
@@ -413,7 +413,7 @@ export const ContactPage: React.FC = () => {
 
             {/* Quick FAQ */}
             <div className="bg-white rounded-3xl border border-[#dde0d5] shadow-sm p-6 space-y-4">
-              <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-[#0580FF] font-heading">
+              <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-[#0070E0] font-heading">
                 <HelpCircle className="w-4 h-4 text-[#D1A03F]" />
                 <span>FREQUENT QUESTIONS</span>
               </div>

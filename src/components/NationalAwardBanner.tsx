@@ -12,11 +12,11 @@ export const NationalAwardBanner: React.FC = () => {
       <section
         id="award-winner-section"
         aria-label="2024 Extra Mile Award Winner"
-        className="relative bg-gradient-to-b from-[#0B2341] via-[#0E355E] to-[#0A1E35] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden border-y-2 border-[#D1A03F]/40 shadow-xl"
+        className="relative bg-gradient-to-b from-[#003899] via-[#004EB8] to-[#002B75] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden border-y-2 border-[#D1A03F]/50 shadow-2xl"
       >
         {/* Soft, warm background light accents */}
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#D1A03F]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-10 w-96 h-96 bg-[#0580FF]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#D1A03F]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-10 w-96 h-96 bg-[#0066FF]/25 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-6xl mx-auto relative z-10">
           
@@ -58,7 +58,7 @@ export const NationalAwardBanner: React.FC = () => {
                   </div>
 
                   {/* Corner Trophy Badge */}
-                  <div className="absolute top-3 left-3 bg-[#0E355E]/90 backdrop-blur-md text-[#ECD87A] px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-md border border-[#ECD87A]/30">
+                  <div className="absolute top-3 left-3 bg-[#003899]/90 backdrop-blur-md text-[#ECD87A] px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-md border border-[#ECD87A]/30">
                     <Trophy className="w-3.5 h-3.5" />
                     <span>2024 Winner</span>
                   </div>
@@ -74,7 +74,7 @@ export const NationalAwardBanner: React.FC = () => {
                       1066 Business Awards Ceremony Stage
                     </p>
                   </div>
-                  <span className="text-xs font-semibold text-[#0580FF] flex items-center gap-1 hover:underline">
+                  <span className="text-xs font-semibold text-[#0066FF] flex items-center gap-1 hover:underline">
                     <span>Enlarge</span>
                     <Maximize2 className="w-3 h-3" />
                   </span>

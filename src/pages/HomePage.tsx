@@ -5,6 +5,7 @@ import { QuickInfoBar } from '../components/QuickInfoBar';
 import { ChefsFavorites } from '../components/ChefsFavorites';
 import { NationalAwardBanner } from '../components/NationalAwardBanner';
 import { FoodCriticReview } from '../components/FoodCriticReview';
+import { BeachHireSection } from '../components/BeachHireSection';
 import { WhatPeopleSay } from '../components/WhatPeopleSay';
 import { CateringShowcase } from '../components/CateringShowcase';
 import {
@@ -69,7 +70,7 @@ export const HomePage: React.FC = () => {
             
             {/* Left Image Collage */}
             <div className="lg:col-span-6 relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-[#004fb3]">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#003E99_100%)]">
                 <ClientImage
                   src={clientImages.kiosk}
                   slotKey="site:kiosk"
@@ -102,7 +103,7 @@ export const HomePage: React.FC = () => {
                 <div>
                   <div className="flex items-center gap-1 text-[#D1A03F]">
                     <Sparkles className="w-3.5 h-3.5 fill-current" />
-                    <span className="text-[10px] font-black uppercase tracking-wider text-[#0580FF]">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-[#0070E0]">
                       100% Prime Beef
                     </span>
                   </div>
@@ -116,7 +117,7 @@ export const HomePage: React.FC = () => {
 
             {/* Right Story & Highlights */}
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#0580FF] font-heading">
+              <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#0070E0] font-heading">
                 <span className="text-base">🌊</span>
                 <span>FUN, FOOD, DRINKS &amp; SEASIDE VIBES</span>
               </div>
@@ -182,7 +183,7 @@ export const HomePage: React.FC = () => {
               <div className="pt-3 flex flex-wrap items-center gap-4">
                 <Link
                   to="/menu"
-                  className="bg-[#0580FF] hover:bg-[#004fb3] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-md transition-all flex items-center gap-2 cursor-pointer group"
+                  className="bg-[#0070E0] hover:bg-[#005FCE] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-[0_8px_20px_rgba(0,112,224,0.35)] transition-all flex items-center gap-2 cursor-pointer group"
                 >
                   <span>COME AND ENJOY FRANKIES</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -206,7 +207,7 @@ export const HomePage: React.FC = () => {
       <section className="py-16 sm:py-20 bg-[#edf0e6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-[#0580FF] font-heading">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-[#0070E0] font-heading">
               WHAT ARE YOU CRAVING TODAY?
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-[#000000] font-heading mt-1">
@@ -222,7 +223,7 @@ export const HomePage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 max-w-6xl mx-auto gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 max-w-7xl mx-auto gap-5">
             {/* Category Card 1: Burgers */}
             <div
               onClick={() => navigate('/menu?category=burgers')}
@@ -239,14 +240,14 @@ export const HomePage: React.FC = () => {
               </div>
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
+                  <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0070E0] transition-colors">
                     6oz Burgers
                   </h3>
                   <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
                     Juicy 6oz steak patties cooked to perfection with mature cheddar, thick Danish bacon, stilton, or specialty bajan sauce.
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0580FF]">
+                <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0070E0]">
                   <span>View Burgers</span>
                   <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                     Explore →
@@ -271,14 +272,14 @@ export const HomePage: React.FC = () => {
               </div>
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
+                  <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0070E0] transition-colors">
                     Fries &amp; Loaded Fries
                   </h3>
                   <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
                     Crispy skin-on fries and loaded fries piled high with torched mature cheddar, pepperoni, bacon, fish fingers, or southern fried chicken.
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0580FF]">
+                <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0070E0]">
                   <span>View Fries</span>
                   <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                     Explore →
@@ -287,7 +288,48 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            {/* Category Card 3: Refreshing Slushies & Drinks */}
+            {/* Category Card 3: Hot Fresh Donuts - Frankie's Signature Blue Theme */}
+            <div
+              onClick={() => navigate('/menu?category=donuts')}
+              className="bg-white rounded-2xl overflow-hidden border-2 border-[#0070E0]/30 shadow-sm hover:shadow-xl hover:border-[#0070E0] transition-all cursor-pointer group flex flex-col justify-between relative"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden bg-sky-50">
+                <ClientImage
+                  src="/donuts/donuts-biscoff.webp"
+                  slotKey="menu:hot-donuts"
+                  fallbackSrc="/donuts/donuts-biscoff.jpg"
+                  alt="Fresh Hot Donuts"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-2.5 left-2.5 flex flex-col gap-1 items-start">
+                  <span className="bg-[#0070E0] text-white text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full shadow-sm tracking-wider flex items-center gap-1">
+                    <span>HOT DONUTS</span>
+                    <span>🍩</span>
+                  </span>
+                  <span className="bg-amber-400 text-black text-[9px] font-black uppercase px-2 py-0.5 rounded-full shadow-xs tracking-wider">
+                    20 FLAVOURS
+                  </span>
+                </div>
+              </div>
+              <div className="p-4 flex-1 flex flex-col justify-between bg-gradient-to-b from-white to-[#f0f7ff]/40">
+                <div>
+                  <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0070E0] transition-colors">
+                    Hot Donuts
+                  </h3>
+                  <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
+                    Fresh warm sugared ring donuts, soft-serve ice cream combos, and 20 topped flavours including Biscoff, Oreo &amp; Kinder Bueno.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0070E0]">
+                  <span>Explore Donut Menu</span>
+                  <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                    View All 20 Flavours →
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Category Card 4: Refreshing Slushies & Drinks */}
             <div
               onClick={() => navigate('/menu?category=drinks')}
               className="bg-white rounded-2xl overflow-hidden border border-[#dde0d5] shadow-sm hover:shadow-lg transition-all cursor-pointer group flex flex-col justify-between"
@@ -303,15 +345,50 @@ export const HomePage: React.FC = () => {
               </div>
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
+                  <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0070E0] transition-colors">
                     Drinks &amp; Slushies
                   </h3>
                   <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
                     Refreshing 568ml pint slushies in strawberry, blue raspberry, sour cherry, Coca-Cola, lemon &amp; lime, and apple &amp; mango.
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0580FF]">
+                <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0070E0]">
                   <span>View Drinks</span>
+                  <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                    Explore →
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Category Card 4: Beach Bar & Alcohol */}
+            <div
+              onClick={() => navigate('/menu?category=alcohol')}
+              className="bg-white rounded-2xl overflow-hidden border border-amber-300/80 shadow-sm hover:shadow-lg transition-all cursor-pointer group flex flex-col justify-between"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden bg-amber-50">
+                <ClientImage
+                  src="/drinks/cruzcampo-pint.webp"
+                  slotKey="menu:cruzcampo-draught-pint"
+                  fallbackSrc="/drinks/cruzcampo-pint.jpg"
+                  alt="Beach Bar & Alcohol"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <span className="absolute top-3 left-3 bg-[#D1A03F] text-black text-[10px] font-extrabold uppercase px-2 py-0.5 rounded shadow-sm">
+                  Beach Bar 🍺
+                </span>
+              </div>
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="font-heading font-extrabold text-base text-[#000000] uppercase group-hover:text-[#0070E0] transition-colors">
+                    Beach Bar &amp; Alcohol
+                  </h3>
+                  <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
+                    Draught Cruzcampo &amp; Fosters, Strongbow cider, Moretti &amp; Peroni, spirits, cocktails, and wine or Prosecco.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-[#edf0e6] flex items-center justify-between text-xs font-bold text-[#0070E0]">
+                  <span>View Beach Bar</span>
                   <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                     Explore →
                   </span>
@@ -332,6 +409,9 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* 5. We Also Hire For The Beach (Deckchairs, Windbreaks, Parasols & Sunloungers) */}
+      <BeachHireSection />
+
       {/* 6. Beach Catering & Private Hire Video Showcase */}
       <CateringShowcase />
 
@@ -349,7 +429,7 @@ export const HomePage: React.FC = () => {
         <div className="bg-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-[#dde0d5] shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-left">
             <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0580FF] font-heading bg-amber-50 border border-amber-200/80 px-3.5 py-1.5 rounded-full">
+              <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0070E0] font-heading bg-amber-50 border border-amber-200/80 px-3.5 py-1.5 rounded-full">
                 <HandHeart className="w-4 h-4 text-[#D1A03F]" />
                 <span>CHARITY &amp; COMMUNITY</span>
               </div>
@@ -372,11 +452,11 @@ export const HomePage: React.FC = () => {
                   <span>Share A Little Love</span>
                 </div>
                 <div className="flex items-center gap-2 bg-[#f8f9f5] p-2.5 rounded-xl border border-[#e4e8dd]">
-                  <ShieldCheck className="w-4 h-4 text-[#0580FF] shrink-0" />
+                  <ShieldCheck className="w-4 h-4 text-[#0070E0] shrink-0" />
                   <span>Porchlight &amp; Hospices</span>
                 </div>
                 <div className="flex items-center gap-2 bg-[#f8f9f5] p-2.5 rounded-xl border border-[#e4e8dd]">
-                  <Sparkles className="w-4 h-4 text-[#0580FF] shrink-0" />
+                  <Sparkles className="w-4 h-4 text-[#0070E0] shrink-0" />
                   <span>Local Autism Causes</span>
                 </div>
               </div>
@@ -384,7 +464,7 @@ export const HomePage: React.FC = () => {
               <div className="pt-3">
                 <Link
                   to="/charity"
-                  className="inline-flex items-center gap-2 bg-[#0580FF] hover:bg-[#004fb3] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-6 py-3 rounded-xl shadow-md transition-all active:scale-95 cursor-pointer"
+                  className="inline-flex items-center gap-2 bg-[#0070E0] hover:bg-[#005FCE] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-6 py-3 rounded-xl shadow-md transition-all active:scale-95 cursor-pointer"
                 >
                   <Heart className="w-4 h-4 text-[#D1A03F]" />
                   <span>READ FRANKIE'S FULL STORY</span>
@@ -394,7 +474,7 @@ export const HomePage: React.FC = () => {
             </div>
 
             <div className="lg:col-span-4 bg-[#f8f9f5] rounded-2xl p-6 border border-[#dde0d5] space-y-3">
-              <span className="text-[11px] font-extrabold text-[#0580FF] uppercase tracking-wider font-heading block">
+              <span className="text-[11px] font-extrabold text-[#0070E0] uppercase tracking-wider font-heading block">
                 Frankie's Words
               </span>
               <blockquote className="text-xs sm:text-sm italic text-[#000000] font-medium leading-relaxed">
@@ -414,7 +494,12 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 7. Call To Action: Visit & Contact Banner */}
-      <section className="bg-[#004fb3] py-16 text-white text-center relative overflow-hidden">
+      <section className="bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0048B8_100%)] py-16 sm:py-20 text-white text-center relative overflow-hidden shadow-2xl border-t-2 border-white/20">
+        {/* Luminous seaside blue ambiance */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(255,255,255,0.16)_0%,transparent_65%)] pointer-events-none" />
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#0077FF]/35 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#003899]/50 rounded-full blur-3xl pointer-events-none" />
+
         <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 space-y-5">
           <div className="inline-flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-widest font-heading">
             <UtensilsCrossed className="w-4 h-4 text-amber-300" />

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { X, Printer, Download, UtensilsCrossed, MessageSquare } from 'lucide-react';
+import { X, Printer, Download, UtensilsCrossed } from 'lucide-react';
 import { OFFICIAL_MENU } from '../data/restaurantData';
+import { ClientImage } from './ClientImage';
 
 interface MenuPdfModalProps {
   isOpen: boolean;
@@ -8,6 +9,7 @@ interface MenuPdfModalProps {
 }
 
 const MENU_CATEGORIES = [
+  { id: 'alcohol', title: 'BEACH BAR, BEERS, SPIRITS & COCKTAILS 🍺' },
   { id: 'drinks', title: 'DRINKS & REFRESHING SLUSHIES' },
   { id: 'breakfast-rolls', title: 'BREAKFAST ROLLS' },
   { id: 'burgers', title: '6oz BURGERS' },
@@ -73,12 +75,12 @@ export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) =
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200" role="dialog" aria-modal="true">
-      <div className="fixed inset-0 bg-black/80 backdrop-blur-xs cursor-pointer" onClick={onClose} aria-label="Close" />
+      <div className="fixed inset-0 bg-black/80 backdrop-blur-xs cursor-pointer print:hidden" onClick={onClose} aria-label="Close" />
 
-      <div className="relative w-full max-w-3xl max-h-[92vh] bg-[#fdfbf7] rounded-3xl shadow-2xl overflow-hidden z-10 flex flex-col border border-[#d6dbce]">
+      <div className="relative w-full max-w-4xl max-h-[92vh] bg-[#fdfbf7] rounded-3xl shadow-2xl overflow-hidden z-10 flex flex-col border border-[#d6dbce] print:border-none print:shadow-none print:max-h-none print:overflow-visible print:w-full print:rounded-none">
         
         {/* Top Control Bar */}
-        <div className="bg-[#004fb3] text-white p-3.5 sm:p-5 flex items-center justify-between no-print border-b border-white/10">
+        <div className="bg-[#005FCE] text-white p-3.5 sm:p-5 flex items-center justify-between no-print border-b border-white/10 print:hidden">
           <div className="flex items-center gap-2">
             <UtensilsCrossed className="w-5 h-5 text-[#D1A03F]" />
             <span className="font-heading font-extrabold text-xs sm:text-base uppercase tracking-wider">
@@ -89,11 +91,11 @@ export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) =
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="bg-gradient-to-b from-[#ECD87A] via-[#D1A03F] to-[#8C6F2B] hover:brightness-105 active:scale-95 text-[#000000] px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs font-heading font-extrabold uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="bg-gradient-to-b from-[#ECD87A] via-[#D1A03F] to-[#8C6F2B] hover:brightness-105 active:scale-95 text-[#000000] px-3 sm:px-4 py-1.5 rounded-lg text-xs font-heading font-extrabold uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
               title="Print or Save as PDF via Browser"
             >
               <Printer className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span className="hidden sm:inline">Print / Save PDF</span>
+              <span>Print / Save as PDF</span>
             </button>
 
             <button
@@ -102,12 +104,12 @@ export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) =
               title="Download text menu file"
             >
               <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span className="hidden sm:inline">Download</span>
+              <span className="hidden sm:inline">Text File</span>
             </button>
 
             <button
               onClick={onClose}
-              className="flex items-center gap-1 bg-red-600 hover:bg-red-700 text-white px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-heading font-extrabold uppercase tracking-wider transition-colors cursor-pointer shadow-sm"
+              className="flex items-center gap-1 bg-red-600 hover:bg-red-700 text-white px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-heading font-extrabold uppercase tracking-wider transition-colors cursor-pointer shadow-sm ml-1"
               aria-label="Close PDF viewer"
             >
               <X className="w-4 h-4 stroke-[2.5]" />
@@ -117,17 +119,17 @@ export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) =
         </div>
 
         {/* Printable Menu Canvas Document */}
-        <div className="flex-1 overflow-y-auto p-6 sm:p-10 bg-white text-[#000000] print:p-0 print:m-0" id="printable-menu">
+        <div className="flex-1 overflow-y-auto p-6 sm:p-10 bg-white text-[#000000] print:p-0 print:m-0 print:overflow-visible" id="printable-menu">
           {/* Header */}
-          <div className="text-center pb-6 border-b-2 border-dashed border-[#0580FF]/30">
+          <div className="text-center pb-6 border-b-2 border-dashed border-[#0070E0]/30">
             <div className="flex items-center justify-center gap-2 text-[#D1A03F] mb-1">
               <UtensilsCrossed className="w-6 h-6" />
-              <span className="font-heading font-black text-2xl tracking-wider text-[#0580FF]">
+              <span className="font-heading font-black text-2xl sm:text-3xl tracking-wider text-[#0070E0]">
                 Frankie's @ THE BEACH
               </span>
               <UtensilsCrossed className="w-6 h-6" />
             </div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#0580FF]">
+            <p className="text-sm font-bold uppercase tracking-widest text-[#0070E0]">
               OUR OFFICIAL SEASIDE MENU
             </p>
             <p className="text-xs text-gray-500 italic mt-1">
@@ -143,13 +145,13 @@ export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) =
             {categories.map((cat) => {
               const items = OFFICIAL_MENU.filter((i) => i.category === cat.id);
               return (
-                <div key={cat.id} className="break-inside-avoid">
+                <div key={cat.id} className="break-inside-avoid print:break-inside-avoid">
                   {/* Category Title with beach accent */}
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="bg-[#0580FF] text-white text-xs font-heading font-extrabold uppercase px-3 py-1 rounded-md tracking-wider">
+                    <span className="bg-[#0070E0] text-white text-xs font-heading font-extrabold uppercase px-3 py-1 rounded-md tracking-wider">
                       {cat.title}
                     </span>
-                    <div className="flex-1 border-t border-[#0580FF]/20" />
+                    <div className="flex-1 border-t border-[#0070E0]/20" />
                   </div>
 
                   {/* Items in Category */}
@@ -157,23 +159,54 @@ export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) =
                     {items.map((item) => (
                       <div
                         key={item.id}
-                        className="p-3 rounded-xl border border-gray-100 bg-[#fafbfa] flex gap-3 items-start"
+                        className="p-3.5 rounded-2xl border border-gray-200/80 bg-[#fafbfa] flex gap-3.5 items-start print:border-gray-300 print:bg-white print:p-2.5 print:break-inside-avoid shadow-xs"
                       >
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="w-14 h-14 rounded-lg object-cover shrink-0 border border-gray-200"
-                          referrerPolicy="no-referrer"
-                        />
+                        <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-gray-200 bg-white relative">
+                          <ClientImage
+                            src={item.image}
+                            slotKey={`menu:${item.id}`}
+                            fallbackSrc={item.fallbackImage}
+                            alt={item.name}
+                            className="w-full h-full object-cover"
+                            priority={true}
+                          />
+                        </div>
                         <div className="flex-1 min-w-0">
-                          <div className="mb-0.5">
-                            <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
+                          <div className="mb-1">
+                            <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase leading-tight">
                               {item.name}
                             </h4>
+                            {item.servingSize && (
+                              <span className="text-[10px] text-[#8C6F2B] font-semibold block">
+                                {item.servingSize}
+                              </span>
+                            )}
                           </div>
-                          <p className="text-[11px] text-gray-600 mt-0.5 leading-snug">
+                          <p className="text-[11px] text-gray-600 leading-snug">
                             {item.description}
                           </p>
+                          <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
+                            {item.subCategory && (
+                              <span className="inline-flex items-center text-[9px] font-bold bg-amber-50 text-amber-900 border border-amber-200 px-1.5 py-0.5 rounded uppercase tracking-wider">
+                                {item.subCategory}
+                              </span>
+                            )}
+                            {item.vegetarian && (
+                              <span className="inline-flex items-center text-[9px] font-bold bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded uppercase tracking-wider">
+                                Vegetarian
+                              </span>
+                            )}
+                            {item.spicyLevel && item.spicyLevel > 0 && (
+                              <span className="inline-flex items-center text-[9px] font-bold bg-amber-100 text-amber-900 px-1.5 py-0.5 rounded uppercase tracking-wider">
+                                🌶️ Spicy
+                              </span>
+                            )}
+                            {item.popular && (
+                              <span className="inline-flex items-center text-[9px] font-bold bg-sky-100 text-sky-800 px-1.5 py-0.5 rounded uppercase tracking-wider">
+                                ★ Popular
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -184,8 +217,8 @@ export const MenuPdfModal: React.FC<MenuPdfModalProps> = ({ isOpen, onClose }) =
           </div>
 
           {/* Footer note */}
-          <div className="mt-8 pt-4 border-t border-gray-200 text-center text-xs text-gray-500">
-            <p className="font-hand text-xl text-[#0580FF] font-bold">
+          <div className="mt-8 pt-4 border-t border-gray-200 text-center text-xs text-gray-500 print:border-gray-400">
+            <p className="font-hand text-xl text-[#0070E0] font-bold">
               See you at the seaside! 🌊🍔
             </p>
             <p className="text-[10px] mt-1 text-gray-400">

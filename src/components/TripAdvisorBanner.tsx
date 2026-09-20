@@ -162,7 +162,7 @@ const TripAdvisorSingleBanner: React.FC<TripAdvisorItemProps> = ({
           <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2">
             <Link
               to={dedicatedRoute}
-              className="inline-flex items-center justify-center gap-1.5 bg-[#0580FF] hover:bg-[#004fb3] active:scale-95 text-white font-heading font-extrabold text-xs uppercase tracking-wider px-3.5 py-2.5 rounded-lg shadow-2xs transition-all"
+              className="inline-flex items-center justify-center gap-1.5 bg-[#0066FF] hover:bg-[#0052D9] active:scale-95 text-white font-heading font-extrabold text-xs uppercase tracking-wider px-3.5 py-2.5 rounded-lg shadow-2xs transition-all"
               id={`btn-dedicated-page-${bannerId}`}
             >
               <span>Dedicated Page</span>
@@ -176,7 +176,7 @@ const TripAdvisorSingleBanner: React.FC<TripAdvisorItemProps> = ({
               title="View quick summary modal"
               id={`btn-view-data-${bannerId}`}
             >
-              <BarChart3 className="w-3.5 h-3.5 text-[#0580FF]" />
+              <BarChart3 className="w-3.5 h-3.5 text-[#0066FF]" />
               <span className="hidden sm:inline">Data</span>
             </button>
 

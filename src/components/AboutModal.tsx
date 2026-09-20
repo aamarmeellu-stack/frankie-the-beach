@@ -67,7 +67,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
             <div className="p-4 bg-[#EEEFE9] rounded-2xl border border-[#dde0d5] space-y-2">
-              <Award className="w-6 h-6 text-[#0580FF]" />
+              <Award className="w-6 h-6 text-[#0070E0]" />
               <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
                 100% Prime Angus
               </h4>
@@ -77,7 +77,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({
             </div>
 
             <div className="p-4 bg-[#EEEFE9] rounded-2xl border border-[#dde0d5] space-y-2">
-              <Sunset className="w-6 h-6 text-[#0580FF]" />
+              <Sunset className="w-6 h-6 text-[#0070E0]" />
               <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
                 Front-Row Sea Views
               </h4>
@@ -87,7 +87,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({
             </div>
 
             <div className="p-4 bg-[#EEEFE9] rounded-2xl border border-[#dde0d5] space-y-2">
-              <Heart className="w-6 h-6 text-[#0580FF]" />
+              <Heart className="w-6 h-6 text-[#0070E0]" />
               <h4 className="font-heading font-extrabold text-xs text-[#000000] uppercase">
                 Good Food, Good Mood
               </h4>
@@ -98,7 +98,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({
           </div>
 
           <div className="pt-4 flex flex-wrap items-center gap-4 justify-between border-t border-[#edf0e6]">
-            <p className="font-hand text-2xl text-[#0580FF] font-bold">
+            <p className="font-hand text-2xl text-[#0070E0] font-bold">
               We look forward to seeing you down by the sea!
             </p>
 

@@ -133,6 +133,16 @@ export const Footer: React.FC = () => {
                   Contact &amp; Location
                 </Link>
               </li>
+              <li>
+                <a
+                  href="/#beach-hire"
+                  className="hover:text-[#D1A03F] text-amber-300 font-semibold transition-colors flex items-center justify-between gap-1.5"
+                  id="footer-beach-hire"
+                >
+                  <span>Beach Hire (Deckchairs &amp; Windbreaks)</span>
+                  <span className="text-[10px] bg-amber-400/20 text-amber-300 px-1.5 py-0.5 rounded font-bold">Kiosk 1</span>
+                </a>
+              </li>
               <li className="pt-2 border-t border-white/10">
                 <Link
                   to="/tripadvisor/restaurant"

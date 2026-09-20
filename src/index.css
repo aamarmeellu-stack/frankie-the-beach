@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --brand-blue: #0580FF;
-  --brand-blue-hover: #006ee0;
-  --brand-blue-dark: #004fb3;
-  --brand-blue-deep: #003680;
-  --brand-gold-light: #ECD87A;
-  --brand-gold-mid: #D1A03F;
-  --brand-gold-dark: #8C6F2B;
+  --brand-blue: #0070E0;
+  --brand-blue-hover: #005FCE;
+  --brand-blue-dark: #004CB8;
+  --brand-blue-deep: #00368C;
+  --brand-blue-electric: #0084FF;
+  --brand-blue-vivid: #0077FF;
+  --brand-gold-light: #FFE066;
+  --brand-gold-mid: #FFC425;
+  --brand-gold-dark: #D97706;
   --brand-black: #000000;
   --brand-white: #EEEFE9;
 }
@@ -85,10 +87,37 @@
 
 /* Circular Badge Stamp with optimized transform */
 .stamp-badge {
-  box-shadow: 0 10px 25px rgba(5, 128, 255, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 102, 255, 0.4);
   animation: floatSubtle 6s ease-in-out infinite alternate;
   will-change: transform;
   transform: translateZ(0);
+}
+
+/* Frankie's Authentic Signage Electric Seaside Blue */
+.bg-frankies-blue {
+  background: linear-gradient(135deg, #0084FF 0%, #0070E0 50%, #0045B5 100%);
+}
+
+.bg-frankies-radial {
+  background: radial-gradient(ellipse at 50% 35%, #0088FF 0%, #0070E0 50%, #003F9E 100%);
+}
+
+/* Authentic Seaside Sign Board Card */
+.bg-frankies-signboard {
+  background: radial-gradient(ellipse at 50% 25%, #0086FF 0%, #0070E0 45%, #004CB8 85%, #00368C 100%);
+  border: 2px solid #FFC425;
+  box-shadow: 0 16px 40px -8px rgba(0, 112, 224, 0.45), 0 0 0 1px rgba(255, 196, 37, 0.4);
+}
+
+.frankies-blue-glow {
+  box-shadow: 0 12px 36px -6px rgba(0, 112, 224, 0.45);
+}
+
+.text-frankies-3d {
+  font-family: 'Anton', 'Montserrat', sans-serif;
+  color: #FFFFFF;
+  text-shadow: 0 2px 0 #003B99, 0 4px 10px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.04em;
 }
 
 @keyframes floatSubtle {
@@ -115,9 +144,52 @@
   background: #EEEFE9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #0580FF;
+  background: #0070E0;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #006ee0;
+  background: #005FCE;
+}
+
+/* High-fidelity Print & PDF export optimization */
+@media print {
+  @page {
+    margin: 12mm;
+    size: auto;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .no-print,
+  nav,
+  footer,
+  header,
+  button {
+    display: none !important;
+  }
+
+  #printable-menu {
+    position: static !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  img {
+    content-visibility: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
 }

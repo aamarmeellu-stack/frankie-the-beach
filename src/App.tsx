@@ -66,7 +66,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#EEEFE9] text-[#000000] font-sans selection:bg-[#0580FF] selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#EEEFE9] text-[#000000] font-sans selection:bg-[#0070E0] selection:text-white">
       {/* Auto-scroll to top on page change */}
       <ScrollToTop />
 

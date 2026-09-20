@@ -51,7 +51,7 @@ export const WhatPeopleSay: React.FC<WhatPeopleSayProps> = ({
           <button
             onClick={onViewAllReviews}
             id="link-view-all-reviews"
-            className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0580FF] hover:text-[#002866] transition-colors cursor-pointer self-start sm:self-auto"
+            className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0066FF] hover:text-[#003EA8] transition-colors cursor-pointer self-start sm:self-auto"
           >
             <span>VIEW ALL 75 REVIEWS</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -59,7 +59,7 @@ export const WhatPeopleSay: React.FC<WhatPeopleSayProps> = ({
         </div>
 
         {/* Extra Mile Customer Service Award Card */}
-        <div className="bg-gradient-to-r from-[#003882] via-[#0580FF] to-[#00224f] rounded-2xl p-4 sm:p-5 text-white mb-8 border border-sky-300/30 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-gradient-to-r from-[#003699] via-[#0066FF] to-[#002B75] rounded-2xl p-4 sm:p-5 text-white mb-8 border border-sky-300/30 shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="w-11 h-11 rounded-xl bg-amber-400 text-black flex items-center justify-center shrink-0 shadow-md">
               <Award className="w-6 h-6" />
@@ -82,8 +82,8 @@ export const WhatPeopleSay: React.FC<WhatPeopleSayProps> = ({
             </div>
           </div>
           <div className="shrink-0 self-end md:self-auto">
-            <span className="inline-flex items-center gap-1 text-[11px] font-heading font-extrabold uppercase tracking-wider bg-white text-[#003882] px-3 py-1.5 rounded-full shadow-xs">
-              <HeartHandshake className="w-3.5 h-3.5 text-[#0580FF]" />
+            <span className="inline-flex items-center gap-1 text-[11px] font-heading font-extrabold uppercase tracking-wider bg-white text-[#003899] px-3 py-1.5 rounded-full shadow-xs">
+              <HeartHandshake className="w-3.5 h-3.5 text-[#0066FF]" />
               <span>Gold Standard Care</span>
             </span>
           </div>

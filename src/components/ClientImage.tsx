@@ -43,9 +43,9 @@ export const ClientImage: React.FC<ClientImageProps> = memo(({
       const trimmed = url.trim();
       if (!trimmed || isMockupUrl(trimmed)) return;
 
-      // If it's a PNG and not a data URI, prioritize the ultra-fast WebP counterpart first!
-      if (trimmed.toLowerCase().endsWith('.png') && !trimmed.startsWith('data:')) {
-        const webpCandidate = trimmed.replace(/\.png$/i, '.webp');
+      // If it's a PNG or JPG/JPEG, prioritize the ultra-fast WebP counterpart first!
+      if (/\.(png|jpe?g)$/i.test(trimmed) && !trimmed.startsWith('data:')) {
+        const webpCandidate = trimmed.replace(/\.(png|jpe?g)$/i, '.webp');
         if (!list.includes(webpCandidate)) {
           list.push(webpCandidate);
         }
@@ -55,8 +55,12 @@ export const ClientImage: React.FC<ClientImageProps> = memo(({
         list.push(trimmed);
       }
 
-      // If it's a WebP, ensure the PNG version is available as a fallback
+      // If it's a WebP, ensure JPG and PNG versions are available as fallbacks
       if (trimmed.toLowerCase().endsWith('.webp') && !trimmed.startsWith('data:')) {
+        const jpgCandidate = trimmed.replace(/\.webp$/i, '.jpg');
+        if (!list.includes(jpgCandidate)) {
+          list.push(jpgCandidate);
+        }
         const pngCandidate = trimmed.replace(/\.webp$/i, '.png');
         if (!list.includes(pngCandidate)) {
           list.push(pngCandidate);
@@ -112,10 +116,12 @@ export const ClientImage: React.FC<ClientImageProps> = memo(({
 
   const [candidateIndex, setCandidateIndex] = useState<number>(0);
   const [hasFailed, setHasFailed] = useState<boolean>(false);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   useEffect(() => {
     setCandidateIndex(0);
     setHasFailed(false);
+    setIsLoaded(false);
   }, [candidates]);
 
   const currentSrc = candidates[candidateIndex];
@@ -128,6 +134,19 @@ export const ClientImage: React.FC<ClientImageProps> = memo(({
     }
   };
 
+  const handleRef = (node: HTMLImageElement | null) => {
+    if (node && node.complete && node.naturalWidth > 0) {
+      setIsLoaded(true);
+    }
+  };
+
+  const handleLoad = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    setIsLoaded(true);
+    if (props.onLoad) {
+      props.onLoad(e);
+    }
+  };
+
   // If no valid source or all candidate images failed, render clean placeholder
   if (!currentSrc || hasFailed) {
     const lower = `${alt} ${slotKey || ''}`.toLowerCase();
@@ -136,17 +155,17 @@ export const ClientImage: React.FC<ClientImageProps> = memo(({
 
     return (
       <div
-        className={`w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#0580FF]/15 via-[#005a6c]/10 to-[#003680]/20 text-[#0580FF] p-3 text-center select-none ${className}`}
+        className={`w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#0070E0]/15 via-[#0048B8]/10 to-[#002B75]/20 text-[#0070E0] p-3 text-center select-none ${className}`}
         role="img"
         aria-label={alt}
       >
-        <div className="w-10 h-10 rounded-2xl bg-white/80 shadow-xs flex items-center justify-center mb-1.5 shrink-0 border border-[#0580FF]/20">
+        <div className="w-10 h-10 rounded-2xl bg-white/80 shadow-xs flex items-center justify-center mb-1.5 shrink-0 border border-[#0070E0]/20">
           {isDrink ? (
-            <Coffee className="w-5 h-5 text-[#0580FF]" />
+            <Coffee className="w-5 h-5 text-[#0070E0]" />
           ) : isBeach ? (
-            <UtensilsCrossed className="w-5 h-5 text-[#0580FF]" />
+            <UtensilsCrossed className="w-5 h-5 text-[#0070E0]" />
           ) : (
-            <Utensils className="w-5 h-5 text-[#0580FF]" />
+            <Utensils className="w-5 h-5 text-[#0070E0]" />
           )}
         </div>
         <span className="text-[11px] font-heading font-extrabold uppercase tracking-wider text-[#000000] line-clamp-1">
@@ -165,9 +184,15 @@ export const ClientImage: React.FC<ClientImageProps> = memo(({
 
   return (
     <img
+      ref={handleRef}
       src={currentSrc}
       alt={alt}
-      className={className}
+      className={`${className} ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+      style={{
+        transition: 'opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+        ...props.style,
+      }}
+      onLoad={handleLoad}
       onError={handleError}
       loading={effectiveLoading}
       decoding={effectiveDecoding}
@@ -179,17 +204,33 @@ export const ClientImage: React.FC<ClientImageProps> = memo(({
 
 ClientImage.displayName = 'ClientImage';
 
-// Lightweight preloader utility
+// Lightweight preloader utility with idle scheduling
 const preloadedUrls = new Set<string>();
 export const preloadImage = (url: string) => {
-  if (!url || preloadedUrls.has(url)) return;
+  if (!url || preloadedUrls.has(url) || typeof window === 'undefined') return;
   preloadedUrls.add(url);
   const img = new Image();
+  img.decoding = 'async';
   img.src = url;
 };
 
 export const preloadImages = (urls: string[]) => {
-  urls.forEach(preloadImage);
+  if (typeof window === 'undefined') return;
+  const runner = () => {
+    urls.forEach((u) => {
+      if (!u) return;
+      if (/\.(png|jpe?g)$/i.test(u)) {
+        preloadImage(u.replace(/\.(png|jpe?g)$/i, '.webp'));
+      }
+      preloadImage(u);
+    });
+  };
+
+  if (typeof (window as unknown as { requestIdleCallback?: unknown }).requestIdleCallback === 'function') {
+    (window as unknown as { requestIdleCallback: (cb: () => void, opts: { timeout: number }) => void }).requestIdleCallback(runner, { timeout: 2000 });
+  } else {
+    setTimeout(runner, 150);
+  }
 };
 
 

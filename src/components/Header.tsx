@@ -3,7 +3,6 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import {
   Menu as MenuIcon,
   X,
-  UtensilsCrossed,
   ChevronDown,
   ExternalLink,
   Utensils,
@@ -69,40 +68,23 @@ export const Header: React.FC<HeaderProps> = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full px-2 sm:px-6 lg:px-8 pt-2 sm:pt-4 pb-2 sm:pb-3 backdrop-blur-xs">
-      <div className="max-w-7xl mx-auto bg-[#0580FF] shadow-[0_10px_25px_rgba(5,128,255,0.35)] border border-white/20 rounded-2xl sm:rounded-3xl relative transition-all">
+      <div className="max-w-7xl mx-auto bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0048B8_100%)] shadow-[0_14px_36px_rgba(0,112,224,0.45)] border-2 border-amber-300/45 rounded-2xl sm:rounded-3xl relative transition-all">
         <div className="px-3 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
           {/* Brand Logo */}
           <Link
             to="/"
-            className="flex items-center gap-2.5 select-none group shrink-0"
+            className="flex items-center select-none group shrink-0 py-1 focus:outline-none"
             id="brand-logo"
+            aria-label="Frankie's @ The Beach - Home"
           >
-            {clientImages.logo && (
-              <ClientImage
-                slotKey="site:logo"
-                src={clientImages.logo}
-                fallbackSrc="/apple-touch-icon.png"
-                alt="Frankie's @ The Beach"
-                className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl object-cover shadow-sm border border-white/30 bg-white/10 shrink-0 group-hover:scale-105 transition-transform"
-                priority
-              />
-            )}
-            <div className="flex flex-col items-start">
-              <div className="flex items-center gap-1 sm:gap-1.5">
-                <span className="font-script text-2xl sm:text-4xl text-white tracking-wide font-bold group-hover:text-[#ECD87A] transition-colors drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-                  Frankie's
-                </span>
-                <UtensilsCrossed className="w-5 h-5 sm:w-6 sm:h-6 text-[#ECD87A] stroke-[2.4] rotate-12 -ml-0.5 sm:-ml-1 transition-transform group-hover:rotate-0 shrink-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]" />
-              </div>
-              <div className="flex items-center gap-1.5 -mt-1">
-                <span className="text-[9px] sm:text-[11px] font-extrabold tracking-[0.24em] sm:tracking-[0.28em] text-[#ECD87A] uppercase font-heading drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
-                  @ THE BEACH
-                </span>
-                <span className="hidden lg:inline-flex items-center text-[9px] font-black text-white/90 bg-white/15 px-1.5 py-0.2 rounded border border-white/20 tracking-wider">
-                  🇬🇧 RAMSGATE
-                </span>
-              </div>
-            </div>
+            <ClientImage
+              slotKey="site:logo"
+              src={clientImages.logo || '/logo.webp'}
+              fallbackSrc="/logo.webp"
+              alt="Frankie's @ The Beach"
+              className="h-12 sm:h-14 md:h-15 lg:h-16 w-auto max-w-[150px] sm:max-w-[180px] md:max-w-[210px] object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.35)] group-hover:scale-105 group-hover:drop-shadow-[0_6px_16px_rgba(236,216,122,0.45)] transition-all duration-200 shrink-0"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -125,6 +107,22 @@ export const Header: React.FC<HeaderProps> = () => {
             <NavLink to="/charity" className={navLinkClass} id="nav-charity">
               CHARITY
             </NavLink>
+
+            {/* Beach Equipment Hire Anchor */}
+            <a
+              href="/#beach-hire"
+              onClick={(e) => {
+                const el = document.getElementById('beach-hire');
+                if (el) {
+                  e.preventDefault();
+                  el.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="text-[13px] font-extrabold uppercase tracking-widest text-[#ECD87A] hover:text-white transition-colors py-1 flex items-center gap-1 select-none"
+              id="nav-beach-hire"
+            >
+              <span>BEACH HIRE</span>
+            </a>
 
             {/* TripAdvisor Dropdown with Direct Dedicated Page Links */}
             <div className="relative" ref={tripAdvisorRef}>
@@ -178,7 +176,7 @@ export const Header: React.FC<HeaderProps> = () => {
                     <Link
                       to="/tripadvisor"
                       onClick={() => setTripAdvisorOpen(false)}
-                      className="text-[10px] text-[#0580FF] font-bold hover:underline"
+                      className="text-[10px] text-[#0070E0] font-bold hover:underline"
                     >
                       View Both
                     </Link>
@@ -255,7 +253,7 @@ export const Header: React.FC<HeaderProps> = () => {
                     <Link
                       to="/tripadvisor"
                       onClick={() => setTripAdvisorOpen(false)}
-                      className="text-[#0580FF] hover:underline font-bold flex items-center gap-1"
+                      className="text-[#0070E0] hover:underline font-bold flex items-center gap-1"
                     >
                       <Award className="w-3.5 h-3.5" />
                       <span>TripAdvisor Accolades Hub</span>
@@ -299,7 +297,7 @@ export const Header: React.FC<HeaderProps> = () => {
         {/* Mobile Menu Dropdown Drawer */}
         {mobileMenuOpen && (
           <div
-            className="md:hidden bg-[#004fb3] border-t border-white/15 px-4 sm:px-6 py-4 space-y-2 text-center rounded-b-2xl animate-in slide-in-from-top duration-200 shadow-2xl overflow-y-auto overscroll-contain pb-8"
+            className="md:hidden bg-[#005FCE] border-t border-white/15 px-4 sm:px-6 py-4 space-y-2 text-center rounded-b-2xl animate-in slide-in-from-top duration-200 shadow-2xl overflow-y-auto overscroll-contain pb-8"
             style={{
               maxHeight: 'calc(100dvh - 6.5rem)',
               WebkitOverflowScrolling: 'touch',
@@ -356,6 +354,27 @@ export const Header: React.FC<HeaderProps> = () => {
                 </span>
               </div>
             </NavLink>
+
+            <a
+              href="/#beach-hire"
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                const el = document.getElementById('beach-hire');
+                if (el) {
+                  e.preventDefault();
+                  el.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className={mobileLinkClass}
+              id="mobile-nav-beach-hire"
+            >
+              <div className="flex items-center justify-between w-full">
+                <span className="text-[#ECD87A]">BEACH HIRE</span>
+                <span className="text-[10px] bg-[#0070E0] text-white px-2 py-0.5 rounded font-bold uppercase tracking-wider">
+                  Deckchairs
+                </span>
+              </div>
+            </a>
 
             {/* Dedicated TripAdvisor Section inside Mobile Drawer with Collapse/Expand */}
             <div className="border border-white/15 my-2 text-left bg-black/20 rounded-2xl p-3">

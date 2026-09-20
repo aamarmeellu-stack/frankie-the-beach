@@ -50,7 +50,7 @@ export const GalleryPage: React.FC = () => {
       
       {/* Page Header Banner */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mt-1 sm:mt-2 mb-8 sm:mb-10">
-        <div className="bg-[#0580FF] text-white py-12 sm:py-16 px-4 sm:px-8 rounded-3xl relative overflow-hidden shadow-sm">
+        <div className="bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0048B8_100%)] text-white py-12 sm:py-16 px-4 sm:px-8 rounded-3xl relative overflow-hidden shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <nav className="flex justify-center items-center gap-2 text-xs uppercase tracking-widest text-sky-200 mb-3 font-semibold">
               <Link to="/" className="hover:text-white transition-colors">
@@ -100,7 +100,7 @@ export const GalleryPage: React.FC = () => {
               onClick={() => setActiveCategory(cat.id)}
               className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
                 activeCategory === cat.id
-                  ? 'bg-[#0580FF] text-white shadow-sm'
+                  ? 'bg-[#0070E0] text-white shadow-sm'
                   : 'bg-[#f8f9f5] text-[#496068] hover:bg-[#edf0e6] border border-[#dde0d5]'
               }`}
             >
@@ -134,7 +134,7 @@ export const GalleryPage: React.FC = () => {
               </div>
 
               <div className="p-4">
-                <h3 className="font-heading font-extrabold text-sm sm:text-base text-[#000000] uppercase group-hover:text-[#0580FF] transition-colors">
+                <h3 className="font-heading font-extrabold text-sm sm:text-base text-[#000000] uppercase group-hover:text-[#0070E0] transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-xs text-[#526b74] mt-1 line-clamp-2">
@@ -146,7 +146,7 @@ export const GalleryPage: React.FC = () => {
         </div>
 
         {/* Social Instagram Banner */}
-        <div className="mt-16 bg-[#004fb3] text-white rounded-3xl p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="mt-16 bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0048B8_100%)] text-white rounded-3xl p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
               <Instagram className="w-7 h-7 text-[#D1A03F]" />

@@ -62,7 +62,7 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
     <div className="flex-1 bg-[#EEEFE9] pb-24 md:pb-20">
       {/* Top Hero Banner */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mt-1 sm:mt-2 mb-8 sm:mb-10">
-        <div className="bg-[#0580FF] text-white py-10 sm:py-14 px-4 sm:px-8 rounded-3xl relative overflow-hidden shadow-md">
+        <div className="bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0048B8_100%)] text-white py-10 sm:py-14 px-4 sm:px-8 rounded-3xl relative overflow-hidden shadow-md">
           {/* Background overlay accent */}
           <div className="absolute -right-16 -bottom-16 w-80 h-80 rounded-full bg-white/5 blur-2xl pointer-events-none" />
 
@@ -215,21 +215,21 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
               id="tab-tripadvisor-all"
               className={`p-3 sm:p-4 rounded-2xl flex items-center gap-3 transition-all cursor-pointer text-left border col-span-1 sm:col-span-2 lg:col-span-1 ${
                 activeProfile === 'all'
-                  ? 'bg-sky-50/90 border-[#0580FF] shadow-sm ring-2 ring-[#0580FF]/20'
+                  ? 'bg-sky-50/90 border-[#0070E0] shadow-sm ring-2 ring-[#0070E0]/20'
                   : 'bg-[#fcfdfa] border-gray-200 hover:bg-gray-50'
               }`}
             >
               <div
                 className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 shadow-xs transition-colors ${
                   activeProfile === 'all'
-                    ? 'bg-[#0580FF] text-white'
-                    : 'bg-cyan-100 text-[#0580FF]'
+                    ? 'bg-[#0070E0] text-white'
+                    : 'bg-cyan-100 text-[#0070E0]'
                 }`}
               >
                 <Award className="w-5 h-5" />
               </div>
               <div className="min-w-0 flex-1">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#0580FF] font-heading block">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#0070E0] font-heading block">
                   TripAdvisor Hub
                 </span>
                 <h3 className="text-sm font-heading font-extrabold text-[#000000] truncate">
@@ -377,7 +377,7 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
                 </div>
                 <Link
                   to="/menu"
-                  className="text-xs font-bold text-[#0580FF] hover:underline flex items-center gap-1 font-heading uppercase tracking-wider"
+                  className="text-xs font-bold text-[#0070E0] hover:underline flex items-center gap-1 font-heading uppercase tracking-wider"
                 >
                   <span>Explore Full Menu</span>
                   <ChevronRight className="w-4 h-4" />
@@ -606,7 +606,7 @@ export const TripAdvisorPage: React.FC<TripAdvisorPageProps> = ({ initialProfile
 
                     <Link
                       to="/gallery"
-                      className="w-full bg-[#0580FF] hover:bg-[#004fb3] active:scale-95 text-white font-heading font-extrabold text-xs uppercase tracking-wider py-2.5 px-4 rounded-xl shadow-xs transition-all flex items-center justify-center gap-2"
+                      className="w-full bg-[#0070E0] hover:bg-[#0048B8] active:scale-95 text-white font-heading font-extrabold text-xs uppercase tracking-wider py-2.5 px-4 rounded-xl shadow-xs transition-all flex items-center justify-center gap-2"
                     >
                       <Sparkles className="w-3.5 h-3.5 text-amber-300" />
                       <span>View Rides Photo Gallery</span>

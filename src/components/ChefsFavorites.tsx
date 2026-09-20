@@ -34,7 +34,7 @@ export const ChefsFavorites: React.FC<ChefsFavoritesProps> = ({
           <button
             onClick={onViewFullMenu}
             id="link-view-full-menu"
-            className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0580FF] hover:text-[#004fb3] transition-colors cursor-pointer"
+            className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0070E0] hover:text-[#005FCE] transition-colors cursor-pointer"
           >
             <span>VIEW FULL MENU</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -50,7 +50,7 @@ export const ChefsFavorites: React.FC<ChefsFavoritesProps> = ({
               <div
                 key={item.id}
                 id={`card-${item.id}`}
-                className="bg-white rounded-2xl overflow-hidden shadow-[0_4px_18px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.1)] border border-[#e2e5dc] transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white rounded-2xl overflow-hidden shadow-[0_4px_18px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_28px_rgba(0,112,224,0.15)] border border-[#e2e5dc] hover:border-[#0070E0]/30 transition-all duration-300 flex flex-col justify-between group"
               >
                 {/* Image Container with Favorite Star Toggle */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#e5e9df]">
@@ -69,7 +69,7 @@ export const ChefsFavorites: React.FC<ChefsFavoritesProps> = ({
                       toggleFavorite(item.id);
                     }}
                     title={isFav ? 'Remove from favourites' : 'Add to favourites'}
-                    className="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#0580FF] hover:bg-[#004fb3] active:scale-90 text-white flex items-center justify-center shadow-md transition-all cursor-pointer"
+                    className="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#0070E0] hover:bg-[#005FCE] active:scale-90 text-white flex items-center justify-center shadow-md transition-all cursor-pointer"
                     aria-label={`Favourite ${item.name}`}
                   >
                     <Star
@@ -84,7 +84,7 @@ export const ChefsFavorites: React.FC<ChefsFavoritesProps> = ({
                 <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between">
                   <div>
                     <div>
-                      <h3 className="font-heading font-extrabold text-sm sm:text-base tracking-wide text-[#000000] uppercase">
+                      <h3 className="font-heading font-extrabold text-sm sm:text-base tracking-wide text-[#000000] uppercase group-hover:text-[#0070E0] transition-colors">
                         {item.name}
                       </h3>
                     </div>
@@ -96,12 +96,12 @@ export const ChefsFavorites: React.FC<ChefsFavoritesProps> = ({
 
                   {/* Card Bottom Tag & Menu Link */}
                   <div className="mt-4 pt-2.5 border-t border-[#edf0e6] flex justify-between items-center text-xs">
-                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0580FF] bg-[#e7f3f6] px-2.5 py-1 rounded-full">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0070E0] bg-[#eaf4ff] border border-[#0070E0]/20 px-2.5 py-1 rounded-full">
                       Seaside Favourite
                     </span>
                     <button
                       onClick={onViewFullMenu}
-                      className="text-[#0580FF] hover:text-[#004fb3] font-bold inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform cursor-pointer text-xs"
+                      className="text-[#0070E0] hover:text-[#005FCE] font-bold inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform cursor-pointer text-xs"
                     >
                       <span>Menu</span>
                       <ArrowRight className="w-3.5 h-3.5" />

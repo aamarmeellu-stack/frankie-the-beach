@@ -329,7 +329,7 @@ export const AdminPage: React.FC = () => {
     return (
       <div className="flex-1 min-h-[70vh] flex items-center justify-center bg-[#EEEFE9] px-4 py-12">
         <div className="max-w-md w-full bg-white rounded-3xl p-8 border border-[#dde0d5] shadow-xl text-center">
-          <div className="w-16 h-16 bg-[#0580FF]/10 text-[#0580FF] rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 bg-[#0070E0]/10 text-[#0070E0] rounded-2xl flex items-center justify-center mx-auto mb-4">
             <Lock className="w-8 h-8" />
           </div>
           <h1 className="font-heading font-extrabold text-2xl text-[#000000] uppercase">
@@ -350,7 +350,7 @@ export const AdminPage: React.FC = () => {
                 onChange={(e) => setPinInput(e.target.value)}
                 placeholder="Enter password"
                 autoFocus
-                className="w-full px-4 py-3 rounded-xl border border-[#dde0d5] focus:outline-none focus:ring-2 focus:ring-[#0580FF] text-center font-mono text-lg tracking-widest"
+                className="w-full px-4 py-3 rounded-xl border border-[#dde0d5] focus:outline-none focus:ring-2 focus:ring-[#0070E0] text-center font-mono text-lg tracking-widest"
               />
               {pinError && (
                 <p className="text-xs text-red-600 mt-1.5 font-medium">
@@ -361,14 +361,14 @@ export const AdminPage: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full py-3.5 bg-[#0580FF] hover:bg-[#005a6c] text-white font-bold rounded-xl transition-all shadow-md hover:shadow-lg cursor-pointer"
+              className="w-full py-3.5 bg-[#0070E0] hover:bg-[#005a6c] text-white font-bold rounded-xl transition-all shadow-md hover:shadow-lg cursor-pointer"
             >
               Sign In to Admin Studio
             </button>
           </form>
 
           <div className="mt-8 pt-6 border-t border-gray-100">
-            <Link to="/" className="text-xs text-[#0580FF] hover:underline font-bold inline-flex items-center gap-1">
+            <Link to="/" className="text-xs text-[#0070E0] hover:underline font-bold inline-flex items-center gap-1">
               ← Return to Frankie's Website
             </Link>
           </div>
@@ -559,8 +559,8 @@ export const AdminPage: React.FC = () => {
                 onDrop={handleDrop}
                 className={`border-2 border-dashed rounded-3xl p-8 sm:p-12 text-center transition-all bg-white relative cursor-pointer ${
                   dragActive
-                    ? 'border-[#0580FF] bg-sky-50/50 scale-[1.01]'
-                    : 'border-[#c9cfc3] hover:border-[#0580FF]'
+                    ? 'border-[#0070E0] bg-sky-50/50 scale-[1.01]'
+                    : 'border-[#c9cfc3] hover:border-[#0070E0]'
                 }`}
               >
                 <input
@@ -574,7 +574,7 @@ export const AdminPage: React.FC = () => {
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                 />
 
-                <div className="w-20 h-20 rounded-3xl bg-[#0580FF]/10 text-[#0580FF] flex items-center justify-center mx-auto mb-4 pointer-events-none">
+                <div className="w-20 h-20 rounded-3xl bg-[#0070E0]/10 text-[#0070E0] flex items-center justify-center mx-auto mb-4 pointer-events-none">
                   <Upload className="w-10 h-10 stroke-[2]" />
                 </div>
 
@@ -585,7 +585,7 @@ export const AdminPage: React.FC = () => {
                   Or click anywhere to select photos or MP4 video from your phone or files
                 </p>
 
-                <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0580FF] text-white text-xs font-bold rounded-xl shadow hover:bg-[#005a6c] pointer-events-none">
+                <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0070E0] text-white text-xs font-bold rounded-xl shadow hover:bg-[#005a6c] pointer-events-none">
                   <Upload className="w-3.5 h-3.5" />
                   <span>Choose Photo or Video File</span>
                 </div>
@@ -626,7 +626,7 @@ export const AdminPage: React.FC = () => {
             <div className="lg:col-span-5 space-y-6">
               <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#dde0d5] shadow-sm">
                 <h3 className="font-heading font-black text-lg text-[#000000] uppercase mb-4 flex items-center gap-2">
-                  <Sliders className="w-5 h-5 text-[#0580FF]" />
+                  <Sliders className="w-5 h-5 text-[#0070E0]" />
                   Upload Settings &amp; Destination
                 </h3>
 
@@ -680,7 +680,7 @@ export const AdminPage: React.FC = () => {
                     </label>
                     <div className="space-y-2">
                       <label className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
-                        uploadDestination === 'library' ? 'border-[#0580FF] bg-sky-50/40' : 'border-gray-200 hover:bg-gray-50'
+                        uploadDestination === 'library' ? 'border-[#0070E0] bg-sky-50/40' : 'border-gray-200 hover:bg-gray-50'
                       }`}>
                         <input
                           type="radio"
@@ -688,7 +688,7 @@ export const AdminPage: React.FC = () => {
                           value="library"
                           checked={uploadDestination === 'library'}
                           onChange={() => setUploadDestination('library')}
-                          className="mt-0.5 text-[#0580FF] focus:ring-[#0580FF]"
+                          className="mt-0.5 text-[#0070E0] focus:ring-[#0070E0]"
                         />
                         <div className="text-xs">
                           <span className="font-bold text-[#000000] block">Save to Media Library only</span>
@@ -697,7 +697,7 @@ export const AdminPage: React.FC = () => {
                       </label>
 
                       <label className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
-                        uploadDestination === 'logo' ? 'border-[#0580FF] bg-amber-50/60' : 'border-gray-200 hover:bg-gray-50'
+                        uploadDestination === 'logo' ? 'border-[#0070E0] bg-amber-50/60' : 'border-gray-200 hover:bg-gray-50'
                       }`}>
                         <input
                           type="radio"
@@ -708,7 +708,7 @@ export const AdminPage: React.FC = () => {
                             setUploadDestination('logo');
                             setTargetSlot('logo');
                           }}
-                          className="mt-0.5 text-[#0580FF] focus:ring-[#0580FF]"
+                          className="mt-0.5 text-[#0070E0] focus:ring-[#0070E0]"
                         />
                         <div className="text-xs">
                           <span className="font-bold text-[#000000] flex items-center gap-2">
@@ -720,7 +720,7 @@ export const AdminPage: React.FC = () => {
                       </label>
 
                       <label className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
-                        uploadDestination === 'menu' ? 'border-[#0580FF] bg-sky-50/40' : 'border-gray-200 hover:bg-gray-50'
+                        uploadDestination === 'menu' ? 'border-[#0070E0] bg-sky-50/40' : 'border-gray-200 hover:bg-gray-50'
                       }`}>
                         <input
                           type="radio"
@@ -731,7 +731,7 @@ export const AdminPage: React.FC = () => {
                             setUploadDestination('menu');
                             setTargetSlot(menuItems[0]?.id || 'beef-burger');
                           }}
-                          className="mt-0.5 text-[#0580FF] focus:ring-[#0580FF]"
+                          className="mt-0.5 text-[#0070E0] focus:ring-[#0070E0]"
                         />
                         <div className="text-xs">
                           <span className="font-bold text-[#000000] block">Replace a Specific Menu Item Photo</span>
@@ -740,7 +740,7 @@ export const AdminPage: React.FC = () => {
                       </label>
 
                       <label className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
-                        uploadDestination === 'gallery' ? 'border-[#0580FF] bg-sky-50/40' : 'border-gray-200 hover:bg-gray-50'
+                        uploadDestination === 'gallery' ? 'border-[#0070E0] bg-sky-50/40' : 'border-gray-200 hover:bg-gray-50'
                       }`}>
                         <input
                           type="radio"
@@ -748,7 +748,7 @@ export const AdminPage: React.FC = () => {
                           value="gallery"
                           checked={uploadDestination === 'gallery'}
                           onChange={() => setUploadDestination('gallery')}
-                          className="mt-0.5 text-[#0580FF] focus:ring-[#0580FF]"
+                          className="mt-0.5 text-[#0070E0] focus:ring-[#0070E0]"
                         />
                         <div className="text-xs">
                           <span className="font-bold text-[#000000] block">Add as New Photo in Customer Gallery</span>
@@ -757,7 +757,7 @@ export const AdminPage: React.FC = () => {
                       </label>
 
                       <label className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
-                        uploadDestination === 'site' ? 'border-[#0580FF] bg-sky-50/40' : 'border-gray-200 hover:bg-gray-50'
+                        uploadDestination === 'site' ? 'border-[#0070E0] bg-sky-50/40' : 'border-gray-200 hover:bg-gray-50'
                       }`}>
                         <input
                           type="radio"
@@ -768,7 +768,7 @@ export const AdminPage: React.FC = () => {
                             setUploadDestination('site');
                             setTargetSlot(siteSlots[0]?.key || 'heroBg');
                           }}
-                          className="mt-0.5 text-[#0580FF] focus:ring-[#0580FF]"
+                          className="mt-0.5 text-[#0070E0] focus:ring-[#0070E0]"
                         />
                         <div className="text-xs">
                           <span className="font-bold text-[#000000] block">Replace a Homepage / Website Section Photo</span>
@@ -777,7 +777,7 @@ export const AdminPage: React.FC = () => {
                       </label>
 
                       <label className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
-                        uploadDestination === 'gallery-slot' ? 'border-[#0580FF] bg-sky-50/40' : 'border-gray-200 hover:bg-gray-50'
+                        uploadDestination === 'gallery-slot' ? 'border-[#0070E0] bg-sky-50/40' : 'border-gray-200 hover:bg-gray-50'
                       }`}>
                         <input
                           type="radio"
@@ -788,7 +788,7 @@ export const AdminPage: React.FC = () => {
                             setUploadDestination('gallery-slot');
                             setTargetSlot(gallerySlots[0]?.key || 'g-team-hero');
                           }}
-                          className="mt-0.5 text-[#0580FF] focus:ring-[#0580FF]"
+                          className="mt-0.5 text-[#0070E0] focus:ring-[#0070E0]"
                         />
                         <div className="text-xs">
                           <span className="font-bold text-[#000000] block">Replace an Existing Gallery Photo (24 slots)</span>
@@ -807,7 +807,7 @@ export const AdminPage: React.FC = () => {
                       <select
                         value={targetSlot.replace(/^menu:/, '')}
                         onChange={(e) => setTargetSlot(e.target.value)}
-                        className="w-full px-3 py-2.5 bg-white border border-gray-300 rounded-xl text-xs font-semibold text-[#000000] focus:ring-2 focus:ring-[#0580FF]"
+                        className="w-full px-3 py-2.5 bg-white border border-gray-300 rounded-xl text-xs font-semibold text-[#000000] focus:ring-2 focus:ring-[#0070E0]"
                       >
                         {menuItems.map((item) => (
                           <option key={item.id} value={item.id}>
@@ -833,7 +833,7 @@ export const AdminPage: React.FC = () => {
                       <select
                         value={targetSlot.replace(/^site:/, '')}
                         onChange={(e) => setTargetSlot(`site:${e.target.value}`)}
-                        className="w-full px-3 py-2.5 bg-white border border-gray-300 rounded-xl text-xs font-semibold text-[#000000] focus:ring-2 focus:ring-[#0580FF]"
+                        className="w-full px-3 py-2.5 bg-white border border-gray-300 rounded-xl text-xs font-semibold text-[#000000] focus:ring-2 focus:ring-[#0070E0]"
                       >
                         {siteSlots.map((slot) => {
                           const cleanKey = slot.key.replace(/^site:/, '');
@@ -862,7 +862,7 @@ export const AdminPage: React.FC = () => {
                       <select
                         value={targetSlot.replace(/^gallery:/, '')}
                         onChange={(e) => setTargetSlot(`gallery:${e.target.value}`)}
-                        className="w-full px-3 py-2.5 bg-white border border-gray-300 rounded-xl text-xs font-semibold text-[#000000] focus:ring-2 focus:ring-[#0580FF]"
+                        className="w-full px-3 py-2.5 bg-white border border-gray-300 rounded-xl text-xs font-semibold text-[#000000] focus:ring-2 focus:ring-[#0070E0]"
                       >
                         {gallerySlots.map((slot) => {
                           const cleanKey = slot.key.replace(/^gallery:/, '');
@@ -941,7 +941,7 @@ export const AdminPage: React.FC = () => {
                     disabled={!selectedFile || isUploading}
                     className={`w-full py-3.5 rounded-xl font-bold uppercase tracking-wider text-xs transition-all shadow-md flex items-center justify-center gap-2 ${
                       selectedFile && !isUploading
-                        ? 'bg-[#0580FF] hover:bg-[#005a6c] text-white hover:shadow-lg cursor-pointer'
+                        ? 'bg-[#0070E0] hover:bg-[#005a6c] text-white hover:shadow-lg cursor-pointer'
                         : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                     }`}
                   >
@@ -1016,10 +1016,10 @@ export const AdminPage: React.FC = () => {
               <div className="bg-white rounded-3xl p-6 border border-[#dde0d5] shadow-xs flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0580FF]">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0070E0]">
                       1. Browser Tab Favicon
                     </span>
-                    <span className="text-[10px] bg-sky-50 text-[#0580FF] font-bold px-2 py-0.5 rounded-full border border-sky-200">
+                    <span className="text-[10px] bg-sky-50 text-[#0070E0] font-bold px-2 py-0.5 rounded-full border border-sky-200">
                       Browser Tab
                     </span>
                   </div>
@@ -1064,7 +1064,7 @@ export const AdminPage: React.FC = () => {
               <div className="bg-white rounded-3xl p-6 border border-[#dde0d5] shadow-xs flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0580FF]">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0070E0]">
                       2. App Download &amp; Home Screen
                     </span>
                     <span className="text-[10px] bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded-full border border-emerald-200">
@@ -1104,7 +1104,7 @@ export const AdminPage: React.FC = () => {
               <div className="bg-white rounded-3xl p-6 border border-[#dde0d5] shadow-xs flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0580FF]">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0070E0]">
                       3. Navigation Header
                     </span>
                     <span className="text-[10px] bg-amber-50 text-amber-800 font-bold px-2 py-0.5 rounded-full border border-amber-200">
@@ -1116,7 +1116,7 @@ export const AdminPage: React.FC = () => {
                   </p>
 
                   {/* Header Bar Simulation */}
-                  <div className="bg-[#0580FF] rounded-2xl p-4 text-white flex items-center justify-between shadow-xs">
+                  <div className="bg-[#0070E0] rounded-2xl p-4 text-white flex items-center justify-between shadow-xs">
                     <div className="flex items-center gap-2.5">
                       <ClientImage
                         slotKey="site:logo"
@@ -1149,7 +1149,7 @@ export const AdminPage: React.FC = () => {
             {/* Direct Logo Upload Dropzone */}
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#dde0d5] shadow-sm">
               <h3 className="font-heading font-black text-xl text-[#000000] uppercase mb-2 flex items-center gap-2">
-                <Upload className="w-5 h-5 text-[#0580FF]" />
+                <Upload className="w-5 h-5 text-[#0070E0]" />
                 <span>Upload New Logo File</span>
               </h3>
               <p className="text-xs text-[#526b74] mb-6">
@@ -1189,8 +1189,8 @@ export const AdminPage: React.FC = () => {
                 }}
                 className={`border-2 border-dashed rounded-3xl p-8 sm:p-12 text-center transition-all bg-white relative cursor-pointer ${
                   dragActive
-                    ? 'border-[#0580FF] bg-sky-50/50 scale-[1.01]'
-                    : 'border-[#c9cfc3] hover:border-[#0580FF]'
+                    ? 'border-[#0070E0] bg-sky-50/50 scale-[1.01]'
+                    : 'border-[#c9cfc3] hover:border-[#0070E0]'
                 }`}
               >
                 <input
@@ -1284,13 +1284,13 @@ export const AdminPage: React.FC = () => {
                     value={librarySearch}
                     onChange={(e) => setLibrarySearch(e.target.value)}
                     placeholder="Search images..."
-                    className="pl-9 pr-4 py-2 bg-gray-50 border border-gray-300 rounded-xl text-xs focus:ring-2 focus:ring-[#0580FF]"
+                    className="pl-9 pr-4 py-2 bg-gray-50 border border-gray-300 rounded-xl text-xs focus:ring-2 focus:ring-[#0070E0]"
                   />
                   <Filter className="w-3.5 h-3.5 text-gray-400 absolute left-3 top-3" />
                 </div>
                 <button
                   onClick={() => setActiveTab('upload')}
-                  className="px-4 py-2 bg-[#0580FF] hover:bg-[#005a6c] text-white font-bold text-xs rounded-xl transition-all flex items-center gap-1.5"
+                  className="px-4 py-2 bg-[#0070E0] hover:bg-[#005a6c] text-white font-bold text-xs rounded-xl transition-all flex items-center gap-1.5"
                 >
                   <Upload className="w-3.5 h-3.5" />
                   <span>Upload More</span>
@@ -1309,7 +1309,7 @@ export const AdminPage: React.FC = () => {
                 </p>
                 <button
                   onClick={() => setActiveTab('upload')}
-                  className="px-5 py-2.5 bg-[#0580FF] text-white text-xs font-bold rounded-xl"
+                  className="px-5 py-2.5 bg-[#0070E0] text-white text-xs font-bold rounded-xl"
                 >
                   Upload First Photo
                 </button>
@@ -1337,7 +1337,7 @@ export const AdminPage: React.FC = () => {
                           <Eye className="w-3.5 h-3.5" />
                         </button>
                         {image.assignedSlot && (
-                          <span className="absolute top-2 left-2 bg-[#0580FF] text-white text-[9px] font-bold px-2 py-0.5 rounded-md uppercase">
+                          <span className="absolute top-2 left-2 bg-[#0070E0] text-white text-[9px] font-bold px-2 py-0.5 rounded-md uppercase">
                             Assigned
                           </span>
                         )}
@@ -1361,7 +1361,7 @@ export const AdminPage: React.FC = () => {
                               setAssignModalImage(image);
                               setAssignModalTarget(UNIFIED_SLOTS[0]?.key || 'beef-burger');
                             }}
-                            className="p-1.5 text-[#0580FF] hover:bg-sky-50 rounded-lg text-[11px] font-bold flex items-center gap-1"
+                            className="p-1.5 text-[#0070E0] hover:bg-sky-50 rounded-lg text-[11px] font-bold flex items-center gap-1"
                             title="Assign to Website Slot"
                           >
                             <Sliders className="w-3.5 h-3.5" />
@@ -1370,7 +1370,7 @@ export const AdminPage: React.FC = () => {
 
                           <button
                             onClick={() => handleCopyLink(image.dataUrl)}
-                            className="p-1.5 text-gray-600 hover:text-[#0580FF] hover:bg-gray-100 rounded-lg text-[11px] flex items-center gap-1"
+                            className="p-1.5 text-gray-600 hover:text-[#0070E0] hover:bg-gray-100 rounded-lg text-[11px] flex items-center gap-1"
                             title="Copy Data Link"
                           >
                             <Copy className="w-3.5 h-3.5" />
@@ -1379,7 +1379,7 @@ export const AdminPage: React.FC = () => {
 
                           <button
                             onClick={() => handleDownloadImage(image.dataUrl, image.title)}
-                            className="p-1.5 text-gray-600 hover:text-[#0580FF] hover:bg-gray-100 rounded-lg text-[11px] flex items-center gap-1"
+                            className="p-1.5 text-gray-600 hover:text-[#0070E0] hover:bg-gray-100 rounded-lg text-[11px] flex items-center gap-1"
                             title="Download Image"
                           >
                             <Download className="w-3.5 h-3.5" />
@@ -1434,7 +1434,7 @@ export const AdminPage: React.FC = () => {
                   )}
                   <button
                     onClick={() => setActiveTab('upload')}
-                    className="text-xs text-white font-bold flex items-center gap-1.5 bg-[#0580FF] hover:bg-[#005a6c] px-4 py-2.5 rounded-xl transition-all shadow-sm"
+                    className="text-xs text-white font-bold flex items-center gap-1.5 bg-[#0070E0] hover:bg-[#005a6c] px-4 py-2.5 rounded-xl transition-all shadow-sm"
                   >
                     <Upload className="w-3.5 h-3.5" />
                     <span>Upload New Photo</span>
@@ -1450,7 +1450,7 @@ export const AdminPage: React.FC = () => {
                     onClick={() => setSlotFilterCategory('all')}
                     className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                       slotFilterCategory === 'all'
-                        ? 'bg-[#0580FF] text-white shadow-sm'
+                        ? 'bg-[#0070E0] text-white shadow-sm'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -1460,7 +1460,7 @@ export const AdminPage: React.FC = () => {
                     onClick={() => setSlotFilterCategory('menu')}
                     className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                       slotFilterCategory === 'menu'
-                        ? 'bg-[#0580FF] text-white shadow-sm'
+                        ? 'bg-[#0070E0] text-white shadow-sm'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -1471,7 +1471,7 @@ export const AdminPage: React.FC = () => {
                     onClick={() => setSlotFilterCategory('site')}
                     className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                       slotFilterCategory === 'site'
-                        ? 'bg-[#0580FF] text-white shadow-sm'
+                        ? 'bg-[#0070E0] text-white shadow-sm'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -1482,7 +1482,7 @@ export const AdminPage: React.FC = () => {
                     onClick={() => setSlotFilterCategory('gallery')}
                     className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                       slotFilterCategory === 'gallery'
-                        ? 'bg-[#0580FF] text-white shadow-sm'
+                        ? 'bg-[#0070E0] text-white shadow-sm'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -1499,7 +1499,7 @@ export const AdminPage: React.FC = () => {
                     value={slotSearch}
                     onChange={(e) => setSlotSearch(e.target.value)}
                     placeholder="Search slot name or location..."
-                    className="w-full pl-9 pr-8 py-2 bg-gray-50 border border-gray-200 rounded-xl text-xs text-[#000000] focus:ring-2 focus:ring-[#0580FF] focus:bg-white transition-all"
+                    className="w-full pl-9 pr-8 py-2 bg-gray-50 border border-gray-200 rounded-xl text-xs text-[#000000] focus:ring-2 focus:ring-[#0070E0] focus:bg-white transition-all"
                   />
                   {slotSearch && (
                     <button
@@ -1597,7 +1597,7 @@ export const AdminPage: React.FC = () => {
                             }
                             setActiveTab('upload');
                           }}
-                          className="px-2.5 py-1.5 bg-[#0580FF]/10 hover:bg-[#0580FF] text-[#0580FF] hover:text-white rounded-lg text-xs font-bold transition-all flex items-center gap-1 cursor-pointer"
+                          className="px-2.5 py-1.5 bg-[#0070E0]/10 hover:bg-[#0070E0] text-[#0070E0] hover:text-white rounded-lg text-xs font-bold transition-all flex items-center gap-1 cursor-pointer"
                           title="Upload a new photo for this slot"
                         >
                           <Upload className="w-3 h-3" />
@@ -1641,7 +1641,7 @@ export const AdminPage: React.FC = () => {
                     setSlotSearch('');
                     setSlotFilterCategory('all');
                   }}
-                  className="mt-4 px-4 py-2 bg-[#0580FF] text-white text-xs font-bold rounded-xl"
+                  className="mt-4 px-4 py-2 bg-[#0070E0] text-white text-xs font-bold rounded-xl"
                 >
                   Clear Filters
                 </button>
@@ -1710,7 +1710,7 @@ export const AdminPage: React.FC = () => {
                       handleFileSelect(e.target.files[0]);
                     }
                   }}
-                  className="w-full text-xs text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-[#0580FF] file:text-white hover:file:bg-[#005a6c] cursor-pointer"
+                  className="w-full text-xs text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-[#0070E0] file:text-white hover:file:bg-[#005a6c] cursor-pointer"
                 />
                 {previewUrl && (
                   <div className="mt-3 w-32 h-24 rounded-xl overflow-hidden border border-gray-200">
@@ -1734,7 +1734,7 @@ export const AdminPage: React.FC = () => {
                 disabled={!customTitle || !selectedFile || isUploading}
                 className={`w-full py-3.5 rounded-xl font-bold uppercase tracking-wider text-xs transition-all shadow-md ${
                   customTitle && selectedFile && !isUploading
-                    ? 'bg-[#0580FF] hover:bg-[#005a6c] text-white cursor-pointer'
+                    ? 'bg-[#0070E0] hover:bg-[#005a6c] text-white cursor-pointer'
                     : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                 }`}
               >
@@ -1749,7 +1749,7 @@ export const AdminPage: React.FC = () => {
           <div className="max-w-2xl mx-auto space-y-6">
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#dde0d5] shadow-sm">
               <h3 className="font-heading font-black text-xl text-[#000000] uppercase mb-1 flex items-center gap-2">
-                <Download className="w-5 h-5 text-[#0580FF]" />
+                <Download className="w-5 h-5 text-[#0070E0]" />
                 Export &amp; Backup All Media
               </h3>
               <p className="text-xs text-[#526b74] mb-6">
@@ -1772,7 +1772,7 @@ export const AdminPage: React.FC = () => {
                     message: 'Media backup downloaded successfully!',
                   });
                 }}
-                className="px-5 py-3 bg-[#0580FF] hover:bg-[#005a6c] text-white font-bold text-xs rounded-xl transition-all flex items-center gap-2 shadow"
+                className="px-5 py-3 bg-[#0070E0] hover:bg-[#005a6c] text-white font-bold text-xs rounded-xl transition-all flex items-center gap-2 shadow"
               >
                 <Download className="w-4 h-4" />
                 <span>Export Media Backup (.json)</span>
@@ -1781,7 +1781,7 @@ export const AdminPage: React.FC = () => {
 
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#dde0d5] shadow-sm">
               <h3 className="font-heading font-black text-xl text-[#000000] uppercase mb-1 flex items-center gap-2">
-                <Upload className="w-5 h-5 text-[#0580FF]" />
+                <Upload className="w-5 h-5 text-[#0070E0]" />
                 Restore from Backup
               </h3>
               <p className="text-xs text-[#526b74] mb-4">
@@ -1885,7 +1885,7 @@ export const AdminPage: React.FC = () => {
                 </button>
                 <button
                   onClick={() => handleDownloadImage(fullscreenImage.dataUrl, fullscreenImage.title)}
-                  className="px-4 py-2 bg-[#0580FF] hover:bg-[#005a6c] text-white font-bold text-xs rounded-xl flex items-center gap-1.5 transition-all shadow"
+                  className="px-4 py-2 bg-[#0070E0] hover:bg-[#005a6c] text-white font-bold text-xs rounded-xl flex items-center gap-1.5 transition-all shadow"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download</span>
@@ -1937,7 +1937,7 @@ export const AdminPage: React.FC = () => {
                 <button
                   onClick={() => setAssignModalCategory('all')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    assignModalCategory === 'all' ? 'bg-[#0580FF] text-white' : 'bg-white text-gray-700 border border-gray-200'
+                    assignModalCategory === 'all' ? 'bg-[#0070E0] text-white' : 'bg-white text-gray-700 border border-gray-200'
                   }`}
                 >
                   All ({UNIFIED_SLOTS.length})
@@ -1945,7 +1945,7 @@ export const AdminPage: React.FC = () => {
                 <button
                   onClick={() => setAssignModalCategory('menu')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    assignModalCategory === 'menu' ? 'bg-[#0580FF] text-white' : 'bg-white text-gray-700 border border-gray-200'
+                    assignModalCategory === 'menu' ? 'bg-[#0070E0] text-white' : 'bg-white text-gray-700 border border-gray-200'
                   }`}
                 >
                   Menu ({menuSlots.length})
@@ -1953,7 +1953,7 @@ export const AdminPage: React.FC = () => {
                 <button
                   onClick={() => setAssignModalCategory('site')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    assignModalCategory === 'site' ? 'bg-[#0580FF] text-white' : 'bg-white text-gray-700 border border-gray-200'
+                    assignModalCategory === 'site' ? 'bg-[#0070E0] text-white' : 'bg-white text-gray-700 border border-gray-200'
                   }`}
                 >
                   Homepage &amp; Attractions ({siteSlots.length})
@@ -1961,7 +1961,7 @@ export const AdminPage: React.FC = () => {
                 <button
                   onClick={() => setAssignModalCategory('gallery')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    assignModalCategory === 'gallery' ? 'bg-[#0580FF] text-white' : 'bg-white text-gray-700 border border-gray-200'
+                    assignModalCategory === 'gallery' ? 'bg-[#0070E0] text-white' : 'bg-white text-gray-700 border border-gray-200'
                   }`}
                 >
                   Gallery ({gallerySlots.length})
@@ -1975,7 +1975,7 @@ export const AdminPage: React.FC = () => {
                   value={assignModalSearch}
                   onChange={(e) => setAssignModalSearch(e.target.value)}
                   placeholder="Filter slots by name (e.g. burger, carousel, sunset, fries)..."
-                  className="w-full pl-9 pr-4 py-2 bg-white border border-gray-200 rounded-xl text-xs text-[#000000] focus:ring-2 focus:ring-[#0580FF]"
+                  className="w-full pl-9 pr-4 py-2 bg-white border border-gray-200 rounded-xl text-xs text-[#000000] focus:ring-2 focus:ring-[#0070E0]"
                 />
               </div>
             </div>
@@ -2017,7 +2017,7 @@ export const AdminPage: React.FC = () => {
 
                     <button
                       onClick={() => handleAssignLibraryImage(slot.key, assignModalImage.dataUrl)}
-                      className="shrink-0 px-3 py-1.5 bg-[#0580FF] hover:bg-[#005a6c] text-white font-bold text-xs rounded-lg transition-all shadow-xs cursor-pointer flex items-center gap-1"
+                      className="shrink-0 px-3 py-1.5 bg-[#0070E0] hover:bg-[#005a6c] text-white font-bold text-xs rounded-lg transition-all shadow-xs cursor-pointer flex items-center gap-1"
                     >
                       <CheckCircle2 className="w-3.5 h-3.5" />
                       <span>Assign Here</span>
@@ -2086,7 +2086,7 @@ export const AdminPage: React.FC = () => {
                       setLibraryPickerSlot(null);
                       setActiveTab('upload');
                     }}
-                    className="mt-4 px-4 py-2 bg-[#0580FF] text-white font-bold text-xs rounded-xl cursor-pointer"
+                    className="mt-4 px-4 py-2 bg-[#0070E0] text-white font-bold text-xs rounded-xl cursor-pointer"
                   >
                     Go to Upload Tab
                   </button>
@@ -2112,7 +2112,7 @@ export const AdminPage: React.FC = () => {
                         </div>
                         <button
                           onClick={() => handleAssignLibraryImage(libraryPickerSlot.key, img.dataUrl)}
-                          className="mt-3 w-full py-2 bg-[#0580FF] hover:bg-[#005a6c] text-white font-bold text-xs rounded-xl transition-all shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
+                          className="mt-3 w-full py-2 bg-[#0070E0] hover:bg-[#005a6c] text-white font-bold text-xs rounded-xl transition-all shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
                         >
                           <CheckCircle2 className="w-3.5 h-3.5" />
                           <span>Use This Photo</span>

@@ -77,7 +77,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mt-1 sm:mt-2">
       <section
         id="home"
-        className="relative text-white pt-8 sm:pt-14 pb-20 sm:pb-32 overflow-hidden bg-[#0580FF] rounded-3xl shadow-lg border border-white/10"
+        className="relative text-white pt-8 sm:pt-14 pb-20 sm:pb-32 overflow-hidden bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0042A8_100%)] rounded-3xl shadow-[0_20px_50px_rgba(0,112,224,0.4)] border-2 border-amber-300/40"
       >
       {/* 1. Full Beach Ocean Background (Video with Image Poster Fallback) */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -93,7 +93,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
               priority
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-[#0580FF] via-[#004fb3] to-[#002d66]" />
+            <div className="w-full h-full bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#003E99_100%)]" />
           )}
         </div>
 
@@ -109,14 +109,15 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
             onLoadedData={() => setIsVideoLoaded(true)}
             onError={() => setVideoError(true)}
             className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 z-[1] ${
-              isVideoLoaded ? 'opacity-100' : 'opacity-0'
+              isVideoLoaded ? 'opacity-90' : 'opacity-0'
             }`}
           />
         )}
 
-        {/* Crisp, subtle contrast gradient: Keeps the video vibrant and clear while ensuring high text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-black/10 z-[2]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/15 z-[2]" />
+        {/* Powerful Frankie's Signage Blue Overlay: Electrifies the ocean video with the iconic board blue */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#003699]/90 via-[#0050D8]/65 to-[#003899]/40 z-[2]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#002B82]/85 via-transparent to-[#0055EE]/30 z-[2]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_35%_40%,rgba(0,119,255,0.35)_0%,transparent_75%)] z-[2] pointer-events-none" />
       </div>
 
       {/* Live Video Control Badge */}
@@ -160,16 +161,29 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                 href={NATIONAL_AWARD_DATA.sunArticleUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#D1A03F]/90 via-[#ECD87A]/90 to-[#D1A03F]/90 hover:from-[#ECD87A] hover:to-[#D1A03F] text-[#000000] px-3.5 py-1.5 rounded-full font-heading font-black text-[11px] sm:text-xs uppercase tracking-wider shadow-lg hover:shadow-xl transition-all active:scale-95 group border border-amber-200/80"
-                title="Read The Sun feature on Frankie's winning Tripadvisor UK Best of the Best"
+                className="relative inline-flex items-center gap-2 sm:gap-2.5 bg-gradient-to-r from-[#FFF0A0] via-[#ECC440] to-[#DF9B1A] hover:from-[#FFF6C0] hover:via-[#F3D156] hover:to-[#EAA928] text-[#000000] px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full font-heading font-black text-xs sm:text-sm uppercase tracking-wider shadow-[0_4px_20px_rgba(236,196,64,0.4)] hover:shadow-[0_8px_30px_rgba(236,196,64,0.65)] hover:-translate-y-0.5 hover:scale-[1.02] active:translate-y-0 active:scale-[0.98] transition-all duration-300 group border-2 border-amber-200/90 ring-2 ring-amber-300/80 hover:ring-amber-200 ring-offset-2 ring-offset-[#072448] cursor-pointer overflow-hidden select-none"
+                title="Click to read The Sun's national feature on Frankie's winning Tripadvisor UK Best of the Best"
                 id="hero-national-award-pill"
               >
-                <Trophy className="w-3.5 h-3.5 text-[#000000] shrink-0" />
-                <span>Tripadvisor UK Best of the Best Winner</span>
-                <span className="bg-black/85 text-[#ECD87A] text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-normal">
-                  In The Sun
+                {/* Continuous / Hover Shimmer Sheen */}
+                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
+
+                {/* Trophy Badge */}
+                <span className="w-6 h-6 rounded-full bg-black/15 flex items-center justify-center shrink-0 border border-black/10 group-hover:scale-110 group-hover:rotate-6 transition-transform">
+                  <Trophy className="w-3.5 h-3.5 text-[#000000]" />
                 </span>
-                <ExternalLink className="w-3 h-3 text-[#000000]/70 group-hover:translate-x-0.5 transition-transform" />
+
+                {/* Award Title */}
+                <span className="font-heading font-black text-black drop-shadow-xs">
+                  <span className="hidden sm:inline">Tripadvisor UK Best of the Best Winner</span>
+                  <span className="sm:hidden">UK Best of the Best Winner</span>
+                </span>
+
+                {/* Distinct Clickable Action Button Pill */}
+                <span className="inline-flex items-center gap-1.5 bg-black text-[#ECD87A] group-hover:bg-[#141414] group-hover:text-white px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wide shadow-xs transition-colors shrink-0 border border-black/30 ml-0.5">
+                  <span>Read in The Sun</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-[#ECD87A] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+                </span>
               </a>
 
               <div className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/30 text-[11px] font-bold text-white shadow-sm">
@@ -264,10 +278,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
               <button
                 onClick={onContact}
                 id="btn-hero-contact"
-                className="bg-[#004fb3]/80 hover:bg-[#004fb3] active:scale-95 text-white font-normal text-xs sm:text-sm px-5 sm:px-6 py-3 rounded-xl border border-white/60 shadow-md hover:shadow-lg transition-all flex items-center gap-2.5 group cursor-pointer backdrop-blur-xs"
+                className="bg-[#003899]/70 hover:bg-[#003899] active:scale-95 text-white font-heading font-extrabold text-xs sm:text-sm uppercase tracking-wider px-5 sm:px-6 py-3.5 rounded-xl border-2 border-white/70 shadow-lg hover:shadow-xl transition-all flex items-center gap-2.5 group cursor-pointer backdrop-blur-md"
               >
                 <span>Come &amp; Enjoy Frankies</span>
-                <MapPin className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+                <MapPin className="w-4 h-4 text-[#FFF2B2] group-hover:scale-110 transition-transform" />
               </button>
             </div>
           </div>
@@ -315,7 +329,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                 onClick={onExploreMenu}
                 title="Cheeseburger at the beach"
               >
-                <div className="overflow-hidden aspect-square bg-[#004fb3]">
+                <div className="overflow-hidden aspect-square bg-[#005FCE]">
                   <ClientImage
                     src={clientImages.heroBurger || ASSETS.heroBurger}
                     slotKey="site:heroBurger"
@@ -350,7 +364,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                 className="absolute left-0 sm:left-4 top-[240px] sm:top-[260px] z-40 stamp-badge pointer-events-auto"
                 title="Frankies At The Beach Ramsgate"
               >
-                <div className="w-26 h-26 sm:w-30 sm:h-30 rounded-full bg-white border-2 border-dashed border-[#0580FF] p-1.5 flex items-center justify-center relative shadow-[0_12px_28px_rgba(0,0,0,0.35)]">
+                <div className="w-26 h-26 sm:w-30 sm:h-30 rounded-full bg-white border-2 border-dashed border-[#0070E0] p-1.5 flex items-center justify-center relative shadow-[0_12px_28px_rgba(0,112,224,0.35)]">
                   {/* Outer circular text simulated with SVG */}
                   <svg className="w-full h-full animate-[spin_25s_linear_infinite]" viewBox="0 0 100 100">
                     <defs>
@@ -359,7 +373,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                         d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
                       />
                     </defs>
-                    <text className="text-[8px] font-extrabold uppercase tracking-[0.14em] fill-[#0580FF]">
+                    <text className="text-[8px] font-extrabold uppercase tracking-[0.14em] fill-[#0070E0]">
                       <textPath href="#circlePathTop" startOffset="0%">
                         FRANKIES AT THE BEACH ★ RAMSGATE ★
                       </textPath>
@@ -367,8 +381,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onContact }) => {
                   </svg>
 
                   {/* Center Beach & Fun Icon */}
-                  <div className="absolute inset-0 m-auto w-11 h-11 rounded-full bg-[#f0f9fa] flex items-center justify-center border border-[#0580FF]/20">
-                    <Sparkles className="w-5 h-5 text-[#0580FF] fill-current" />
+                  <div className="absolute inset-0 m-auto w-11 h-11 rounded-full bg-[#eef7ff] flex items-center justify-center border border-[#0070E0]/25">
+                    <Sparkles className="w-5 h-5 text-[#0070E0] fill-current" />
                   </div>
                 </div>
               </div>

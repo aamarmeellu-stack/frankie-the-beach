@@ -90,14 +90,14 @@ export const CateringShowcase: React.FC = () => {
   return (
     <section className="py-16 sm:py-20 bg-gradient-to-b from-white via-[#f7f8f4] to-[#EEEFE9] border-t border-b border-[#dde0d5] relative overflow-hidden" id="catering">
       {/* Subtle Seaside Texture Accent */}
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-[#0580FF]/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-[#0070E0]/10 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 rounded-full bg-[#D1A03F]/10 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
-          <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-[#0580FF] font-heading bg-sky-50 border border-sky-200/80 px-4 py-1.5 rounded-full shadow-2xs">
+          <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-[#0070E0] font-heading bg-sky-50 border border-sky-200/80 px-4 py-1.5 rounded-full shadow-2xs">
             <Utensils className="w-3.5 h-3.5 text-[#D1A03F]" />
             <span>BEACH CATERING &amp; PRIVATE EVENTS</span>
           </div>
@@ -177,7 +177,7 @@ export const CateringShowcase: React.FC = () => {
                   <button
                     onClick={togglePlay}
                     type="button"
-                    className="w-10 h-10 rounded-full bg-[#0580FF] hover:bg-[#004fb3] text-white flex items-center justify-center shadow-lg transition-transform active:scale-95 cursor-pointer"
+                    className="w-10 h-10 rounded-full bg-[#0070E0] hover:bg-[#005FCE] text-white flex items-center justify-center shadow-lg transition-transform active:scale-95 cursor-pointer"
                     title={isPlaying ? 'Pause video' : 'Play video'}
                     aria-label={isPlaying ? 'Pause video' : 'Play video'}
                   >
@@ -251,9 +251,9 @@ export const CateringShowcase: React.FC = () => {
             {/* 3 Value Pillars */}
             <div className="space-y-3.5">
               
-              <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-[#dde0d5] shadow-2xs hover:border-[#0580FF]/40 transition-colors">
-                <div className="w-10 h-10 rounded-xl bg-[#0580FF]/10 text-[#0580FF] flex items-center justify-center shrink-0">
-                  <Utensils className="w-5 h-5 text-[#0580FF]" />
+              <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-[#dde0d5] shadow-2xs hover:border-[#0070E0]/40 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-[#0070E0]/10 text-[#0070E0] flex items-center justify-center shrink-0">
+                  <Utensils className="w-5 h-5 text-[#0070E0]" />
                 </div>
                 <div>
                   <h4 className="font-heading font-extrabold text-sm text-[#000000] uppercase">
@@ -265,7 +265,7 @@ export const CateringShowcase: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-[#dde0d5] shadow-2xs hover:border-[#0580FF]/40 transition-colors">
+              <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-[#dde0d5] shadow-2xs hover:border-[#0070E0]/40 transition-colors">
                 <div className="w-10 h-10 rounded-xl bg-amber-50 text-[#D1A03F] flex items-center justify-center shrink-0 border border-amber-200">
                   <Calendar className="w-5 h-5" />
                 </div>
@@ -279,7 +279,7 @@ export const CateringShowcase: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-[#dde0d5] shadow-2xs hover:border-[#0580FF]/40 transition-colors">
+              <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-[#dde0d5] shadow-2xs hover:border-[#0070E0]/40 transition-colors">
                 <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200">
                   <Sparkles className="w-5 h-5" />
                 </div>
@@ -310,7 +310,7 @@ export const CateringShowcase: React.FC = () => {
 
               <Link
                 to="/contact"
-                className="bg-[#0580FF] hover:bg-[#004fb3] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-5 py-3.5 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer group"
+                className="bg-[#0070E0] hover:bg-[#005FCE] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-5 py-3.5 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer group"
               >
                 <span>EVENT ENQUIRY FORM</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -323,9 +323,9 @@ export const CateringShowcase: React.FC = () => {
               <span>Prefer to talk directly? Call Frankie's at </span>
               <a
                 href="tel:07554663569"
-                className="font-bold text-[#000000] hover:text-[#0580FF] underline inline-flex items-center gap-1"
+                className="font-bold text-[#000000] hover:text-[#0070E0] underline inline-flex items-center gap-1"
               >
-                <Phone className="w-3 h-3 text-[#0580FF]" />
+                <Phone className="w-3 h-3 text-[#0070E0]" />
                 07554 663569
               </a>
             </div>

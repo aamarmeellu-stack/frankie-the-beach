@@ -76,7 +76,7 @@ export const PWAInstallButton: React.FC<PWAInstallButtonProps> = ({
       {variant === 'banner' && (
         <div
           id="pwa-install-banner"
-          className={`bg-gradient-to-r from-[#004fb3] via-[#0580FF] to-[#000000] border border-cyan-300/30 rounded-2xl p-4 sm:p-5 text-white shadow-md flex flex-col sm:flex-row items-center justify-between gap-4 ${className}`}
+          className={`bg-gradient-to-r from-[#0048B8] via-[#0070E0] to-[#002B75] border border-sky-300/30 rounded-2xl p-4 sm:p-5 text-white shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4 ${className}`}
         >
           <div className="flex items-center gap-3.5 w-full sm:w-auto">
             <ClientImage
@@ -145,7 +145,7 @@ export const PWAInstallButton: React.FC<PWAInstallButtonProps> = ({
             type="button"
             onClick={handleInstallClick}
             id="btn-pwa-install-card-action"
-            className="bg-[#0580FF] hover:bg-[#004fb3] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-4 py-2 rounded-xl transition-all cursor-pointer shrink-0"
+            className="bg-[#0070E0] hover:bg-[#005FCE] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-4 py-2 rounded-xl transition-all cursor-pointer shrink-0"
           >
             Install
           </button>

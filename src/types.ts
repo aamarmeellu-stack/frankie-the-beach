@@ -5,7 +5,9 @@ export interface MenuItem {
   description: string;
   image: string;
   fallbackImage?: string;
-  category: 'burgers' | 'chicken-burgers' | 'fries' | 'loaded-fries' | 'hot-dogs' | 'breakfast-rolls' | 'drinks';
+  category: 'burgers' | 'chicken-burgers' | 'fries' | 'loaded-fries' | 'hot-dogs' | 'breakfast-rolls' | 'drinks' | 'alcohol' | 'donuts';
+  subCategory?: string;
+  servingSize?: string;
   isFavorite?: boolean;
   spicyLevel?: number;
   popular?: boolean;

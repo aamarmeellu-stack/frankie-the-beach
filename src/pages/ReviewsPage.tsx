@@ -77,7 +77,7 @@ export const ReviewsPage: React.FC = () => {
       
       {/* Page Header Banner */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mt-1 sm:mt-2 mb-8 sm:mb-10">
-        <div className="bg-[#0580FF] text-white py-12 sm:py-16 px-4 sm:px-8 rounded-3xl relative overflow-hidden shadow-sm">
+        <div className="bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0048B8_100%)] text-white py-12 sm:py-16 px-4 sm:px-8 rounded-3xl relative overflow-hidden shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <nav className="flex justify-center items-center gap-2 text-xs uppercase tracking-widest text-sky-200 mb-3 font-semibold">
               <Link to="/" className="hover:text-white transition-colors">
@@ -239,7 +239,7 @@ export const ReviewsPage: React.FC = () => {
                       <Trophy className="w-3.5 h-3.5 fill-black" />
                       Tripadvisor Best of the Best Award
                     </span>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0580FF] text-white font-heading font-extrabold text-xs uppercase tracking-wider shadow-sm">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0070E0] text-white font-heading font-extrabold text-xs uppercase tracking-wider shadow-sm">
                       <Award className="w-3.5 h-3.5 text-amber-300" />
                       2024 Extra Mile Award Winner
                     </span>
@@ -319,7 +319,7 @@ export const ReviewsPage: React.FC = () => {
                       href={FOOD_CRITIC_REVIEW.videoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#0580FF] hover:underline flex items-center gap-1"
+                      className="text-[#0070E0] hover:underline flex items-center gap-1"
                     >
                       <span>Watch Review Video</span>
                       <ExternalLink className="w-3 h-3" />
@@ -795,7 +795,7 @@ export const ReviewsPage: React.FC = () => {
                 <div className="lg:col-span-3 text-center lg:text-right">
                   <button
                     onClick={() => setShowForm(!showForm)}
-                    className="bg-[#0580FF] hover:bg-[#004fb3] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-md transition-all cursor-pointer inline-flex items-center gap-2"
+                    className="bg-[#0070E0] hover:bg-[#0048B8] text-white font-heading font-extrabold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-md transition-all cursor-pointer inline-flex items-center gap-2"
                   >
                     <MessageSquare className="w-4 h-4" />
                     <span>{showForm ? 'CLOSE FORM' : 'WRITE A REVIEW'}</span>
@@ -834,7 +834,7 @@ export const ReviewsPage: React.FC = () => {
                             value={newName}
                             onChange={(e) => setNewName(e.target.value)}
                             placeholder="e.g. Sarah Jenkins"
-                            className="w-full px-3 py-2 border border-[#dde0d5] rounded-xl bg-[#f8f9f5] focus:outline-none focus:border-[#0580FF]"
+                            className="w-full px-3 py-2 border border-[#dde0d5] rounded-xl bg-[#f8f9f5] focus:outline-none focus:border-[#0070E0]"
                           />
                         </div>
 
@@ -845,7 +845,7 @@ export const ReviewsPage: React.FC = () => {
                           <select
                             value={newRating}
                             onChange={(e) => setNewRating(Number(e.target.value))}
-                            className="w-full px-3 py-2 border border-[#dde0d5] rounded-xl bg-[#f8f9f5] focus:outline-none focus:border-[#0580FF]"
+                            className="w-full px-3 py-2 border border-[#dde0d5] rounded-xl bg-[#f8f9f5] focus:outline-none focus:border-[#0070E0]"
                           >
                             <option value={5}>5 Stars - Pure Excellence</option>
                             <option value={4}>4 Stars - Great Experience</option>
@@ -864,7 +864,7 @@ export const ReviewsPage: React.FC = () => {
                           value={newComment}
                           onChange={(e) => setNewComment(e.target.value)}
                           placeholder="Tell us about your experience with the food, beach rides, or atmosphere..."
-                          className="w-full px-3 py-2 border border-[#dde0d5] rounded-xl bg-[#f8f9f5] focus:outline-none focus:border-[#0580FF]"
+                          className="w-full px-3 py-2 border border-[#dde0d5] rounded-xl bg-[#f8f9f5] focus:outline-none focus:border-[#0070E0]"
                         />
                       </div>
 
@@ -886,7 +886,7 @@ export const ReviewsPage: React.FC = () => {
                 onClick={() => setRatingFilter('all')}
                 className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                   ratingFilter === 'all'
-                    ? 'bg-[#0580FF] text-white shadow-sm'
+                    ? 'bg-[#0070E0] text-white shadow-sm'
                     : 'bg-white text-[#496068] border border-[#dde0d5]'
                 }`}
               >
@@ -896,7 +896,7 @@ export const ReviewsPage: React.FC = () => {
                 onClick={() => setRatingFilter(5)}
                 className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1 ${
                   ratingFilter === 5
-                    ? 'bg-[#0580FF] text-white shadow-sm'
+                    ? 'bg-[#0070E0] text-white shadow-sm'
                     : 'bg-white text-[#496068] border border-[#dde0d5]'
                 }`}
               >

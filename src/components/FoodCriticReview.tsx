@@ -91,7 +91,7 @@ export const FoodCriticReview: React.FC = () => {
                   href={FOOD_CRITIC_REVIEW.videoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#0580FF] hover:underline flex items-center gap-1 font-semibold"
+                  className="text-[#0070E0] hover:underline flex items-center gap-1 font-semibold"
                 >
                   <span>Watch on YouTube</span>
                   <ExternalLink className="w-3 h-3" />
@@ -115,20 +115,20 @@ export const FoodCriticReview: React.FC = () => {
                   </h4>
                 </div>
 
-                <div className="px-3.5 py-1.5 rounded-2xl bg-[#0580FF] text-white text-center shadow-sm">
+                <div className="px-3.5 py-1.5 rounded-2xl bg-[#0070E0] text-white text-center shadow-sm">
                   <span className="text-xl font-black font-heading leading-none block">8.5</span>
                   <span className="text-[10px] uppercase font-bold tracking-widest text-sky-200">Out of 10</span>
                 </div>
               </div>
 
-              <blockquote className="p-4 rounded-2xl bg-white border-l-4 border-[#0580FF] text-gray-800 italic text-sm leading-relaxed shadow-xs">
+              <blockquote className="p-4 rounded-2xl bg-white border-l-4 border-[#0070E0] text-gray-800 italic text-sm leading-relaxed shadow-xs">
                 "{FOOD_CRITIC_REVIEW.verdict}"
               </blockquote>
             </div>
 
             {/* Items Sampled */}
             <div className="space-y-3">
-              <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0580FF] font-heading">
+              <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0070E0] font-heading">
                 <Utensils className="w-3.5 h-3.5" />
                 <span>Dishes Sampled in the Video Report</span>
               </div>

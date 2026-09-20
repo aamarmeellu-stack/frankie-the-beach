@@ -30,7 +30,7 @@ export const AboutPage: React.FC = () => {
       
       {/* Top Banner Header */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mt-1 sm:mt-2 mb-8 sm:mb-10">
-        <div className="bg-[#0580FF] text-white py-12 sm:py-16 px-4 sm:px-8 rounded-3xl relative overflow-hidden shadow-sm">
+        <div className="bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0048B8_100%)] text-white py-12 sm:py-16 px-4 sm:px-8 rounded-3xl relative overflow-hidden shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <nav className="flex justify-center items-center gap-2 text-xs uppercase tracking-widest text-sky-200 mb-3 font-semibold">
               <Link to="/" className="hover:text-white transition-colors">
@@ -70,7 +70,7 @@ export const AboutPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             <div className="lg:col-span-7 space-y-5 text-left">
-              <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0580FF] font-heading bg-amber-50 border border-amber-200/80 px-3.5 py-1.5 rounded-full">
+              <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0070E0] font-heading bg-amber-50 border border-amber-200/80 px-3.5 py-1.5 rounded-full">
                 <ShieldCheck className="w-4 h-4 text-[#D1A03F]" />
                 <span>The Founder's Journey — Frankie Fernando</span>
               </div>
@@ -96,26 +96,26 @@ export const AboutPage: React.FC = () => {
                 <p className="text-xs sm:text-sm font-bold italic text-[#000000] leading-snug">
                   "Where you start in life doesn't have to determine where you end up. I refused to let my childhood become an excuse. I chose to crack on, work hard, break the mould and build something better. But I never forgot where I came from."
                 </p>
-                <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#0580FF] font-heading">
+                <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#0070E0] font-heading">
                   — Frankie Fernando
                 </p>
               </div>
 
               <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm font-semibold text-[#000000]">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#0580FF]" />
+                  <CheckCircle className="w-4 h-4 text-[#0070E0]" />
                   <span>Decades of Hands-On Work</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#0580FF]" />
+                  <CheckCircle className="w-4 h-4 text-[#0070E0]" />
                   <span>Deep Thanet Family Connections</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#0580FF]" />
+                  <CheckCircle className="w-4 h-4 text-[#0070E0]" />
                   <span>Creating Jobs for Local Youth</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#0580FF]" />
+                  <CheckCircle className="w-4 h-4 text-[#0070E0]" />
                   <span>Personal Investment into Ramsgate</span>
                 </div>
               </div>
@@ -154,7 +154,7 @@ export const AboutPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             <div className="lg:col-span-5 order-2 lg:order-1">
-              <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white aspect-[3/4] sm:aspect-[4/3] lg:aspect-[3/4] bg-[#004fb3]">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white aspect-[3/4] sm:aspect-[4/3] lg:aspect-[3/4] bg-[#0048B8]">
                 <ClientImage
                   src={clientImages.childrenKiddiesCorner || '/childern_2.webp'}
                   slotKey="site:childrenKiddiesCorner"
@@ -179,7 +179,7 @@ export const AboutPage: React.FC = () => {
             </div>
 
             <div className="lg:col-span-7 order-1 lg:order-2 space-y-5 text-left">
-              <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0580FF] font-heading bg-sky-50 border border-sky-200/80 px-3.5 py-1.5 rounded-full">
+              <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0070E0] font-heading bg-sky-50 border border-sky-200/80 px-3.5 py-1.5 rounded-full">
                 <MapPin className="w-4 h-4 text-[#D1A03F]" />
                 <span>Why Ramsgate Matters</span>
               </div>
@@ -198,7 +198,7 @@ export const AboutPage: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                 <div className="p-3.5 rounded-xl bg-[#f8f9f5] border border-[#e4e8dd] flex items-start gap-2.5">
-                  <Briefcase className="w-4 h-4 text-[#0580FF] shrink-0 mt-0.5" />
+                  <Briefcase className="w-4 h-4 text-[#0070E0] shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-xs font-bold text-[#000000] uppercase">Youth Employment</h4>
                     <p className="text-[11px] text-[#526b74] mt-0.5">Giving local young people work experience and dependable seaside jobs.</p>
@@ -206,7 +206,7 @@ export const AboutPage: React.FC = () => {
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-[#f8f9f5] border border-[#e4e8dd] flex items-start gap-2.5">
-                  <Users className="w-4 h-4 text-[#0580FF] shrink-0 mt-0.5" />
+                  <Users className="w-4 h-4 text-[#0070E0] shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-xs font-bold text-[#000000] uppercase">Family Destination</h4>
                     <p className="text-[11px] text-[#526b74] mt-0.5">Creating a vibrant, welcoming seaside spot right beside the sand and funfair.</p>
@@ -274,7 +274,7 @@ export const AboutPage: React.FC = () => {
                   </div>
 
                   <div className="flex items-center justify-between gap-2">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0580FF] text-white font-heading font-extrabold text-[11px] uppercase tracking-wider">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0070E0] text-white font-heading font-extrabold text-[11px] uppercase tracking-wider">
                       <Award className="w-3.5 h-3.5 text-amber-300" />
                       {EXTRA_MILE_AWARD_DATA.awardTitle}
                     </span>
@@ -376,7 +376,7 @@ export const AboutPage: React.FC = () => {
         </div>
 
         {/* 3. GIVING BACK SPOTLIGHT: Direct Link to Dedicated Charity Page */}
-        <div className="bg-gradient-to-br from-[#004fb3] via-[#0580FF] to-[#000000] rounded-3xl p-6 sm:p-10 lg:p-12 text-white shadow-lg relative overflow-hidden">
+        <div className="bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0048B8_100%)] rounded-3xl p-6 sm:p-10 lg:p-12 text-white shadow-lg relative overflow-hidden">
           <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-left">
             
             <div className="lg:col-span-8 space-y-4">
@@ -428,8 +428,8 @@ export const AboutPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           <div className="bg-white p-7 sm:p-8 rounded-2xl border border-[#dde0d5] shadow-xs space-y-3 hover:shadow-md transition-shadow text-left">
-            <div className="w-12 h-12 rounded-xl bg-[#0580FF]/10 text-[#0580FF] flex items-center justify-center">
-              <Award className="w-6 h-6 text-[#0580FF]" />
+            <div className="w-12 h-12 rounded-xl bg-[#0070E0]/10 text-[#0070E0] flex items-center justify-center">
+              <Award className="w-6 h-6 text-[#0070E0]" />
             </div>
             <h3 className="font-heading font-extrabold text-lg text-[#000000] uppercase">
               Award-Winning Bites
@@ -452,8 +452,8 @@ export const AboutPage: React.FC = () => {
           </div>
 
           <div className="bg-white p-7 sm:p-8 rounded-2xl border border-[#dde0d5] shadow-xs space-y-3 hover:shadow-md transition-shadow text-left">
-            <div className="w-12 h-12 rounded-xl bg-[#0580FF]/10 text-[#0580FF] flex items-center justify-center">
-              <Flame className="w-6 h-6 text-[#0580FF]" />
+            <div className="w-12 h-12 rounded-xl bg-[#0070E0]/10 text-[#0070E0] flex items-center justify-center">
+              <Flame className="w-6 h-6 text-[#0070E0]" />
             </div>
             <h3 className="font-heading font-extrabold text-lg text-[#000000] uppercase">
               Jumbo Promenade Dogs
@@ -468,7 +468,7 @@ export const AboutPage: React.FC = () => {
         {/* 5. RAMSGATE BEACH FAMILY FUNFAIR & ATTRACTIONS */}
         <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#dde0d5] shadow-sm">
           <div className="text-center max-w-2xl mx-auto mb-8">
-            <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0580FF] font-heading bg-sky-50 border border-sky-200/80 px-3.5 py-1.5 rounded-full mb-3">
+            <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0070E0] font-heading bg-sky-50 border border-sky-200/80 px-3.5 py-1.5 rounded-full mb-3">
               <UtensilsCrossed className="w-4 h-4 text-[#D1A03F]" />
               <span>Right Beside Frankie's Food Kiosk &amp; Bar</span>
             </div>
@@ -539,7 +539,7 @@ export const AboutPage: React.FC = () => {
         </div>
 
         {/* 6. Coastal CTA Box */}
-        <div className="bg-[#004fb3] text-white rounded-3xl p-8 sm:p-12 shadow-xl">
+        <div className="bg-[radial-gradient(ellipse_at_50%_35%,#0084FF_0%,#0070E0_50%,#0048B8_100%)] text-white rounded-3xl p-8 sm:p-12 shadow-xl">
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <div className="inline-flex items-center gap-2 text-amber-300 text-xs font-extrabold uppercase tracking-widest font-heading">
               <UtensilsCrossed className="w-4 h-4 text-amber-300" />

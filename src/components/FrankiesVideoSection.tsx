@@ -265,6 +265,31 @@ export const FrankiesVideoSection: React.FC = () => {
     };
   }, [playAllVideos]);
 
+  // Autoplay all videos muted when scrolled into view so the user immediately sees the live videos
+  useEffect(() => {
+    const section = document.getElementById('frankies-beach-videos-section');
+    if (!section) return;
+
+    let hasAutoplayed = false;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAutoplayed) {
+            hasAutoplayed = true;
+            // Play all videos muted for seamless browser compliance
+            FRANKIE_VIDEOS.forEach((_, idx) => {
+              playVideoSafe(idx, true);
+            });
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [playVideoSafe]);
+
   return (
     <section
       id="frankies-beach-videos-section"
@@ -428,34 +453,7 @@ export const FrankiesVideoSection: React.FC = () => {
                   }}
                   className="relative rounded-2xl overflow-hidden bg-black aspect-video sm:aspect-[4/3] md:aspect-video border border-white/25 shadow-inner flex flex-col justify-end group/player"
                 >
-                  {/* High-definition Poster Image Preview - Always visible immediately */}
-                  {video.poster && (
-                    <img
-                      src={getAssetUrl(video.poster)}
-                      alt={video.title}
-                      className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-300 pointer-events-none ${
-                        videoIsPlaying ? 'opacity-0' : 'opacity-100'
-                      }`}
-                      loading="eager"
-                      onError={(e) => {
-                        const target = e.currentTarget as HTMLImageElement;
-                        if (!target.dataset.attemptedJpg) {
-                          target.dataset.attemptedJpg = '1';
-                          // Try JPG format fallback if WebP failed
-                          target.src = getAssetUrl(`/video-${video.number}-poster.jpg`);
-                        } else if (!target.dataset.attemptedBanner) {
-                          target.dataset.attemptedBanner = '1';
-                          // Try reliable static banner fallback
-                          target.src = getAssetUrl('/frankies-beach-hire-banner.jpg');
-                        } else {
-                          // Cleanly hide broken image glyph so broken icon never covers the video card
-                          target.style.display = 'none';
-                        }
-                      }}
-                    />
-                  )}
-
-                  {/* HTML5 Video Element */}
+                  {/* HTML5 Video Element - Displays authentic video frame/poster directly */}
                   <video
                     ref={(el) => {
                       videoRefs.current[index] = el;
@@ -463,7 +461,7 @@ export const FrankiesVideoSection: React.FC = () => {
                     src={getAssetUrl(video.src)}
                     poster={getAssetUrl(video.poster)}
                     playsInline
-                    preload="metadata"
+                    preload="auto"
                     loop
                     muted={videoIsMuted}
                     onTimeUpdate={() => {

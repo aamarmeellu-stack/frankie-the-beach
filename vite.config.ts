@@ -150,6 +150,60 @@ function videoSyncPlugin() {
         next();
       });
     },
+    buildStart() {
+      if (!fs.existsSync('public')) fs.mkdirSync('public', { recursive: true });
+      const publicFiles = fs.readdirSync('public');
+      const rootFiles = fs.readdirSync('.');
+
+      for (let i = 1; i <= 6; i++) {
+        let found = publicFiles.find((f: string) => {
+          const lower = f.toLowerCase();
+          return (
+            (lower.includes(`video ${i}`) || lower.includes(`video-${i}`) || lower.includes(`video${i}`)) &&
+            (lower.endsWith('.mp4') || lower.endsWith('.webm') || lower.endsWith('.mov'))
+          );
+        });
+
+        if (!found) {
+          const inRoot = rootFiles.find((f: string) => {
+            const lower = f.toLowerCase();
+            return (
+              (lower.includes(`video ${i}`) || lower.includes(`video-${i}`) || lower.includes(`video${i}`)) &&
+              (lower.endsWith('.mp4') || lower.endsWith('.webm') || lower.endsWith('.mov'))
+            );
+          });
+          if (inRoot) {
+            try {
+              fs.copyFileSync(inRoot, `public/${inRoot}`);
+              found = inRoot;
+            } catch {}
+          }
+        }
+
+        if (found) {
+          try {
+            if (!fs.existsSync(`public/video-${i}-frankie.mp4`)) {
+              fs.copyFileSync(`public/${found}`, `public/video-${i}-frankie.mp4`);
+            }
+            if (!fs.existsSync(`public/video ${i} frankie.mp4`)) {
+              fs.copyFileSync(`public/${found}`, `public/video ${i} frankie.mp4`);
+            }
+          } catch {}
+        }
+      }
+    },
+    closeBundle() {
+      if (fs.existsSync('dist') && fs.existsSync('public')) {
+        const publicFiles = fs.readdirSync('public');
+        publicFiles.forEach((f: string) => {
+          if (f.startsWith('video') || f.startsWith('video-') || f.startsWith('video ')) {
+            try {
+              fs.copyFileSync(path.join('public', f), path.join('dist', f));
+            } catch {}
+          }
+        });
+      }
+    },
   };
 }
 

@@ -51,6 +51,13 @@ export const FrankiesVideoSection: React.FC = () => {
     const el = videoRefs.current[index];
     if (!el) return;
     try {
+      if (el.readyState === 0 && !el.src) {
+        const vid = FRANKIE_VIDEOS[index];
+        if (vid) {
+          el.src = getAssetUrl(vid.src);
+          el.load();
+        }
+      }
       el.muted = shouldMute;
       if (!shouldMute) {
         el.volume = 1.0;
@@ -247,29 +254,31 @@ export const FrankiesVideoSection: React.FC = () => {
     };
   }, [playAllVideos]);
 
-  // Autoplay all videos muted when scrolled into view so the user immediately sees the live videos
+  // Ensure video elements are properly initialized when scrolled into view
   useEffect(() => {
     const section = document.getElementById('frankies-beach-videos-section');
     if (!section) return;
 
-    let hasAutoplayed = false;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAutoplayed) {
-            hasAutoplayed = true;
-            FRANKIE_VIDEOS.forEach((_, idx) => {
-              playVideoSafe(idx, true);
+          if (entry.isIntersecting) {
+            FRANKIE_VIDEOS.forEach((vid, idx) => {
+              const el = videoRefs.current[idx];
+              if (el && !el.src) {
+                el.src = getAssetUrl(vid.src);
+                el.load();
+              }
             });
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
 
     observer.observe(section);
     return () => observer.disconnect();
-  }, [playVideoSafe]);
+  }, []);
 
   return (
     <section
@@ -426,8 +435,25 @@ export const FrankiesVideoSection: React.FC = () => {
                   ref={(el) => {
                     containerRefs.current[index] = el;
                   }}
-                  className="relative rounded-2xl overflow-hidden bg-black aspect-video sm:aspect-[4/3] md:aspect-video border border-white/25 shadow-inner flex flex-col justify-end group/player"
+                  className="relative rounded-2xl overflow-hidden bg-[#0A192F] aspect-video sm:aspect-[4/3] md:aspect-video border border-white/25 shadow-2xl flex flex-col justify-end group/player"
                 >
+                  {/* Dedicated High-Fidelity Poster Image (Guarantees zero black screens) */}
+                  {!videoIsPlaying && (
+                    <img
+                      src={getAssetUrl(video.poster)}
+                      alt={video.title}
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        const fallbackJpg = getAssetUrl(video.posterJpg || `/video-${video.number}-poster.jpg`);
+                        if (target.src !== fallbackJpg) {
+                          target.src = fallbackJpg;
+                        }
+                      }}
+                      className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none select-none"
+                      loading="lazy"
+                    />
+                  )}
+
                   {/* HTML5 Video Element */}
                   <video
                     ref={(el) => {
@@ -436,9 +462,21 @@ export const FrankiesVideoSection: React.FC = () => {
                     src={getAssetUrl(video.src)}
                     poster={getAssetUrl(video.poster)}
                     playsInline
-                    preload="auto"
+                    preload="metadata"
                     loop
                     muted={videoIsMuted}
+                    onError={(e) => {
+                      const el = e.currentTarget;
+                      const attempt = Number(el.dataset.attempt || '0');
+                      el.dataset.attempt = String(attempt + 1);
+                      if (attempt === 0) {
+                        el.src = getAssetUrl(video.fallbackSrc);
+                        el.load();
+                      } else if (attempt === 1) {
+                        el.src = getAssetUrl(`/video-${video.number}-frankie.mp4`);
+                        el.load();
+                      }
+                    }}
                     onTimeUpdate={() => {
                       const el = videoRefs.current[index];
                       if (el) {
@@ -473,29 +511,12 @@ export const FrankiesVideoSection: React.FC = () => {
                         return next;
                       });
                     }}
-                    onError={() => {
-                      const el = videoRefs.current[index];
-                      if (!el) return;
-                      const attempt = Number(el.dataset.attemptCount || '0');
-                      el.dataset.attemptCount = String(attempt + 1);
-
-                      if (attempt === 0) {
-                        el.src = getAssetUrl(video.fallbackSrc);
-                        el.load();
-                      } else if (attempt === 1) {
-                        el.src = getAssetUrl(`/video${video.number}frankie.mp4`);
-                        el.load();
-                      } else if (attempt === 2) {
-                        el.src = getAssetUrl(encodeURI(video.fallbackSrc));
-                        el.load();
-                      }
-                    }}
-                    className="w-full h-full object-cover absolute inset-0 cursor-pointer"
+                    className="w-full h-full object-cover absolute inset-0 cursor-pointer z-[1]"
                     onClick={() => handleTogglePlaySingle(index)}
                   >
                     <source src={getAssetUrl(video.src)} type="video/mp4" />
                     <source src={getAssetUrl(video.fallbackSrc)} type="video/mp4" />
-                    <source src={getAssetUrl(`/video${video.number}frankie.mp4`)} type="video/mp4" />
+                    <source src={getAssetUrl(`/video-${video.number}-frankie.mp4`)} type="video/mp4" />
                     <source src={getAssetUrl(encodeURI(video.fallbackSrc))} type="video/mp4" />
                     Your browser does not support video playback.
                   </video>
@@ -503,7 +524,7 @@ export const FrankiesVideoSection: React.FC = () => {
                   {/* Big Center Play Overlay when paused */}
                   {!videoIsPlaying && (
                     <div
-                      className="absolute inset-0 bg-black/45 backdrop-blur-[1px] flex flex-col items-center justify-center cursor-pointer transition-opacity z-10 p-3"
+                      className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/20 flex flex-col items-center justify-center cursor-pointer transition-opacity z-10 p-3 hover:bg-black/30"
                       onClick={() => handleTogglePlaySingle(index)}
                     >
                       <button
@@ -512,14 +533,14 @@ export const FrankiesVideoSection: React.FC = () => {
                           e.stopPropagation();
                           handleTogglePlaySingle(index);
                         }}
-                        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-[#ECD87A] via-[#FFD700] to-[#E5A823] text-black flex items-center justify-center shadow-[0_0_25px_rgba(255,215,0,0.5)] hover:scale-110 active:scale-95 transition-all border-2 border-white cursor-pointer"
+                        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-[#ECD87A] via-[#FFD700] to-[#E5A823] text-black flex items-center justify-center shadow-[0_0_30px_rgba(255,215,0,0.6)] hover:scale-110 active:scale-95 transition-all border-2 border-white cursor-pointer"
                         title={`Click Here to play Video ${video.number}`}
                       >
-                        <Play className="w-7 h-7 fill-current translate-x-0.5" />
+                        <Play className="w-7 h-7 fill-current translate-x-0.5 text-black" />
                       </button>
 
-                      <div className="mt-3 px-3 py-1 rounded-full bg-black/80 border border-white/30 text-white font-heading font-black text-[11px] uppercase tracking-wider shadow-md">
-                        {isSyncMode ? `CLICK HERE (ALL 6 PLAY) 🎬` : `CLICK HERE TO PLAY VID ${video.number}`}
+                      <div className="mt-3 px-3.5 py-1.5 rounded-full bg-black/85 border border-[#ECD87A]/60 text-[#ECD87A] font-heading font-black text-[11px] sm:text-xs uppercase tracking-wider shadow-xl flex items-center gap-1.5">
+                        <span>{isSyncMode ? `CLICK TO PLAY (ALL 6) 🎬` : `CLICK TO PLAY VID ${video.number}`}</span>
                       </div>
                     </div>
                   )}
